@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <color name="_4fa1f5">#4fa1f5</color>
+
+    <color name="page_bg">#F6F8F7</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--一级目录字体颜色-->
+    <color name="category_one_color">#323334</color>
+    <!--二级目录字体颜色-->
+    <color name="category_two_color">#656667</color>
+    <color name="item_red_color">#ff4800</color>
+    <color name="item_green_color">#4ccd9e</color>
+
+    <color name="window_background">#EBEBEB</color>
+    <color name="main_gray">#9A9A9A</color>
+    <color name="play_bg_color">#3C3D3E</color>
+    <color name="main_black">#333</color>
+
+    <color name="list_item_background_normal">#ffffff</color>
+    <color name="list_item_background_pressed">#efefef</color>
+
+    <color name="list_item_text_color">#9a9a9a</color>
+    <color name="default_image_bg">#ffcfcfcf</color>
+
+    <color name="one">#B2B8C5</color>
+    <color name="two">#8591A6</color>
+    <color name="title_bg">#76B2BA</color>
+    <color name="menu_bg">#525252</color>
+    <color name="deep_col">#5E9096</color>
+
+
+    <color name="red">#FF4800</color>
+    <color name="theme_red">#FF2D1F</color>
+    <color name="theme_green">#1AA97B</color>
+    <color name="theme_gray">#999999</color>
+
+    <color name="text_a">#333333</color>
+    <color name="text_b">#666666</color>
+    <color name="text_c">#999999</color>
+
+    <color name="blue">#1ec0f3</color>
+    <!-- 修改密码 -->
+    <color name="text_2">#5c5c5c</color>
+    <color name="text_3">#969696</color>
+    <color name="edit_hint_gray">#bbbbbb</color>
+    <color name="view_line_1">#dddddd</color>
+    <color name="edit_hint_blue">#B9C9D4</color>
+    <color name="new_order_left_btn">#f2f2f2</color>
+    <color name="alpha">#00000000</color>
+    <color name="alpha50">#50000000</color>
+    <color name="alpha80">#80000000</color>
+    <color name="white50">#88ffffff</color>
+    <!-- 详情页提示背景 -->
+
+    <!-- 新版本样式 -->
+    <color name="black">#000000</color>
+    <color name="black_s">#333333</color>
+    <color name="black_87">#DE000000</color>
+    <color name="black_48">#7A000000</color>
+    <color name="black_24">#3D000000</color>
+    <color name="black_16">#28000000</color>
+    <color name="bottom_gray">#F9F9F9</color>
+    <color name="gray_bg">#ebebeb</color>
+    <color name="orange">#FF6900</color>
+    <color name="orange_unselect">#FFC59E</color>
+    <color name="white">#ffffff</color>
+    <color name="server_name">#413f82</color>
+
+    <color name="_F1AC5C">#F1AC5C</color>
+
+    <color name="gray">#EEEEEE</color>
+    <color name="item_color">#F5F6F7</color>
+    <color name="gray_exam">#b9b9b9</color>
+    <color name="shop_choose_text_nomal">#717171</color>
+
+    <color name="report_red_font_color">#FF2D1F</color>
+
+
+    <!-- 时间选择控件 -->
+    <!--<color name="wheel_timebtn_nor">#54a3fa</color>-->
+    <!--<color name="wheel_timebtn_pre">#CCCCCC</color>-->
+    <color name="order_detail_orange">#EF5F19</color>
+
+    <!-- 店铺装修 -->
+    <color name="shop_detail_evaluation_black">#818181</color>
+    <color name="shop_black_100">#333333</color>
+    <color name="shop_black_90">#666666</color>
+    <color name="shop_line">#ebebeb</color>
+    <color name="menu_text">#FF6A00</color>
+    <color name="menu_text_default">#848484</color>
+    <color name="radio_black">#5d5d5d</color>
+    <color name="radio_edit_gray">#c0c0c0</color>
+    <color name="hint_edit_gray_font">#c0c0c0</color>
+    <color name="close_light_orange_font">#ffbf93</color>
+    <color name="user_center_gray_font">#b0b0b0</color>
+    <color name="consultant_orange_font">#FB6D01</color>
+    <color name="consultant_gray_font">#484848</color>
+    <color name="shop_example_type_background">#F8F8F8</color>
+
+    <!-- 服务详情评论 -->
+    <color name="service_conment_inpression_font">#fef1e6</color>
+    <color name="service_conment_menu_font">#818181</color>
+    <color name="service_conment_highscore_font">#f23030</color>
+    <color name="service_conment_lowscore_font">#0ead51</color>
+    <color name="service_conment_cicle_default_font">#e0e0e0</color>
+
+    <!-- 类目热销榜单 -->
+    <color name="hotsales_title_font">#ff6600</color>
+
+    <color name="_fafafa">#fafafa</color>
+    <!-- 社区模块相关 -->
+    <color name="_333333">#333333</color>
+    <color name="_b0b0b0">#b0b0b0</color>
+    <color name="_f2f2f2">#f2f2f2</color>
+    <color name="_666666">#666666</color>
+    <color name="_ff6600">#ff6600</color>
+    <color name="_484848">#484848</color>
+    <color name="_d7d8d9">#d7d8d9</color>
+    <color name="_998e8e8e">#998e8e8e</color>
+    <color name="_FF7D00">#FF7D00</color>
+
+    <color name="zan_bg1">#ffd7b4</color>
+    <color name="zan_bg2">#c4f4ff</color>
+    <color name="zan_bg3">#e3e0ff</color>
+    <color name="zan_bg4">#ffdbde</color>
+    <color name="zan_bg5">#fff5c8</color>
+    <color name="zan_bg6">#c7f0e3</color>
+    <color name="zan_text3">#9a8fff</color>
+    <color name="zan_text4">#ff6f7b</color>
+    <color name="zan_text5">#efb414</color>
+    <color name="zan_text6">#51CD9F</color>
+    <color name="_404040">#404040</color>
+    <color name="_999999">#999999</color>
+    <color name="_3f3f3f">#3f3f3f</color>
+    <color name="_edf6ff">#edf6ff</color>
+    <color name="_ededed">#ededed</color>
+    <color name="_a9a9a9">#a9a9a9</color>
+
+    <!-- 个人中心 -->
+    <color name="_77000000">#77000000</color>
+    <color name="_f23030">#f23030</color>
+    <color name="_ffffff">#ffffff</color>
+    <color name="_f3f3f3">#f3f3f3</color>
+    <color name="_d6d6d6">#d6d6d6</color>
+    <color name="_9d9d9d">#9d9d9d</color>
+
+    <!-- 评价 -->
+    <color name="shop_evaluation_red">#f23030</color>
+    <color name="shop_evaluation_green">#0ead51</color>
+
+    <color name="_848484">#848484</color>
+    <color name="_dddddd">#dddddd</color>
+    <color name="_ff7a1e">#ff7a1e</color>
+    <color name="_fff4ec">#fff4ec</color>
+    <color name="_ffa05e">#ffa05e</color>
+
+
+    <color name="title_left_bg_color">#FA4B1E</color>
+
+
+    <color name="_ff6c99">#ff6c99</color>
+    <color name="_fffc00">#fffc00</color>
+    <color name="_ffa147">#ffa147</color>
+    <color name="_cc967c">#cc967c</color>
+    <color name="_7fd781">#7fd781</color>
+    <color name="_9180f2">#9180f2</color>
+    <color name="_4ac9c0">#4ac9c0</color>
+    <color name="_ff806f">#ff806f</color>
+    <color name="_e7e7e7">#e7e7e7</color>
+    <color name="_808080">#808080</color>
+    <color name="_e2e2e2">#e2e2e2</color>
+    <color name="_eef5ff">#eef5ff</color>
+    <color name="_e2f1ff">#e2f1ff</color>
+
+    <color name="_f9fffb">#f9fffb</color>
+    <color name="_c9e8d5">#c9e8d5</color>
+
+    <color name="search_result_navi_orange">#ff6900</color>
+    <color name="search_result_navi_black">#484848</color>
+    <color name="search_result_navi_transparent">#00000000</color>
+
+    <!-- 搜索地图模式 -->
+    <color name="serch_map_gray_font">#484848</color>
+    <color name="serch_map_root_black_font">#848484</color>
+    <color name="serch_map_orange_font">#ff6900</color>
+    <color name="serch_map_light_black_font">#686868</color>
+    <color name="serch_map_gray_bg">#EEEEEE</color>
+    <color name="serch_map_light_gray" >#F8F8F8</color>
+    <color name="serch_map_white" >#FFFFFF</color>
+    <color name="serch_map_sub_black_font" >#666666</color>
+
+    <!-- 新版城市站选择 -->
+    <color name="adapter_select_city_site_header_banner">#ffb37c</color>
+    <color name="_ffe9d9">#ffe9d9</color>
+
+    <color name="_de352f">#de352f</color>
+
+    <color name="transparent">#77000000</color>
+    <color name="line_gray">#E5E5E5</color>
+    <color name="font_item_name_gray">#969696</color>
+    <color name="font_item_name_block">#333333</color>
+
+    <color name="divider_color">#cccccc</color>
+    <color name="media_qingxidu">#FF2F67B3</color>
+
+
+    <color name="grey">#58616d</color>
+    <color name="darkgrey">#ff404040</color>
+    <color name="toasterro">#9fd524</color>
+    <color name="lightgrey">#ff888888</color>
+    <color name="semitransparent">#80000000</color>
+    <color name="lightransparent">#a0000000</color>
+    <color name="navpage">#FFE1E8EB</color>
+
+</resources>

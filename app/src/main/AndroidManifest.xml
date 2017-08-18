@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kzb.parents">
+
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
+    <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+
+    <application
+        android:name=".application.Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/parent_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".diagnose.DiagNoseListActivity"></activity>
+        <activity android:name=".set.SetActivity"></activity>
+        <activity android:name=".set.SetCourseActivity"></activity>
+        <activity android:name=".main.MainActivity"></activity>
+        <activity android:name=".diagnose.DiagNoseDetailActivity"></activity>
+        <activity android:name=".diagnose.JiXieActivity"></activity>
+        <activity android:name=".diagnose.JiXieNewActivity"></activity>
+
+        <activity android:name=".diagnose.JiXieTwoActivity"></activity>
+        <activity android:name=".diagnose.JiXieTwoNewActivity"></activity>
+        <activity android:name=".diagnose.JiXieThreeActivity"></activity>
+        <activity android:name=".diagnose.JiXieThreeNewActivity"></activity>
+        <activity android:name=".diagnose.DiagNoseMainActivity"></activity>
+        <activity android:name=".diagnose.DNZhangJieActivity"></activity>
+        <activity android:name=".diagnose.DNQuanKeActivity"></activity>
+        <activity android:name=".diagnose.DNZhenTiActivity"></activity>
+        <activity android:name=".diagnose.DiagnoseTwoActivity"></activity>
+
+        <activity android:name=".course.CourseListActivity"></activity>
+        <activity android:name=".course.StrengthListActivity"></activity>
+        <!--<activity android:name=".login.LoginActivity"></activity>-->
+        <activity android:name=".login.LoginTwoActivity"></activity>
+        <activity android:name=".wrong.WrongActivity"></activity>
+        <activity android:name=".wrong.WrongDetailActivity"></activity>
+        <activity android:name=".wrong.WrongDetailTwoActivity"></activity>
+        <activity android:name=".wrong.WrongDetailThreeActivity"></activity>
+        <activity android:name=".wrong.WrongStrongActivity"></activity>
+        <activity android:name=".wrong.WrongStrongTwoActivity"></activity>
+        <activity android:name=".course.CourseActivity"></activity>
+        <activity android:name=".course.CourseMainActivity"></activity>
+        <activity android:name=".strengthen.StrengthenActivity"></activity>
+        <activity android:name=".report.DiagnoseActivity"></activity>
+        <activity android:name=".report.ExamActivity"></activity>
+        <activity android:name=".report.ExamQuanKeActivity"></activity>
+        <activity android:name=".report.ExamZhangJieActivity"></activity>
+        <activity android:name=".report.RTDiagnoseQuanKeActivity"></activity>
+        <activity android:name=".report.RTDiagnoseZhenTiActivity"></activity>
+        <activity android:name=".report.RTDiagnoseZhangJieActivity"></activity>
+        <activity android:name=".course.CourseDetailActivity"
+            android:screenOrientation="landscape"
+            ></activity>
+        <activity android:name=".xunlian.XunLianKaoShiActivity"></activity>
+        <activity android:name=".kaoshi.KaoShiActivity"></activity>
+        <activity android:name=".kaoshi.KaoShiBaogaoActivity"></activity>
+        <activity android:name=".kaoshi.ZhenDuiXunLianActivity"></activity>
+        <activity android:name=".kaoshi.KSQuanKeActivity"></activity>
+        <activity android:name=".kaoshi.KSZhangJieActivity"></activity>
+        <activity android:name=".kaoshi.KSBaoGaoActivity"></activity>
+        <activity android:name=".kaoshi.ZhangJieListActivity"></activity>
+        <activity android:name=".kaoshi.QuanKeListActivity"></activity>
+        <activity android:name=".kaoshi.BGQKListActivity"></activity>
+        <activity android:name=".kaoshi.BGZJListActivity"></activity>
+        <activity android:name=".exam.ExamActivity"></activity>
+        <activity android:name=".common.ArticeDetailActivity"></activity>
+        <activity android:name=".settwo.SetDetailActivity"></activity>
+        <activity android:name=".settwo.UpdateActivity"></activity>
+        <activity android:name=".settwo.SchoolShenHeActivity"></activity>
+        <activity android:name=".settwo.SchoolRenZhengActivity"></activity>
+        <activity android:name=".login.LoginActivity"></activity>
+
+        <activity android:name=".login.ImproveActivity"></activity>
+        <activity android:name=".login.LoginTypeActivity"></activity>
+        <activity android:name=".login.CourseSelectActivity"></activity>
+        <activity android:name=".VipActivity"></activity>
+        <activity android:name=".VipDetailActivity"></activity>
+        <activity android:name="com.kzb.parents.payzfb.PayDemoActivity"></activity>
+        <activity android:name=".paywx.PayActivity"></activity>
+        <activity android:name=".msg.MsgListActivity"></activity>
+        <activity android:name=".msg.MsgDetailActivity"></activity>
+        <activity android:name=".course.ReportFinishActivity"/>
+
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+
+
+
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+            <intent-filter>
+                <data android:scheme="tencent100371282" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!--集成line客户端登录授权，需要添如下格式的过滤器-->
+            <intent-filter>
+                <data android:scheme="line.1477692153" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
+
+
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+
+        <receiver android:name=".paywx.AppRegister" >
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+
+        <!--<activity-->
+            <!--android:name=".wxapi.WXEntryActivity"-->
+            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
+            <!--android:exported="true"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+
+
+    </application>
+
+</manifest>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 标题栏 -->
+    <declare-styleable name="Topbar">
+        <attr name="text" format="string" />
+        <attr name="text_color" format="color" />
+        <attr name="text_size" format="dimension" />
+        <attr name="leftText_size" format="dimension" />
+        <attr name="rightText_size" format="dimension" />
+        <attr name="rightText_color" format="color" />
+        <attr name="leftText_color" format="color" />
+        <attr name="text_background" format="color" />
+        <attr name="leftButton_src" format="reference|color" />
+        <attr name="leftButton_width" format="dimension" />
+        <attr name="leftButton_text" format="string" />
+
+        <attr name="rightButton_src" format="reference|color" />
+        <attr name="rightButton_width" format="dimension" />
+        <attr name="rightButton_text" format="string" />
+        <attr name="searchButton_src" format="reference|color" />
+        <attr name="searchButton_width" format="dimension" />
+        <attr name="searchButton_marginRight" format="dimension" />
+        <attr name="showIcon" format="boolean" />
+    </declare-styleable>
+    <!--rate-->
+    <declare-styleable name="RateImageView">
+        <attr name="widthRate" format="float" />
+        <attr name="widthHeightRate" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedRectProgressBar">
+        <attr name="backColor" format="color" />
+        <attr name="barColor" format="color" />
+        <attr name="textColor" format="color" />
+    </declare-styleable>
+
+</resources>

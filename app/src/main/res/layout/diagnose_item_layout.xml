@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        >
+        <TextView
+            android:id="@+id/dig_item_name_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="测试"
+            />
+
+        <ImageView
+            android:id="@+id/dig_item_handle_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="15dp"
+            android:src="@mipmap/min_img"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/dig_item_line_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_bg"
+        ></View>
+
+
+    <LinearLayout
+        android:id="@+id/dig_item_bom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:id="@+id/dig_item_score_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="15dp"
+                android:text="91分"
+                />
+
+            <ImageView
+                android:id="@+id/dig_item_state_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dig_item_score_view"
+                android:layout_alignLeft="@id/dig_item_score_view"
+                android:layout_marginTop="15dp"
+                android:src="@mipmap/un_pass_img"
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:layout_gravity="right"
+            >
+
+            <TextView
+                android:id="@+id/dig_item_score_num_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_alignParentTop="true"
+                android:text="编号:kjkjkkjkkk"
+                />
+
+            <TextView
+                android:id="@+id/dig_item_score_time_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="right"
+                android:layout_below="@id/dig_item_score_num_view"
+                android:text="2017年11月12日"
+                />
+
+            <TextView
+                android:id="@+id/dig_item_find_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dig_item_score_time_view"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"
+                android:text="查看"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:background="@mipmap/blue_img"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_bg"
+        ></View>
+
+
+</LinearLayout>

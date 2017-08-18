@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/theme_green"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:id="@+id/set_back_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:drawableLeft="@mipmap/left_back"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:text="返回"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="个人设置"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/set_save_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:padding="10dp"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="70dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/set_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="12dp"
+                    android:text="姓名"
+                    android:textColor="@color/main_gray"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/set_name_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:text="段记忆"
+                    android:textColor="@color/category_one_color"
+                    android:textSize="18dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/service_conment_cicle_default_font"></View>
+
+
+            <RelativeLayout
+                android:id="@+id/set_sex_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="12dp"
+                    android:text="性别"
+                    android:textColor="@color/main_gray"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/set_sex_woman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:drawableLeft="@mipmap/gray_select_press"
+                    android:drawablePadding="10dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="女"
+                    android:textColor="@color/category_one_color"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/set_sex_man"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_toLeftOf="@id/set_sex_woman"
+                    android:drawableLeft="@mipmap/gray_select_normal"
+                    android:drawablePadding="10dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="男"
+                    android:textColor="@color/category_one_color"
+                    android:textSize="18dp" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/service_conment_cicle_default_font"></View>
+
+
+            <RelativeLayout
+                android:id="@+id/set_birth_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="12dp"
+                    android:text="生日"
+                    android:textColor="@color/main_gray"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/set_birth_view"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="right"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/category_one_color"
+                    android:textSize="18dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/service_conment_cicle_default_font"></View>
+
+
+            <RelativeLayout
+                android:id="@+id/set_num_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="12dp"
+                    android:text="学号"
+                    android:textColor="@color/main_gray"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/set_class_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/category_one_color"
+                    android:textSize="18dp" />
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/page_bg"></View>
+
+            <RelativeLayout
+                android:id="@+id/set_school_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="12dp"
+                    android:text="学校"
+                    android:textColor="@color/main_gray"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/set_school_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/category_one_color"
+                    android:textSize="18dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/service_conment_cicle_default_font"></View>
+
+            <RelativeLayout
+                android:id="@+id/set_grade_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="12dp"
+                    android:text="年级"
+                    android:textColor="@color/main_gray"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/set_grade_view"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="right"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/category_one_color"
+                    android:textSize="18dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/service_conment_cicle_default_font"></View>
+
+            <RelativeLayout
+                android:id="@+id/set_class_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="12dp"
+                    android:text="班级"
+                    android:textColor="@color/main_gray"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/set_class_view"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="right"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/category_one_color"
+                    android:textSize="18dp" />
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/service_conment_cicle_default_font"></View>
+
+            <RelativeLayout
+                android:id="@+id/set_voli_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="12dp"
+                    android:text="学期"
+                    android:textColor="@color/main_gray"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/improve_down_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:drawableLeft="@mipmap/blue_uncheck_img"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="下学期"
+                    android:textColor="@color/category_one_color" />
+
+
+                <TextView
+                    android:id="@+id/improve_up_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/improve_down_view"
+                    android:drawableLeft="@mipmap/blue_check_img"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="上学期"
+                    android:textColor="@color/category_one_color" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/page_bg"></View>
+
+
+            <RelativeLayout
+                android:id="@+id/set_update_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/set_update_name_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="12dp"
+                    android:text="版本更新"
+                    android:textColor="@color/main_gray"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/set_upate_sign_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/set_update_name_view"
+                    android:background="@drawable/update_btn_red"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp"
+                    android:text="New"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/set_update_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/category_one_color"
+                    android:textSize="18dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/page_bg"></View>
+
+            <RelativeLayout
+                android:id="@+id/set_school_renzhen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="12dp"
+                    android:text="学校认证"
+                    android:textColor="@color/main_gray"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/set_school_renzhen_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:text="未认证"
+                    android:textColor="@color/category_one_color"
+                    android:textSize="18dp" />
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/page_bg"></View>
+
+            <RelativeLayout
+                android:id="@+id/set_out_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/set_out_name_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="12dp"
+                    android:text="设备编号"
+                    android:textColor="@color/main_gray"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/set_out_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/category_one_color"
+                    android:textSize="18dp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/page_bg"></View>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

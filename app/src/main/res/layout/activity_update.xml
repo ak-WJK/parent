@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/common_head"></include>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/update_sign_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:id="@+id/update_version_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/update_sign_img"
+            android:text="已有新版本:1.0.2"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:id="@+id/update_version_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修复学习中诊断要的Bug"
+            android:visibility="gone"
+            android:layout_below="@id/update_version_name"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:id="@+id/update_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="立即更新"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:background="@mipmap/common_tab_green"
+            />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

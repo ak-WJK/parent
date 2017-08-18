@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_head"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/xuexi_kecheng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="课程学习"
+            android:textColor="@color/_333333"
+            android:textSize="@dimen/text_common"
+            android:gravity="center|left"
+            android:drawablePadding="5dp"
+            android:drawableLeft="@mipmap/xuexi_kecheng"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/xuexi_tigao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="强化提高"
+            android:textColor="@color/_333333"
+            android:textSize="@dimen/text_common"
+            android:gravity="center|left"
+            android:drawablePadding="5dp"
+            android:drawableLeft="@mipmap/xuexi_jindu"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

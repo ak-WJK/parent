@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/theme_green"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+
+        <TextView
+            android:id="@+id/shenhe_back_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:textSize="18dp"
+            android:drawableLeft="@mipmap/left_back"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:drawablePadding="10dp"
+            android:textColor="@color/white"
+            android:text="返回"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="学校认证"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/set_save_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/shenhe_school_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_item_bg_two">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingBottom="12dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="12dp"
+                android:text="请选择学校"
+                android:textColor="@color/main_gray"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/shenhe_school_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:drawableRight="@mipmap/arrow_right"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/category_one_color"
+                android:textSize="18dp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/shenhe_grade_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/list_item_bg_two">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingBottom="12dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="12dp"
+                android:text="请选择年级"
+                android:textColor="@color/main_gray"
+                android:textSize="18dp" />
+
+
+
+            <ImageView
+                android:id="@+id/shenhe_grade_view_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/arrow_right"
+                android:paddingRight="10dp"
+                android:layout_alignParentRight="true"
+                />
+
+
+            <TextView
+                android:id="@+id/shenhe_grade_view"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/shenhe_grade_view_sign"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/category_one_color"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/shenhe_class_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/list_item_bg_two">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingBottom="12dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="12dp"
+                android:text="请选择班级"
+                android:textColor="@color/main_gray"
+                android:textSize="18dp" />
+
+
+            <ImageView
+                android:id="@+id/shenhe_class_view_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/arrow_right"
+                android:paddingRight="10dp"
+                android:layout_alignParentRight="true"
+                />
+
+            <TextView
+                android:id="@+id/shenhe_class_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingBottom="10dp"
+                android:layout_toLeftOf="@id/shenhe_class_view_sign"
+                android:paddingTop="10dp"
+                android:textColor="@color/category_one_color"
+                android:textSize="18dp" />
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:id="@+id/shenhe_class_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提交审核"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="30dp"
+            android:paddingLeft="30dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@mipmap/common_tab_green"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

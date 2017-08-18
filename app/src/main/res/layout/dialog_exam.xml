@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
+    android:background="@drawable/dialog_exam_bg"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp">
+
+    <TextView
+        android:id="@+id/dialog_exam_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="须知"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/dialog_exam_msg_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/black_s"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/dialog_exam_msg_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black_s"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/dialog_exam_msg_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black_s"
+        android:textSize="14dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+
+
+        <LinearLayout
+            android:id="@+id/dialog_exam_radio_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/dialog_exam_sign_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="请选择每个知识点考察题目数量"
+                android:textColor="@color/text_c"
+                android:layout_marginLeft="60dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                android:textSize="14dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                >
+                <RadioGroup
+                    android:id="@+id/dialog_exam_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/dialog_radio"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="10dp">
+
+                    <RadioButton
+                        android:id="@+id/dialog_exam_radio_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_select"
+                        android:drawableLeft="@drawable/radio_select"
+                        android:drawablePadding="10dp"
+                        android:text="1"
+                        android:textColor="@color/text_a"
+                        android:textSize="14dp" />
+
+                    <RadioButton
+                        android:id="@+id/dialog_exam_radio_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:button="@drawable/radio_select"
+                        android:drawableLeft="@drawable/radio_select"
+                        android:drawablePadding="10dp"
+                        android:text="2"
+                        android:textColor="@color/text_a"
+                        android:textSize="14dp" />
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/dialog_exam_btn"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@mipmap/common_tab_green"
+                    android:text="进入诊断"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

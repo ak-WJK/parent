@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_head"/>
+
+    <!--<FrameLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:background="@drawable/course_bg_gray"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:layout_height="match_parent">-->
+    <!--<ListView-->
+    <!--android:id="@+id/know_timu_list"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:cacheColorHint="#00000000"-->
+    <!--android:drawSelectorOnTop="false"-->
+    <!--android:layout_margin="5dp"-->
+    <!--android:groupIndicator="@null"-->
+    <!--android:divider="@null"-->
+    <!--android:scrollbars="none"-->
+    <!--android:listSelector="#00000000" />-->
+
+    <!--<ScrollView-->
+        <!--android:id="@+id/scrollview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:background="@drawable/course_bg_gray"-->
+        <!--android:padding="10dp"-->
+        <!--android:scrollbars="none">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:focusable="true"-->
+            <!--android:focusableInTouchMode="true"-->
+            <!--android:orientation="vertical">-->
+
+            <ListView
+                android:id="@+id/know_timu_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:scrollbars="none">
+
+            </ListView>
+
+        <!--</LinearLayout>-->
+
+    <!--</ScrollView>-->
+    <!--</FrameLayout>-->
+
+</LinearLayout>

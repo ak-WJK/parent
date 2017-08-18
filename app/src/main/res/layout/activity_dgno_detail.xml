@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_head"></include>
+
+    <ScrollView
+        android:id="@+id/zdbg_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dgno_detail_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="姓名:00008"
+                        android:textColor="@color/_333333"
+                        android:textSize="@dimen/text_common" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dgno_detail_subject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="科目:数学"
+                        android:textColor="@color/_333333"
+                        android:textSize="@dimen/text_common" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dgno_detail_order"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="排名：11/11"
+                        android:textColor="@color/_333333"
+                        android:textSize="@dimen/text_common" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                style="@style/divider_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="7dp"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/report_kg_sp_kaoshi_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:src="@mipmap/kaoshi_temp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:text="试卷"
+                        android:gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="10dp"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:background="@color/transparent"
+                        />
+
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/report_kg_sp_score_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:drawableBottom="@mipmap/score_line_view"
+                        android:gravity="center"
+                        android:text="10"
+                        android:textSize="35dp"
+                        android:textStyle="italic" />
+
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:src="@mipmap/report_img_one" />
+                    </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                style="@style/divider_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="7dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="知识点"
+                        android:textColor="@color/_333333"
+                        android:textSize="@dimen/text_common" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="掌握数"
+                        android:textColor="@color/_333333"
+                        android:textSize="@dimen/text_common" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="题目数"
+                        android:textColor="@color/_333333"
+                        android:textSize="@dimen/text_common" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="结论"
+                        android:textColor="@color/_333333"
+                        android:textSize="@dimen/text_common" />
+
+                </LinearLayout>
+
+                <View
+                    style="@style/divider_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="7dp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/report_kg_sp_sign_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="简单"
+                        android:textColor="@color/theme_green"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_kg_sp_num"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="0/0"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_kc_sp_num"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_kg_sp_type"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="良"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+
+                <View
+                    style="@style/divider_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="7dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/report_kg_md_sign_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="中等"
+                        android:textColor="@color/theme_green"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_kg_md_num"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="0/0"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_kc_md_num"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_kg_md_type"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="良"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+
+                <View
+                    style="@style/divider_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="7dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/report_kg_hd_sign_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="较难"
+                        android:textColor="@color/theme_green"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_kg_hd_num"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="0/0"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_kc_hd_num"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_kg_hd_type"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="良"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+
+                <View
+                    style="@style/divider_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="7dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/report_kg_sign_view"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="合计"
+                        android:textColor="@color/theme_green"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_kg_num"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="0/0"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_kc_num"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/report_kg_type"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="良"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color">
+
+            </View>
+
+
+            <TextView
+                android:id="@+id/digo_chat_sign_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/arrow_down"
+                android:padding="15dp"
+                android:text="概况"
+                android:textColor="@color/_333333"
+                android:textSize="@dimen/text_common" />
+
+            <LinearLayout
+                android:id="@+id/digo_chat_layout"
+                android:layout_width="match_parent"
+                android:layout_height="1825dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <com.kzb.parents.view.chart.VerticalForHorChart
+                    android:id="@+id/chart_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+
+                <com.kzb.parents.view.chart.RingChartView
+                    android:id="@+id/chart_ring"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+
+                <com.kzb.parents.view.chart.CircleChartView
+                    android:id="@+id/chart_circle"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+
+                <com.kzb.parents.view.chart.VerticalChart
+                    android:id="@+id/chart_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+
+                <com.kzb.parents.view.chart.CircleForNanduChartView
+                    android:id="@+id/chart_timu_nandu"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+
+                <com.kzb.parents.view.chart.VerticalForWancChart
+                    android:id="@+id/chart_timu_wanc"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider_color">
+
+            </View>
+
+            <TextView
+                android:id="@+id/kg_sign_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="知识点掌握"
+                android:textSize="@dimen/text_common"
+                android:drawableRight="@mipmap/arrow_down"
+                android:textColor="@color/_333333" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider_color">
+
+            </View>
+
+            <include
+                android:id="@+id/report_kg_layout"
+                layout="@layout/report_under_include"
+                android:visibility="gone"
+                >
+
+            </include>
+
+            <TextView
+                android:id="@+id/qs_sign_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="题目掌握情况"
+                android:textSize="@dimen/text_common"
+                android:drawableRight="@mipmap/arrow_down"
+                android:textColor="@color/_333333"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider_color">
+
+            </View>
+
+            <include
+                android:id="@+id/report_qs_layout"
+                layout="@layout/report_under_include_two"
+                android:visibility="gone"
+                >
+            </include>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

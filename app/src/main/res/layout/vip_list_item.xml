@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+
+    >
+
+   <ImageView
+       android:id="@+id/vip_list_item_header"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@mipmap/ic_launcher"
+       android:layout_marginLeft="10dp"
+       android:layout_alignParentLeft="true"
+       android:layout_centerVertical="true"
+       />
+
+
+    <TextView
+        android:id="@+id/vip_list_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black_87"
+        android:layout_toRightOf="@id/vip_list_item_header"
+        android:text="青铜会员"
+        />
+
+    <TextView
+        android:id="@+id/vip_list_item_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/common_button_green"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_marginRight="15dp"
+        android:text="查看详情"
+        />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/black_16"
+        android:layout_below="@id/vip_list_item_header"
+        android:layout_marginTop="10dp"
+        ></View>
+
+</RelativeLayout>

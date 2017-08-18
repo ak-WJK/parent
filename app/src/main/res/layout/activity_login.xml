@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/_fafafa"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_head"></include>
+
+
+    <LinearLayout
+        android:id="@+id/login_logo_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/login_green" />
+    </LinearLayout>
+
+
+
+    <EditText
+        android:id="@+id/login_uname_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/login_bg_white"
+        android:hint="手机号"
+        android:textSize="14dp"
+        android:textColor="@color/gray_exam"
+        android:numeric="integer"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/login_bg_white"
+        android:layout_marginTop="15dp">
+
+        <EditText
+            android:id="@+id/login_pwd_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="3"
+            android:hint="验证码"
+            android:numeric="integer"
+            android:padding="10dp"
+            android:background="@null"
+            android:textSize="14dp"
+            android:singleLine="true"
+            android:textColor="@color/gray_exam"
+            />
+
+        <TextView
+            android:id="@+id/login_check_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/login_pwd_view"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:paddingBottom="12dp"
+            android:paddingTop="12dp"
+            android:textSize="14dp"
+            android:text="获取验证码"
+            android:singleLine="true"
+            android:textColor="@color/gray_exam"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/login_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_click_green"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
