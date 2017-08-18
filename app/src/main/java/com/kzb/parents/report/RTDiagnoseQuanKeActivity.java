@@ -31,6 +31,7 @@ import okhttp3.Call;
 
 /**
  * Created by wanghaofei on 17/4/9.
+ * 报告-->自我诊断报告页面.
  */
 
 public class RTDiagnoseQuanKeActivity extends BaseActivity implements View.OnClickListener{

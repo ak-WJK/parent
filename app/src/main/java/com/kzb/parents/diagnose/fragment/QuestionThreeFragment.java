@@ -13,6 +13,7 @@ import com.kzb.parents.diagnose.adapter.QuestionOneAdapter;
 import com.kzb.parents.diagnose.model.QuestionModel;
 import com.kzb.parents.diagnose.model.TimuZwFather;
 import com.kzb.parents.http.HttpConfig;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.view.DialogView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -32,10 +33,20 @@ public class QuestionThreeFragment extends BaseFragment {
     private QuestionOneAdapter questionOneAdapter;
     private String testId;
     private List<TimuZwFather> timuZws = new ArrayList<>();
-    public static QuestionThreeFragment getInstance(String testId){
+    private String one;
+    private String two;
+    private String thr;
+    private int one1;
+    private int two1;
+    private int thr1;
+
+    public static QuestionThreeFragment getInstance(String testId, String one, String two, String thr) {
         QuestionThreeFragment fragment = new QuestionThreeFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("testId",testId);
+        bundle.putString("testId", testId);
+        bundle.putString("one", one);
+        bundle.putString("two", two);
+        bundle.putString("thr", thr);
         fragment.setArguments(bundle);
 
         return fragment;
@@ -46,6 +57,13 @@ public class QuestionThreeFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         convertView = inflater.from(getContext()).inflate(R.layout.fragment_report_question_layout, null);
         testId = getArguments().getString("testId");
+        one = getArguments().getString("one");
+        two = getArguments().getString("two");
+        thr = getArguments().getString("thr");
+        one1 = Integer.parseInt(one);
+        two1 = Integer.parseInt(two);
+        thr1 = Integer.parseInt(thr);
+
         httpConfig = new HttpConfig();
         dialogView = new DialogView(getContext());
         initView();
@@ -67,19 +85,53 @@ public class QuestionThreeFragment extends BaseFragment {
         questionModel.setName("简单题目");
         questionModel.setTest_id(testId);
 
+
         QuestionModel questionModel1 = new QuestionModel();
         questionModel1.setType(6);
         questionModel1.setName("中等题目");
         questionModel1.setTest_id(testId);
+
 
         QuestionModel questionModel2 = new QuestionModel();
         questionModel2.setType(7);
         questionModel2.setName("较难题目");
         questionModel2.setTest_id(testId);
 
-        listVal.add(questionModel);
-        listVal.add(questionModel1);
-        listVal.add(questionModel2);
+
+        //判断是否显示以上3个Item
+        if (one1 != 0 && two1 != 0 && thr1 != 0) {
+            listVal.add(questionModel);
+            listVal.add(questionModel1);
+            listVal.add(questionModel2);
+        }
+        if (one1 != 0 && two1 != 0 && thr1 == 0) {
+            listVal.add(questionModel);
+            listVal.add(questionModel1);
+
+        }
+        if (one1 == 0 && two1 != 0 && thr1 != 0) {
+            listVal.add(questionModel1);
+            listVal.add(questionModel2);
+
+        }
+
+        if (one1 != 0 && two1 == 0 && thr1 != 0) {
+            listVal.add(questionModel);
+            listVal.add(questionModel2);
+
+        }
+        if (one1 != 0 && two1 == 0 && thr1 == 0) {
+            listVal.add(questionModel);
+        }
+        if (two1 != 0 && one1 == 0 && thr1 == 0) {
+            listVal.add(questionModel1);
+        }
+        if (thr1 != 0 && one1 == 0 && two1 != 0) {
+            listVal.add(questionModel2);
+
+        }
+        LogUtils.e("TAG", "此处修改为若有数据显示Item否则不显示此Item");
+
 
         questionOneAdapter.addItems(listVal);
         EventBus.getDefault().post("scroll");
@@ -98,7 +150,6 @@ public class QuestionThreeFragment extends BaseFragment {
 //            }
 //        });
     }
-
 
 
 }

@@ -2,8 +2,10 @@ package com.kzb.parents.diagnose;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -11,7 +13,6 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kzb.baselibrary.network.callback.GenericsCallback;
@@ -19,6 +20,7 @@ import com.kzb.parents.JsonGenericsSerializator;
 import com.kzb.parents.R;
 import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.config.AddressConfig;
+import com.kzb.parents.config.SpSetting;
 import com.kzb.parents.course.CourseDetailActivity;
 import com.kzb.parents.diagnose.model.ExplainPro;
 import com.kzb.parents.http.HttpConfig;
@@ -27,8 +29,6 @@ import com.kzb.parents.util.IntentUtil;
 import com.kzb.parents.view.DialogView;
 import com.kzb.parents.view.QuesWebViewSeven;
 import com.kzb.parents.view.QuesWebViewSix;
-import com.kzb.parents.wrong.WrongDetailThreeActivity;
-import com.kzb.parents.wrong.adapter.QuesAdapter;
 import com.kzb.parents.wrong.model.Answer;
 import com.kzb.parents.wrong.model.ExplainContent;
 
@@ -44,6 +44,7 @@ import static com.kzb.parents.application.Application.mContext;
 
 /**
  * Created by wanghaofei on 17/5/13.
+ * 报告-->诊断报告-->查看-->(诊断报告详情页面)题目掌握情况(按章节)-->各个Item的详细解析
  */
 
 public class JiXieThreeNewActivity extends BaseActivity implements View.OnClickListener {
@@ -87,6 +88,7 @@ public class JiXieThreeNewActivity extends BaseActivity implements View.OnClickL
 
     private ImageView rightImg;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,6 +163,7 @@ public class JiXieThreeNewActivity extends BaseActivity implements View.OnClickL
             json.put("test_id", testId);
             json.put("id", id);
             json.put("type", type);
+            json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
         } catch (JSONException e) {
             e.printStackTrace();
         }

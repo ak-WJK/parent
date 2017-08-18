@@ -47,6 +47,7 @@ public class BGQKAdapter extends CommonAdapter<KSReportQKResponse.ReportQKModel>
             public void onClick(View v) {
                 Map<String,String> mapVal = new HashMap<String, String>();
                 mapVal.put("test_id",questionModel.getTest_id());
+                mapVal.put("score",questionModel.getScore());
                 mapVal.put("from","kaoshi");
                 IntentUtil.startActivity((BaseActivity)mContext,DiagNoseDetailActivity.class,mapVal);
             }

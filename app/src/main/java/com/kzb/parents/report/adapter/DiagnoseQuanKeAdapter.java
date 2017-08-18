@@ -20,6 +20,9 @@ import java.util.Map;
 
 /**
  * Created by wanghaofei on 17/4/6.
+ *
+ * 报告-->自我诊断报告页面-->查看
+ *
  */
 
 public class DiagnoseQuanKeAdapter extends CommonAdapter<ReportListItem>{
@@ -42,6 +45,7 @@ public class DiagnoseQuanKeAdapter extends CommonAdapter<ReportListItem>{
         timeView.setText(DateUtils.formatDataTimeTWO(Long.parseLong(letterListModel.getAddtime())*1000));
 
 
+        //点击查看跳转到诊断报告页面
         findView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

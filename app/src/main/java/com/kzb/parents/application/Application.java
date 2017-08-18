@@ -35,7 +35,7 @@ public class Application extends android.app.Application {
     public static int HEIGHT = 0;
 
 
-    public static Context mContext;
+    public static   Context mContext;
 
     public static LogUtils.Builder IBuilder;
 

@@ -44,6 +44,7 @@ import static com.kzb.parents.application.Application.mContext;
 
 /**
  * Created by wanghaofei on 17/5/13.
+ * 题目解析页面
  */
 
 public class JiXieTwoNewActivity extends BaseActivity implements View.OnClickListener {
@@ -96,6 +97,8 @@ public class JiXieTwoNewActivity extends BaseActivity implements View.OnClickLis
         testId = getIntent().getExtras().getString("test_id");
         name = getIntent().getExtras().getString("name");
         type = getIntent().getExtras().getString("typev");
+
+
 
         initView();
         initData();

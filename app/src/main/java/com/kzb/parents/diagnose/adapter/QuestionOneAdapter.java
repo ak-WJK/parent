@@ -12,6 +12,7 @@ import com.kzb.parents.base.adapter.ViewHolder;
 import com.kzb.parents.diagnose.JiXieTwoNewActivity;
 import com.kzb.parents.diagnose.model.QuestionModel;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,15 +22,26 @@ import java.util.Map;
  */
 
 public class QuestionOneAdapter extends CommonAdapter<QuestionModel> {
+
+    private int one1;
+    private int two1;
+    private int thr1;
+    private int wrong_count1;
+    private int right_count1;
+    private String one;
+    private String two;
+    private String thr;
+    private String wrong_count;
+    private String right_count;
+
     public QuestionOneAdapter(Context context) {
         super(context);
     }
 
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = ViewHolder.get(mContext,convertView,parent, R.layout.question_list_item,position);
+        ViewHolder viewHolder = ViewHolder.get(mContext, convertView, parent, R.layout.question_list_item, position);
         final QuestionModel questionModel = mDatas.get(position);
 
         TextView titleView = viewHolder.getView(R.id.question_list_item_title);
@@ -51,25 +63,39 @@ public class QuestionOneAdapter extends CommonAdapter<QuestionModel> {
 
 //        Log.e("tttt",questionModel.toString());
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                itemClick.itemClick(questionModel);
 
-                Map<String,String> mapVal = new HashMap<String, String>();
-                mapVal.put("test_id",questionModel.getTest_id());
-                mapVal.put("name",questionModel.getName());
-                mapVal.put("typev",String.valueOf(questionModel.getType()));
-//                IntentUtil.startActivity((BaseActivity)mContext,JiXieTwoActivity.class,mapVal);
-                IntentUtil.startActivity((BaseActivity)mContext,JiXieTwoNewActivity.class,mapVal);
+            startJieXi(questionModel, view);
 
-            }
-        });
 
         return view;
     }
 
 
+    private void startJieXi(final QuestionModel questionModel, View view) {
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                itemClick.itemClick(questionModel);
+
+                Map<String, String> mapVal = new HashMap<String, String>();
+                mapVal.put("test_id", questionModel.getTest_id());
+                mapVal.put("name", questionModel.getName());
+                mapVal.put("typev", String.valueOf(questionModel.getType()));
+
+
+//                LogUtils.e("TAG", "wrong_count========== "+questionModel.getWrong_count());
+//                LogUtils.e("TAG", "right_count======" + questionModel.getRight_count());
+
+                LogUtils.e("TAG", "此处跳转到题目解析页面");
+
+//              IntentUtil.startActivity((BaseActivity)mContext,JiXieTwoActivity.class,mapVal);;
+
+                IntentUtil.startActivity((BaseActivity) mContext, JiXieTwoNewActivity.class, mapVal);
+
+            }
+        });
+    }
 
 
 }

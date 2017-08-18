@@ -18,7 +18,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kzb.baselibrary.log.Log;
 import com.kzb.baselibrary.network.callback.GenericsCallback;
 import com.kzb.parents.JsonGenericsSerializator;
 import com.kzb.parents.R;
@@ -64,7 +63,7 @@ import okhttp3.Call;
 
 public class DiagNoseDetailActivity extends BaseActivity implements View.OnClickListener {
 
-    private TextView headTitle, headLeft,headRight;
+    private TextView headTitle, headLeft, headRight;
     //知识点ID
     private String testId;
     //来源
@@ -106,6 +105,13 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 
 
     private ScrollView reportScrollView;
+    private String wrong_count;
+    private ReportContent content;
+    private String right_count;
+    private String one;
+    private String two;
+    private String thr;
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -117,9 +123,10 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
         dialogView = new DialogView(this);
 
         testId = getIntent().getExtras().getString("test_id");
+
         //得到(诊断报告or考试报告)
         from = getIntent().getStringExtra("from");
-        
+
         if (from == null) {
             from = "";
         }
@@ -202,8 +209,8 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
         headRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url  = "http://s.kaozhibao.com/index.php/Home/Test/Generalreport_mobile/tid/"+testId+".html";
-                ShareUtil.showShare(DiagNoseDetailActivity.this,null,false,url);
+                String url = "http://s.kaozhibao.com/index.php/Home/Test/Generalreport_mobile/tid/" + testId + ".html";
+                ShareUtil.showShare(DiagNoseDetailActivity.this, null, false, url);
             }
         });
 
@@ -222,16 +229,17 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
             headTitle.setText("考试报告");
         }
 
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.report_knowledge_layout, ReportZhangWoCengduFragment.getInstance(testId), "ReportZhangWoZhangjieFragment");
-        transaction.commit();
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.replace(R.id.report_knowledge_layout, ReportZhangWoCengduFragment.getInstance(testId), "ReportZhangWoZhangjieFragment");
+//        transaction.commit();
+//
+//
+//        FragmentManager managerTwo = getSupportFragmentManager();
+//        FragmentTransaction transactionTwo = manager.beginTransaction();
+//        transactionTwo.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId , wrong_count), "ReportZhangWoZhangjieFragment");
+//        transactionTwo.commit();
 
-
-        FragmentManager managerTwo = getSupportFragmentManager();
-        FragmentTransaction transactionTwo = manager.beginTransaction();
-        transactionTwo.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId), "ReportZhangWoZhangjieFragment");
-        transactionTwo.commit();
 
         //返回
         headLeft.setOnClickListener(new View.OnClickListener() {
@@ -263,7 +271,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
         try {
             json.put("uid", SpSetting.loadLoginInfo().getUid());
             json.put("test_id", testId);
-            json.put("version_id" , SpSetting.loadLoginInfo().getVersion_id());
+            json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -279,12 +287,21 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                 if (response != null && response.errorCode == 0) {
                     if (response.getContent() != null) {
 
-                        Log.e("kzb", response.toString());
+                        LogUtils.e("TAG", response.toString());
 
                         try {
-                            ReportContent content = response.getContent();
+                            content = response.getContent();
                             //此处内容隐藏(得到诊断类型)
                             String type = content.getType();
+
+//                            //得到错(正确)题的个数
+                            wrong_count = content.getWrong_count();
+                            right_count = content.getRight_count();
+                            //得到题目简单度的个数
+                            one = content.getOne();
+                            two = content.getTwo();
+                            thr = content.getThr();
+
 
                             orderView.setText(Html.fromHtml("排名:<font color='#de352f'>" + content.getRank() + "</font>" + "/" + content.getTestcount()));
 
@@ -307,6 +324,22 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 //                            typeTypeView.setText(Html.fromHtml("类型:<font color='#323334'>" + typeVal + "</font>"));
 //                            reportNumView.setText(Html.fromHtml("编号:<font color='#323334'>" + response.getContent().getCode() + "</font>"));
 //                            scoreView.setText(Html.fromHtml("<font color='#FF2D1F'> <big><big><big><big>" + content.getScore() + "</big></big></big></big></font>"));
+
+
+
+                            FragmentManager manager = getSupportFragmentManager();
+                            FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.replace(R.id.report_knowledge_layout, ReportZhangWoCengduFragment.getInstance(testId), "ReportZhangWoZhangjieFragment");
+                            transaction.commit();
+
+
+                            FragmentManager managerTwo = getSupportFragmentManager();
+                            FragmentTransaction transactionTwo = manager.beginTransaction();
+                            transactionTwo.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId, wrong_count , right_count), "ReportZhangWoZhangjieFragment");
+                            transactionTwo.commit();
+                            LogUtils.e("TAG", "交换了Fragment的初始化位置");
+
+
 
                             scoreView.setText(content.getScore());
 
@@ -401,7 +434,6 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 //                            });
 
 
-
                             //点击定位到-->题目掌握情况-->按难易度
                             verticalChart.setOnChartClick(new CircleChartView.OnChartClick() {
                                 @Override
@@ -420,9 +452,6 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                                     }, 500);
                                 }
                             });
-
-
-
 
 
                             //知识点掌握情况
@@ -444,7 +473,6 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                             verticalChart.setNum(max, unget, get);
 
 
-                            
 //                            verticalChart.setOnChartClick(new CircleChartView.OnChartClick() {
 //                                @Override
 //                                public void onChartClick(int position) {
@@ -471,9 +499,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 //                                }
 //                            });
 
-                            
-                            
-                            
+
                             //题目难度
                             float qoneNan = Float.parseFloat(content.getqOne());
                             float qtwoNan = Float.parseFloat(content.getqTwo());
@@ -490,10 +516,8 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                             qNanRate.add(rate);
 
                             timuNanduChartView.setRates(qNanRate);
-                            
-                            
-                            
-                            
+
+
 //                            timuNanduChartView.setOnChartClick(new CircleForNanduChartView.OnChartClick() {
 //                                @Override
 //                                public void onChartClick(int position) {
@@ -519,9 +543,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 //                                }
 //                            });
 
-                            
-                            
-                            
+
                             //题目完成情况
                             int qunget[] = new int[3];
                             int qget[] = new int[3];
@@ -539,8 +561,6 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                                 max = max + (6 - max % 6);
                             }
                             timuWanCChartView.setNum(max, qunget, qget);
-
-
 
 
                             timuWanCChartView.setOnChartClick(new CircleChartView.OnChartClick() {
@@ -567,7 +587,6 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                                     IntentUtil.startActivity(DiagNoseDetailActivity.this, ReportFinishActivity.class, mapVal);
                                 }
                             });
-
 
 
                         } catch (Exception e) {
@@ -758,7 +777,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId), "ReportZhangWoZhangjieFragment");
+        transaction.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId, wrong_count , right_count), "ReportZhangWoZhangjieFragment");
         transaction.commit();
     }
 
@@ -793,7 +812,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.report_knowledge_layout_two, QuestionThreeFragment.getInstance(testId), "ReportZhangWoZhangjieFragment");
+        transaction.replace(R.id.report_knowledge_layout_two, QuestionThreeFragment.getInstance(testId,one,two,thr), "ReportZhangWoZhangjieFragment");
         transaction.commit();
     }
 
