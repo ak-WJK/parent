@@ -26,6 +26,7 @@ import com.kzb.parents.main.model.VipResponse;
 import com.kzb.parents.paywx.PayActivity;
 import com.kzb.parents.payzfb.PayDemoActivity;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.view.DialogView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -219,9 +220,13 @@ public class VipActivity extends BaseActivity implements View.OnClickListener {
 
                 if (response != null && response.errorCode == 0 && response.getContent() != null) {
 
-                 LoginResponse.LoginModel loginModel =  SpSetting.loadLoginInfo();
-                    loginModel.setGood_id(response.getContent().getStatus());
+
+                    LoginResponse.LoginModel loginModel = SpSetting.loadLoginInfo();
+                    loginModel.setStatus(response.getContent().getStatus());
+                    loginModel.setGood_id(response.getContent().getGood_id());
+                    LogUtils.e("TAG", "登陆成功后会员等级==== " + response.getContent().toString());
                     SpSetting.saveLoginInfo(loginModel);
+
 
                 } else {
                     MineToast.show(VipActivity.this, response.msg);

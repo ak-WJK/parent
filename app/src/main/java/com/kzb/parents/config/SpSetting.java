@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 
-import com.kzb.parents.login.model.LoginResponse.LoginModel;
 import com.kzb.baselibrary.utils.Base64;
+import com.kzb.parents.login.model.LoginResponse.LoginModel;
+import com.kzb.parents.util.LogUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -27,6 +28,7 @@ public class SpSetting {
 
     private static final String LOGIN_INFO = "login_info"; //登录信息
     private static final String COURSE_INFO = "course_info"; //课程信息
+    private static final String LEVEL_INFO = "level_info";//登陆等级信息
 
 
     private static Context context;
@@ -118,6 +120,8 @@ public class SpSetting {
     //存储登录信息
     public static void saveLoginInfo(LoginModel user) {
 
+        LogUtils.e("TAG", "执行了此操作.......");
+
 //        Log.e("tttt","save="+user.toString());
 
         try {
@@ -143,14 +147,11 @@ public class SpSetting {
 
 
     //清除登录信息
-    public static void clearLoginInfo() {
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.clear();
-                editor.commit();
-    }
-
-
-
+//    public static void clearLoginInfo() {
+//                SharedPreferences.Editor editor = preferences.edit();
+//                editor.clear();
+//                editor.commit();
+//    }
 
 
 

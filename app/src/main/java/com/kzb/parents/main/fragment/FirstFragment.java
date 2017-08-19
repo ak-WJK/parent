@@ -25,6 +25,7 @@ import com.kzb.parents.diagnose.DiagNoseMainActivity;
 import com.kzb.parents.diagnose.DiagnoseTwoActivity;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.kaoshi.KaoShiActivity;
+import com.kzb.parents.login.model.LoginResponse;
 import com.kzb.parents.main.model.LunBoResponse;
 import com.kzb.parents.msg.MsgListActivity;
 import com.kzb.parents.set.SetCourseActivity;
@@ -71,7 +72,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
     private boolean sign = false;
 
      //会员等级
-    int level ;
+    int level = 4  ;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
                              Bundle savedInstanceState) {
@@ -91,12 +92,19 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
     public void onResume() {
         super.onResume();
 
+        LogUtils.e("TAG", "goodId==" + SpSetting.loadLoginInfo().getGood_id());
+
+        LoginResponse.LoginModel loginModel = SpSetting.loadLoginInfo();
+        String good_id = loginModel.getGood_id();
+        LogUtils.e("TAG", "goodId===========22222=======  " + good_id);
+
         try {
+
             level = Integer.parseInt(SpSetting.loadLoginInfo().getGood_id());
-            LogUtils.e("TAG", "取消会员等级===" +level);
+            LogUtils.e("TAG", "取消会员等级 === " + level);
 
         } catch (Exception e) {
-            level = 1;
+            level = 4;
         }
 
     }
@@ -105,6 +113,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+
 
         if (isVisibleToUser) {
 
@@ -142,6 +151,11 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
 
         //登陆后加载用户退出前存储的科目
         curCourseView.setText("科目：" + SpSetting.loadLoginInfo().getSubject());
+
+        String good_id = SpSetting.loadLoginInfo().getGood_id();
+        LogUtils.e("TAG", "gggggg================ " + good_id);
+
+        LogUtils.e("TAG", "科目 " + SpSetting.loadLoginInfo().getSubject());
 
 
         msgListView.setOnClickListener(new View.OnClickListener() {
@@ -182,6 +196,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
             public void onResponse(LunBoResponse response, int id) {
 //                dialogView.handleDialog(false);
                 if (response != null && response.getContent() != null) {
+
                     initData(response.getContent());
                     //成功
 //                    IntentUtil.startActivity(SetCourseActivity.this,MainPageActivity.class);

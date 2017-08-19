@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.kzb.parents.R;
 import com.kzb.parents.base.BaseFragment;
-import com.kzb.parents.config.SpSetting;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.login.LoginTypeActivity;
 import com.kzb.parents.set.SetCourseActivity;
@@ -67,7 +66,7 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
                 break;
             case R.id.first_fourth_lgout:
                 IntentUtil.startActivity(getActivity(), LoginTypeActivity.class);
-                SpSetting.clearLoginInfo();
+//                SpSetting.clearLoginInfo();
 
                 break;
             case R.id.fourth_course_layout:

@@ -18,9 +18,18 @@ public class PayResponse extends XBaseResponse {
         this.content = content;
     }
 
-    public static class PayModel{
+    public static class PayModel {
         private String status;
         private String timeout;
+        private String good_id;
+
+        public String getGood_id() {
+            return good_id;
+        }
+
+        public void setGood_id(String good_id) {
+            this.good_id = good_id;
+        }
 
         public String getStatus() {
             return status;
@@ -36,6 +45,15 @@ public class PayResponse extends XBaseResponse {
 
         public void setTimeout(String timeout) {
             this.timeout = timeout;
+        }
+
+        @Override
+        public String toString() {
+            return "PayModel{" +
+                    "status='" + status + '\'' +
+                    ", timeout='" + timeout + '\'' +
+                    ", good_id='" + good_id + '\'' +
+                    '}';
         }
     }
 
