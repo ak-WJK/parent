@@ -71,7 +71,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
     private boolean sign = false;
 
      //会员等级
-    int level = 4;
+    int level ;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
                              Bundle savedInstanceState) {
@@ -81,7 +81,6 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
         EventBus.getDefault().register(this);
 
 //        dialogView = new DialogView(getActivity());
-
 
         initView(view);
 
@@ -93,11 +92,11 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
         super.onResume();
 
         try {
-           // level = Integer.parseInt(SpSetting.loadLoginInfo().getGood_id());
+            level = Integer.parseInt(SpSetting.loadLoginInfo().getGood_id());
             LogUtils.e("TAG", "取消会员等级===" +level);
 
         } catch (Exception e) {
-            level = 4;
+            level = 1;
         }
 
     }

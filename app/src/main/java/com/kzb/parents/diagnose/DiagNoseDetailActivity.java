@@ -111,6 +111,8 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
     private String one;
     private String two;
     private String thr;
+    //等级图片显示
+    private ImageView scoreLevel;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -189,6 +191,8 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
         qusTxtView = getView(R.id.qs_sign_view);
 
         scoreView = getView(R.id.report_kg_sp_score_view);
+        scoreLevel = getView(R.id.iv_score_level);
+        LogUtils.e("TAG", "在此处修改考试分数等级评价(优良中差(图片))");
 
         kaoshiView = getView(R.id.report_kg_sp_kaoshi_view);
 
@@ -302,6 +306,21 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                             two = content.getTwo();
                             thr = content.getThr();
 
+                            //得到考试分数
+                            String score = content.getScore();
+                            int score1 = Integer.parseInt(score);
+                            //设置考试分数显示等级
+                            if (score1 < 60) {
+                                scoreLevel.setImageResource(R.mipmap.report_img_one);
+
+                            } else if (score1 >= 60 && score1 <= 70) {
+                                scoreLevel.setImageResource(R.mipmap.report_img_four);
+                            } else if (score1 > 70 && score1 <= 90) {
+                                scoreLevel.setImageResource(R.mipmap.report_img_three);
+                            } else {
+                                scoreLevel.setImageResource(R.mipmap.report_img_two);
+                            }
+
 
                             orderView.setText(Html.fromHtml("排名:<font color='#de352f'>" + content.getRank() + "</font>" + "/" + content.getTestcount()));
 
@@ -326,7 +345,6 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 //                            scoreView.setText(Html.fromHtml("<font color='#FF2D1F'> <big><big><big><big>" + content.getScore() + "</big></big></big></big></font>"));
 
 
-
                             FragmentManager manager = getSupportFragmentManager();
                             FragmentTransaction transaction = manager.beginTransaction();
                             transaction.replace(R.id.report_knowledge_layout, ReportZhangWoCengduFragment.getInstance(testId), "ReportZhangWoZhangjieFragment");
@@ -335,10 +353,9 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 
                             FragmentManager managerTwo = getSupportFragmentManager();
                             FragmentTransaction transactionTwo = manager.beginTransaction();
-                            transactionTwo.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId, wrong_count , right_count), "ReportZhangWoZhangjieFragment");
+                            transactionTwo.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId, wrong_count, right_count), "ReportZhangWoZhangjieFragment");
                             transactionTwo.commit();
                             LogUtils.e("TAG", "交换了Fragment的初始化位置");
-
 
 
                             scoreView.setText(content.getScore());
@@ -777,7 +794,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId, wrong_count , right_count), "ReportZhangWoZhangjieFragment");
+        transaction.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId, wrong_count, right_count), "ReportZhangWoZhangjieFragment");
         transaction.commit();
     }
 
@@ -812,7 +829,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.report_knowledge_layout_two, QuestionThreeFragment.getInstance(testId,one,two,thr), "ReportZhangWoZhangjieFragment");
+        transaction.replace(R.id.report_knowledge_layout_two, QuestionThreeFragment.getInstance(testId, one, two, thr), "ReportZhangWoZhangjieFragment");
         transaction.commit();
     }
 

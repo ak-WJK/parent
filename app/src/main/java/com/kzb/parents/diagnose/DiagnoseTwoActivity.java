@@ -17,11 +17,9 @@ import com.kzb.parents.config.AddressConfig;
 import com.kzb.parents.config.SpSetting;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.kaoshi.BGQKListActivity;
-import com.kzb.parents.kaoshi.BGZJListActivity;
 import com.kzb.parents.login.LoginTypeActivity;
 import com.kzb.parents.report.RTDiagnoseQuanKeActivity;
 import com.kzb.parents.report.RTDiagnoseZhangJieActivity;
-import com.kzb.parents.report.RTDiagnoseZhenTiActivity;
 import com.kzb.parents.report.model.NumberResponse;
 import com.kzb.parents.util.IntentUtil;
 
@@ -41,9 +39,11 @@ public class DiagnoseTwoActivity extends BaseActivity implements View.OnClickLis
 
     private TextView titleLeft, titleCenter;
     //自我诊断报告
-    private TextView zjieView, qKeView, zTiView;
+    private TextView zjieView, qKeView;
+//    private TextView zjieView, qKeView, zTiView;
     //学校考试报告
-    private TextView zjieViewTwo, qKeViewTwo;
+    private TextView  qKeViewTwo;
+//    private TextView zjieViewTwo, qKeViewTwo;
 
 //    private TextView zjieNum, qKeNum, zTiNum;
 
@@ -64,9 +64,9 @@ public class DiagnoseTwoActivity extends BaseActivity implements View.OnClickLis
         titleCenter = getView(R.id.common_head_center);
         zjieView = getView(R.id.dg_zhangjie);
         qKeView = getView(R.id.dg_quanke);
-        zTiView = getView(R.id.dg_zhenti);
+//        zTiView = getView(R.id.dg_zhenti);
 
-        zjieViewTwo = getView(R.id.dg_sys_zhangjie);
+//        zjieViewTwo = getView(R.id.dg_sys_zhangjie);
         qKeViewTwo = getView(R.id.dg_sys_quanke);
 
 
@@ -81,8 +81,8 @@ public class DiagnoseTwoActivity extends BaseActivity implements View.OnClickLis
         titleCenter.setText("诊断报告");
         zjieView.setOnClickListener(this);
         qKeView.setOnClickListener(this);
-        zTiView.setOnClickListener(this);
-        zjieViewTwo.setOnClickListener(this);
+//        zTiView.setOnClickListener(this);
+//        zjieViewTwo.setOnClickListener(this);
         qKeViewTwo.setOnClickListener(this);
 
     }
@@ -155,10 +155,10 @@ public class DiagnoseTwoActivity extends BaseActivity implements View.OnClickLis
                 IntentUtil.startActivity(DiagnoseTwoActivity.this, BGQKListActivity.class);
                 break;
 
-            case R.id.dg_sys_zhangjie:
-                IntentUtil.startActivity(DiagnoseTwoActivity.this, BGZJListActivity.class);
-
-                break;
+//            case R.id.dg_sys_zhangjie:
+//                IntentUtil.startActivity(DiagnoseTwoActivity.this, BGZJListActivity.class);
+//
+//                break;
             case R.id.common_head_left:
                 IntentUtil.finish(DiagnoseTwoActivity.this);
 
@@ -171,10 +171,10 @@ public class DiagnoseTwoActivity extends BaseActivity implements View.OnClickLis
 
                 IntentUtil.startActivity(DiagnoseTwoActivity.this, RTDiagnoseQuanKeActivity.class);
                 break;
-            case R.id.dg_zhenti:
-                IntentUtil.startActivity(DiagnoseTwoActivity.this, RTDiagnoseZhenTiActivity.class);
-
-                break;
+//            case R.id.dg_zhenti:
+//                IntentUtil.startActivity(DiagnoseTwoActivity.this, RTDiagnoseZhenTiActivity.class);
+//
+//                break;
         }
     }
 }
