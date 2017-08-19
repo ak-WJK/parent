@@ -60,9 +60,14 @@ public class QuestionThreeFragment extends BaseFragment {
         one = getArguments().getString("one");
         two = getArguments().getString("two");
         thr = getArguments().getString("thr");
-        one1 = Integer.parseInt(one);
-        two1 = Integer.parseInt(two);
-        thr1 = Integer.parseInt(thr);
+        if (one != null && two != null && thr != null) {
+
+            one1 = Integer.parseInt(one);
+            two1 = Integer.parseInt(two);
+            thr1 = Integer.parseInt(thr);
+
+        }
+
 
         httpConfig = new HttpConfig();
         dialogView = new DialogView(getContext());

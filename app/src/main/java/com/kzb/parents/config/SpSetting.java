@@ -6,7 +6,6 @@ import android.content.res.Resources;
 
 import com.kzb.baselibrary.utils.Base64;
 import com.kzb.parents.login.model.LoginResponse.LoginModel;
-import com.kzb.parents.util.LogUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -120,8 +119,6 @@ public class SpSetting {
     //存储登录信息
     public static void saveLoginInfo(LoginModel user) {
 
-        LogUtils.e("TAG", "执行了此操作.......");
-
 //        Log.e("tttt","save="+user.toString());
 
         try {
@@ -164,6 +161,7 @@ public class SpSetting {
             if (user64 == null) {
                 return null;
             }
+
             byte[] deUser64 = Base64.decode(user64.getBytes());
             ByteArrayInputStream bais = new ByteArrayInputStream(deUser64);
             ObjectInputStream ois = new ObjectInputStream(bais);

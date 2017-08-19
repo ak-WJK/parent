@@ -17,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.kzb.parents.R;
+import com.kzb.parents.util.LogUtils;
 
 public class ExamDialog extends Dialog {
 
@@ -77,12 +78,17 @@ public class ExamDialog extends Dialog {
         initView();
     }
 
+
     public void initView() {
         mBtn = (Button) findViewById(R.id.dialog_exam_btn);
+        //进入诊断Dialog的点击事件
         mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (dialogBack != null) {
+
+                    LogUtils.e("TAG", "点击进入诊断");
+
                     dialogBack.onBackPressed();
                 }
                 dismiss();

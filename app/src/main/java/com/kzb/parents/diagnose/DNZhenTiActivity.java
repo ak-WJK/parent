@@ -1,7 +1,9 @@
 package com.kzb.parents.diagnose;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,7 +17,6 @@ import com.kzb.parents.config.SpSetting;
 import com.kzb.parents.diagnose.adapter.DNZTAdapter;
 import com.kzb.parents.diagnose.model.ZhentiDiagnose;
 import com.kzb.parents.http.HttpConfig;
-import com.kzb.parents.report.RTDiagnoseZhangJieActivity;
 import com.kzb.parents.util.IntentUtil;
 import com.kzb.parents.view.DialogView;
 
@@ -38,6 +39,7 @@ public class DNZhenTiActivity extends BaseActivity implements View.OnClickListen
     DNZTAdapter dnztAdapter;
     //当前省份ID
     private String currentYearId, currentProId,currentCityId;
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

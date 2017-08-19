@@ -75,7 +75,8 @@ public class ReportZhangWoCengduFragment extends BaseFragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 
-                //强化提高
+                
+//                //强化提高
                 Map val = new HashMap();
                 val.put("point",timuZws.get(groupPosition).getKnowledges().get(childPosition).getKpoint());
                 val.put("kid",timuZws.get(groupPosition).getKnowledges().get(childPosition).getKid());

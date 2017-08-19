@@ -12,9 +12,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.kzb.baselibrary.network.callback.GenericsCallback;
+import com.kzb.baselibrary.utils.MineToast;
 import com.kzb.parents.JsonGenericsSerializator;
 import com.kzb.parents.R;
 import com.kzb.parents.VipActivity;
+import com.kzb.parents.application.Application;
 import com.kzb.parents.base.BaseFragment;
 import com.kzb.parents.base.XBaseRequest;
 import com.kzb.parents.common.ArticeDetailActivity;
@@ -27,6 +29,7 @@ import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.kaoshi.KaoShiActivity;
 import com.kzb.parents.login.model.LoginResponse;
 import com.kzb.parents.main.model.LunBoResponse;
+import com.kzb.parents.main.model.PayResponse;
 import com.kzb.parents.msg.MsgListActivity;
 import com.kzb.parents.set.SetCourseActivity;
 import com.kzb.parents.strengthen.StrengthenActivity;
@@ -39,6 +42,7 @@ import com.stx.xhb.xbanner.XBanner;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +52,7 @@ import java.util.Map;
 import okhttp3.Call;
 
 import static com.kzb.parents.application.Application.spTimes;
+import static com.kzb.parents.config.SpSetting.loadLoginInfo;
 
 /**
  * Created by wanghaofei on 17/2/15.
@@ -71,13 +76,16 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
 
     private boolean sign = false;
 
-     //会员等级
-    int level = 4  ;
+    //会员等级
+    int level = 0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_first, parent, false);
         banner = (XBanner) view.findViewById(R.id.banner_1);
+
+
 
         EventBus.getDefault().register(this);
 
@@ -85,26 +93,22 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
 
         initView(view);
 
+
+        //获取会员信息(造成诊断报告 --> 知识点掌握,下的子Item崩溃)
+//        getStatus();
+
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
-        LogUtils.e("TAG", "goodId==" + SpSetting.loadLoginInfo().getGood_id());
-
-        LoginResponse.LoginModel loginModel = SpSetting.loadLoginInfo();
-        String good_id = loginModel.getGood_id();
-        LogUtils.e("TAG", "goodId===========22222=======  " + good_id);
-
         try {
-
             level = Integer.parseInt(SpSetting.loadLoginInfo().getGood_id());
-            LogUtils.e("TAG", "取消会员等级 === " + level);
+            LogUtils.e("TAG", "会员等级 === " + level);
 
         } catch (Exception e) {
-            level = 4;
+            level = 1;
         }
 
     }
@@ -151,10 +155,6 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
 
         //登陆后加载用户退出前存储的科目
         curCourseView.setText("科目：" + SpSetting.loadLoginInfo().getSubject());
-
-        String good_id = SpSetting.loadLoginInfo().getGood_id();
-        LogUtils.e("TAG", "gggggg================ " + good_id);
-
         LogUtils.e("TAG", "科目 " + SpSetting.loadLoginInfo().getSubject());
 
 
@@ -275,17 +275,17 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
                 break;
             case R.id.first_zhenduan_layout:
 
-                if(level >= 3){
+                if (level >= 3) {
                     IntentUtil.startActivity(getActivity(), DiagNoseMainActivity.class);
-                }else {
+                } else {
                     Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();
                 }
 
                 break;
             case R.id.first_streng_layout:
-                if(level == 4){
+                if (level == 4) {
                     IntentUtil.startActivity(getActivity(), StrengthenActivity.class);
-                }else {
+                } else {
                     Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();
                 }
 
@@ -316,5 +316,53 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+
+    //获取支付后的订单状态
+    protected void getStatus() {
+
+//        dialogView.handleDialog(true);
+        XBaseRequest baseRequest = new XBaseRequest();
+        baseRequest.setUrl(AddressConfig.ORDER_STATUS_URL);
+
+        Map<String, String> map = new HashMap<>();
+
+        JSONObject object = new JSONObject();
+        try {
+            object.put("uid", loadLoginInfo().getUid());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        map.put("info", object.toString());
+
+        baseRequest.setRequestParams(map);
+
+        httpConfig.doPostRequest(baseRequest, new GenericsCallback<PayResponse>(new JsonGenericsSerializator()) {
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+//                dialogView.handleDialog(false);
+
+            }
+
+            @Override
+            public void onResponse(PayResponse response, int id) {
+//                dialogView.handleDialog(false);
+
+                if (response != null && response.errorCode == 0 && response.getContent() != null) {
+
+
+                    LoginResponse.LoginModel loginModel = SpSetting.loadLoginInfo();
+                    loginModel.setStatus(response.getContent().getStatus());
+                    loginModel.setGood_id(response.getContent().getGood_id());
+                    LogUtils.e("TAG", "登陆成功后会员信息==== " + response.getContent().toString());
+//                    SpSetting.saveLoginInfo(loginModel);
+
+                } else {
+                    MineToast.show(Application.mContext, response.msg);
+                }
+            }
+        });
     }
 }

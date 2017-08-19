@@ -14,6 +14,7 @@ import com.kzb.parents.diagnose.DiagNoseDetailActivity;
 import com.kzb.parents.report.model.ReportListItem;
 import com.kzb.parents.util.DateUtils;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,6 +50,8 @@ public class DiagnoseQuanKeAdapter extends CommonAdapter<ReportListItem>{
         findView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                LogUtils.e("TAG", "查看");
+                
                 Map<String,String> mapVal = new HashMap<String, String>();
                 mapVal.put("test_id",letterListModel.getTest_id());
                 mapVal.put("from","zhenduan");

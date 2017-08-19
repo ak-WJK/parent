@@ -58,8 +58,12 @@ public class QuestionOneFragment extends BaseFragment {
         wrong_count = getArguments().getString("wrong_count");
         right_count = getArguments().getString("right_count");
 
-        wrong_count1 = Integer.parseInt(wrong_count);
-        right_count1 = Integer.parseInt(right_count);
+        if (wrong_count != null && right_count != null) {
+
+            wrong_count1 = Integer.parseInt(wrong_count);
+            right_count1 = Integer.parseInt(right_count);
+
+        }
 
 
         httpConfig = new HttpConfig();

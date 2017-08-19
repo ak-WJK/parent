@@ -227,13 +227,11 @@ public class VipActivity extends BaseActivity implements View.OnClickListener {
                     LogUtils.e("TAG", "登陆成功后会员等级==== " + response.getContent().toString());
                     SpSetting.saveLoginInfo(loginModel);
 
-
                 } else {
                     MineToast.show(VipActivity.this, response.msg);
                 }
             }
         });
-
     }
 
 

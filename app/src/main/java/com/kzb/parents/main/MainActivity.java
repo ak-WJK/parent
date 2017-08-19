@@ -31,9 +31,9 @@ import java.util.List;
 public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
 
-    private LinearLayout fristLayout, secLayout,thirdLayout, fourthLayout;
-    private ImageView firstImg, secImg, thirdImg,fourthImg;
-    private TextView firstTxt, secTxt, thirdTxt,fourthTxt;
+    private LinearLayout fristLayout, secLayout, thirdLayout, fourthLayout;
+    private ImageView firstImg, secImg, thirdImg, fourthImg;
+    private TextView firstTxt, secTxt, thirdTxt, fourthTxt;
 
     private ViewPager viewPager;
 
@@ -91,12 +91,6 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         fourthLayout.setOnClickListener(this);
 
     }
-
-
-
-
-
-
 
 
     @Override
@@ -193,7 +187,6 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     }
 
 
-
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -208,15 +201,12 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
                 break;
             case 1:
                 tableSec();
-
                 break;
             case 2:
                 tableThird();
-
                 break;
             case 3:
                 tableFourth();
-
                 break;
 
         }

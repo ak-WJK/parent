@@ -13,6 +13,7 @@ import com.kzb.parents.base.adapter.ViewHolder;
 import com.kzb.parents.diagnose.model.ZhentiDiagnoseItem;
 import com.kzb.parents.exam.ExamActivity;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 
 /**
  * Created by wanghaofei on 17/6/4.
@@ -45,6 +46,8 @@ public class DNZTAdapter extends CommonAdapter<ZhentiDiagnoseItem> {
             @Override
             public void onClick(View v) {
 
+                LogUtils.e("TAG", "诊断 === ");
+                
                 Intent intent = new Intent(mContext, ExamActivity.class);
                 intent.putExtra("id", diagnoseItem.getExam_id());
                 intent.putExtra("type", "zhenti");

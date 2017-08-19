@@ -28,6 +28,7 @@ import com.kzb.parents.exam.bean.Question;
 import com.kzb.parents.exam.bean.SubmitExam;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.util.TimeHelper;
 import com.kzb.parents.view.DialogView;
 import com.kzb.parents.view.ProgressDialogView;
@@ -252,6 +253,8 @@ public class ExamActivity extends BaseActivity {
         //拼接我的答案
         final ExamQuestion question = questionView.getExamQuestion();
 
+        LogUtils.e("TAG", "交卷");
+
         dialogView.handleDialog(true);
         JSONObject json = new JSONObject();
         JSONArray array = new JSONArray();
@@ -269,7 +272,10 @@ public class ExamActivity extends BaseActivity {
                         }
 
                         if (TextUtils.isEmpty(answer)) {
+
                             answer = ques.getAnswers().get(ques.getAnswers().size() - 1).getAnswer_id();
+
+
                         } else {
                             answer = answer.substring(0, answer.length() - 1);
                         }
@@ -380,6 +386,7 @@ public class ExamActivity extends BaseActivity {
                 }
                 json.put("oauth_token", SpSetting.loadLoginInfo().getOauth_token());
                 json.put("oauth_token_secret", SpSetting.loadLoginInfo().getOauth_token_secret());
+                json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
 
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -275,6 +275,8 @@ public class ExamQuestionView extends LinearLayout {
 
 
 
+        
+        //交卷按鈕
         p = new LayoutParams(DensityUtil.dip2px(getContext(), 80),DensityUtil.dip2px(getContext(), 35));
         p.leftMargin = DensityUtil.dip2px(getContext(), 10);
         submitExam.setLayoutParams(p);
@@ -286,7 +288,6 @@ public class ExamQuestionView extends LinearLayout {
         submitExam.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
             }
         });
