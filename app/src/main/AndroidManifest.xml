@@ -104,7 +104,7 @@
         <activity android:name=".kaoshi.QuanKeListActivity"></activity>
         <activity android:name=".kaoshi.BGQKListActivity"></activity>
         <activity android:name=".kaoshi.BGZJListActivity"></activity>
-        <activity android:name=".exam.ExamActivity"></activity>
+        <activity android:name=".exam.ZTJXActivity"></activity>
         <activity android:name=".common.ArticeDetailActivity"></activity>
         <activity android:name=".settwo.SetDetailActivity"></activity>
         <activity android:name=".settwo.UpdateActivity"></activity>
@@ -122,6 +122,11 @@
         <activity android:name=".msg.MsgListActivity"></activity>
         <activity android:name=".msg.MsgDetailActivity"></activity>
         <activity android:name=".course.ReportFinishActivity"/>
+        <!--诊断考试页面-->
+        <activity android:name=".exam.ExamActivity"/>
+
+        <!--真题解析页面-->
+        <activity android:name=".exam.ZTJXActivity"/>
 
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"

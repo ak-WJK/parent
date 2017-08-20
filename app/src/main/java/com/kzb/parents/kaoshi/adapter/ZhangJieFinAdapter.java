@@ -11,7 +11,7 @@ import com.kzb.parents.R;
 import com.kzb.parents.base.adapter.CommonAdapter;
 import com.kzb.parents.base.adapter.ViewHolder;
 import com.kzb.parents.diagnose.DiagNoseDetailActivity;
-import com.kzb.parents.exam.ExamActivity;
+import com.kzb.parents.exam.ZTJXActivity;
 import com.kzb.parents.kaoshi.model.KSZhangJieResponse;
 import com.kzb.parents.util.IntentUtil;
 
@@ -61,7 +61,7 @@ public class ZhangJieFinAdapter extends CommonAdapter<KSZhangJieResponse.ZhangJi
 
                     IntentUtil.startActivity((Activity)mContext, intent);
                 }else {
-                    Intent intent = new Intent(mContext, ExamActivity.class);
+                    Intent intent = new Intent(mContext, ZTJXActivity.class);
                     intent.putExtra("from",mType);
                     intent.putExtra("test_id", questionModel.getTest_id());
                     intent.putExtra("type","jiaoshi");

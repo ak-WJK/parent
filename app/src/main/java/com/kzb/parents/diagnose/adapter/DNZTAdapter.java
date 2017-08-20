@@ -11,12 +11,13 @@ import com.kzb.parents.R;
 import com.kzb.parents.base.adapter.CommonAdapter;
 import com.kzb.parents.base.adapter.ViewHolder;
 import com.kzb.parents.diagnose.model.ZhentiDiagnoseItem;
-import com.kzb.parents.exam.ExamActivity;
+import com.kzb.parents.exam.ZTJXActivity;
 import com.kzb.parents.util.IntentUtil;
 import com.kzb.parents.util.LogUtils;
 
 /**
  * Created by wanghaofei on 17/6/4.
+ * 真题诊断的Adapter
  */
 
 public class DNZTAdapter extends CommonAdapter<ZhentiDiagnoseItem> {
@@ -48,7 +49,7 @@ public class DNZTAdapter extends CommonAdapter<ZhentiDiagnoseItem> {
 
                 LogUtils.e("TAG", "诊断 === ");
                 
-                Intent intent = new Intent(mContext, ExamActivity.class);
+                Intent intent = new Intent(mContext, ZTJXActivity.class);
                 intent.putExtra("id", diagnoseItem.getExam_id());
                 intent.putExtra("type", "zhenti");
                 intent.putExtra("from", "zhenti");

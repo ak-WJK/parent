@@ -1,6 +1,5 @@
 package com.kzb.parents.wrong;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -20,18 +18,16 @@ import com.kzb.baselibrary.utils.MineToast;
 import com.kzb.parents.R;
 import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.course.CourseDetailActivity;
-import com.kzb.parents.exam.ExamActivity;
+import com.kzb.parents.exam.ZTJXActivity;
 import com.kzb.parents.util.DensityUtil;
 import com.kzb.parents.util.IntentUtil;
 import com.kzb.parents.view.CustomReTextView;
 import com.kzb.parents.view.QuesWebViewSeven;
 import com.kzb.parents.view.QuesWebViewSix;
 import com.kzb.parents.view.topbar.Topbar;
-import com.kzb.parents.wrong.adapter.QuesTwoAdapter;
 import com.kzb.parents.wrong.model.Answer;
 import com.kzb.parents.wrong.model.ExamQuestion;
 import com.kzb.parents.wrong.model.ExplainContent;
-import com.kzb.parents.wrong.model.Question;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -162,7 +158,7 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
                 Map<String, String> val = new HashMap<String, String>();
                 val.put("point", mPoint.getText().toString());
                 val.put("kid", getIntent().getStringExtra("kid"));
-                IntentUtil.startActivity(WrongStrongTwoActivity.this, ExamActivity.class, val);
+                IntentUtil.startActivity(WrongStrongTwoActivity.this, ZTJXActivity.class, val);
             }
         });
         mFooter.findViewById(R.id.strong_report_review).setOnClickListener(new View.OnClickListener() {
