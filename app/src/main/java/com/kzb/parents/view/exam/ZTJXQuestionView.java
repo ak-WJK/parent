@@ -276,7 +276,7 @@ public class ZTJXQuestionView extends LinearLayout {
 
 
         
-        //交卷按鈕
+        //解析按鈕
         p = new LayoutParams(DensityUtil.dip2px(getContext(), 80),DensityUtil.dip2px(getContext(), 35));
         p.leftMargin = DensityUtil.dip2px(getContext(), 10);
         submitExam.setLayoutParams(p);
