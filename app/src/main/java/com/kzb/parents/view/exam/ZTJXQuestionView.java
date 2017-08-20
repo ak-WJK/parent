@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import com.kzb.parents.exam.bean.Answer;
 import com.kzb.parents.exam.bean.ExamQuestion;
 import com.kzb.parents.exam.bean.Question;
 import com.kzb.parents.util.DensityUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.view.MyGridView;
 import com.kzb.parents.view.QuesWebViewFour;
 import com.kzb.parents.view.QuesWebViewSix;
@@ -70,6 +72,10 @@ public class ZTJXQuestionView extends LinearLayout {
     private TextView cardSubmitView;
     private LinearLayout cardContentLayout;
     ViewGroup cardViewGroup;
+
+    private TextView b;//解析答案
+    private QuesWebViewFour b2;
+    private QuesWebViewFour two;//解析
 
     public void setActivityV(Activity activity) {
         this.activity = activity;
@@ -158,13 +164,100 @@ public class ZTJXQuestionView extends LinearLayout {
         p.weight = 1;
         scrollView.setLayoutParams(p);
 
+        LinearLayout layout=new LinearLayout(getContext());
+        p=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layout.setLayoutParams(p);
+        layout.setOrientation(VERTICAL);
+
         LinearLayout scrollInLayout = new LinearLayout(getContext());
         p = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         scrollInLayout.setLayoutParams(p);
         scrollInLayout.setOrientation(VERTICAL);
-        scrollView.addView(scrollInLayout);
+
+
+        final LinearLayout daanLayout=new LinearLayout(getContext());
+        p=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        daanLayout.setLayoutParams(p);
+        daanLayout.setOrientation(VERTICAL);
+        daanLayout.setVisibility(GONE);
+
+        scrollView.addView(layout);
         mainQuestion.addView(scrollView);
 
+        layout.addView(scrollInLayout);
+        layout.addView(daanLayout);
+
+
+        View view=new View(getContext());
+        p=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,3);
+        view.setLayoutParams(p);
+        view.setBackgroundColor(Color.GRAY);
+        view.setPadding(5,10,5,0);
+
+        LinearLayout cankao=new LinearLayout(getContext());
+        p=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        cankao.setLayoutParams(p);
+        cankao.setOrientation(HORIZONTAL);
+        cankao.setPadding(10,20,20,20);
+
+        TextView daan=new TextView(getContext());
+        p=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        daan.setLayoutParams(p);
+        daan.setTextSize(10);
+        daan.setText("[参考答案]");
+        p.setMargins(10,20,30,20);
+
+        cankao.addView(daan);
+
+        FrameLayout frameLayout=new FrameLayout(getContext());
+        p=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        frameLayout.setLayoutParams(p);
+
+        b=new TextView(getContext());
+        p=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        b.setLayoutParams(p);
+        b.setGravity(Gravity.CENTER);
+        b.setTextColor(Color.WHITE);
+        b.setVisibility(GONE);
+        b.setBackgroundResource(R.drawable.daan_btn_green);
+
+        b2=new QuesWebViewFour(getContext());
+        p=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        b2.setLayoutParams(p);
+        b2.setVisibility(GONE);
+        b2.setBackgroundColor(Color.WHITE);
+        b2.setInitialScale(100);
+
+        frameLayout.addView(b);
+        frameLayout.addView(b2);
+
+        //cankao.addView(b);
+        cankao.addView(frameLayout);
+
+        LinearLayout jiexi=new LinearLayout(getContext());
+        p=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        jiexi.setLayoutParams(p);
+        jiexi.setOrientation(HORIZONTAL);
+        jiexi.setPadding(10,20,20,20);
+
+        TextView one=new TextView(getContext());
+        p=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        one.setLayoutParams(p);
+        one.setTextSize(10);
+        one.setText("[解        析]");
+        p.setMargins(10,20,30,20);
+
+        two=new QuesWebViewFour(getContext());
+        p=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        two.setLayoutParams(p);
+        two.setInitialScale(100);
+
+        jiexi.addView(one);
+        jiexi.addView(two);
+
+        daanLayout.addView(view);
+        daanLayout.addView(cankao);
+        daanLayout.addView(jiexi);
 
         curNumView.setText((currentQuestion + 1) + "");
         curNumView.setTextColor(getResources().getColor(R.color.blue));
@@ -221,6 +314,7 @@ public class ZTJXQuestionView extends LinearLayout {
         lastBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                daanLayout.setVisibility(GONE);
                 if (currentQuestion > 0) {
                     currentQuestion--;
                     setQuestion();
@@ -256,6 +350,7 @@ public class ZTJXQuestionView extends LinearLayout {
         nextBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                daanLayout.setVisibility(GONE);
                 if (currentQuestion < mExamQuestion.getContent().size() - 1) {
                     currentQuestion++;
                     setQuestion();
@@ -289,6 +384,9 @@ public class ZTJXQuestionView extends LinearLayout {
             @Override
             public void onClick(View v) {
 
+                daanLayout.setVisibility(VISIBLE);
+
+                setQuestion();
             }
         });
 
@@ -657,7 +755,7 @@ public class ZTJXQuestionView extends LinearLayout {
     public void setQuestion() {
         Question question = mExamQuestion.getContent().get(currentQuestion);
 
-        Log.e("tttt", "question=" + question.toString());
+        LogUtils.e("tttt", "question=" + question.toString());
 
         isSingle = true;
         if (question != null && question.getType_id() != null) {
@@ -671,6 +769,17 @@ public class ZTJXQuestionView extends LinearLayout {
         curNumView.setText((1 + currentQuestion) + "");
 //        questionText.setNetText(question.getQuestion());
         questionText.loadData(question.getQuestion());
+
+        if(question.getIstrue().length()<2){
+            b.setVisibility(VISIBLE);
+            b.setText(question.getIstrue());
+        }else {
+            b2.setVisibility(VISIBLE);
+            b2.loadData(question.getIstrue());
+        }
+
+
+        two.loadData(question.getExplain());
 
         setAnswerLayout(question);
     }

@@ -17,12 +17,21 @@ public class Question implements Serializable {
     private String explain;//强化提高才有的
     private String kids;//强化提高才有的
     private String myanswer;
+    private String istrue;
     private boolean isDone;//是否解答
     public List<Answer> answers = new ArrayList<>();
     private List<ExplainContent.Knowledges> knowledges;
 
     public List<ExplainContent.Knowledges> getKnowledges() {
         return knowledges;
+    }
+
+    public String getIstrue() {
+        return istrue;
+    }
+
+    public void setIstrue(String istrue) {
+        this.istrue = istrue;
     }
 
     public void setKnowledges(List<ExplainContent.Knowledges> knowledges) {
