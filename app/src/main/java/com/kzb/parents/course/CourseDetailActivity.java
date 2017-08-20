@@ -23,7 +23,7 @@ import com.kzb.parents.config.AddressConfig;
 import com.kzb.parents.config.SpSetting;
 import com.kzb.parents.course.model.CourseDetailResponse;
 import com.kzb.parents.course.model.CourseDetailResponse.CourseDetailModel;
-import com.kzb.parents.exam.ZTJXActivity;
+import com.kzb.parents.exam.ExamActivity;
 import com.kzb.parents.exam.bean.NeedKnowPro;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.util.IntentUtil;
@@ -167,7 +167,7 @@ public class CourseDetailActivity extends BaseActivity {
                     Map<String, String> val = new HashMap<String, String>();
                     val.put("point", mPoint);
                     val.put("kid", kid);
-                    IntentUtil.startActivity(CourseDetailActivity.this, ZTJXActivity.class, val);
+                    IntentUtil.startActivity(CourseDetailActivity.this, ExamActivity.class, val);
 
 //                   MineToast.show(CourseDetailActivity.this, response.msg);
                 }
@@ -252,7 +252,7 @@ public class CourseDetailActivity extends BaseActivity {
                     Map<String, String> val = new HashMap<String, String>();
                     val.put("point", mPoint);
                     val.put("kid", kid);
-                    IntentUtil.startActivity(CourseDetailActivity.this, ZTJXActivity.class, val);
+                    IntentUtil.startActivity(CourseDetailActivity.this, ExamActivity.class, val);
                     CourseDetailActivity.this.finish();
                 }
 

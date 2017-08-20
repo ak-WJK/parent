@@ -15,8 +15,8 @@ import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.course.CourseDetailActivity;
 import com.kzb.parents.course.model.CourseResponse;
 import com.kzb.parents.course.model.CourseResponse.JieModel;
+import com.kzb.parents.exam.ExamActivity;
 import com.kzb.parents.util.IntentUtil;
-import com.kzb.parents.exam.ZTJXActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,7 +77,7 @@ public class ChildAdapter extends BaseExpandableListAdapter {
                 val.put("point", knowledgeModel.getKpoint());
                 if (type.trim().equals("2")) {
                     //强化提高
-                    IntentUtil.startActivity((BaseActivity) mContext, ZTJXActivity.class, val);
+                    IntentUtil.startActivity((BaseActivity) mContext, ExamActivity.class, val);
                 } else {
                     //课程学习
                     IntentUtil.startActivity((BaseActivity) mContext, CourseDetailActivity.class, val);

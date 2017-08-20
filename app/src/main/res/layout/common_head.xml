@@ -12,11 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:drawableLeft="@mipmap/left_back"
         android:gravity="center"
         android:drawablePadding="10dp"
         android:textColor="@color/white"
+        android:text="返回"
         android:visibility="gone"
         />
 

@@ -9,7 +9,7 @@ import com.kzb.parents.R;
 import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.base.adapter.CommonAdapter;
 import com.kzb.parents.base.adapter.ViewHolder;
-import com.kzb.parents.exam.ZTJXActivity;
+import com.kzb.parents.exam.ExamActivity;
 import com.kzb.parents.kaoshi.model.ZhenDuiXunLianResponse;
 import com.kzb.parents.util.IntentUtil;
 
@@ -59,7 +59,7 @@ public class ZhenDuiXunLianAdapter extends CommonAdapter<ZhenDuiXunLianResponse.
                 mapVal.put("from",mType);
                 mapVal.put("type","zhendui");
                 mapVal.put("zhangjieType","2");
-                IntentUtil.startActivity((BaseActivity)mContext,ZTJXActivity.class,mapVal);
+                IntentUtil.startActivity((BaseActivity)mContext,ExamActivity.class,mapVal);
             }
         });
 

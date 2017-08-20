@@ -41,7 +41,7 @@ import java.util.List;
  * 时间：下午11:24
  * 注释：一个题目列表
  *
- * 自定义按钮(上一个 下一个 交卷)列表
+ * 自定义按钮(上一个 下一个 解析)列表
  ********************/
 public class ZTJXQuestionView extends LinearLayout {
     public int currentQuestion;
@@ -769,15 +769,22 @@ public class ZTJXQuestionView extends LinearLayout {
 //        questionText.setNetText(question.getQuestion());
         questionText.loadData(question.getQuestion());
 
-        if(question.getIstrue().length()<2){
-            b.setVisibility(VISIBLE);
-            b.setText(question.getIstrue());
-            b2.setVisibility(GONE);
-        }else {
-            b2.setVisibility(VISIBLE);
-            b2.loadData(question.getIstrue());
-            b.setVisibility(GONE);
+
+        if(question.getIstrue() !=  null) {
+
+            if(question.getIstrue().length()<2){
+                b.setVisibility(VISIBLE);
+                b.setText(question.getIstrue());
+                b2.setVisibility(GONE);
+            }else {
+                b2.setVisibility(VISIBLE);
+                b2.loadData(question.getIstrue());
+                b.setVisibility(GONE);
+            }
+
         }
+
+
 
         two.loadData(question.getExplain());
 

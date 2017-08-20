@@ -18,7 +18,8 @@ import com.kzb.baselibrary.utils.MineToast;
 import com.kzb.parents.R;
 import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.course.CourseDetailActivity;
-import com.kzb.parents.exam.ZTJXActivity;
+import com.kzb.parents.exam.ExamActivity;
+
 import com.kzb.parents.util.DensityUtil;
 import com.kzb.parents.util.IntentUtil;
 import com.kzb.parents.view.CustomReTextView;
@@ -158,7 +159,7 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
                 Map<String, String> val = new HashMap<String, String>();
                 val.put("point", mPoint.getText().toString());
                 val.put("kid", getIntent().getStringExtra("kid"));
-                IntentUtil.startActivity(WrongStrongTwoActivity.this, ZTJXActivity.class, val);
+                IntentUtil.startActivity(WrongStrongTwoActivity.this, ExamActivity.class, val);
             }
         });
         mFooter.findViewById(R.id.strong_report_review).setOnClickListener(new View.OnClickListener() {

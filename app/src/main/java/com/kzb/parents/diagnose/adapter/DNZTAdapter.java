@@ -26,10 +26,9 @@ public class DNZTAdapter extends CommonAdapter<ZhentiDiagnoseItem> {
     }
 
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = ViewHolder.get(mContext,convertView,parent, R.layout.item_diagnose_zj,position);
+        ViewHolder viewHolder = ViewHolder.get(mContext, convertView, parent, R.layout.item_diagnose_zj, position);
         final ZhentiDiagnoseItem diagnoseItem = mDatas.get(position);
 
 
@@ -38,7 +37,7 @@ public class DNZTAdapter extends CommonAdapter<ZhentiDiagnoseItem> {
         TextView findView = viewHolder.getView(R.id.item_dg_zj_find);
 
         titleView.setText(diagnoseItem.getKemu_name());
-        positionView.setText(String.valueOf(position+1));
+        positionView.setText(String.valueOf(position + 1));
 
         View view = viewHolder.getConvertView();
 
@@ -48,7 +47,7 @@ public class DNZTAdapter extends CommonAdapter<ZhentiDiagnoseItem> {
             public void onClick(View v) {
 
                 LogUtils.e("TAG", "诊断 === ");
-                
+
                 Intent intent = new Intent(mContext, ZTJXActivity.class);
                 intent.putExtra("id", diagnoseItem.getExam_id());
                 intent.putExtra("type", "zhenti");

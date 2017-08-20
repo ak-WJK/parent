@@ -32,7 +32,7 @@ import okhttp3.Call;
 
 /**
  * Created by wanghaofei on 17/7/3.
- * 报告-->自我诊断报告也米娜
+ * 报告-->自我诊断报告页面
  */
 
 public class DiagnoseTwoActivity extends BaseActivity implements View.OnClickListener {

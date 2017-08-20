@@ -12,6 +12,7 @@ import com.kzb.parents.base.adapter.ViewHolder;
 import com.kzb.parents.diagnose.DiagNoseDetailActivity;
 import com.kzb.parents.kaoshi.model.KSReportQKResponse;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,6 +46,9 @@ public class BGQKAdapter extends CommonAdapter<KSReportQKResponse.ReportQKModel>
         findView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                LogUtils.e("TAG", "进入诊断报告");
+
                 Map<String,String> mapVal = new HashMap<String, String>();
                 mapVal.put("test_id",questionModel.getTest_id());
                 mapVal.put("score",questionModel.getScore());
