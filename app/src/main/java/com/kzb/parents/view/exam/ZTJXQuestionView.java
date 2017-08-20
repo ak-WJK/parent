@@ -385,7 +385,6 @@ public class ZTJXQuestionView extends LinearLayout {
             public void onClick(View v) {
 
                 daanLayout.setVisibility(VISIBLE);
-
                 setQuestion();
             }
         });
@@ -773,11 +772,12 @@ public class ZTJXQuestionView extends LinearLayout {
         if(question.getIstrue().length()<2){
             b.setVisibility(VISIBLE);
             b.setText(question.getIstrue());
+            b2.setVisibility(GONE);
         }else {
             b2.setVisibility(VISIBLE);
             b2.loadData(question.getIstrue());
+            b.setVisibility(GONE);
         }
-
 
         two.loadData(question.getExplain());
 
