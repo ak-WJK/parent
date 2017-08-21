@@ -77,7 +77,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
     private boolean sign = false;
 
     //会员等级
-    int level = 0;
+    int level = 3;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
@@ -85,8 +85,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
         View view = inflater.inflate(R.layout.fragment_first, parent, false);
         banner = (XBanner) view.findViewById(R.id.banner_1);
 
-
-
+        LogUtils.e("TAG", "诊断详情页面");
         EventBus.getDefault().register(this);
 
 //        dialogView = new DialogView(getActivity());
@@ -95,7 +94,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
 
 
         //获取会员信息(造成诊断报告 --> 知识点掌握,下的子Item崩溃)
-//        getStatus();
+        // getStatus();
 
         return view;
     }
@@ -108,7 +107,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
             LogUtils.e("TAG", "会员等级 === " + level);
 
         } catch (Exception e) {
-            level = 1;
+            level = 3;
         }
 
     }
@@ -249,22 +248,24 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
                 int count = spTimes.getInt("count", 0);
 
 
-                if (level < 2) {
-                    Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if (level < 3) {
+//                    Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
 //                count++;
 //                spTimes.edit().putInt("count", count).commit();
 
+                //报告
                 IntentUtil.startActivity(getActivity(), DiagnoseTwoActivity.class);
                 break;
             case R.id.first_xuexi_layout:
 
-                if (level < 2) {
-                    Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if (level < 2) {
+//                    Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
 
+                //考试
                 IntentUtil.startActivity(getActivity(), KaoShiActivity.class);
                 break;
             case R.id.first_wrong_layout:
@@ -275,7 +276,8 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
                 break;
             case R.id.first_zhenduan_layout:
 
-                if (level >= 3) {
+                if (level == 3) {
+                    //诊断
                     IntentUtil.startActivity(getActivity(), DiagNoseMainActivity.class);
                 } else {
                     Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();
@@ -283,7 +285,9 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
 
                 break;
             case R.id.first_streng_layout:
-                if (level == 4) {
+                if (level == 3) {
+
+                    //强化进度
                     IntentUtil.startActivity(getActivity(), StrengthenActivity.class);
                 } else {
                     Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();

@@ -16,7 +16,6 @@ import com.kzb.parents.diagnose.DiagNoseDetailActivity;
 import com.kzb.parents.report.model.ReportListItem;
 import com.kzb.parents.report.model.ReportZjListItem;
 import com.kzb.parents.util.IntentUtil;
-import com.kzb.parents.util.LogUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -172,6 +171,7 @@ public class BGZJAdapter extends BaseExpandableListAdapter {
         son_ViewHolder.son_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(context, DiagNoseDetailActivity.class);
                 intent.putExtra("test_id", item.getTest_id());
                 intent.putExtra("from","kaoshi");

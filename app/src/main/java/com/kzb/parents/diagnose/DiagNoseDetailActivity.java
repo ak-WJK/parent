@@ -113,6 +113,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
     private String thr;
     //等级图片显示
     private ImageView scoreLevel;
+    private int level;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -120,6 +121,10 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dgno_detail);
+
+        //会员等级
+        String good_id = SpSetting.loadLoginInfo().getGood_id();
+        level = Integer.parseInt(good_id);
 
         httpConfig = new HttpConfig();
         dialogView = new DialogView(this);
@@ -639,7 +644,9 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.report_top_one:
+
                 topOneClick();
+
                 break;
             case R.id.report_top_two:
                 topTwoClick();
@@ -658,68 +665,108 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.digo_chat_sign_view:
 
-                if (chatSign == 0) {
-                    chatLayout.setVisibility(View.VISIBLE);
-                    chatSign = 1;
+                if (level >= 2) {
 
-                    Drawable drawable = getResources().getDrawable(R.mipmap.arrow_up);
+                    if (chatSign == 0) {
+                        chatLayout.setVisibility(View.VISIBLE);
+                        chatSign = 1;
+
+                        Drawable drawable = getResources().getDrawable(R.mipmap.arrow_up);
 /// 这一步必须要做,否则不会显示.
-                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    chatSignView.setCompoundDrawables(null, null, drawable, null);
+                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                        chatSignView.setCompoundDrawables(null, null, drawable, null);
+
+                    } else {
+                        chatLayout.setVisibility(View.GONE);
+                        chatSign = 0;
+                        Drawable drawable = getResources().getDrawable(R.mipmap.arrow_down);
+/// 这一步必须要做,否则不会显示.
+                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                        chatSignView.setCompoundDrawables(null, null, drawable, null);
+                    }
+
 
                 } else {
-                    chatLayout.setVisibility(View.GONE);
-                    chatSign = 0;
-                    Drawable drawable = getResources().getDrawable(R.mipmap.arrow_down);
-/// 这一步必须要做,否则不会显示.
-                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    chatSignView.setCompoundDrawables(null, null, drawable, null);
+                    Toast.makeText(DiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
                 }
+
+
                 break;
             case R.id.kg_sign_view:
-                if (kgSign == 0) {
-                    kgView.setVisibility(View.VISIBLE);
-                    kgSign = 1;
 
-                    Drawable drawable = getResources().getDrawable(R.mipmap.arrow_up);
+                if (level >= 2) {
+
+                    if (kgSign == 0) {
+                        kgView.setVisibility(View.VISIBLE);
+                        kgSign = 1;
+
+                        Drawable drawable = getResources().getDrawable(R.mipmap.arrow_up);
 /// 这一步必须要做,否则不会显示.
-                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    kgTxtView.setCompoundDrawables(null, null, drawable, null);
+                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                        kgTxtView.setCompoundDrawables(null, null, drawable, null);
+
+                    } else {
+                        kgView.setVisibility(View.GONE);
+                        kgSign = 0;
+                        Drawable drawable = getResources().getDrawable(R.mipmap.arrow_down);
+/// 这一步必须要做,否则不会显示.
+                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                        kgTxtView.setCompoundDrawables(null, null, drawable, null);
+                    }
+
 
                 } else {
-                    kgView.setVisibility(View.GONE);
-                    kgSign = 0;
-                    Drawable drawable = getResources().getDrawable(R.mipmap.arrow_down);
-/// 这一步必须要做,否则不会显示.
-                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    kgTxtView.setCompoundDrawables(null, null, drawable, null);
+                    Toast.makeText(DiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
                 }
+
+
                 break;
             case R.id.qs_sign_view:
-                if (qusSign == 0) {
-                    qusView.setVisibility(View.VISIBLE);
-                    qusSign = 1;
 
-                    Drawable drawable = getResources().getDrawable(R.mipmap.arrow_up);
-/// 这一步必须要做,否则不会显示.
-                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    qusTxtView.setCompoundDrawables(null, null, drawable, null);
+                if (level >= 2) {
+
+                    if (qusSign == 0) {
+                        qusView.setVisibility(View.VISIBLE);
+                        qusSign = 1;
+
+                        Drawable drawable = getResources().getDrawable(R.mipmap.arrow_up);
+                        /// 这一步必须要做,否则不会显示.
+                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                        qusTxtView.setCompoundDrawables(null, null, drawable, null);
+
+                    } else {
+                        qusView.setVisibility(View.GONE);
+                        qusSign = 0;
+                        Drawable drawable = getResources().getDrawable(R.mipmap.arrow_down);
+                        /// 这一步必须要做,否则不会显示.
+                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                        qusTxtView.setCompoundDrawables(null, null, drawable, null);
+                    }
+
 
                 } else {
-                    qusView.setVisibility(View.GONE);
-                    qusSign = 0;
-                    Drawable drawable = getResources().getDrawable(R.mipmap.arrow_down);
-/// 这一步必须要做,否则不会显示.
-                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    qusTxtView.setCompoundDrawables(null, null, drawable, null);
+                    Toast.makeText(DiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
                 }
+
+
                 break;
             case R.id.report_kg_sp_kaoshi_view:
+
+                LogUtils.e("TAG", "诊断报告中考试的点击事件");
+
                 Map<String, String> mapVal1 = new HashMap<String, String>();
                 mapVal1.put("test_id", testId);
                 mapVal1.put("name", "诊断报告");
-//                IntentUtil.startActivity(DiagNoseDetailActivity.this, JiXieActivity.class, mapVal1);
-                IntentUtil.startActivity(DiagNoseDetailActivity.this, JiXieNewActivity.class, mapVal1);
+                //IntentUtil.startActivity(DiagNoseDetailActivity.this, JiXieActivity.class, mapVal1);
+
+                if (level >= 2) {
+                    IntentUtil.startActivity(DiagNoseDetailActivity.this, JiXieNewActivity.class, mapVal1);
+                } else {
+                    Toast.makeText(DiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
+
+                }
+
+
                 break;
         }
     }

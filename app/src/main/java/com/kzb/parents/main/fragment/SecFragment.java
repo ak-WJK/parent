@@ -70,16 +70,15 @@ public class SecFragment extends BaseFragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.sec_dig_view:
 
-                if (level < 2) {
+                if (level < 3) {
                     Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 IntentUtil.startActivity(getActivity(), DiagnoseActivity.class);
                 break;
             case R.id.sec_ks_view:
 
-                if (level < 2) {
+                if (level < 3) {
                     Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();
                     return;
                 }

@@ -37,7 +37,8 @@ import okhttp3.Call;
 public class DiagnoseActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView titleLeft, titleCenter;
-    private TextView zjieView, qKeView, zTiView;
+//    private TextView zjieView, qKeView, zTiView;
+    private TextView zjieView, qKeView;
 
 //    private TextView zjieNum, qKeNum, zTiNum;
 
@@ -59,7 +60,7 @@ public class DiagnoseActivity extends BaseActivity implements View.OnClickListen
         titleCenter = getView(R.id.common_head_center);
         zjieView = getView(R.id.dg_zhangjie);
         qKeView = getView(R.id.dg_quanke);
-        zTiView = getView(R.id.dg_zhenti);
+//        zTiView = getView(R.id.dg_zhenti);
 
 //        zjieNum = getView(R.id.dg_zhangjie_num);
 //        qKeNum = getView(R.id.dg_quanke_num);
@@ -72,7 +73,7 @@ public class DiagnoseActivity extends BaseActivity implements View.OnClickListen
         titleCenter.setText("诊断报告");
         zjieView.setOnClickListener(this);
         qKeView.setOnClickListener(this);
-        zTiView.setOnClickListener(this);
+//        zTiView.setOnClickListener(this);
     }
 
     @Override
@@ -153,10 +154,10 @@ public class DiagnoseActivity extends BaseActivity implements View.OnClickListen
 
                 IntentUtil.startActivity(DiagnoseActivity.this, RTDiagnoseQuanKeActivity.class);
                 break;
-            case R.id.dg_zhenti:
-                IntentUtil.startActivity(DiagnoseActivity.this, RTDiagnoseZhenTiActivity.class);
-
-                break;
+//            case R.id.dg_zhenti:
+//                IntentUtil.startActivity(DiagnoseActivity.this, RTDiagnoseZhenTiActivity.class);
+//
+//                break;
         }
     }
 }

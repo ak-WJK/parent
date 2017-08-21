@@ -7,7 +7,7 @@
 
     <include layout="@layout/common_head"></include>
 
-       <RelativeLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -15,15 +15,15 @@
         >
 
         <TextView
-            android:id="@+id/kaoshi_baogao_quanke"
+            android:id="@+id/kaoshi_baogao_youti"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:drawableLeft="@mipmap/zhenduan_quanke"
+            android:drawableLeft="@mipmap/zhenduan_zhangjie"
             android:drawablePadding="5dp"
             android:gravity="center|left"
             android:padding="12dp"
-            android:text="全科报告"
+            android:text="有题报告"
             android:textColor="@color/_333333"
             android:textSize="@dimen/text_common" />
 
@@ -46,15 +46,15 @@
         >
 
         <TextView
-            android:id="@+id/kaoshi_baogao_zhizhi"
+            android:id="@+id/kaoshi_baogao_wuti"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:drawableLeft="@mipmap/zhenduan_quanke"
+            android:drawableLeft="@mipmap/zhenduan_zhangjie"
             android:drawablePadding="5dp"
             android:gravity="center|left"
             android:padding="12dp"
-            android:text="纸质报告"
+            android:text="无题报告"
             android:textColor="@color/_333333"
             android:textSize="@dimen/text_common" />
 

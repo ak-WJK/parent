@@ -2,7 +2,6 @@ package com.kzb.parents.kaoshi;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.TextView;
@@ -10,23 +9,18 @@ import android.widget.TextView;
 import com.kzb.parents.R;
 import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.http.HttpConfig;
-import com.kzb.parents.util.IntentUtil;
 
-/**
- * Created by wanghaofei on 17/6/1.
- */
-
-public class KSBaoGaoActivity extends BaseActivity implements View.OnClickListener {
+public class ZhiZhiBaogaoActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView titleLeft, titleCenter;
-    private TextView  quanke  , zhizhi;
-
+    private TextView youti, wuti;
+    private HttpConfig httpConfig;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kaoshi_baogg);
+        setContentView(R.layout.activity_zhi_zhi_baogao);
         httpConfig = new HttpConfig();
         initView();
         initData();
@@ -37,8 +31,8 @@ public class KSBaoGaoActivity extends BaseActivity implements View.OnClickListen
 
         titleLeft = getView(R.id.common_head_left);
         titleCenter = getView(R.id.common_head_center);
-        quanke = getView(R.id.kaoshi_baogao_quanke);
-        zhizhi = getView(R.id.kaoshi_baogao_zhizhi);
+        youti = getView(R.id.kaoshi_baogao_youti);
+        wuti = getView(R.id.kaoshi_baogao_wuti);
 
 
         titleLeft.setText("返回");
@@ -46,7 +40,8 @@ public class KSBaoGaoActivity extends BaseActivity implements View.OnClickListen
         titleLeft.setOnClickListener(this);
 
         titleCenter.setText("考试报告");
-        quanke.setOnClickListener(this);
+        wuti.setOnClickListener(this);
+        youti.setOnClickListener(this);
     }
 
     @Override
@@ -54,22 +49,16 @@ public class KSBaoGaoActivity extends BaseActivity implements View.OnClickListen
 
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.common_head_left:
-                IntentUtil.finish(KSBaoGaoActivity.this);
+            case R.id.kaoshi_baogao_wuti:
 
                 break;
-            case R.id.kaoshi_baogao_quanke:
+            case R.id.kaoshi_baogao_youti:
 
-                IntentUtil.startActivity(KSBaoGaoActivity.this, BGQKListActivity.class);
                 break;
-            case R.id.kaoshi_baogao_zhizhi:
-                IntentUtil.startActivity(KSBaoGaoActivity.this,ZhiZhiBaogaoActivity.class);
-                break;
-
         }
+
     }
 }

@@ -52,6 +52,8 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         initView();
         initData();
 
+
+
         if (Build.VERSION.SDK_INT >= 23) {
             int checkCallPhonePermission = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
             if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {

@@ -65,6 +65,10 @@ public class CourseDetailActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_detail);
+
+        LogUtils.e("TAG", "此页面为课程学习页面");
+
+
         httpConfig = new HttpConfig();
         dialogView = new DialogView(this);
 
@@ -109,7 +113,8 @@ public class CourseDetailActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 //验证当前知识点，是否在强化列表
-                LogUtils.e("TAG", "kid==" + kid);
+                LogUtils.e("TAG", "kid== " + kid + "\n强化训练");
+
                 if (kid != null) {
                     checkKidValidate();
                 }

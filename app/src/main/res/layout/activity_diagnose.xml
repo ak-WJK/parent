@@ -87,44 +87,44 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@color/white"
-        >
-
-        <TextView
-            android:id="@+id/dg_zhenti"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:textColor="@color/_333333"
-            android:gravity="center|left"
-            android:drawablePadding="5dp"
-            android:drawableLeft="@mipmap/zhenduan_zhenti"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/text_common"
-            android:text="真题报告" />
-
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:background="@color/white"-->
+        <!--&gt;-->
 
         <!--<TextView-->
-            <!--android:id="@+id/dg_zhenti_num"-->
+            <!--android:id="@+id/dg_zhenti"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="12dp"-->
+            <!--android:textColor="@color/_333333"-->
+            <!--android:gravity="center|left"-->
+            <!--android:drawablePadding="5dp"-->
+            <!--android:drawableLeft="@mipmap/zhenduan_zhenti"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:textSize="@dimen/text_common"-->
+            <!--android:text="真题报告" />-->
+
+
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/dg_zhenti_num"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_alignParentRight="true"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;-->
+            <!--&lt;!&ndash;/>&ndash;&gt;-->
+
+        <!--<ImageView-->
             <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:layout_alignParentRight="true"-->
             <!--android:layout_centerVertical="true"-->
+            <!--android:src="@mipmap/enter_arrow"-->
+            <!--android:layout_marginRight="10dp"-->
             <!--/>-->
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/enter_arrow"
-            android:layout_marginRight="10dp"
-            />
-
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
 
 </LinearLayout>

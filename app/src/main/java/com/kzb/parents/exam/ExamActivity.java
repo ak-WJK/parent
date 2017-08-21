@@ -123,6 +123,8 @@ public class ExamActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam_exam);
 
+        LogUtils.e("TAG", "考试页面");
+
         httpConfig = new HttpConfig();
         dialogView = new DialogView(this);
         mTwoBtnDialog = new CommonTwoBtnDialog(ExamActivity.this);
