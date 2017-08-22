@@ -19,7 +19,7 @@ import com.kzb.parents.util.IntentUtil;
 public class KSBaoGaoActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView titleLeft, titleCenter;
-    private TextView  quanke  , zhizhi;
+    private TextView quanke, zhizhi;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -38,7 +38,6 @@ public class KSBaoGaoActivity extends BaseActivity implements View.OnClickListen
         titleLeft = getView(R.id.common_head_left);
         titleCenter = getView(R.id.common_head_center);
         quanke = getView(R.id.kaoshi_baogao_quanke);
-        zhizhi = getView(R.id.kaoshi_baogao_zhizhi);
 
 
         titleLeft.setText("返回");
@@ -47,6 +46,7 @@ public class KSBaoGaoActivity extends BaseActivity implements View.OnClickListen
 
         titleCenter.setText("考试报告");
         quanke.setOnClickListener(this);
+
     }
 
     @Override
@@ -65,9 +65,6 @@ public class KSBaoGaoActivity extends BaseActivity implements View.OnClickListen
             case R.id.kaoshi_baogao_quanke:
 
                 IntentUtil.startActivity(KSBaoGaoActivity.this, BGQKListActivity.class);
-                break;
-            case R.id.kaoshi_baogao_zhizhi:
-                IntentUtil.startActivity(KSBaoGaoActivity.this,ZhiZhiBaogaoActivity.class);
                 break;
 
         }

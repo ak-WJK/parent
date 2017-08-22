@@ -15,7 +15,6 @@ import com.kzb.baselibrary.network.callback.GenericsCallback;
 import com.kzb.baselibrary.utils.MineToast;
 import com.kzb.parents.JsonGenericsSerializator;
 import com.kzb.parents.R;
-import com.kzb.parents.VipActivity;
 import com.kzb.parents.application.Application;
 import com.kzb.parents.base.BaseFragment;
 import com.kzb.parents.base.XBaseRequest;
@@ -25,6 +24,7 @@ import com.kzb.parents.config.SpSetting;
 import com.kzb.parents.course.CourseActivity;
 import com.kzb.parents.diagnose.DiagNoseMainActivity;
 import com.kzb.parents.diagnose.DiagnoseTwoActivity;
+import com.kzb.parents.exer.ExerActivity;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.kaoshi.KaoShiActivity;
 import com.kzb.parents.login.model.LoginResponse;
@@ -68,7 +68,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
 
     private TextView headTitle;
 
-    private TextView zhenDuanLayout, courseLayout, wrongLayout, strengLayout, xuexiLayout, zhenduanBaoGao, vipLayout;
+    private TextView zhenDuanLayout, courseLayout, wrongLayout, strengLayout, xuexiLayout, zhenduanBaoGao, exerLayout;
 
     private TextView curCourseView, msgListView;
     private TextView zhenduiXunLian;
@@ -77,7 +77,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
     private boolean sign = false;
 
     //会员等级
-    int level = 3;
+    int level = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
@@ -107,7 +107,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
             LogUtils.e("TAG", "会员等级 === " + level);
 
         } catch (Exception e) {
-            level = 3;
+            level = 1;
         }
 
     }
@@ -140,7 +140,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
         msgListView = (TextView) view.findViewById(R.id.first_msg_list);
         zhenduanBaoGao = (TextView) view.findViewById(R.id.first_zhenduan_baogao);
         zhenduiXunLian = (TextView) view.findViewById(R.id.first_zhendui_xunlian);
-        vipLayout = (TextView) view.findViewById(R.id.first_vip_layout);
+        exerLayout = (TextView) view.findViewById(R.id.first_exer_layout);
 
 
         zhenDuanLayout.setOnClickListener(this);
@@ -150,7 +150,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
         xuexiLayout.setOnClickListener(this);
         zhenduanBaoGao.setOnClickListener(this);
         zhenduiXunLian.setOnClickListener(this);
-        vipLayout.setOnClickListener(this);
+        exerLayout.setOnClickListener(this);
 
         //登陆后加载用户退出前存储的科目
         curCourseView.setText("科目：" + SpSetting.loadLoginInfo().getSubject());
@@ -259,12 +259,6 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
                 IntentUtil.startActivity(getActivity(), DiagnoseTwoActivity.class);
                 break;
             case R.id.first_xuexi_layout:
-
-//                if (level < 2) {
-//                    Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-
                 //考试
                 IntentUtil.startActivity(getActivity(), KaoShiActivity.class);
                 break;
@@ -298,8 +292,8 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
 
                 IntentUtil.startActivity(getActivity(), XunLianKaoShiActivity.class);
                 break;
-            case R.id.first_vip_layout:
-                IntentUtil.startActivity(getActivity(), VipActivity.class);
+            case R.id.first_exer_layout:
+               IntentUtil.startActivity(getActivity(),ExerActivity.class);
                 break;
         }
     }

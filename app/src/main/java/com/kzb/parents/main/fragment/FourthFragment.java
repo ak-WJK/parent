@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kzb.parents.R;
+import com.kzb.parents.VipActivity;
 import com.kzb.parents.base.BaseFragment;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.login.LoginTypeActivity;
@@ -27,7 +28,7 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
     private DialogView dialogView;
 
     private TextView headTitle;
-    private RelativeLayout setLayout,courseLayout,lgLayout,msgLayout;
+    private RelativeLayout setLayout, courseLayout, lgLayout, msgLayout, vipLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
@@ -52,17 +53,20 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
         courseLayout = (RelativeLayout) view.findViewById(R.id.fourth_course_layout);
         lgLayout = (RelativeLayout) view.findViewById(R.id.first_fourth_lgout);
         msgLayout = (RelativeLayout) view.findViewById(R.id.fourth_msg_layout);
+        vipLayout = (RelativeLayout) view.findViewById(R.id.first_vip_lgout);
         setLayout.setOnClickListener(this);
         courseLayout.setOnClickListener(this);
         lgLayout.setOnClickListener(this);
         msgLayout.setOnClickListener(this);
+        vipLayout.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fourth_msg_layout:
-                Toast.makeText(getActivity(),"此功能暂未开通...",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "此功能暂未开通...", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.first_fourth_lgout:
                 IntentUtil.startActivity(getActivity(), LoginTypeActivity.class);
@@ -74,6 +78,9 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
                 break;
             case R.id.fourth_set_view:
                 IntentUtil.startActivity(getActivity(), SetDetailActivity.class);
+                break;
+            case R.id.first_vip_lgout:
+                IntentUtil.startActivity(getActivity(), VipActivity.class);
                 break;
         }
     }

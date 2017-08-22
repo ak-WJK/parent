@@ -18,17 +18,18 @@ import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.kaoshi.adapter.BGQKAdapter;
 import com.kzb.parents.kaoshi.model.KSReportQKResponse;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.view.DialogView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Collections;
+
 import okhttp3.Call;
 
 /**
  * Created by wanghaofei on 17/6/2.
- *
- *
  */
 
 public class BGQKListActivity extends BaseActivity {
@@ -41,6 +42,7 @@ public class BGQKListActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogUtils.e("TAG", "全科报告List");
         setContentView(R.layout.activity_kaoshi_zhangjie_list);
         httpConfig = new HttpConfig();
         dialogView = new DialogView(BGQKListActivity.this);
@@ -72,7 +74,7 @@ public class BGQKListActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-            getZJExam(AddressConfig.QK_REPORT_LIST);
+        getZJExam(AddressConfig.QK_REPORT_LIST);
     }
 
 
@@ -107,6 +109,9 @@ public class BGQKListActivity extends BaseActivity {
                 if (response.errorCode == 0) {
                     if (response.getContent() != null) {
 
+
+
+                        Collections.reverse(response.getContent());
                         bgqkAdapter.setItems(response.getContent());
                     }
                 }

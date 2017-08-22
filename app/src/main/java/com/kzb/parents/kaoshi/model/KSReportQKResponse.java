@@ -28,6 +28,24 @@ public class KSReportQKResponse extends XBaseResponse {
         private String usedtime;
         private String name;
         private String rank;
+        private String ispaper;
+        private String typename;
+
+        public String getIspaper() {
+            return ispaper;
+        }
+
+        public void setIspaper(String ispaper) {
+            this.ispaper = ispaper;
+        }
+
+        public String getTypename() {
+            return typename;
+        }
+
+        public void setTypename(String typename) {
+            this.typename = typename;
+        }
 
         public String getTest_id() {
             return test_id;
@@ -84,5 +102,22 @@ public class KSReportQKResponse extends XBaseResponse {
         public void setRank(String rank) {
             this.rank = rank;
         }
+
+        @Override
+        public String toString() {
+            return "ReportQKModel{" +
+                    "test_id='" + test_id + '\'' +
+                    ", code='" + code + '\'' +
+                    ", score='" + score + '\'' +
+                    ", addtime='" + addtime + '\'' +
+                    ", usedtime='" + usedtime + '\'' +
+                    ", name='" + name + '\'' +
+                    ", rank='" + rank + '\'' +
+                    ", ispaper='" + ispaper + '\'' +
+                    ", typename='" + typename + '\'' +
+                    '}';
+        }
+
+
     }
 }

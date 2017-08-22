@@ -70,7 +70,7 @@ public class ThirdFragment extends BaseFragment implements View.OnClickListener{
         switch (v.getId()){
             case R.id.thir_qianghua_view:
 
-                if(level == 4){
+                if(level == 3){
                     IntentUtil.startActivity(getActivity(), StrengthenActivity.class);
                 }else {
                     Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();

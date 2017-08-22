@@ -1,7 +1,9 @@
 package com.kzb.parents.kaoshi;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,9 +19,10 @@ import com.kzb.parents.util.IntentUtil;
 public class KaoShiActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView titleLeft, titleCenter;
-    private TextView zjieView, qKeView, zBaogao;
+    private TextView qKeView, zBaogao;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,18 +37,16 @@ public class KaoShiActivity extends BaseActivity implements View.OnClickListener
 
         titleLeft = getView(R.id.common_head_left);
         titleCenter = getView(R.id.common_head_center);
-        zjieView = getView(R.id.kaoshi_zhangjie);
+
         qKeView = getView(R.id.kaoshi_quanke);
-        zBaogao = getView(R.id.kaoshi_baogao);
 
         titleLeft.setText("返回");
         titleLeft.setVisibility(View.VISIBLE);
         titleLeft.setOnClickListener(this);
 
         titleCenter.setText("考试");
-        zjieView.setOnClickListener(this);
+
         qKeView.setOnClickListener(this);
-        zBaogao.setOnClickListener(this);
     }
 
     @Override
@@ -61,18 +62,12 @@ public class KaoShiActivity extends BaseActivity implements View.OnClickListener
                 IntentUtil.finish(KaoShiActivity.this);
 
                 break;
-            case R.id.kaoshi_baogao:
-
-                IntentUtil.startActivity(KaoShiActivity.this, KSBaoGaoActivity.class);
-                break;
+//
             case R.id.kaoshi_quanke:
 
                 IntentUtil.startActivity(KaoShiActivity.this, KSQuanKeActivity.class);
                 break;
-            case R.id.kaoshi_zhangjie:
-                IntentUtil.startActivity(KaoShiActivity.this, KSZhangJieActivity.class);
 
-                break;
         }
     }
 }

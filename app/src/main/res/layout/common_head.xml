@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:textSize="16dp"
+        android:textSize="17dp"
         android:drawableLeft="@mipmap/left_back"
         android:gravity="center"
         android:drawablePadding="10dp"

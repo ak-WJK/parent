@@ -185,7 +185,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/first_five_lgout"
+        android:id="@+id/first_vip_lgout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

@@ -1,8 +1,7 @@
-package com.kzb.parents.kaoshi;
+package com.kzb.parents.exer;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.ListView;
@@ -28,27 +27,26 @@ import java.util.List;
 
 import okhttp3.Call;
 
-/**
- * Created by wanghaofei on 17/6/1.
- */
-
-public class QuanKeListActivity extends BaseActivity {
+public class ExerListActivity extends BaseActivity {
 
     private TextView titleLeft, titleCenter;
     private ListView listView;
     ZhangJieFinAdapter zhangJieFinAdapter;
     String mPosition = "0";
 
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kaoshi_zhangjie_list);
+        setContentView(R.layout.activity_exer_list);
+
         httpConfig = new HttpConfig();
-        dialogView = new DialogView(QuanKeListActivity.this);
+        dialogView = new DialogView(ExerListActivity.this);
         mPosition = getIntent().getStringExtra("position");
         initView();
         initData();
+
     }
 
     @Override
@@ -56,20 +54,21 @@ public class QuanKeListActivity extends BaseActivity {
 
         titleLeft = getView(R.id.common_head_left);
         titleCenter = getView(R.id.common_head_center);
-        listView = getView(R.id.zj_exam_list_view);
+        listView = getView(R.id.exer_list_view);
 
-        zhangJieFinAdapter = new ZhangJieFinAdapter(QuanKeListActivity.this, "quanke");
+        zhangJieFinAdapter = new ZhangJieFinAdapter(ExerListActivity.this, "quanke");
+
         listView.setAdapter(zhangJieFinAdapter);
         titleLeft.setText("返回");
         titleLeft.setVisibility(View.VISIBLE);
         titleLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IntentUtil.finish(QuanKeListActivity.this);
+                IntentUtil.finish(ExerListActivity.this);
             }
         });
 
-        titleCenter.setText("全科考试");
+        titleCenter.setText("作业");
 
     }
 
@@ -97,7 +96,7 @@ public class QuanKeListActivity extends BaseActivity {
         try {
             json.put("id", SpSetting.loadLoginInfo().getUid());
             json.put("subject_id", SpSetting.loadLoginInfo().getSubject_id());
-            json.put("ispaper", "2");
+            json.put("ispaper", "6");
             if (mPosition.equals("0")) {
                 json.put("grade_id", SpSetting.loadLoginInfo().getGrade_id());
             }
@@ -125,7 +124,7 @@ public class QuanKeListActivity extends BaseActivity {
 
 
                         List<KSZhangJieResponse.ZhangJieModel> zhangJieModels = response.getContent();
-                        //实现数据的倒序排列
+                       //实现数据的倒序排列
                         Collections.reverse(zhangJieModels);
                         zhangJieFinAdapter.setItems(response.getContent());
                     }

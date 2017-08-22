@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kzb.parents.R;
 import com.kzb.parents.base.BaseFragment;
@@ -69,20 +68,9 @@ public class SecFragment extends BaseFragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sec_dig_view:
-
-                if (level < 3) {
-                    Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 IntentUtil.startActivity(getActivity(), DiagnoseActivity.class);
                 break;
             case R.id.sec_ks_view:
-
-                if (level < 3) {
-                    Toast.makeText(getActivity(), R.string.notice_val, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
                 IntentUtil.startActivity(getActivity(), KSBaoGaoActivity.class);
                 break;
         }

@@ -31,6 +31,15 @@ public class KSZhangJieResponse extends XBaseResponse{
         private String usedtime;
         private String addtime;
         private String score;
+        private String ispaper;
+
+        public String getIspaper() {
+            return ispaper;
+        }
+
+        public void setIspaper(String ispaper) {
+            this.ispaper = ispaper;
+        }
 
         public String getTestnum() {
             return testnum;
@@ -103,6 +112,23 @@ public class KSZhangJieResponse extends XBaseResponse{
         public void setEndtime(String endtime) {
             this.endtime = endtime;
         }
+
+        @Override
+        public String toString() {
+            return "ZhangJieModel{" +
+                    "test_id='" + test_id + '\'' +
+                    ", name='" + name + '\'' +
+                    ", starttime='" + starttime + '\'' +
+                    ", endtime='" + endtime + '\'' +
+                    ", testnum='" + testnum + '\'' +
+                    ", mytimes='" + mytimes + '\'' +
+                    ", usedtime='" + usedtime + '\'' +
+                    ", addtime='" + addtime + '\'' +
+                    ", score='" + score + '\'' +
+                    ", ispaper='" + ispaper + '\'' +
+                    '}';
+        }
     }
+
 
 }

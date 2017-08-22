@@ -1,8 +1,7 @@
-package com.kzb.parents.kaoshi;
+package com.kzb.parents.exer;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.TextView;
@@ -15,24 +14,21 @@ import com.kzb.parents.util.IntentUtil;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by wanghaofei on 17/6/1.
- */
-
-public class KSQuanKeActivity extends BaseActivity implements View.OnClickListener {
+public class ExerActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView titleLeft, titleCenter;
-    private TextView comView, noComView;
+    private TextView exercomView, exernoComView;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kaoshi_quanke);
+        setContentView(R.layout.activity_exer);
         httpConfig = new HttpConfig();
         initView();
         initData();
+
     }
 
     @Override
@@ -40,8 +36,8 @@ public class KSQuanKeActivity extends BaseActivity implements View.OnClickListen
 
         titleLeft = getView(R.id.common_head_left);
         titleCenter = getView(R.id.common_head_center);
-        comView = getView(R.id.kaoshi_quanke_com);
-        noComView = getView(R.id.kaoshi_quanke_no_com);
+        exercomView = getView(R.id.exer_no_com);
+        exernoComView = getView(R.id.exer_com);
 
 
 
@@ -49,9 +45,9 @@ public class KSQuanKeActivity extends BaseActivity implements View.OnClickListen
         titleLeft.setVisibility(View.VISIBLE);
         titleLeft.setOnClickListener(this);
 
-        titleCenter.setText("全科考试");
-        comView.setOnClickListener(this);
-        noComView.setOnClickListener(this);
+        titleCenter.setText("作业");
+        exercomView.setOnClickListener(this);
+        exernoComView.setOnClickListener(this);
     }
 
     @Override
@@ -64,20 +60,22 @@ public class KSQuanKeActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.kaoshi_quanke_no_com:
+            case R.id.exer_no_com:
                 Map<String,String> mapV = new HashMap<>();
                 mapV.put("position","0");
-                IntentUtil.startActivity(KSQuanKeActivity.this, QuanKeListActivity.class,mapV);
+                IntentUtil.startActivity(ExerActivity.this, ExerListActivity.class,mapV);
                 break;
             case R.id.common_head_left:
-                IntentUtil.finish(KSQuanKeActivity.this);
+                IntentUtil.finish(ExerActivity.this);
 
                 break;
-            case R.id.kaoshi_quanke_com:
+            case R.id.exer_com:
                 Map<String,String> map1 = new HashMap<>();
                 map1.put("position","1");
-                IntentUtil.startActivity(KSQuanKeActivity.this, QuanKeListActivity.class,map1);
+                IntentUtil.startActivity(ExerActivity.this, ExerListActivity.class,map1);
                 break;
         }
     }
+
+
 }

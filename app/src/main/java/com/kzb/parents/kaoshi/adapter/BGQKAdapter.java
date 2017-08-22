@@ -22,6 +22,10 @@ import java.util.Map;
  */
 
 public class BGQKAdapter extends CommonAdapter<KSReportQKResponse.ReportQKModel> {
+
+    HashMap<Integer, View> map = new HashMap<>();
+
+
     public BGQKAdapter(Context context) {
         super(context);
     }
@@ -29,6 +33,8 @@ public class BGQKAdapter extends CommonAdapter<KSReportQKResponse.ReportQKModel>
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+
         ViewHolder viewHolder = ViewHolder.get(mContext, convertView, parent, R.layout.item_bg_qk_kaoshi, position);
         final KSReportQKResponse.ReportQKModel questionModel = mDatas.get(position);
 
@@ -42,20 +48,31 @@ public class BGQKAdapter extends CommonAdapter<KSReportQKResponse.ReportQKModel>
 
         View view = viewHolder.getConvertView();
 
+        LogUtils.e("TAG", "ispaper ===  " + questionModel.getTypename());
 
-        findView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                LogUtils.e("TAG", "进入诊断报告");
 
-                Map<String,String> mapVal = new HashMap<String, String>();
-                mapVal.put("test_id",questionModel.getTest_id());
-                mapVal.put("score",questionModel.getScore());
-                mapVal.put("from","kaoshi");
-                IntentUtil.startActivity((BaseActivity)mContext,DiagNoseDetailActivity.class,mapVal);
-            }
-        });
+//        if (typename.contains("月考")) {
+
+            findView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    LogUtils.e("TAG", "进入诊断报告");
+//                    LogUtils.e("TAG ==== ", typename);
+
+                    Map<String, String> mapVal = new HashMap<String, String>();
+                    mapVal.put("test_id", questionModel.getTest_id());
+                    mapVal.put("score", questionModel.getScore());
+                    mapVal.put("from", "kaoshi");
+                    IntentUtil.startActivity((BaseActivity) mContext, DiagNoseDetailActivity.class, mapVal);
+                }
+            });
+
+//        } else {
+//            Toast.makeText(Application.mContext, "不合法的点击事件", Toast.LENGTH_SHORT).show();
+//        }
+
 
         return view;
     }
