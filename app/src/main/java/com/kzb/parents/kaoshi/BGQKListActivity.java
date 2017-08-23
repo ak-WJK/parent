@@ -7,6 +7,7 @@ import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kzb.baselibrary.network.callback.GenericsCallback;
 import com.kzb.parents.JsonGenericsSerializator;
@@ -69,12 +70,28 @@ public class BGQKListActivity extends BaseActivity {
         });
 
         titleCenter.setText("全科考试报告");
-
     }
 
     @Override
     protected void initData() {
         getZJExam(AddressConfig.QK_REPORT_LIST);
+
+        bgqkAdapter.setOnBtnClickListener(new BGQKAdapter.onBtnClickListener() {
+            @Override
+            public void onBtnClick(View view, String typeName) {
+                if(typeName.equals("月考")) {
+                    Toast.makeText(BGQKListActivity.this, "Ok", Toast.LENGTH_SHORT).show();
+
+                }else{
+                Toast.makeText(BGQKListActivity.this, "No", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+
+
     }
 
 
@@ -109,15 +126,13 @@ public class BGQKListActivity extends BaseActivity {
                 if (response.errorCode == 0) {
                     if (response.getContent() != null) {
 
-
-
                         Collections.reverse(response.getContent());
                         bgqkAdapter.setItems(response.getContent());
+
                     }
                 }
             }
         });
-
 
     }
 

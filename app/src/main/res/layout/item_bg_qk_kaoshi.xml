@@ -40,6 +40,18 @@
             android:textColor="@color/_333333"
             android:textSize="15dp" />
 
+        <TextView
+            android:id="@+id/item_bg_qk_typename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="left|center"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/item_bg_qk_title"
+            android:gravity="left"
+            android:textColor="@color/_333333"
+            android:textSize="15dp" />
+
 
         <Button
             android:id="@+id/item_bg_qk_find"
