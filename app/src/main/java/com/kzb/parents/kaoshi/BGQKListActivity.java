@@ -15,6 +15,8 @@ import com.kzb.parents.R;
 import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.config.AddressConfig;
 import com.kzb.parents.config.SpSetting;
+import com.kzb.parents.diagnose.DiagNoseDetailActivity;
+import com.kzb.parents.diagnose.WTDiagNoseDetailActivity;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.kaoshi.adapter.BGQKAdapter;
 import com.kzb.parents.kaoshi.model.KSReportQKResponse;
@@ -26,11 +28,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import okhttp3.Call;
 
 /**
  * Created by wanghaofei on 17/6/2.
+ * 报告List页面
  */
 
 public class BGQKListActivity extends BaseActivity {
@@ -78,18 +84,34 @@ public class BGQKListActivity extends BaseActivity {
 
         bgqkAdapter.setOnBtnClickListener(new BGQKAdapter.onBtnClickListener() {
             @Override
-            public void onBtnClick(View view, String typeName) {
-                if(typeName.equals("月考")) {
-                    Toast.makeText(BGQKListActivity.this, "Ok", Toast.LENGTH_SHORT).show();
+            public void onBtnClick(View view, String typeName, KSReportQKResponse.ReportQKModel model) {
 
-                }else{
-                Toast.makeText(BGQKListActivity.this, "No", Toast.LENGTH_SHORT).show();
+                String ispaper = model.getIspaper();
+                int ispaper1 = Integer.parseInt(ispaper);
+
+                LogUtils.e("TAG", "ispaper  == " + ispaper);
+
+                if (ispaper1 != 5) {
+                    Toast.makeText(BGQKListActivity.this, ispaper, Toast.LENGTH_SHORT).show();
+                    Map<String, String> mapVal = new HashMap<String, String>();
+                    mapVal.put("test_id", model.getTest_id());
+                    mapVal.put("score", model.getScore());
+                    mapVal.put("from", "kaoshi");
+                    IntentUtil.startActivity(BGQKListActivity.this, DiagNoseDetailActivity.class, mapVal);
+                } else {
+
+                    Toast.makeText(BGQKListActivity.this, ispaper, Toast.LENGTH_SHORT).show();
+
+                    Map<String, String> mapVal = new HashMap<String, String>();
+                    mapVal.put("test_id", model.getTest_id());
+                    mapVal.put("score", model.getScore());
+                    mapVal.put("from", "kaoshi");
+                    IntentUtil.startActivity(BGQKListActivity.this, WTDiagNoseDetailActivity.class, mapVal);
+
+
                 }
-
             }
         });
-
-
 
 
     }
@@ -125,6 +147,8 @@ public class BGQKListActivity extends BaseActivity {
                 }
                 if (response.errorCode == 0) {
                     if (response.getContent() != null) {
+
+                        List<KSReportQKResponse.ReportQKModel> content = response.getContent();
 
                         Collections.reverse(response.getContent());
                         bgqkAdapter.setItems(response.getContent());

@@ -185,6 +185,7 @@
 
         <activity android:name=".exer.ExerListActivity" />
         <activity android:name=".exer.ExerActivity" />
+        <activity android:name=".diagnose.WTDiagNoseDetailActivity"></activity>
     </application>
 
 </manifest>

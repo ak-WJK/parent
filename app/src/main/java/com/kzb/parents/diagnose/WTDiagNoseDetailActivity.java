@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -56,12 +55,7 @@ import java.util.Map;
 
 import okhttp3.Call;
 
-/**
- * Created by wanghaofei on 17/3/18.
- * 诊断详情页面
- */
-
-public class DiagNoseDetailActivity extends BaseActivity implements View.OnClickListener {
+public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView headTitle, headLeft, headRight;
     //知识点ID
@@ -118,9 +112,12 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dgno_detail);
+        setContentView(R.layout.activity_wtdiag_nose_detail);
+
+        Toast.makeText(WTDiagNoseDetailActivity.this, " 无题报告页面 ", Toast.LENGTH_SHORT).show();
+        LogUtils.e("TAG", "无题报告页面 ");
 
         //会员等级
         String good_id = SpSetting.loadLoginInfo().getGood_id();
@@ -219,7 +216,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
             @Override
             public void onClick(View v) {
                 String url = "http://s.kaozhibao.com/index.php/Home/Test/Generalreport_mobile/tid/" + testId + ".html";
-                ShareUtil.showShare(DiagNoseDetailActivity.this, null, false, url);
+                ShareUtil.showShare(WTDiagNoseDetailActivity.this, null, false, url);
             }
         });
 
@@ -254,7 +251,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
         headLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IntentUtil.finish(DiagNoseDetailActivity.this);
+                IntentUtil.finish(WTDiagNoseDetailActivity.this);
             }
         });
     }
@@ -270,8 +267,8 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
      */
     public void getQuestion() {
         if (TextUtils.isEmpty(testId)) {
-            Toast.makeText(DiagNoseDetailActivity.this, "testId为空", Toast.LENGTH_SHORT).show();
-            IntentUtil.finish(DiagNoseDetailActivity.this);
+            Toast.makeText(WTDiagNoseDetailActivity.this, "testId为空", Toast.LENGTH_SHORT).show();
+            IntentUtil.finish(WTDiagNoseDetailActivity.this);
             return;
         }
 //        dialogView.handleDialog(true);
@@ -606,7 +603,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                                     }
 
                                     LogUtils.e("TAG", "如果添加点击,修改此处");
-                                    IntentUtil.startActivity(DiagNoseDetailActivity.this, ReportFinishActivity.class, mapVal);
+                                    IntentUtil.startActivity(WTDiagNoseDetailActivity.this, ReportFinishActivity.class, mapVal);
                                 }
                             });
 
@@ -672,23 +669,24 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                         chatSign = 1;
 
                         Drawable drawable = getResources().getDrawable(R.mipmap.arrow_up);
-                        /// 这一步必须要做,否则不会显示.
+/// 这一步必须要做,否则不会显示.
                         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                         chatSignView.setCompoundDrawables(null, null, drawable, null);
 
                     } else {
-
                         chatLayout.setVisibility(View.GONE);
                         chatSign = 0;
                         Drawable drawable = getResources().getDrawable(R.mipmap.arrow_down);
-                        /// 这一步必须要做,否则不会显示.
+/// 这一步必须要做,否则不会显示.
                         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                         chatSignView.setCompoundDrawables(null, null, drawable, null);
                     }
 
+
                 } else {
-                    Toast.makeText(DiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WTDiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
                 }
+
 
                 break;
             case R.id.kg_sign_view:
@@ -700,7 +698,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                         kgSign = 1;
 
                         Drawable drawable = getResources().getDrawable(R.mipmap.arrow_up);
-                        /// 这一步必须要做,否则不会显示.
+/// 这一步必须要做,否则不会显示.
                         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                         kgTxtView.setCompoundDrawables(null, null, drawable, null);
 
@@ -708,14 +706,14 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                         kgView.setVisibility(View.GONE);
                         kgSign = 0;
                         Drawable drawable = getResources().getDrawable(R.mipmap.arrow_down);
-                        /// 这一步必须要做,否则不会显示.
+/// 这一步必须要做,否则不会显示.
                         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                         kgTxtView.setCompoundDrawables(null, null, drawable, null);
                     }
 
 
                 } else {
-                    Toast.makeText(DiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WTDiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -744,7 +742,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 
 
                 } else {
-                    Toast.makeText(DiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WTDiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -759,9 +757,9 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                 //IntentUtil.startActivity(DiagNoseDetailActivity.this, JiXieActivity.class, mapVal1);
 
                 if (level >= 2) {
-                    IntentUtil.startActivity(DiagNoseDetailActivity.this, JiXieNewActivity.class, mapVal1);
+                    IntentUtil.startActivity(WTDiagNoseDetailActivity.this, JiXieNewActivity.class, mapVal1);
                 } else {
-                    Toast.makeText(DiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WTDiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
 
                 }
 

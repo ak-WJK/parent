@@ -61,11 +61,13 @@ public class BGQKAdapter extends CommonAdapter<KSReportQKResponse.ReportQKModel>
                 if (listener != null) {
                     String typename = questionModel.getTypename();
 
+
                     Integer position = (Integer) v.getTag();
                     int pos = position;
                     //根据绑定的位置得到类型
+                    KSReportQKResponse.ReportQKModel model = mDatas.get(pos);
                     String typename1 = mDatas.get(pos).getTypename();
-                    listener.onBtnClick(v, typename1);
+                    listener.onBtnClick(v, typename1 , model);
                 }
             }
         });
@@ -92,7 +94,7 @@ public class BGQKAdapter extends CommonAdapter<KSReportQKResponse.ReportQKModel>
 
 
     public interface onBtnClickListener {
-        void onBtnClick(View view, String typeName);
+        void onBtnClick(View view, String typeName ,KSReportQKResponse.ReportQKModel model);
     }
 
     public void setOnBtnClickListener(onBtnClickListener listener) {
