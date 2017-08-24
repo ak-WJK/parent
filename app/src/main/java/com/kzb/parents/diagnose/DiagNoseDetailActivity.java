@@ -306,9 +306,9 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                             wrong_count = content.getWrong_count();
                             right_count = content.getRight_count();
                             //得到题目简单度的个数
-                            one = content.getOne();
-                            two = content.getTwo();
-                            thr = content.getThr();
+                            one = content.getqOne();
+                            two = content.getqTwo();
+                            thr = content.getqThr();
 
                             //得到考试分数
                             String score = content.getScore();

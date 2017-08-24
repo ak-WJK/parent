@@ -44,9 +44,9 @@ public class QuestionThreeFragment extends BaseFragment {
         QuestionThreeFragment fragment = new QuestionThreeFragment();
         Bundle bundle = new Bundle();
         bundle.putString("testId", testId);
-        bundle.putString("one", one);
-        bundle.putString("two", two);
-        bundle.putString("thr", thr);
+        bundle.putString("qone", one);
+        bundle.putString("qtwo", two);
+        bundle.putString("qthr", thr);
         fragment.setArguments(bundle);
 
         return fragment;
@@ -57,9 +57,9 @@ public class QuestionThreeFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         convertView = inflater.from(getContext()).inflate(R.layout.fragment_report_question_layout, null);
         testId = getArguments().getString("testId");
-        one = getArguments().getString("one");
-        two = getArguments().getString("two");
-        thr = getArguments().getString("thr");
+        one = getArguments().getString("qone");
+        two = getArguments().getString("qtwo");
+        thr = getArguments().getString("qthr");
 
         LogUtils.e("TAG", "one == " + one +"  two == " + two + " thr == "+ thr);
 
@@ -134,7 +134,7 @@ public class QuestionThreeFragment extends BaseFragment {
         if (two1 != 0 && one1 == 0 && thr1 == 0) {
             listVal.add(questionModel1);
         }
-        if (thr1 != 0 && one1 == 0 && two1 != 0) {
+        if (thr1 != 0 && one1 == 0 && two1 == 0) {
             listVal.add(questionModel2);
 
         }
