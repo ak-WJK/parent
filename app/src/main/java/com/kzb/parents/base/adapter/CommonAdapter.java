@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by wanghaofei on 16/10/4.
+ *
  */
 
 public abstract class CommonAdapter<T> extends BaseAdapter {

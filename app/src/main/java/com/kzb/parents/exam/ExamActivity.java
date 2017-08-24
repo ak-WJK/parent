@@ -84,7 +84,7 @@ public class ExamActivity extends BaseActivity {
 
     ExamQuestion mResponse;
 
-    TextView titleLeft, titleCenter,titleRight;
+    TextView titleLeft, titleCenter, titleRight;
 
     private static final int HANDLER_TIME_CLICK = 101;
     private static final int HANDLER_TIME_OVER = 102;
@@ -436,7 +436,8 @@ public class ExamActivity extends BaseActivity {
                             return;
                         }
 //                        final Intent intent = new Intent(ExamActivity.this, ReportTwoActivity.class);
-                        final Intent intent = new Intent(ExamActivity.this, DiagNoseDetailActivity.class);
+                         final Intent intent = new Intent(ExamActivity.this, DiagNoseDetailActivity.class);
+
                         if (TextUtils.isEmpty(mTestId)) {
                             intent.putExtra("from", "diagnose");
                         }

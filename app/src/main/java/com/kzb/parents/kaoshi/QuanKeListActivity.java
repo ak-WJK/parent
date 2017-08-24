@@ -136,5 +136,10 @@ public class QuanKeListActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
 
 }

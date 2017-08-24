@@ -17,6 +17,7 @@ import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.kaoshi.adapter.ZhangJieFinAdapter;
 import com.kzb.parents.kaoshi.model.KSZhangJieResponse;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.view.DialogView;
 
 import org.json.JSONException;
@@ -124,16 +125,19 @@ public class ExerListActivity extends BaseActivity {
 
 
                         List<KSZhangJieResponse.ZhangJieModel> zhangJieModels = response.getContent();
-                       //实现数据的倒序排列
+                        //实现数据的倒序排列
                         Collections.reverse(zhangJieModels);
+                        LogUtils.e("TAG", "zhangjieModles == " + zhangJieModels.toString());
                         zhangJieFinAdapter.setItems(response.getContent());
                     }
                 }
             }
         });
-
-
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
 }

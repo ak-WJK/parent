@@ -183,9 +183,10 @@
         <!-- android:screenOrientation="portrait" -->
         <!-- android:theme="@android:style/Theme.Translucent.NoTitleBar" /> -->
 
-        <activity android:name=".exer.ExerListActivity" />
+        <activity android:name=".exer.ExerListActivity"/>
         <activity android:name=".exer.ExerActivity" />
-        <activity android:name=".diagnose.WTDiagNoseDetailActivity"></activity>
+        <activity android:name=".diagnose.WTDiagNoseDetailActivity" />
+        <activity android:name=".diagnose.WTJieXiNewActivity" />
     </application>
 
 </manifest>

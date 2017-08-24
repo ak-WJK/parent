@@ -7,7 +7,6 @@ import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kzb.baselibrary.network.callback.GenericsCallback;
 import com.kzb.parents.JsonGenericsSerializator;
@@ -92,7 +91,9 @@ public class BGQKListActivity extends BaseActivity {
                 LogUtils.e("TAG", "ispaper  == " + ispaper);
 
                 if (ispaper1 != 5) {
-                    Toast.makeText(BGQKListActivity.this, ispaper, Toast.LENGTH_SHORT).show();
+
+//                    Toast.makeText(BGQKListActivity.this, ispaper, Toast.LENGTH_SHORT).show();
+
                     Map<String, String> mapVal = new HashMap<String, String>();
                     mapVal.put("test_id", model.getTest_id());
                     mapVal.put("score", model.getScore());
@@ -100,7 +101,7 @@ public class BGQKListActivity extends BaseActivity {
                     IntentUtil.startActivity(BGQKListActivity.this, DiagNoseDetailActivity.class, mapVal);
                 } else {
 
-                    Toast.makeText(BGQKListActivity.this, ispaper, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(BGQKListActivity.this, ispaper, Toast.LENGTH_SHORT).show();
 
                     Map<String, String> mapVal = new HashMap<String, String>();
                     mapVal.put("test_id", model.getTest_id());

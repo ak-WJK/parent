@@ -96,7 +96,6 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
     private int kgSign = 0;//关闭，1打开
     private int qusSign = 0;//关闭，1打开
 
-
     View kgView, qusView;
     TextView kgTxtView, qusTxtView;
     TextView scoreView;

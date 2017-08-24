@@ -60,6 +60,9 @@ public class QuestionThreeFragment extends BaseFragment {
         one = getArguments().getString("one");
         two = getArguments().getString("two");
         thr = getArguments().getString("thr");
+
+        LogUtils.e("TAG", "one == " + one +"  two == " + two + " thr == "+ thr);
+
         if (one != null && two != null && thr != null) {
 
             one1 = Integer.parseInt(one);

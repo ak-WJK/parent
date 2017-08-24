@@ -23,12 +23,14 @@ public class ZhangJieFinAdapter extends CommonAdapter<KSZhangJieResponse.ZhangJi
 
     private static final String ISPAPER = "ispaper";
 
+    private Context context;
     private String mType;
 
     private int type;//0表示未完成，1完成
 
     public ZhangJieFinAdapter(Context context, String mType) {
         super(context);
+        this.context = context;
         this.mType = mType;
     }
 
@@ -60,8 +62,8 @@ public class ZhangJieFinAdapter extends CommonAdapter<KSZhangJieResponse.ZhangJi
                     Intent intent = new Intent(mContext, DiagNoseDetailActivity.class);
                     intent.putExtra("test_id", questionModel.getTest_id());
                     intent.putExtra("from", "kaoshi");
-
                     IntentUtil.startActivity((Activity) mContext, intent);
+
                 } else {
                     Intent intent = new Intent(mContext, ExamActivity.class);
                     intent.putExtra("from", mType);
@@ -69,6 +71,7 @@ public class ZhangJieFinAdapter extends CommonAdapter<KSZhangJieResponse.ZhangJi
                     intent.putExtra("type", "jiaoshi");
                     intent.putExtra("zhangjieType", "1");
                     IntentUtil.startActivity((Activity) mContext, intent);
+
                 }
 
 

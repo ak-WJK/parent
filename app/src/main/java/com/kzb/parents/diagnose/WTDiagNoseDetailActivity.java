@@ -116,7 +116,6 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wtdiag_nose_detail);
 
-        Toast.makeText(WTDiagNoseDetailActivity.this, " 无题报告页面 ", Toast.LENGTH_SHORT).show();
         LogUtils.e("TAG", "无题报告页面 ");
 
         //会员等级
@@ -757,7 +756,7 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
                 //IntentUtil.startActivity(DiagNoseDetailActivity.this, JiXieActivity.class, mapVal1);
 
                 if (level >= 2) {
-                    IntentUtil.startActivity(WTDiagNoseDetailActivity.this, JiXieNewActivity.class, mapVal1);
+                    IntentUtil.startActivity(WTDiagNoseDetailActivity.this, WTJieXiNewActivity.class, mapVal1);
                 } else {
                     Toast.makeText(WTDiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
 
