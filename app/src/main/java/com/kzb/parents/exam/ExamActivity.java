@@ -436,7 +436,7 @@ public class ExamActivity extends BaseActivity {
                             return;
                         }
 //                        final Intent intent = new Intent(ExamActivity.this, ReportTwoActivity.class);
-                         final Intent intent = new Intent(ExamActivity.this, DiagNoseDetailActivity.class);
+                        final Intent intent = new Intent(ExamActivity.this, DiagNoseDetailActivity.class);
 
                         if (TextUtils.isEmpty(mTestId)) {
                             intent.putExtra("from", "diagnose");

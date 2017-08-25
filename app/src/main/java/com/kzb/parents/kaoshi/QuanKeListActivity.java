@@ -1,9 +1,14 @@
 package com.kzb.parents.kaoshi;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,6 +23,7 @@ import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.kaoshi.adapter.ZhangJieFinAdapter;
 import com.kzb.parents.kaoshi.model.KSZhangJieResponse;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.view.DialogView;
 
 import org.json.JSONException;
@@ -39,6 +45,8 @@ public class QuanKeListActivity extends BaseActivity {
     ZhangJieFinAdapter zhangJieFinAdapter;
     String mPosition = "0";
 
+    private boolean paush = true;
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,7 +57,38 @@ public class QuanKeListActivity extends BaseActivity {
         mPosition = getIntent().getStringExtra("position");
         initView();
         initData();
+
+
     }
+
+
+    /**
+     * 监听是否点击了home键将客户端推到后台
+     */
+    private BroadcastReceiver mHomeKeyEventReceiver = new BroadcastReceiver() {
+        String SYSTEM_REASON = "reason"; //固定字段
+        String SYSTEM_HOME_KEY = "homekey";//"reason"得到value为"homekey"
+        String SYSTEM_HOME_KEY_LONG = "recentapps";
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+
+            if (action.equals(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
+
+                String reason = intent.getStringExtra(SYSTEM_REASON);
+
+                if (TextUtils.equals(reason, SYSTEM_HOME_KEY)) {
+                    //表示按了home键,程序到了后台
+
+                    paush = false;
+                } else if (TextUtils.equals(reason, SYSTEM_HOME_KEY_LONG)) {
+                    //表示长按home键,显示最近使用的程序列表
+                }
+            }
+        }
+    };
+
 
     @Override
     protected void initView() {
@@ -132,14 +171,31 @@ public class QuanKeListActivity extends BaseActivity {
                 }
             }
         });
+    }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //注册广播
+        registerReceiver(mHomeKeyEventReceiver, new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+
+        paush = true;
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        finish();
+
+        LogUtils.e("TAG", "paush == " + paush);
+
+        if (paush) {
+            if (mPosition.equals("0")) {
+                finish();
+            }
+        }
+        unregisterReceiver(mHomeKeyEventReceiver);
     }
+
 
 }

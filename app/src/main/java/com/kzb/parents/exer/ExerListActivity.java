@@ -1,8 +1,13 @@
 package com.kzb.parents.exer;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,7 +39,7 @@ public class ExerListActivity extends BaseActivity {
     private ListView listView;
     ZhangJieFinAdapter zhangJieFinAdapter;
     String mPosition = "0";
-
+    private boolean paush = true;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -123,7 +128,6 @@ public class ExerListActivity extends BaseActivity {
                 if (response.errorCode == 0) {
                     if (response.getContent() != null) {
 
-
                         List<KSZhangJieResponse.ZhangJieModel> zhangJieModels = response.getContent();
                         //实现数据的倒序排列
                         Collections.reverse(zhangJieModels);
@@ -136,8 +140,48 @@ public class ExerListActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(mHomeKeyListener, new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+        paush = true;
+
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
-        finish();
+        if (paush) {
+            if (mPosition.equals("0")) {
+                finish();
+            }
+        }
+
+        unregisterReceiver(mHomeKeyListener);
+
     }
+
+    BroadcastReceiver mHomeKeyListener = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String HOME_REASON = "reason";
+            String HOME_KEY = "homekey";
+            String HOME_LONG = "recentapps";
+
+            String action = intent.getAction();
+            if (action.equals(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
+                String reason = intent.getStringExtra(HOME_REASON);
+                if (TextUtils.equals(reason, HOME_KEY)) {
+                    paush = false;
+                } else {
+
+                }
+
+            }
+
+
+        }
+    };
+
+
 }
