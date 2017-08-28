@@ -22,7 +22,7 @@ import java.util.List;
  * Created by wanghaofei on 17/3/28.
  */
 
-public class QuesAdapter  extends CommonAdapter<ExplainContent> {
+public class QuesAdapter extends CommonAdapter<ExplainContent> {
 
     private int typeVal;//诊断报告，跳转过来的需要0为默认值，红色，1为绿色
 
@@ -40,7 +40,7 @@ public class QuesAdapter  extends CommonAdapter<ExplainContent> {
 
     @Override
     protected void convert(final ViewHolder holder, final ExplainContent o) {
-        holder.setText(R.id.item_ques_current, (1 + holder.getPosition()) + "/"+getCount());
+        holder.setText(R.id.item_ques_current, (1 + holder.getPosition()) + "/" + getCount());
         ((QuesWebViewFive) holder.getView(R.id.item_ques_ques)).loadData(o.getQuestion());
 
         LinearLayout mAnswer = holder.getView(R.id.item_ques_ans_layout);
@@ -52,16 +52,16 @@ public class QuesAdapter  extends CommonAdapter<ExplainContent> {
                 final Answer answer = o.getAnswers().get(i);
 
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                lp.leftMargin = DensityUtil.dip2px(mContext,5);
-                lp.topMargin = DensityUtil.dip2px(mContext,8);
+                lp.leftMargin = DensityUtil.dip2px(mContext, 5);
+                lp.topMargin = DensityUtil.dip2px(mContext, 8);
                 LinearLayout answerL = new LinearLayout(mContext);
                 answerL.setGravity(Gravity.CENTER_VERTICAL);
                 answerL.setHorizontalGravity(LinearLayout.HORIZONTAL);
                 answerL.setLayoutParams(lp);
 
-                lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext,25),DensityUtil.dip2px(mContext,25));
-                lp.leftMargin = DensityUtil.dip2px(mContext,5);
-                lp.rightMargin = DensityUtil.dip2px(mContext,10);
+                lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
+                lp.leftMargin = DensityUtil.dip2px(mContext, 5);
+                lp.rightMargin = DensityUtil.dip2px(mContext, 10);
                 TextView tv = new TextView(mContext);
                 tv.setBackgroundResource(R.drawable.answer_btn_gray);
                 tv.setLayoutParams(lp);
@@ -75,7 +75,7 @@ public class QuesAdapter  extends CommonAdapter<ExplainContent> {
 
 
                 lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                lp.topMargin = DensityUtil.dip2px(mContext,4);
+                lp.topMargin = DensityUtil.dip2px(mContext, 4);
                 QuesTextView an = new QuesTextView(mContext);
                 an.setLayoutParams(lp);
                 an.setTextColor(Color.parseColor("#222222"));
@@ -98,12 +98,12 @@ public class QuesAdapter  extends CommonAdapter<ExplainContent> {
                 for (int i = 0; i < o.getKnowledges().size(); i++) {
                     final int fI = i;
 
-                    TextView knowlegeView  = (TextView)holder.getView(R.id.item_ques_knowadge_view);
+                    TextView knowlegeView = (TextView) holder.getView(R.id.item_ques_knowadge_view);
                     knowlegeView.setText(o.getKnowledges().get(fI).getKpoint());
 
                     if (!TextUtils.isEmpty(o.getKnowledges().get(fI).getKid())) {
 
-                        TextView jiexi  = (TextView)holder.getView(R.id.item_ques_ans_jiexi_view);
+                        TextView jiexi = (TextView) holder.getView(R.id.item_ques_ans_jiexi_view);
 
                         jiexi.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -120,34 +120,38 @@ public class QuesAdapter  extends CommonAdapter<ExplainContent> {
                                             linearLayout.removeAllViews();
                                             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
                                             for (String my : myAns) {
-                                                for (int i = 0; i < o.getAnswers().size(); i++) {
-                                                    Answer answer = o.getAnswers().get(i);
-                                                    if (my.equals(answer.getAnswer_id())) {
-                                                        TextView textView = new TextView(mContext);
-                                                        textView.setBackgroundResource(R.drawable.answer_btn_red);
-                                                        textView.setTextColor(Color.WHITE);
-                                                        textView.setGravity(Gravity.CENTER);
-                                                        textView.setTextSize(12);
-                                                        lp.rightMargin = DensityUtil.dip2px(mContext, 12);
-                                                        textView.setLayoutParams(lp);
-                                                        switch (i) {
-                                                            case 0:
-                                                                textView.setText("A");
-                                                                break;
-                                                            case 1:
-                                                                textView.setText("B");
-                                                                break;
-                                                            case 2:
-                                                                textView.setText("C");
-                                                                break;
-                                                            case 3:
-                                                                textView.setText("D");
-                                                                break;
-                                                            case 4:
-                                                                textView.setText("E");
-                                                                break;
+
+                                                if (o.getAnswers() != null) {
+
+                                                    for (int i = 0; i < o.getAnswers().size(); i++) {
+                                                        Answer answer = o.getAnswers().get(i);
+                                                        if (my.equals(answer.getAnswer_id())) {
+                                                            TextView textView = new TextView(mContext);
+                                                            textView.setBackgroundResource(R.drawable.answer_btn_red);
+                                                            textView.setTextColor(Color.WHITE);
+                                                            textView.setGravity(Gravity.CENTER);
+                                                            textView.setTextSize(12);
+                                                            lp.rightMargin = DensityUtil.dip2px(mContext, 12);
+                                                            textView.setLayoutParams(lp);
+                                                            switch (i) {
+                                                                case 0:
+                                                                    textView.setText("A");
+                                                                    break;
+                                                                case 1:
+                                                                    textView.setText("B");
+                                                                    break;
+                                                                case 2:
+                                                                    textView.setText("C");
+                                                                    break;
+                                                                case 3:
+                                                                    textView.setText("D");
+                                                                    break;
+                                                                case 4:
+                                                                    textView.setText("E");
+                                                                    break;
+                                                            }
+                                                            linearLayout.addView(textView);
                                                         }
-                                                        linearLayout.addView(textView);
                                                     }
                                                 }
                                             }
@@ -158,48 +162,51 @@ public class QuesAdapter  extends CommonAdapter<ExplainContent> {
                                     LinearLayout linearLayout = holder.getView(R.id.item_ques_answer);
                                     linearLayout.removeAllViews();
                                     LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
-                                    for (int i = 0; i < o.getAnswers().size(); i++) {
-                                        Answer answer = o.getAnswers().get(i);
-                                        if (answer.istrue.equals("1")) {
-                                            TextView textView = new TextView(mContext);
-                                            textView.setBackgroundResource(R.drawable.answer_btn_green);
-                                            textView.setTextColor(Color.WHITE);
-                                            textView.setGravity(Gravity.CENTER);
-                                            textView.setTextSize(12);
-                                            lp.rightMargin = DensityUtil.dip2px(mContext, 12);
-                                            textView.setLayoutParams(lp);
-                                            switch (i) {
-                                                case 0:
-                                                    textView.setText("A");
-                                                    break;
-                                                case 1:
-                                                    textView.setText("B");
-                                                    break;
-                                                case 2:
-                                                    textView.setText("C");
-                                                    break;
-                                                case 3:
-                                                    textView.setText("D");
-                                                    break;
-                                                case 4:
-                                                    textView.setText("E");
-                                                    break;
+
+                                    if(null != o.getAnswers()) {
+
+                                        for (int i = 0; i < o.getAnswers().size(); i++) {
+                                            Answer answer = o.getAnswers().get(i);
+                                            if (answer.istrue.equals("1")) {
+                                                TextView textView = new TextView(mContext);
+                                                textView.setBackgroundResource(R.drawable.answer_btn_green);
+                                                textView.setTextColor(Color.WHITE);
+                                                textView.setGravity(Gravity.CENTER);
+                                                textView.setTextSize(12);
+                                                lp.rightMargin = DensityUtil.dip2px(mContext, 12);
+                                                textView.setLayoutParams(lp);
+                                                switch (i) {
+                                                    case 0:
+                                                        textView.setText("A");
+                                                        break;
+                                                    case 1:
+                                                        textView.setText("B");
+                                                        break;
+                                                    case 2:
+                                                        textView.setText("C");
+                                                        break;
+                                                    case 3:
+                                                        textView.setText("D");
+                                                        break;
+                                                    case 4:
+                                                        textView.setText("E");
+                                                        break;
+                                                }
+                                                linearLayout.addView(textView);
                                             }
-                                            linearLayout.addView(textView);
                                         }
                                     }
-
 //                                    ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0);
                                     if (!TextUtils.isEmpty(o.getExplain()) && !o.getExplain().contains("暂无解析")) {
-                                        holder.setVisibility(R.id.item_ques_jiexi,true);
-                                        holder.setVisibility(R.id.item_ques_no_jiexi,false);
+                                        holder.setVisibility(R.id.item_ques_jiexi, true);
+                                        holder.setVisibility(R.id.item_ques_no_jiexi, false);
                                         ((QuesWebViewFive) holder.getView(R.id.item_ques_jiexi)).loadData(o.getExplain());
 //                                        Log.e("xue","o.getExplain()="+o.getExplain());
 //                                        ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0).setNetText(o.getExplain());
                                     } else {
 //                                        ((QuesWebViewTwo) holder.getView(R.id.item_ques_jiexi)).loadData("没有解析。");
-                                        holder.setVisibility(R.id.item_ques_no_jiexi,true);
-                                        holder.setVisibility(R.id.item_ques_jiexi,false);
+                                        holder.setVisibility(R.id.item_ques_no_jiexi, true);
+                                        holder.setVisibility(R.id.item_ques_jiexi, false);
 //                                        ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0).setNetText("没有解析。");
                                     }
 
@@ -233,7 +240,7 @@ public class QuesAdapter  extends CommonAdapter<ExplainContent> {
 
                 lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-                TextView jiexi  = (TextView)holder.getView(R.id.item_ques_ans_jiexi_view);
+                TextView jiexi = (TextView) holder.getView(R.id.item_ques_ans_jiexi_view);
 
                 jiexi.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -321,13 +328,13 @@ public class QuesAdapter  extends CommonAdapter<ExplainContent> {
 //                            ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedExpandHeight(true).setExpandLevel(0).setNeedFilter(true);
                             if (!TextUtils.isEmpty(o.getExplain()) && !o.getExplain().contains("暂无解析")) {
                                 ((QuesWebViewFive) holder.getView(R.id.item_ques_jiexi)).loadData(o.getExplain());
-                                holder.setVisibility(R.id.item_ques_no_jiexi,false);
-                                holder.setVisibility(R.id.item_ques_jiexi,true);
+                                holder.setVisibility(R.id.item_ques_no_jiexi, false);
+                                holder.setVisibility(R.id.item_ques_jiexi, true);
 //                                ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0).setNetText(o.getExplain());
                             } else {
 //                                ((QuesWebViewTwo) holder.getView(R.id.item_ques_jiexi)).loadData("没有解析。");
-                                holder.setVisibility(R.id.item_ques_no_jiexi,true);
-                                holder.setVisibility(R.id.item_ques_jiexi,false);
+                                holder.setVisibility(R.id.item_ques_no_jiexi, true);
+                                holder.setVisibility(R.id.item_ques_jiexi, false);
 
 //                                ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0).setNetText("没有解析。");
                             }

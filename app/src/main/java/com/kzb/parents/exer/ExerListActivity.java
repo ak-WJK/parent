@@ -130,7 +130,9 @@ public class ExerListActivity extends BaseActivity {
 
                         List<KSZhangJieResponse.ZhangJieModel> zhangJieModels = response.getContent();
                         //实现数据的倒序排列
-                        Collections.reverse(zhangJieModels);
+                        if (mPosition.equals("1")) {
+                            Collections.reverse(zhangJieModels);
+                        }
                         LogUtils.e("TAG", "zhangjieModles == " + zhangJieModels.toString());
                         zhangJieFinAdapter.setItems(response.getContent());
                     }

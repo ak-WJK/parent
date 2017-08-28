@@ -165,7 +165,9 @@ public class QuanKeListActivity extends BaseActivity {
 
                         List<KSZhangJieResponse.ZhangJieModel> zhangJieModels = response.getContent();
                         //实现数据的倒序排列
-                        Collections.reverse(zhangJieModels);
+                        if (mPosition.equals("1")) {
+                            Collections.reverse(zhangJieModels);
+                        }
                         zhangJieFinAdapter.setItems(response.getContent());
                     }
                 }

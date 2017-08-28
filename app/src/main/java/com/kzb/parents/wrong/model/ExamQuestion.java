@@ -45,8 +45,12 @@ public class ExamQuestion extends XBaseResponse {
                 Log.e("xue","here="+question.isright);
 
                 List<Answer> answers = new ArrayList<>();
-                answers.addAll(question.getAnswers());
-                explain.setAnswers(answers);
+                List<Answer> answerList = question.getAnswers();
+                if(null!= answerList) {
+                    answers.addAll(answerList);
+                    explain.setAnswers(answers);
+
+                }
                 explain.setJiexi(false);
 
                 contents.add(explain);

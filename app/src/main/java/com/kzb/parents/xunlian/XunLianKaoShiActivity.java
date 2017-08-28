@@ -23,7 +23,7 @@ import java.util.Map;
 public class XunLianKaoShiActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView titleLeft, titleCenter;
-    private TextView zhangjie,quanke;
+    private TextView zhangjie, quanke;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

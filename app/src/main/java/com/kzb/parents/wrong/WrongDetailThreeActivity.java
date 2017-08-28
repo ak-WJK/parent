@@ -75,7 +75,7 @@ public class WrongDetailThreeActivity extends BaseActivity implements View.OnCli
     private TextView titleLeft, titleCenter;
 
     //
-   private ImageView rightImg;
+    private ImageView rightImg;
 
     //试题数据
     protected List<ExplainContent> mDatas = new ArrayList<>();
@@ -184,29 +184,26 @@ public class WrongDetailThreeActivity extends BaseActivity implements View.OnCli
     //显示一道题
     private void showContent() {
 
-        if(mDatas.size() == 0){
+        if (mDatas.size() == 0) {
             return;
         }
 
-        if(mDatas.size() == 1){
+        if (mDatas.size() == 1) {
             lastView.setBackgroundResource(R.mipmap.common_btn_gray);
             nextView.setBackgroundResource(R.mipmap.common_btn_gray);
-        }else{
-            if(curNum == 0){
+        } else {
+            if (curNum == 0) {
                 lastView.setBackgroundResource(R.mipmap.common_btn_gray);
-            }else {
+            } else {
                 lastView.setBackgroundResource(R.mipmap.common_button_green);
             }
 
-            if(curNum == (mDatas.size()-1)){
+            if (curNum == (mDatas.size() - 1)) {
                 nextView.setBackgroundResource(R.mipmap.common_btn_gray);
-            }else {
+            } else {
                 nextView.setBackgroundResource(R.mipmap.common_button_green);
             }
         }
-
-
-
 
 
         final ExplainContent explainContent = mDatas.get(curNum);
@@ -228,7 +225,6 @@ public class WrongDetailThreeActivity extends BaseActivity implements View.OnCli
                 kgView.setBackground(mContext.getResources().getDrawable(R.drawable.btn_click_red));
             }
         }
-
 
 
 //        rightImg.setImageResource(R.mipmap.ques_ans_right);
@@ -292,34 +288,38 @@ public class WrongDetailThreeActivity extends BaseActivity implements View.OnCli
                 myanswerLayout.removeAllViews();
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
                 for (String my : myAns) {
-                    for (int i = 0; i < explainContent.getAnswers().size(); i++) {
-                        Answer answer = explainContent.getAnswers().get(i);
-                        if (my.equals(answer.getAnswer_id())) {
-                            TextView textView = new TextView(mContext);
-                            textView.setBackgroundResource(R.drawable.answer_btn_red);
-                            textView.setTextColor(Color.WHITE);
-                            textView.setGravity(Gravity.CENTER);
-                            textView.setTextSize(12);
-                            lp.rightMargin = DensityUtil.dip2px(mContext, 12);
-                            textView.setLayoutParams(lp);
-                            switch (i) {
-                                case 0:
-                                    textView.setText("A");
-                                    break;
-                                case 1:
-                                    textView.setText("B");
-                                    break;
-                                case 2:
-                                    textView.setText("C");
-                                    break;
-                                case 3:
-                                    textView.setText("D");
-                                    break;
-                                case 4:
-                                    textView.setText("E");
-                                    break;
+
+                    if (null != explainContent.getAnswers()) {
+
+                        for (int i = 0; i < explainContent.getAnswers().size(); i++) {
+                            Answer answer = explainContent.getAnswers().get(i);
+                            if (my.equals(answer.getAnswer_id())) {
+                                TextView textView = new TextView(mContext);
+                                textView.setBackgroundResource(R.drawable.answer_btn_red);
+                                textView.setTextColor(Color.WHITE);
+                                textView.setGravity(Gravity.CENTER);
+                                textView.setTextSize(12);
+                                lp.rightMargin = DensityUtil.dip2px(mContext, 12);
+                                textView.setLayoutParams(lp);
+                                switch (i) {
+                                    case 0:
+                                        textView.setText("A");
+                                        break;
+                                    case 1:
+                                        textView.setText("B");
+                                        break;
+                                    case 2:
+                                        textView.setText("C");
+                                        break;
+                                    case 3:
+                                        textView.setText("D");
+                                        break;
+                                    case 4:
+                                        textView.setText("E");
+                                        break;
+                                }
+                                myanswerLayout.addView(textView);
                             }
-                            myanswerLayout.addView(textView);
                         }
                     }
                 }
@@ -329,37 +329,40 @@ public class WrongDetailThreeActivity extends BaseActivity implements View.OnCli
         //正确选项
         answerLayout.removeAllViews();
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
-        for (int i = 0; i < explainContent.getAnswers().size(); i++) {
-            Answer answer = explainContent.getAnswers().get(i);
-            if (answer.istrue.equals("1")) {
-                TextView textView = new TextView(mContext);
-                textView.setBackgroundResource(R.drawable.answer_btn_green);
-                textView.setTextColor(Color.WHITE);
-                textView.setGravity(Gravity.CENTER);
-                textView.setTextSize(12);
-                lp.rightMargin = DensityUtil.dip2px(mContext, 12);
-                textView.setLayoutParams(lp);
-                switch (i) {
-                    case 0:
-                        textView.setText("A");
-                        break;
-                    case 1:
-                        textView.setText("B");
-                        break;
-                    case 2:
-                        textView.setText("C");
-                        break;
-                    case 3:
-                        textView.setText("D");
-                        break;
-                    case 4:
-                        textView.setText("E");
-                        break;
+
+        if (null != explainContent.getAnswers()) {
+
+            for (int i = 0; i < explainContent.getAnswers().size(); i++) {
+                Answer answer = explainContent.getAnswers().get(i);
+                if (answer.istrue.equals("1")) {
+                    TextView textView = new TextView(mContext);
+                    textView.setBackgroundResource(R.drawable.answer_btn_green);
+                    textView.setTextColor(Color.WHITE);
+                    textView.setGravity(Gravity.CENTER);
+                    textView.setTextSize(12);
+                    lp.rightMargin = DensityUtil.dip2px(mContext, 12);
+                    textView.setLayoutParams(lp);
+                    switch (i) {
+                        case 0:
+                            textView.setText("A");
+                            break;
+                        case 1:
+                            textView.setText("B");
+                            break;
+                        case 2:
+                            textView.setText("C");
+                            break;
+                        case 3:
+                            textView.setText("D");
+                            break;
+                        case 4:
+                            textView.setText("E");
+                            break;
+                    }
+                    answerLayout.addView(textView);
                 }
-                answerLayout.addView(textView);
             }
         }
-
 
         //知识点
         kgView.setText(explainContent.getKnowledges().get(0).getKpoint());
@@ -368,7 +371,7 @@ public class WrongDetailThreeActivity extends BaseActivity implements View.OnCli
         kgView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (explainContent != null && explainContent.getKnowledges() != null && explainContent.getKnowledges().size() > 0 ) {
+                if (explainContent != null && explainContent.getKnowledges() != null && explainContent.getKnowledges().size() > 0) {
                     Intent intent = new Intent(WrongDetailThreeActivity.this, CourseDetailActivity.class);
                     intent.putExtra("kid", explainContent.getKnowledges().get(0).getKid());
                     IntentUtil.startActivity(WrongDetailThreeActivity.this, intent);
@@ -396,7 +399,7 @@ public class WrongDetailThreeActivity extends BaseActivity implements View.OnCli
                 IntentUtil.finish(WrongDetailThreeActivity.this);
                 break;
             case R.id.item_last_view:
-                if(curNum == 0){
+                if (curNum == 0) {
                     lastView.setBackgroundResource(R.mipmap.common_btn_gray);
 
 //                    if(curNum != mDatas.size()){
@@ -409,7 +412,7 @@ public class WrongDetailThreeActivity extends BaseActivity implements View.OnCli
                 showContent();
                 break;
             case R.id.item_next_view:
-                if(curNum == (mDatas.size()-1)){
+                if (curNum == (mDatas.size() - 1)) {
                     nextView.setBackgroundResource(R.mipmap.common_btn_gray);
                     return;
                 }

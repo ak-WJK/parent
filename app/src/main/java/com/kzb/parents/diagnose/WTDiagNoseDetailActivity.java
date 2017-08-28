@@ -24,9 +24,6 @@ import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.config.AddressConfig;
 import com.kzb.parents.config.SpSetting;
 import com.kzb.parents.course.ReportFinishActivity;
-import com.kzb.parents.diagnose.fragment.QuestionOneFragment;
-import com.kzb.parents.diagnose.fragment.QuestionThreeFragment;
-import com.kzb.parents.diagnose.fragment.QuestionTwoFragmentThree;
 import com.kzb.parents.diagnose.fragment.ReportZhangWoCengduFragment;
 import com.kzb.parents.diagnose.fragment.ReportZhangWoXingjiFragment;
 import com.kzb.parents.diagnose.fragment.ReportZhangWoZhangjieFragmentTwo;
@@ -81,7 +78,7 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
     CircleForNanduChartView timuNanduChartView;
 
     private TextView topOneView, topTwoView, topThreeView;
-    private TextView topOneViewTwo, topTwoViewTwo, topThreeViewTwo;
+//    private TextView topOneViewTwo, topTwoViewTwo, topThreeViewTwo;
 
     private TextView chatSignView;
 
@@ -107,7 +104,8 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
     private String thr;
     //等级图片显示
     private ImageView scoreLevel;
-    private int level;
+    private int level = 3;
+    private List<String> path;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -119,8 +117,8 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
         LogUtils.e("TAG", "无题报告页面 ");
 
         //会员等级
-        String good_id = SpSetting.loadLoginInfo().getGood_id();
-        level = Integer.parseInt(good_id);
+//        String good_id = SpSetting.loadLoginInfo().getGood_id();
+//        level = Integer.parseInt(good_id);
 
         httpConfig = new HttpConfig();
         dialogView = new DialogView(this);
@@ -177,9 +175,9 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
         topTwoView = getView(R.id.report_top_two);
         topThreeView = getView(R.id.report_top_three);
 
-        topOneViewTwo = getView(R.id.report_top_one_two);
-        topTwoViewTwo = getView(R.id.report_top_two_two);
-        topThreeViewTwo = getView(R.id.report_top_three_two);
+//        topOneViewTwo = getView(R.id.report_top_one_two);
+//        topTwoViewTwo = getView(R.id.report_top_two_two);
+//        topThreeViewTwo = getView(R.id.report_top_three_two);
 
         chatSignView = getView(R.id.digo_chat_sign_view);
         chatLayout = getView(R.id.digo_chat_layout);
@@ -189,7 +187,7 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
         qusView = getView(R.id.report_qs_layout);
 
         kgTxtView = getView(R.id.kg_sign_view);
-        qusTxtView = getView(R.id.qs_sign_view);
+//        qusTxtView = getView(R.id.qs_sign_view);
 
         scoreView = getView(R.id.report_kg_sp_score_view);
         scoreLevel = getView(R.id.iv_score_level);
@@ -200,12 +198,12 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
         topOneView.setOnClickListener(this);
         topTwoView.setOnClickListener(this);
         topThreeView.setOnClickListener(this);
-        topOneViewTwo.setOnClickListener(this);
-        topTwoViewTwo.setOnClickListener(this);
-        topThreeViewTwo.setOnClickListener(this);
+//        topOneViewTwo.setOnClickListener(this);
+//        topTwoViewTwo.setOnClickListener(this);
+//        topThreeViewTwo.setOnClickListener(this);
         chatSignView.setOnClickListener(this);
         kgTxtView.setOnClickListener(this);
-        qusTxtView.setOnClickListener(this);
+//        qusTxtView.setOnClickListener(this);
         kaoshiView.setOnClickListener(this);
 
         reportScrollView = (ScrollView) findViewById(R.id.zdbg_scrollview);
@@ -223,9 +221,9 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
         //图表
         verticalForHorChart = getView(R.id.chart_horizontal);
         verticalChart = getView(R.id.chart_vertical);
-        timuWanCChartView = getView(R.id.chart_timu_wanc);
+//        timuWanCChartView = getView(R.id.chart_timu_wanc);
         circleChartView = getView(R.id.chart_circle);
-        timuNanduChartView = getView(R.id.chart_timu_nandu);
+//        timuNanduChartView = getView(R.id.chart_timu_nandu);
         ringChartView = getView(R.id.chart_ring);
 
         if (from.equals("zhenduan")) {
@@ -284,20 +282,30 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
             @Override
             public void onError(Call call, Exception e, int id) {
 //                dialogView.handleDialog(false);
+                LogUtils.e("TAG", "获取数据失败 " + e.getMessage());
             }
 
             @Override
             public void onResponse(Report response, int id) {
 //                dialogView.handleDialog(false);
+
+                LogUtils.e("TAG", "response == " + response.toString());
+
                 if (response != null && response.errorCode == 0) {
                     if (response.getContent() != null) {
 
-                        LogUtils.e("TAG", response.toString());
+//                        LogUtils.e("TAG", response.toString());
+
+//                        LogUtils.e("TAG", "分数 " + content.getScore());
 
                         try {
                             content = response.getContent();
                             //此处内容隐藏(得到诊断类型)
                             String type = content.getType();
+
+//
+                            path = content.getPath();
+
 
 //                            //得到错(正确)题的个数
                             wrong_count = content.getWrong_count();
@@ -352,14 +360,15 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
                             transaction.commit();
 
 
-                            FragmentManager managerTwo = getSupportFragmentManager();
-                            FragmentTransaction transactionTwo = manager.beginTransaction();
-                            transactionTwo.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId, wrong_count, right_count), "ReportZhangWoZhangjieFragment");
-                            transactionTwo.commit();
+//                            FragmentManager managerTwo = getSupportFragmentManager();
+//                            FragmentTransaction transactionTwo = manager.beginTransaction();
+//                            transactionTwo.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId, wrong_count, right_count), "ReportZhangWoZhangjieFragment");
+//                            transactionTwo.commit();
                             LogUtils.e("TAG", "交换了Fragment的初始化位置");
 
 
                             scoreView.setText(content.getScore());
+                            LogUtils.e("TAG", "分数 " + content.getScore());
 
                             kgTotalNum.setText(Html.fromHtml("<font color='#de352f'>" + content.getRightk() + "</font>" + "/" + content.getAllk()));
                             kgType.setText(checkType(content.getAllkLevel()));
@@ -461,7 +470,7 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
                                         @Override
                                         public void run() {
 
-                                            reportScrollView.scrollTo(0, findViewById(R.id.qs_sign_view).getBottom());
+//                                            reportScrollView.scrollTo(0, findViewById(R.id.qs_sign_view).getBottom());
 
                                             //设置点击(按难易度)
                                             onClick(kgTxtView);
@@ -650,15 +659,15 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
             case R.id.report_top_three:
                 topThreeClick(0);
                 break;
-            case R.id.report_top_one_two:
-                topOneTwoClick();
-                break;
-            case R.id.report_top_two_two:
-                topTwoTwoClick();
-                break;
-            case R.id.report_top_three_two:
-                topThreeTwoClick();
-                break;
+//            case R.id.report_top_one_two:
+//                topOneTwoClick();
+//                break;
+//            case R.id.report_top_two_two:
+//                topTwoTwoClick();
+//                break;
+//            case R.id.report_top_three_two:
+//                topThreeTwoClick();
+//                break;
             case R.id.digo_chat_sign_view:
 
                 if (level >= 2) {
@@ -717,35 +726,35 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
 
 
                 break;
-            case R.id.qs_sign_view:
-
-                if (level >= 2) {
-
-                    if (qusSign == 0) {
-                        qusView.setVisibility(View.VISIBLE);
-                        qusSign = 1;
-
-                        Drawable drawable = getResources().getDrawable(R.mipmap.arrow_up);
-                        /// 这一步必须要做,否则不会显示.
-                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                        qusTxtView.setCompoundDrawables(null, null, drawable, null);
-
-                    } else {
-                        qusView.setVisibility(View.GONE);
-                        qusSign = 0;
-                        Drawable drawable = getResources().getDrawable(R.mipmap.arrow_down);
-                        /// 这一步必须要做,否则不会显示.
-                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                        qusTxtView.setCompoundDrawables(null, null, drawable, null);
-                    }
-
-
-                } else {
-                    Toast.makeText(WTDiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
-                }
-
-
-                break;
+//            case R.id.qs_sign_view:
+//
+//                if (level >= 2) {
+//
+//                    if (qusSign == 0) {
+//                        qusView.setVisibility(View.VISIBLE);
+//                        qusSign = 1;
+//
+//                        Drawable drawable = getResources().getDrawable(R.mipmap.arrow_up);
+//                        /// 这一步必须要做,否则不会显示.
+//                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+//                        qusTxtView.setCompoundDrawables(null, null, drawable, null);
+//
+//                    } else {
+//                        qusView.setVisibility(View.GONE);
+//                        qusSign = 0;
+//                        Drawable drawable = getResources().getDrawable(R.mipmap.arrow_down);
+//                        /// 这一步必须要做,否则不会显示.
+//                        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+//                        qusTxtView.setCompoundDrawables(null, null, drawable, null);
+//                    }
+//
+//
+//                } else {
+//                    Toast.makeText(WTDiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
+//                }
+//
+//
+//                break;
             case R.id.report_kg_sp_kaoshi_view:
 
                 LogUtils.e("TAG", "诊断报告中考试的点击事件");
@@ -755,11 +764,21 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
                 mapVal1.put("name", "诊断报告");
                 //IntentUtil.startActivity(DiagNoseDetailActivity.this, JiXieActivity.class, mapVal1);
 
-                if (level >= 2) {
-                    IntentUtil.startActivity(WTDiagNoseDetailActivity.this, WTJieXiNewActivity.class, mapVal1);
-                } else {
-                    Toast.makeText(WTDiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
+                if (path != null && !TextUtils.isEmpty(path.get(0))) {
 
+                    String path1 = path.get(0);
+                    String path2 = path.get(1);
+                    mapVal1.put("path1", path1);
+                    mapVal1.put("path2", path2);
+
+                    if (level >= 2) {
+                        IntentUtil.startActivity(WTDiagNoseDetailActivity.this, WTJieXiNewActivity.class, mapVal1);
+                    } else {
+                        Toast.makeText(WTDiagNoseDetailActivity.this, R.string.notice_val, Toast.LENGTH_SHORT).show();
+
+                    }
+                } else {
+                    Toast.makeText(WTDiagNoseDetailActivity.this, "试题还没有上传", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -822,58 +841,58 @@ public class WTDiagNoseDetailActivity extends BaseActivity implements View.OnCli
     }
 
 
-    //题目掌握程度，对错
-    private void topOneTwoClick() {
-
-        topOneViewTwo.setBackgroundColor(getResources().getColor(R.color.white));
-        topTwoViewTwo.setBackgroundColor(getResources().getColor(R.color.theme_green));
-        topThreeViewTwo.setBackgroundColor(getResources().getColor(R.color.theme_green));
-
-
-        topOneViewTwo.setTextColor(getResources().getColor(R.color._333333));
-        topTwoViewTwo.setTextColor(getResources().getColor(R.color.white));
-        topThreeViewTwo.setTextColor(getResources().getColor(R.color.white));
-
-
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId, wrong_count, right_count), "ReportZhangWoZhangjieFragment");
-        transaction.commit();
-    }
-
-    //题目掌握程度，章节
-    private void topTwoTwoClick() {
-
-        topOneViewTwo.setBackgroundColor(getResources().getColor(R.color.theme_green));
-        topTwoViewTwo.setBackgroundColor(getResources().getColor(R.color.white));
-        topThreeViewTwo.setBackgroundColor(getResources().getColor(R.color.theme_green));
-
-
-        topOneViewTwo.setTextColor(getResources().getColor(R.color.white));
-        topTwoViewTwo.setTextColor(getResources().getColor(R.color._333333));
-        topThreeViewTwo.setTextColor(getResources().getColor(R.color.white));
-
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.report_knowledge_layout_two, QuestionTwoFragmentThree.getInstance(testId), "ReportZhangWoZhangjieThreeFragment");
-        transaction.commit();
-    }
-
-    //题目掌握程度，难易度
-    private void topThreeTwoClick() {
-
-        topOneViewTwo.setBackgroundColor(getResources().getColor(R.color.theme_green));
-        topTwoViewTwo.setBackgroundColor(getResources().getColor(R.color.theme_green));
-        topThreeViewTwo.setBackgroundColor(getResources().getColor(R.color.white));
-
-        topOneViewTwo.setTextColor(getResources().getColor(R.color.white));
-        topTwoViewTwo.setTextColor(getResources().getColor(R.color.white));
-        topThreeViewTwo.setTextColor(getResources().getColor(R.color._333333));
-
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.report_knowledge_layout_two, QuestionThreeFragment.getInstance(testId, one, two, thr), "ReportZhangWoZhangjieFragment");
-        transaction.commit();
-    }
+//    //题目掌握程度，对错
+//    private void topOneTwoClick() {
+//
+//        topOneViewTwo.setBackgroundColor(getResources().getColor(R.color.white));
+//        topTwoViewTwo.setBackgroundColor(getResources().getColor(R.color.theme_green));
+//        topThreeViewTwo.setBackgroundColor(getResources().getColor(R.color.theme_green));
+//
+//
+//        topOneViewTwo.setTextColor(getResources().getColor(R.color._333333));
+//        topTwoViewTwo.setTextColor(getResources().getColor(R.color.white));
+//        topThreeViewTwo.setTextColor(getResources().getColor(R.color.white));
+//
+//
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.replace(R.id.report_knowledge_layout_two, QuestionOneFragment.getInstance(testId, wrong_count, right_count), "ReportZhangWoZhangjieFragment");
+//        transaction.commit();
+//    }
+//
+//    //题目掌握程度，章节
+//    private void topTwoTwoClick() {
+//
+//        topOneViewTwo.setBackgroundColor(getResources().getColor(R.color.theme_green));
+//        topTwoViewTwo.setBackgroundColor(getResources().getColor(R.color.white));
+//        topThreeViewTwo.setBackgroundColor(getResources().getColor(R.color.theme_green));
+//
+//
+//        topOneViewTwo.setTextColor(getResources().getColor(R.color.white));
+//        topTwoViewTwo.setTextColor(getResources().getColor(R.color._333333));
+//        topThreeViewTwo.setTextColor(getResources().getColor(R.color.white));
+//
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.replace(R.id.report_knowledge_layout_two, QuestionTwoFragmentThree.getInstance(testId), "ReportZhangWoZhangjieThreeFragment");
+//        transaction.commit();
+//    }
+//
+//    //题目掌握程度，难易度
+//    private void topThreeTwoClick() {
+//
+//        topOneViewTwo.setBackgroundColor(getResources().getColor(R.color.theme_green));
+//        topTwoViewTwo.setBackgroundColor(getResources().getColor(R.color.theme_green));
+//        topThreeViewTwo.setBackgroundColor(getResources().getColor(R.color.white));
+//
+//        topOneViewTwo.setTextColor(getResources().getColor(R.color.white));
+//        topTwoViewTwo.setTextColor(getResources().getColor(R.color.white));
+//        topThreeViewTwo.setTextColor(getResources().getColor(R.color._333333));
+//
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.replace(R.id.report_knowledge_layout_two, QuestionThreeFragment.getInstance(testId, one, two, thr), "ReportZhangWoZhangjieFragment");
+//        transaction.commit();
+//    }
 
 }

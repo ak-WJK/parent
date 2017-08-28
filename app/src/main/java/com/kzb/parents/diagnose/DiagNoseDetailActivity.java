@@ -112,7 +112,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
     private String thr;
     //等级图片显示
     private ImageView scoreLevel;
-    private int level;
+    private int level = 3;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -122,8 +122,8 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
         setContentView(R.layout.activity_dgno_detail);
 
         //会员等级
-        String good_id = SpSetting.loadLoginInfo().getGood_id();
-        level = Integer.parseInt(good_id);
+//        String good_id = SpSetting.loadLoginInfo().getGood_id();
+//        level = Integer.parseInt(good_id);
 
         httpConfig = new HttpConfig();
         dialogView = new DialogView(this);

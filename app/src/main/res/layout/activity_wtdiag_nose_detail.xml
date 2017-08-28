@@ -444,7 +444,7 @@
             <LinearLayout
                 android:id="@+id/digo_chat_layout"
                 android:layout_width="match_parent"
-                android:layout_height="1825dp"
+                android:layout_height="1210dp"
                 android:background="@color/white"
                 android:orientation="vertical"
                 android:visibility="gone">
@@ -478,18 +478,18 @@
                     android:layout_weight="1" />
 
 
-                <com.kzb.parents.view.chart.CircleForNanduChartView
-                    android:id="@+id/chart_timu_nandu"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
+                <!--<com.kzb.parents.view.chart.CircleForNanduChartView-->
+                    <!--android:id="@+id/chart_timu_nandu"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="0dp"-->
+                    <!--android:layout_weight="1" />-->
 
 
-                <com.kzb.parents.view.chart.VerticalForWancChart
-                    android:id="@+id/chart_timu_wanc"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
+                <!--<com.kzb.parents.view.chart.VerticalForWancChart-->
+                    <!--android:id="@+id/chart_timu_wanc"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="0dp"-->
+                    <!--android:layout_weight="1" />-->
             </LinearLayout>
 
             <View
@@ -523,27 +523,27 @@
 
             </include>
 
-            <TextView
-                android:id="@+id/qs_sign_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableRight="@mipmap/arrow_down"
-                android:padding="15dp"
-                android:text="题目掌握情况"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/text_common" />
+            <!--<TextView-->
+                <!--android:id="@+id/qs_sign_view"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:drawableRight="@mipmap/arrow_down"-->
+                <!--android:padding="15dp"-->
+                <!--android:text="题目掌握情况"-->
+                <!--android:textColor="@color/_333333"-->
+                <!--android:textSize="@dimen/text_common" />-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/divider_color">
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:background="@color/divider_color">-->
 
-            </View>
+            <!--</View>-->
 
-            <include
-                android:id="@+id/report_qs_layout"
-                layout="@layout/report_under_include_two"
-                android:visibility="gone"></include>
+            <!--<include-->
+                <!--android:id="@+id/report_qs_layout"-->
+                <!--layout="@layout/report_under_include_two"-->
+                <!--android:visibility="gone"></include>-->
 
         </LinearLayout>
     </ScrollView>

@@ -193,7 +193,9 @@
             <View
                 android:layout_width="10dp"
                 android:layout_height="match_parent"
-                android:background="@color/page_bg"></View>
+                android:background="@color/page_bg">
+
+            </View>
 
             <TextView
                 android:id="@+id/first_xuexi_layout"
@@ -246,7 +248,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableLeft="@mipmap/first_cuoti_img"
+                android:drawableLeft="@mipmap/frist_exer"
                 android:gravity="center"
                 android:paddingBottom="6dp"
                 android:paddingTop="6dp"

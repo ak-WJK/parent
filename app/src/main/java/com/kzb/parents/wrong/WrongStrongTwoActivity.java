@@ -46,7 +46,7 @@ import static com.kzb.parents.application.Application.mContext;
 public class WrongStrongTwoActivity extends BaseActivity implements View.OnClickListener {
 
 
-    TextView mRight,mTotal,mWrong;
+    TextView mRight, mTotal, mWrong;
     CustomReTextView mLine;
     TextView mPoint;
     private String mDone;
@@ -67,7 +67,6 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
     ExamQuestion mResponse;
 
     private TextView percentView;
-
 
 
     //上一题
@@ -106,14 +105,14 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wrong_three_detail);
 
-        mHeader = LayoutInflater.from(this).inflate(R.layout.activity_strong_report_header,null);
-        mFooter = LayoutInflater.from(this).inflate(R.layout.activity_strong_report_footer,null);
+        mHeader = LayoutInflater.from(this).inflate(R.layout.activity_strong_report_header, null);
+        mFooter = LayoutInflater.from(this).inflate(R.layout.activity_strong_report_footer, null);
 
 
         String response = getIntent().getStringExtra("question");
-        if(!TextUtils.isEmpty(response)){
+        if (!TextUtils.isEmpty(response)) {
             Gson gson = new Gson();
-            mResponse = gson.fromJson(response,ExamQuestion.class);
+            mResponse = gson.fromJson(response, ExamQuestion.class);
         }
         mAll = getIntent().getStringExtra("all");
         mDone = getIntent().getStringExtra("done");
@@ -139,14 +138,14 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
         titleCenter = getView(R.id.common_head_center);
 
         percentView = (TextView) mHeader.findViewById(R.id.strong_percent_view);
-        percentView.setText("累计强化进度:"+allper+"%");
+        percentView.setText("累计强化进度:" + allper + "%");
 
-        MineToast.show(WrongStrongTwoActivity.this,"对比上次强化提高了"+thisper+"%");
+        MineToast.show(WrongStrongTwoActivity.this, "对比上次强化提高了" + thisper + "%");
 
-        mRight = (TextView)mHeader.findViewById(R.id.strong_right);
-        mWrong = (TextView)mHeader.findViewById(R.id.strong_wrong);
+        mRight = (TextView) mHeader.findViewById(R.id.strong_right);
+        mWrong = (TextView) mHeader.findViewById(R.id.strong_wrong);
         mLine = (CustomReTextView) mHeader.findViewById(R.id.strong_line);
-        mTotal = (TextView)mHeader.findViewById(R.id.strong_total);
+        mTotal = (TextView) mHeader.findViewById(R.id.strong_total);
         mPoint = (TextView) mHeader.findViewById(R.id.strong_point);
 
         String point = getIntent().getStringExtra("point");
@@ -223,33 +222,32 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
     }
 
 
-
     //显示一道题
     private void showContent() {
 
-        if(mDatas.size() == 0){
+        if (mDatas.size() == 0) {
             return;
         }
 
-        if(mDatas.size() == 1){
+        if (mDatas.size() == 1) {
             lastView.setBackgroundResource(R.mipmap.common_btn_gray);
             nextView.setBackgroundResource(R.mipmap.common_btn_gray);
-        }else{
-            if(curNum == 0){
+        } else {
+            if (curNum == 0) {
                 lastView.setBackgroundResource(R.mipmap.common_btn_gray);
-            }else {
+            } else {
                 lastView.setBackgroundResource(R.mipmap.common_button_green);
             }
 
-            if(curNum == (mDatas.size()-1)){
+            if (curNum == (mDatas.size() - 1)) {
                 nextView.setBackgroundResource(R.mipmap.common_btn_gray);
-            }else {
+            } else {
                 nextView.setBackgroundResource(R.mipmap.common_button_green);
             }
         }
 
 
-       final  ExplainContent explainContent = mDatas.get(curNum);
+        final ExplainContent explainContent = mDatas.get(curNum);
         curNumView.setText((curNum + 1) + "/" + mDatas.size());
         webViewSeven.loadData(explainContent.getQuestion());
         //答案
@@ -314,34 +312,39 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
                 myanswerLayout.removeAllViews();
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
                 for (String my : myAns) {
-                    for (int i = 0; i < explainContent.getAnswers().size(); i++) {
-                        Answer answer = explainContent.getAnswers().get(i);
-                        if (my.equals(answer.getAnswer_id())) {
-                            TextView textView = new TextView(mContext);
-                            textView.setBackgroundResource(R.drawable.answer_btn_red);
-                            textView.setTextColor(Color.WHITE);
-                            textView.setGravity(Gravity.CENTER);
-                            textView.setTextSize(12);
-                            lp.rightMargin = DensityUtil.dip2px(mContext, 12);
-                            textView.setLayoutParams(lp);
-                            switch (i) {
-                                case 0:
-                                    textView.setText("A");
-                                    break;
-                                case 1:
-                                    textView.setText("B");
-                                    break;
-                                case 2:
-                                    textView.setText("C");
-                                    break;
-                                case 3:
-                                    textView.setText("D");
-                                    break;
-                                case 4:
-                                    textView.setText("E");
-                                    break;
+
+                    if (null != explainContent.getAnswers()) {
+
+
+                        for (int i = 0; i < explainContent.getAnswers().size(); i++) {
+                            Answer answer = explainContent.getAnswers().get(i);
+                            if (my.equals(answer.getAnswer_id())) {
+                                TextView textView = new TextView(mContext);
+                                textView.setBackgroundResource(R.drawable.answer_btn_red);
+                                textView.setTextColor(Color.WHITE);
+                                textView.setGravity(Gravity.CENTER);
+                                textView.setTextSize(12);
+                                lp.rightMargin = DensityUtil.dip2px(mContext, 12);
+                                textView.setLayoutParams(lp);
+                                switch (i) {
+                                    case 0:
+                                        textView.setText("A");
+                                        break;
+                                    case 1:
+                                        textView.setText("B");
+                                        break;
+                                    case 2:
+                                        textView.setText("C");
+                                        break;
+                                    case 3:
+                                        textView.setText("D");
+                                        break;
+                                    case 4:
+                                        textView.setText("E");
+                                        break;
+                                }
+                                myanswerLayout.addView(textView);
                             }
-                            myanswerLayout.addView(textView);
                         }
                     }
                 }
@@ -351,37 +354,40 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
         //正确选项
         answerLayout.removeAllViews();
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
-        for (int i = 0; i < explainContent.getAnswers().size(); i++) {
-            Answer answer = explainContent.getAnswers().get(i);
-            if (answer.istrue.equals("1")) {
-                TextView textView = new TextView(mContext);
-                textView.setBackgroundResource(R.drawable.answer_btn_green);
-                textView.setTextColor(Color.WHITE);
-                textView.setGravity(Gravity.CENTER);
-                textView.setTextSize(12);
-                lp.rightMargin = DensityUtil.dip2px(mContext, 12);
-                textView.setLayoutParams(lp);
-                switch (i) {
-                    case 0:
-                        textView.setText("A");
-                        break;
-                    case 1:
-                        textView.setText("B");
-                        break;
-                    case 2:
-                        textView.setText("C");
-                        break;
-                    case 3:
-                        textView.setText("D");
-                        break;
-                    case 4:
-                        textView.setText("E");
-                        break;
+
+        if (null != explainContent.getAnswers()) {
+
+            for (int i = 0; i < explainContent.getAnswers().size(); i++) {
+                Answer answer = explainContent.getAnswers().get(i);
+                if (answer.istrue.equals("1")) {
+                    TextView textView = new TextView(mContext);
+                    textView.setBackgroundResource(R.drawable.answer_btn_green);
+                    textView.setTextColor(Color.WHITE);
+                    textView.setGravity(Gravity.CENTER);
+                    textView.setTextSize(12);
+                    lp.rightMargin = DensityUtil.dip2px(mContext, 12);
+                    textView.setLayoutParams(lp);
+                    switch (i) {
+                        case 0:
+                            textView.setText("A");
+                            break;
+                        case 1:
+                            textView.setText("B");
+                            break;
+                        case 2:
+                            textView.setText("C");
+                            break;
+                        case 3:
+                            textView.setText("D");
+                            break;
+                        case 4:
+                            textView.setText("E");
+                            break;
+                    }
+                    answerLayout.addView(textView);
                 }
-                answerLayout.addView(textView);
             }
         }
-
 
         //知识点
         kgView.setText(explainContent.getKnowledges().get(0).getKpoint());
@@ -390,7 +396,7 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
         kgView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (explainContent != null && explainContent.getKnowledges() != null && explainContent.getKnowledges().size() > 0 ) {
+                if (explainContent != null && explainContent.getKnowledges() != null && explainContent.getKnowledges().size() > 0) {
                     Intent intent = new Intent(WrongStrongTwoActivity.this, CourseDetailActivity.class);
                     intent.putExtra("kid", explainContent.getKnowledges().get(0).getKid());
                     IntentUtil.startActivity(WrongStrongTwoActivity.this, intent);
@@ -418,7 +424,7 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
                 IntentUtil.finish(WrongStrongTwoActivity.this);
                 break;
             case R.id.item_last_view:
-                if(curNum == 0){
+                if (curNum == 0) {
                     lastView.setBackgroundResource(R.mipmap.common_btn_gray);
 
 //                    if(curNum != mDatas.size()){
@@ -431,7 +437,7 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
                 showContent();
                 break;
             case R.id.item_next_view:
-                if(curNum == (mDatas.size()-1)){
+                if (curNum == (mDatas.size() - 1)) {
                     nextView.setBackgroundResource(R.mipmap.common_btn_gray);
                     return;
                 }

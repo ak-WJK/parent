@@ -38,7 +38,7 @@ import java.util.List;
  * 日期：16/12/1
  * 时间：下午11:24
  * 注释：一个题目列表
- *
+ * <p>
  * 自定义按钮(上一个 下一个 交卷)列表
  ********************/
 public class ExamQuestionView extends LinearLayout {
@@ -87,11 +87,10 @@ public class ExamQuestionView extends LinearLayout {
         titleRight.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(cardView.getVisibility() == View.GONE){
+                if (cardView.getVisibility() == View.GONE) {
                     cardView.setVisibility(VISIBLE);
-                }
-                else {
-                    Log.e("kzb","已经打开窗口了......");
+                } else {
+                    Log.e("kzb", "已经打开窗口了......");
                 }
             }
         });
@@ -210,7 +209,7 @@ public class ExamQuestionView extends LinearLayout {
         final Button lastBtn = new Button(getContext());
         final Button nextBtn = new Button(getContext());
         submitExam = new Button(getContext());
-        p = new LayoutParams(DensityUtil.dip2px(getContext(), 80),DensityUtil.dip2px(getContext(), 35));
+        p = new LayoutParams(DensityUtil.dip2px(getContext(), 80), DensityUtil.dip2px(getContext(), 35));
         p.leftMargin = DensityUtil.dip2px(getContext(), 10);
         lastBtn.setLayoutParams(p);
         lastBtn.setPadding(DensityUtil.dip2px(getContext(), 15), DensityUtil.dip2px(getContext(), 6), DensityUtil.dip2px(getContext(), 15), DensityUtil.dip2px(getContext(), 6));
@@ -239,7 +238,7 @@ public class ExamQuestionView extends LinearLayout {
             }
         });
 
-        p = new LayoutParams(DensityUtil.dip2px(getContext(), 80),DensityUtil.dip2px(getContext(), 35));
+        p = new LayoutParams(DensityUtil.dip2px(getContext(), 80), DensityUtil.dip2px(getContext(), 35));
         p.leftMargin = DensityUtil.dip2px(getContext(), 10);
         nextBtn.setLayoutParams(p);
         nextBtn.setPadding(DensityUtil.dip2px(getContext(), 15), DensityUtil.dip2px(getContext(), 6), DensityUtil.dip2px(getContext(), 15), DensityUtil.dip2px(getContext(), 6));
@@ -274,10 +273,8 @@ public class ExamQuestionView extends LinearLayout {
         });
 
 
-
-        
         //交卷按鈕
-        p = new LayoutParams(DensityUtil.dip2px(getContext(), 80),DensityUtil.dip2px(getContext(), 35));
+        p = new LayoutParams(DensityUtil.dip2px(getContext(), 80), DensityUtil.dip2px(getContext(), 35));
         p.leftMargin = DensityUtil.dip2px(getContext(), 10);
         submitExam.setLayoutParams(p);
         submitExam.setPadding(DensityUtil.dip2px(getContext(), 15), DensityUtil.dip2px(getContext(), 6), DensityUtil.dip2px(getContext(), 15), DensityUtil.dip2px(getContext(), 6));
@@ -514,7 +511,7 @@ public class ExamQuestionView extends LinearLayout {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
 
-                    if(event.getAction() == MotionEvent.ACTION_UP){
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
                         if (isSingle) {
                             if (!answer.isCheck()) {
                                 List<Answer> answers = mQuestion.getAnswers();
@@ -582,7 +579,7 @@ public class ExamQuestionView extends LinearLayout {
                 @Override
                 public void onClick(View v) {
 
-                    Toast.makeText(activity,"..my..clicll....",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "..my..clicll....", Toast.LENGTH_SHORT).show();
 
 
                     if (isSingle) {

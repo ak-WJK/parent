@@ -263,8 +263,7 @@ public class ExamActivity extends BaseActivity {
         if (question != null) {
             if (question.getContent() != null) {
                 List<Question> questions = question.getContent();
-                for (Question ques :
-                        questions) {
+                for (Question ques : questions) {
                     String answer = "";
                     if (ques.getAnswers() != null) {
                         for (Answer ans : ques.getAnswers()) {
@@ -300,8 +299,7 @@ public class ExamActivity extends BaseActivity {
         if (!TextUtils.isEmpty(mKid) || !TextUtils.isEmpty(mPoint)) {
 
             if (question != null && question.getContent() != null) {
-                for (Question ques :
-                        question.getContent()) {
+                for (Question ques : question.getContent()) {
                     if (!ques.isDone()) {
                         if (ques.getAnswers() != null && ques.getAnswers().size() > 0) {
                             ques.setMyanswer(ques.getAnswers().get(ques.getAnswers().size() - 1).getAnswer_id());
@@ -321,8 +319,7 @@ public class ExamActivity extends BaseActivity {
 
         final List<Question> rightList = questionView.getRightQuestion();
         StringBuilder right = new StringBuilder();
-        for (Question rq :
-                rightList) {
+        for (Question rq : rightList) {
             right.append("," + rq.getQuestion_id());
         }
         if (right.length() > 0) {
@@ -330,8 +327,7 @@ public class ExamActivity extends BaseActivity {
         }
         List<Question> wrongList = questionView.getWrongQuestion();
         StringBuilder wrong = new StringBuilder();
-        for (Question wq :
-                wrongList) {
+        for (Question wq : wrongList) {
             wrong.append("," + wq.getQuestion_id());
         }
         if (wrong.length() > 0) {
@@ -360,6 +356,8 @@ public class ExamActivity extends BaseActivity {
 
                 json.put("type", mType);
                 json.put("all_ques", array);
+                json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+
                 if (!TextUtils.isEmpty(mTestId)) {
                     //考试
                     json.put("tt_id", mTestId);
@@ -401,6 +399,7 @@ public class ExamActivity extends BaseActivity {
             public void onError(Call call, Exception e, int id) {
                 dialogView.handleDialog(false);
                 Toast.makeText(ExamActivity.this, "提交失败", Toast.LENGTH_SHORT).show();
+                LogUtils.e("TAG", "onError == " + e.getMessage(), " id == " + id);
             }
 
             @Override
@@ -498,9 +497,11 @@ public class ExamActivity extends BaseActivity {
 
                     } else {
                         Toast.makeText(ExamActivity.this, "提交失败", Toast.LENGTH_SHORT).show();
+                        LogUtils.e("TAG", "onError == " + "response.errorCode == 0");
                     }
                 } else {
                     Toast.makeText(ExamActivity.this, "提交失败", Toast.LENGTH_SHORT).show();
+                    LogUtils.e("TAG", "onError == " + "response.getCount == null");
                 }
             }
 
@@ -541,6 +542,7 @@ public class ExamActivity extends BaseActivity {
                 //章节考试
                 json.put("test_id", mTestId);
                 json.put("type", zhangjieType);
+                json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
             } else {
 
                 if (from.equals("quanke")) {

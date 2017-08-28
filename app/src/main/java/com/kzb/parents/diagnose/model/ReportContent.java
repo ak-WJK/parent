@@ -1,5 +1,7 @@
 package com.kzb.parents.diagnose.model;
 
+import java.util.List;
+
 /********************
  * 作者：malus
  * 日期：16/12/3
@@ -65,6 +67,16 @@ public class ReportContent {
 
     private String testcount;
 
+
+    private List<String> path;
+
+    public List<String> getPath() {
+        return path;
+    }
+
+    public void setPath(List<String> path) {
+        this.path = path;
+    }
 
     public String getTestcount() {
         return testcount;

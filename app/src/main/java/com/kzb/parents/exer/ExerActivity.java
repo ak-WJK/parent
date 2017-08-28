@@ -40,7 +40,6 @@ public class ExerActivity extends BaseActivity implements View.OnClickListener {
         exernoComView = getView(R.id.exer_com);
 
 
-
         titleLeft.setText("返回");
         titleLeft.setVisibility(View.VISIBLE);
         titleLeft.setOnClickListener(this);
@@ -56,23 +55,22 @@ public class ExerActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.exer_no_com:
-                Map<String,String> mapV = new HashMap<>();
-                mapV.put("position","0");
-                IntentUtil.startActivity(ExerActivity.this, ExerListActivity.class,mapV);
+                Map<String, String> mapV = new HashMap<>();
+                mapV.put("position", "0");
+                IntentUtil.startActivity(ExerActivity.this, ExerListActivity.class, mapV);
                 break;
             case R.id.common_head_left:
                 IntentUtil.finish(ExerActivity.this);
 
                 break;
             case R.id.exer_com:
-                Map<String,String> map1 = new HashMap<>();
-                map1.put("position","1");
-                IntentUtil.startActivity(ExerActivity.this, ExerListActivity.class,map1);
+                Map<String, String> map1 = new HashMap<>();
+                map1.put("position", "1");
+                IntentUtil.startActivity(ExerActivity.this, ExerListActivity.class, map1);
                 break;
         }
     }
