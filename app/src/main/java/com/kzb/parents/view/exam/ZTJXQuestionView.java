@@ -40,7 +40,7 @@ import java.util.List;
  * 日期：16/12/1
  * 时间：下午11:24
  * 注释：一个题目列表
- *
+ * <p>
  * 自定义按钮(上一个 下一个 解析)列表
  ********************/
 public class ZTJXQuestionView extends LinearLayout {
@@ -69,7 +69,7 @@ public class ZTJXQuestionView extends LinearLayout {
     private Activity activity;
     private View cardView;
     private TextView cardBackView;
-    private TextView cardSubmitView;
+    //    private TextView cardSubmitView;
     private LinearLayout cardContentLayout;
     ViewGroup cardViewGroup;
 
@@ -81,7 +81,7 @@ public class ZTJXQuestionView extends LinearLayout {
         this.activity = activity;
 
         cardViewGroup = (ViewGroup) activity.findViewById(android.R.id.content);
-        cardView = (View) LayoutInflater.from(activity).inflate(R.layout.card_layout_view, null);
+        cardView = (View) LayoutInflater.from(activity).inflate(R.layout.card_layout_jiexi_view, null);
         cardViewGroup.addView(cardView);
         cardView.setVisibility(View.GONE);
         initCardView();
@@ -93,11 +93,10 @@ public class ZTJXQuestionView extends LinearLayout {
         titleRight.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(cardView.getVisibility() == View.GONE){
+                if (cardView.getVisibility() == View.GONE) {
                     cardView.setVisibility(VISIBLE);
-                }
-                else {
-                    Log.e("kzb","已经打开窗口了......");
+                } else {
+                    Log.e("kzb", "已经打开窗口了......");
                 }
             }
         });
@@ -127,7 +126,7 @@ public class ZTJXQuestionView extends LinearLayout {
 
     private void initCardView() {
         cardBackView = (TextView) cardView.findViewById(R.id.card_head_left);
-        cardSubmitView = (TextView) cardView.findViewById(R.id.card_commit_view);
+//        cardSubmitView = (TextView) cardView.findViewById(R.id.card_commit_view);
         cardContentLayout = (LinearLayout) cardView.findViewById(R.id.card_content_layout);
 
         cardBackView.setOnClickListener(new OnClickListener() {
@@ -164,8 +163,8 @@ public class ZTJXQuestionView extends LinearLayout {
         p.weight = 1;
         scrollView.setLayoutParams(p);
 
-        LinearLayout layout=new LinearLayout(getContext());
-        p=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout layout = new LinearLayout(getContext());
+        p = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layout.setLayoutParams(p);
         layout.setOrientation(VERTICAL);
 
@@ -175,8 +174,8 @@ public class ZTJXQuestionView extends LinearLayout {
         scrollInLayout.setOrientation(VERTICAL);
 
 
-        final LinearLayout daanLayout=new LinearLayout(getContext());
-        p=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        final LinearLayout daanLayout = new LinearLayout(getContext());
+        p = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         daanLayout.setLayoutParams(p);
         daanLayout.setOrientation(VERTICAL);
         daanLayout.setVisibility(GONE);
@@ -188,41 +187,41 @@ public class ZTJXQuestionView extends LinearLayout {
         layout.addView(daanLayout);
 
 
-        View view=new View(getContext());
-        p=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,3);
+        View view = new View(getContext());
+        p = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 3);
         view.setLayoutParams(p);
         view.setBackgroundColor(Color.GRAY);
-        view.setPadding(5,10,5,0);
+        view.setPadding(5, 10, 5, 0);
 
-        LinearLayout cankao=new LinearLayout(getContext());
-        p=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout cankao = new LinearLayout(getContext());
+        p = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         cankao.setLayoutParams(p);
         cankao.setOrientation(HORIZONTAL);
-        cankao.setPadding(10,20,20,20);
+        cankao.setPadding(10, 20, 20, 20);
 
-        TextView daan=new TextView(getContext());
-        p=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        TextView daan = new TextView(getContext());
+        p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         daan.setLayoutParams(p);
         daan.setTextSize(10);
         daan.setText("[参考答案]");
-        p.setMargins(10,20,30,20);
+        p.setMargins(10, 20, 30, 20);
 
         cankao.addView(daan);
 
-        FrameLayout frameLayout=new FrameLayout(getContext());
-        p=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        FrameLayout frameLayout = new FrameLayout(getContext());
+        p = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         frameLayout.setLayoutParams(p);
 
-        b=new TextView(getContext());
-        p=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        b = new TextView(getContext());
+        p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         b.setLayoutParams(p);
         b.setGravity(Gravity.CENTER);
         b.setTextColor(Color.WHITE);
         b.setVisibility(GONE);
         b.setBackgroundResource(R.drawable.daan_btn_green);
 
-        b2=new QuesWebViewFour(getContext());
-        p=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        b2 = new QuesWebViewFour(getContext());
+        p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         b2.setLayoutParams(p);
         b2.setVisibility(GONE);
         b2.setBackgroundColor(Color.WHITE);
@@ -234,21 +233,21 @@ public class ZTJXQuestionView extends LinearLayout {
         //cankao.addView(b);
         cankao.addView(frameLayout);
 
-        LinearLayout jiexi=new LinearLayout(getContext());
-        p=new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout jiexi = new LinearLayout(getContext());
+        p = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         jiexi.setLayoutParams(p);
         jiexi.setOrientation(HORIZONTAL);
-        jiexi.setPadding(10,20,20,20);
+        jiexi.setPadding(10, 20, 20, 20);
 
-        TextView one=new TextView(getContext());
-        p=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        TextView one = new TextView(getContext());
+        p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         one.setLayoutParams(p);
         one.setTextSize(10);
         one.setText("[解        析]");
-        p.setMargins(10,20,30,20);
+        p.setMargins(10, 20, 30, 20);
 
-        two=new QuesWebViewFour(getContext());
-        p=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        two = new QuesWebViewFour(getContext());
+        p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         two.setLayoutParams(p);
         two.setInitialScale(100);
 
@@ -303,7 +302,7 @@ public class ZTJXQuestionView extends LinearLayout {
         final Button lastBtn = new Button(getContext());
         final Button nextBtn = new Button(getContext());
         submitExam = new Button(getContext());
-        p = new LayoutParams(DensityUtil.dip2px(getContext(), 80),DensityUtil.dip2px(getContext(), 35));
+        p = new LayoutParams(DensityUtil.dip2px(getContext(), 80), DensityUtil.dip2px(getContext(), 35));
         p.leftMargin = DensityUtil.dip2px(getContext(), 10);
         lastBtn.setLayoutParams(p);
         lastBtn.setPadding(DensityUtil.dip2px(getContext(), 15), DensityUtil.dip2px(getContext(), 6), DensityUtil.dip2px(getContext(), 15), DensityUtil.dip2px(getContext(), 6));
@@ -333,7 +332,7 @@ public class ZTJXQuestionView extends LinearLayout {
             }
         });
 
-        p = new LayoutParams(DensityUtil.dip2px(getContext(), 80),DensityUtil.dip2px(getContext(), 35));
+        p = new LayoutParams(DensityUtil.dip2px(getContext(), 80), DensityUtil.dip2px(getContext(), 35));
         p.leftMargin = DensityUtil.dip2px(getContext(), 10);
         nextBtn.setLayoutParams(p);
         nextBtn.setPadding(DensityUtil.dip2px(getContext(), 15), DensityUtil.dip2px(getContext(), 6), DensityUtil.dip2px(getContext(), 15), DensityUtil.dip2px(getContext(), 6));
@@ -369,10 +368,8 @@ public class ZTJXQuestionView extends LinearLayout {
         });
 
 
-
-        
         //解析按鈕
-        p = new LayoutParams(DensityUtil.dip2px(getContext(), 80),DensityUtil.dip2px(getContext(), 35));
+        p = new LayoutParams(DensityUtil.dip2px(getContext(), 80), DensityUtil.dip2px(getContext(), 35));
         p.leftMargin = DensityUtil.dip2px(getContext(), 10);
         submitExam.setLayoutParams(p);
         submitExam.setPadding(DensityUtil.dip2px(getContext(), 15), DensityUtil.dip2px(getContext(), 6), DensityUtil.dip2px(getContext(), 15), DensityUtil.dip2px(getContext(), 6));
@@ -611,7 +608,7 @@ public class ZTJXQuestionView extends LinearLayout {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
 
-                    if(event.getAction() == MotionEvent.ACTION_UP){
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
                         if (isSingle) {
                             if (!answer.isCheck()) {
                                 List<Answer> answers = mQuestion.getAnswers();
@@ -679,7 +676,7 @@ public class ZTJXQuestionView extends LinearLayout {
                 @Override
                 public void onClick(View v) {
 
-                    Toast.makeText(activity,"..my..clicll....",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "..my..clicll....", Toast.LENGTH_SHORT).show();
 
 
                     if (isSingle) {
@@ -770,20 +767,19 @@ public class ZTJXQuestionView extends LinearLayout {
         questionText.loadData(question.getQuestion());
 
 
-        if(question.getIstrue() !=  null) {
+        if (question.getIstrue() != null) {
 
-            if(question.getIstrue().length()<2){
+            if (question.getIstrue().length() < 2) {
                 b.setVisibility(VISIBLE);
                 b.setText(question.getIstrue());
                 b2.setVisibility(GONE);
-            }else {
+            } else {
                 b2.setVisibility(VISIBLE);
                 b2.loadData(question.getIstrue());
                 b.setVisibility(GONE);
             }
 
         }
-
 
 
         two.loadData(question.getExplain());
@@ -900,10 +896,10 @@ public class ZTJXQuestionView extends LinearLayout {
 //            return;
         }
 
-        if (cardSubmitView != null) {
-            cardSubmitView.setOnClickListener(listener);
-//            return;
-        }
+//        if (cardSubmitView != null) {
+//            cardSubmitView.setOnClickListener(listener);
+////            return;
+//        }
     }
 
     public void setTime(String time, String useTime) {

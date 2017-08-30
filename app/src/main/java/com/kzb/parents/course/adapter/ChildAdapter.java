@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kzb.parents.R;
@@ -17,6 +17,7 @@ import com.kzb.parents.course.model.CourseResponse;
 import com.kzb.parents.course.model.CourseResponse.JieModel;
 import com.kzb.parents.exam.ExamActivity;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -67,7 +68,7 @@ public class ChildAdapter extends BaseExpandableListAdapter {
         View view = (View) LayoutInflater.from(mContext).inflate(
                 R.layout.child_child_item, null);
 
-        ListView childChildTV = (ListView) view.findViewById(R.id.child_listview);
+        GridView childChildTV = (GridView) view.findViewById(R.id.child_listview);
         childChildTV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -90,6 +91,11 @@ public class ChildAdapter extends BaseExpandableListAdapter {
 
         GridViewAdapter gridViewAdapter = new GridViewAdapter(mContext);
         gridViewAdapter.setItems(mChilds.get(groupPosition).getKnowledges());
+
+        LogUtils.e("TAG", "详细的知识点的条目 == " + mChilds.get(groupPosition).getKnowledges().toString());
+
+
+
         childChildTV.setAdapter(gridViewAdapter);
 
         gridViewAdapter.setLnType(lnType);

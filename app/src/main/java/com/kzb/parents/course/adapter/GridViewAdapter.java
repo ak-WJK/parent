@@ -11,6 +11,7 @@ import com.kzb.parents.R;
 import com.kzb.parents.base.adapter.CommonAdapter;
 import com.kzb.parents.base.adapter.ViewHolder;
 import com.kzb.parents.course.model.CourseResponse.KnowledgeModel;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.view.CustomTextView;
 
 import java.text.NumberFormat;
@@ -45,6 +46,9 @@ public class GridViewAdapter extends CommonAdapter<KnowledgeModel> {
 
 
 		final KnowledgeModel knowledgeModel = mDatas.get(position);
+
+//		LogUtils.e("TAG", "position == " + position);
+		LogUtils.e("TAG", "mDatas.get === " + mDatas.size());
 
 
 		if (knowledgeModel.getImportance() != null) {

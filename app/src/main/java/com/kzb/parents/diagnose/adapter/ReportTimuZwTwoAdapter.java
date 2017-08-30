@@ -39,6 +39,7 @@ public class ReportTimuZwTwoAdapter extends BaseExpandableListAdapter {
         // TODO Auto-generated method stub
         if (datas != null) {
             return datas.size();
+
         } else {
             return 0;
         }
@@ -59,7 +60,7 @@ public class ReportTimuZwTwoAdapter extends BaseExpandableListAdapter {
     public Object getGroup(int groupPosition) {
         if (datas != null) {
             return datas.get(groupPosition);
-        }else{
+        } else {
             return null;
         }
     }
@@ -68,7 +69,7 @@ public class ReportTimuZwTwoAdapter extends BaseExpandableListAdapter {
     public Object getChild(int groupPosition, int childPosition) {
         if (datas != null && datas.size() > groupPosition && datas.get(groupPosition).getKnowledges() != null) {
             return datas.get(groupPosition).getKnowledges().get(childPosition);
-        }else{
+        } else {
             return null;
         }
     }
@@ -110,10 +111,10 @@ public class ReportTimuZwTwoAdapter extends BaseExpandableListAdapter {
 
         father_ViewHolder.father_num.setVisibility(View.VISIBLE);
 
-        if(null == datas.get(groupPosition).getKnowledges()){
+        if (null == datas.get(groupPosition).getKnowledges()) {
             father_ViewHolder.father_num.setText("(0)");
-        }else {
-            father_ViewHolder.father_num.setText("("+datas.get(groupPosition).getKnowledges().size()+")");
+        } else {
+            father_ViewHolder.father_num.setText("(" + datas.get(groupPosition).getKnowledges().size() + ")");
         }
         return convertView;
     }
@@ -122,6 +123,7 @@ public class ReportTimuZwTwoAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         Son_ViewHolder son_ViewHolder = null;
         if (convertView == null) {
+
             convertView = son_Inflater.inflate(R.layout.item_report_timu_zw_list_son, null);
             son_ViewHolder = new Son_ViewHolder();
             son_ViewHolder.son_position = (TextView) convertView.findViewById(R.id.item_report_list_son_position);
@@ -140,7 +142,7 @@ public class ReportTimuZwTwoAdapter extends BaseExpandableListAdapter {
         son_ViewHolder.son_position.setText("" + (childPosition + 1));
         son_ViewHolder.son_title.setText(item.getKpoint());
 
-        switch (item.getCan()){
+        switch (item.getCan()) {
             case 0:
                 son_ViewHolder.son_title.setBackground(context.getResources().getDrawable(R.drawable.btn_click_green));
                 break;
@@ -159,7 +161,7 @@ public class ReportTimuZwTwoAdapter extends BaseExpandableListAdapter {
 //        son_ViewHolder.star2.setVisibility(View.INVISIBLE);
 //        son_ViewHolder.star3.setVisibility(View.INVISIBLE);
         if (item.getImportance() != null) {
-            switch (item.getImportance()){
+            switch (item.getImportance()) {
                 case "1":
                     son_ViewHolder.star1.setVisibility(View.VISIBLE);
                     son_ViewHolder.star1.setImageResource(R.mipmap.report_item_img_three);
@@ -202,7 +204,7 @@ public class ReportTimuZwTwoAdapter extends BaseExpandableListAdapter {
         private TextView son_position;
         private TextView son_title;
         private ImageView star1;
-//        private ImageView star2;
+        //        private ImageView star2;
 //        private ImageView star3;
         private View mLine;
     }

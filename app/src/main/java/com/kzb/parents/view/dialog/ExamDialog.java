@@ -34,6 +34,7 @@ public class ExamDialog extends Dialog {
 
     private LinearLayout mGroupLayout;
     private int check = 1;
+
     public ExamDialog(Context context) {
         super(context, R.style.IProgressDialog);
         setContentView(R.layout.dialog_exam);
@@ -42,7 +43,7 @@ public class ExamDialog extends Dialog {
         initView();
     }
 
-    public void showRadio(){
+    public void showRadio() {
         if (mGroupLayout != null) {
 //            mGroupLayout.setVisibility(View.VISIBLE);
             signView.setVisibility(View.VISIBLE);
@@ -53,7 +54,7 @@ public class ExamDialog extends Dialog {
             mGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    switch (checkedId){
+                    switch (checkedId) {
                         case R.id.dialog_exam_radio_1:
                             check = 1;
                             break;
@@ -66,7 +67,7 @@ public class ExamDialog extends Dialog {
         }
     }
 
-    public int getCheck(){
+    public int getCheck() {
         return check;
     }
 
@@ -94,7 +95,7 @@ public class ExamDialog extends Dialog {
                 dismiss();
             }
         });
-        mTitle = (TextView)findViewById(R.id.dialog_exam_title);
+        mTitle = (TextView) findViewById(R.id.dialog_exam_title);
         mMsg1 = (TextView) findViewById(R.id.dialog_exam_msg_1);
         mMsg2 = (TextView) findViewById(R.id.dialog_exam_msg_2);
         mMsg3 = (TextView) findViewById(R.id.dialog_exam_msg_3);
@@ -107,12 +108,14 @@ public class ExamDialog extends Dialog {
         mGroupLayout = (LinearLayout) findViewById(R.id.dialog_exam_radio_layout);
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         mTitle.setText(title);
     }
-    public void setBtn(String title){
+
+    public void setBtn(String title) {
         mBtn.setText(title);
     }
+
     public void setMessage(String msg1, String msg2, String msg3) {
         if (msg1 != null) {
             mMsg1.setText(msg1);
@@ -203,12 +206,14 @@ public class ExamDialog extends Dialog {
     public interface ProgressDialogBack {
         public void onBackPressed();
     }
+
     public static final int MODE_SB = 1;
     public static final int MODE_1B = 0;
     private int mode = MODE_1B;
-    public void setMode(int mode){
+
+    public void setMode(int mode) {
         this.mode = mode;
-        if(mode==MODE_SB){
+        if (mode == MODE_SB) {
             mButton1.setText("随机60道");
             mButton2.setText("每个知识点1道");
         }

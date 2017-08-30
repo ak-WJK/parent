@@ -11,6 +11,7 @@ import com.kzb.parents.R;
 import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.course.StrengthListActivity;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +32,7 @@ public class StrengthenActivity extends BaseActivity implements View.OnClickList
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_str);
+        LogUtils.e("TAG", "已强化未强化页面");
         initView();
         initData();
     }

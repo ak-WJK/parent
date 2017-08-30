@@ -258,7 +258,7 @@ public class ExamActivity extends BaseActivity {
         LogUtils.e("TAG", "交卷");
 
         dialogView.handleDialog(true);
-        JSONObject json = new JSONObject();
+        final JSONObject json = new JSONObject();
         JSONArray array = new JSONArray();
         if (question != null) {
             if (question.getContent() != null) {
@@ -334,7 +334,7 @@ public class ExamActivity extends BaseActivity {
             wrong.deleteCharAt(0);
         }
 
-        String url;
+        final String url;
         if (!TextUtils.isEmpty(mKid) || !TextUtils.isEmpty(mPoint)) {
             //强化
             url = AddressConfig.EXAM_S_SUBMIT;
@@ -356,7 +356,7 @@ public class ExamActivity extends BaseActivity {
 
                 json.put("type", mType);
                 json.put("all_ques", array);
-                json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+
 
                 if (!TextUtils.isEmpty(mTestId)) {
                     //考试
@@ -400,6 +400,8 @@ public class ExamActivity extends BaseActivity {
                 dialogView.handleDialog(false);
                 Toast.makeText(ExamActivity.this, "提交失败", Toast.LENGTH_SHORT).show();
                 LogUtils.e("TAG", "onError == " + e.getMessage(), " id == " + id);
+
+
             }
 
             @Override
@@ -507,7 +509,6 @@ public class ExamActivity extends BaseActivity {
 
 
         });
-
 
     }
 

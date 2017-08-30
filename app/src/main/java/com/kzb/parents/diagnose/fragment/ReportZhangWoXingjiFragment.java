@@ -46,11 +46,12 @@ public class ReportZhangWoXingjiFragment extends BaseFragment {
     private String testId;
     private int open;
     private List<TimuZwFather> timuZws = new ArrayList<>();
-    public static ReportZhangWoXingjiFragment getInstance(String testId,int open){
+
+    public static ReportZhangWoXingjiFragment getInstance(String testId, int open) {
         ReportZhangWoXingjiFragment fragment = new ReportZhangWoXingjiFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("testId",testId);
-        bundle.putInt("open",open);
+        bundle.putString("testId", testId);
+        bundle.putInt("open", open);
         fragment.setArguments(bundle);
 
         return fragment;
@@ -73,14 +74,17 @@ public class ReportZhangWoXingjiFragment extends BaseFragment {
         mListView = (ExpandableListView) convertView.findViewById(R.id.report_timu_list);
         mAdapter = new ReportTimuZwTwoAdapter(getContext(), timuZws);
         mListView.setAdapter(mAdapter);
+
+
+
         mListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 //强化提高
                 Map val = new HashMap();
-                val.put("point",timuZws.get(groupPosition).getKnowledges().get(childPosition).getKpoint());
-                val.put("kid",timuZws.get(groupPosition).getKnowledges().get(childPosition).getKid());
-                IntentUtil.startActivity((BaseActivity)getContext(), CourseDetailActivity.class,val);
+                val.put("point", timuZws.get(groupPosition).getKnowledges().get(childPosition).getKpoint());
+                val.put("kid", timuZws.get(groupPosition).getKnowledges().get(childPosition).getKid());
+                IntentUtil.startActivity((BaseActivity) getContext(), CourseDetailActivity.class, val);
                 return false;
             }
         });
@@ -113,7 +117,7 @@ public class ReportZhangWoXingjiFragment extends BaseFragment {
                     for (AnXingjiContent content :
                             contents) {
                         if (content != null) {
-                            switch (content.getImportance()){
+                            switch (content.getImportance()) {
                                 case 1:
                                     TimuZwFather father = new TimuZwFather();
                                     father.setName("简单知识点");

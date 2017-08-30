@@ -200,6 +200,9 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 
         kaoshiView = getView(R.id.report_kg_sp_kaoshi_view);
 
+        nameview.setText("姓名:" + SpSetting.loadLoginInfo().getName());
+
+
         topOneView.setOnClickListener(this);
         topTwoView.setOnClickListener(this);
         topThreeView.setOnClickListener(this);

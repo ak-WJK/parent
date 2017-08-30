@@ -22,6 +22,7 @@ import com.kzb.parents.course.model.CourseResponse;
 import com.kzb.parents.course.model.CourseResponse.ZhangModel;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.view.DialogView;
 
 import org.json.JSONObject;
@@ -34,8 +35,7 @@ import okhttp3.Call;
 
 /**
  * Created by wanghaofei on 17/3/19.
- * 未强化list
- *
+ * 未强化list 一级菜单列表
  */
 
 public class StrengthListActivity extends BaseActivity implements ExpandableListView.OnGroupExpandListener {
@@ -55,6 +55,8 @@ public class StrengthListActivity extends BaseActivity implements ExpandableList
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list);
+
+        LogUtils.e("TAG", "已(未)强化List");
 
         httpConfig = new HttpConfig();
         dialogView = new DialogView(this);
@@ -125,10 +127,10 @@ public class StrengthListActivity extends BaseActivity implements ExpandableList
             object.put("uid", SpSetting.loadLoginInfo().getUid());
             object.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
 
-            if(type.equals("1")){
-                object.put("type","2");
-            }else {
-                object.put("type","1");
+            if (type.equals("1")) {
+                object.put("type", "2");
+            } else {
+                object.put("type", "1");
             }
 
         } catch (Exception e) {
@@ -157,6 +159,8 @@ public class StrengthListActivity extends BaseActivity implements ExpandableList
                     adapter = new ParentAdapter(StrengthListActivity.this, listZhangs, "2");
 
                     expandableListView.setAdapter(adapter);
+
+//                    Utility.setListViewHeightBasedOnChildren(expandableListView);
 
 //                    adapter.setOnChildTreeViewClickListener(CourseListActivity.this);
 

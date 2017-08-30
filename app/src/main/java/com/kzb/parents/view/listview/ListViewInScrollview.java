@@ -6,12 +6,10 @@
 package com.kzb.parents.view.listview;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
-import android.view.View.MeasureSpec;
-import android.widget.ListView;
+import android.widget.GridView;
 
-public class ListViewInScrollview extends ListView {
+public class ListViewInScrollview extends GridView {
     public ListViewInScrollview(Context context) {
         super(context);
     }
@@ -24,8 +22,17 @@ public class ListViewInScrollview extends ListView {
         super(context, attrs, defStyleAttr);
     }
 
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//        int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
+//        super.onMeasure(widthMeasureSpec, expandSpec);
+//    }
+
+
+    @Override
+    public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, expandSpec);
     }
+
+
 }
