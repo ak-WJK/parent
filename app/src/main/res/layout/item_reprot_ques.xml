@@ -243,13 +243,24 @@
             <!--android:textColor="@color/shop_choose_text_nomal"-->
             <!--android:textSize="12dp" />-->
 
-        <com.kzb.parents.view.QuesWebViewFive
+        <!--<com.kzb.parents.view.QuesWebViewFour-->
+            <!--android:id="@+id/item_ques_jiexi"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:ellipsize="end"-->
+            <!--android:singleLine="true"-->
+            <!--android:text=""-->
+            <!--android:textColor="@color/shop_choose_text_nomal"-->
+            <!--android:textSize="12dp" />-->
+        <com.kzb.parents.view.QuesTextView
             android:id="@+id/item_ques_jiexi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/shop_choose_text_nomal"
+            android:gravity="center_horizontal"
             android:textSize="12dp" />
+
 
         <TextView
             android:id="@+id/item_ques_no_jiexi"

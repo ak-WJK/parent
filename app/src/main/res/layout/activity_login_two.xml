@@ -4,94 +4,95 @@
     android:layout_height="match_parent"
     android:background="@color/_fafafa">
 
-    <include android:id="@+id/login_header_layout" layout="@layout/common_head"></include>
+    <include
+        android:id="@+id/login_header_layout"
+        layout="@layout/common_head"></include>
 
 
     <ImageView
         android:id="@+id/login_two_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
         android:layout_below="@id/login_header_layout"
-        android:src="@mipmap/login_green"
-        />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/login_green" />
 
     <EditText
         android:id="@+id/login_name_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
         android:layout_below="@id/login_two_icon"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:paddingTop="15dp"
+        android:background="@drawable/login_bg_white"
+        android:hint="请输入学号"
         android:paddingBottom="15dp"
         android:paddingLeft="15dp"
-        android:hint="请输入学号"
-        android:textSize="14dp"
-        android:background="@drawable/login_bg_white"
-        android:textColor="@color/gray_exam" />
+        android:paddingTop="15dp"
+        android:textColor="@color/gray_exam"
+        android:textSize="14dp" />
 
     <EditText
         android:id="@+id/login_pwd_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:hint="请输入密码"
-        android:textSize="14dp"
         android:layout_below="@id/login_name_view"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/login_bg_white"
-        android:paddingTop="15dp"
+        android:hint="请输入密码"
         android:paddingBottom="15dp"
         android:paddingLeft="15dp"
+        android:paddingTop="15dp"
         android:password="true"
-        android:textColor="@color/gray_exam" />
+        android:textColor="@color/gray_exam"
+        android:textSize="14dp" />
 
 
     <TextView
         android:id="@+id/login_commit_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/login_pwd_view"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/btn_click_green"
         android:gravity="center"
         android:paddingBottom="10dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
         android:paddingTop="10dp"
         android:text="登录"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
     <!--<LinearLayout-->
-        <!--android:id="@+id/login_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="25dp"-->
-        <!--android:orientation="horizontal">-->
+    <!--android:id="@+id/login_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="25dp"-->
+    <!--android:orientation="horizontal">-->
 
 
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="35dp"-->
-            <!--android:layout_marginRight="35dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@drawable/btn_click_green"-->
-            <!--android:gravity="center"-->
-            <!--android:paddingBottom="10dp"-->
-            <!--android:paddingTop="10dp"-->
-            <!--android:text="登录"-->
-            <!--android:textColor="@color/white"-->
-            <!--android:textSize="18dp" />-->
+    <!--<TextView-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="35dp"-->
+    <!--android:layout_marginRight="35dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@drawable/btn_click_green"-->
+    <!--android:gravity="center"-->
+    <!--android:paddingBottom="10dp"-->
+    <!--android:paddingTop="10dp"-->
+    <!--android:text="登录"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:textSize="18dp" />-->
 
     <!--</LinearLayout>-->
 

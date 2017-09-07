@@ -63,9 +63,6 @@ public class ArticeDetailActivity extends BaseActivity {
         webSettings.setDomStorageEnabled(true);
 
 
-
-
-
 //        webView.getSettings().setJavaScriptEnabled(true);//设置支持js
 
 
@@ -87,7 +84,6 @@ public class ArticeDetailActivity extends BaseActivity {
         url = AddressConfig.ARTICLE_URL + id + ".html";
 
         LogUtils.e("TAG", "URL==" + url);
-
 
 
         webView.setWebChromeClient(new WebChromeClient());

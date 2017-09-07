@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kzb.parents">
 
-<!--Home的禁止权限-->
+    <!-- Home的禁止权限 -->
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -56,10 +55,9 @@
         <activity android:name=".set.SetActivity" />
         <activity android:name=".set.SetCourseActivity" />
         <activity android:name=".main.MainActivity" />
-
-        <activity android:name=".diagnose.DiagNoseDetailActivity"
-            android:screenOrientation="portrait"/>
-
+        <activity
+            android:name=".diagnose.DiagNoseDetailActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".diagnose.JiXieActivity" />
         <activity android:name=".diagnose.JiXieNewActivity" />
         <activity android:name=".diagnose.JiXieTwoActivity" />
@@ -80,7 +78,11 @@
         <activity android:name=".wrong.WrongDetailTwoActivity" />
         <activity android:name=".wrong.WrongDetailThreeActivity" />
         <activity android:name=".wrong.WrongStrongActivity" />
-        <activity android:name=".wrong.WrongStrongTwoActivity" />
+        <activity
+            android:name=".wrong.WrongStrongTwoActivity"
+            android:screenOrientation="portrait"
+
+            />
         <activity android:name=".course.CourseActivity" />
         <activity android:name=".course.CourseMainActivity" />
         <activity android:name=".strengthen.StrengthenActivity" />
@@ -94,7 +96,9 @@
         <activity
             android:name=".course.CourseDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:launchMode="singleTask"
+            />
         <activity android:name=".xunlian.XunLianKaoShiActivity" />
         <activity android:name=".kaoshi.KaoShiActivity" />
         <activity android:name=".kaoshi.KaoShiBaogaoActivity" />
@@ -189,11 +193,11 @@
         <!-- android:screenOrientation="portrait" -->
         <!-- android:theme="@android:style/Theme.Translucent.NoTitleBar" /> -->
 
-        <activity android:name=".exer.ExerListActivity"/>
+        <activity android:name=".exer.ExerListActivity" />
         <activity android:name=".exer.ExerActivity" />
-        <activity android:name=".diagnose.WTDiagNoseDetailActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".diagnose.WTDiagNoseDetailActivity" />
         <activity android:name=".diagnose.WTJieXiNewActivity" />
+        <activity android:name=".VipImageDetail"></activity>
     </application>
 
 </manifest>

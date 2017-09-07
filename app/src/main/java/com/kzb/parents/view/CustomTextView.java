@@ -3,6 +3,7 @@ package com.kzb.parents.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -61,13 +62,16 @@ public class CustomTextView extends TextView {
         if (sign == 1) {
             mPaint.setColor(getResources().getColor(R.color.item_red_color));
             mPaint.setStyle(Paint.Style.FILL);//设置填满
-            canvas.drawRoundRect(0, 0, getMeasuredWidth(), getMeasuredHeight(),20,20, mPaint);
+
+            //new RectF()解决4.3一下兼容问题
+            canvas.drawRoundRect(new RectF(0, 0, getMeasuredWidth(), getMeasuredHeight()), 20, 20, mPaint);
+//            canvas.drawRoundRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), 20, 20, mPaint);
 //            canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
         } else if (sign == 2) {
             mPaint.setColor(getResources().getColor(R.color.item_green_color));
             mPaint.setStyle(Paint.Style.FILL);//设置填满
 
-            canvas.drawRoundRect(0, 0, getMeasuredWidth(), getMeasuredHeight(),20,20, mPaint);
+            canvas.drawRoundRect(new RectF(0, 0, getMeasuredWidth(), getMeasuredHeight()), 20, 20, mPaint);
 //            canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
         } else {
 
@@ -75,19 +79,19 @@ public class CustomTextView extends TextView {
 
             mPaint.setColor(getResources().getColor(R.color.item_red_color));
             mPaint.setStyle(Paint.Style.FILL);//设置填满
-            canvas.drawRoundRect(0, 0, getMeasuredWidth(), getMeasuredHeight(),20,20, mPaint);
+            canvas.drawRoundRect(new RectF(0, 0, getMeasuredWidth(), getMeasuredHeight()), 20, 20, mPaint);
 //            canvas.drawRect(firstRect, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
 
 
             mPaint.setColor(getResources().getColor(R.color.item_green_color));
             mPaint.setStyle(Paint.Style.FILL);//设置填满
 
-            canvas.drawRoundRect(0, 0, firstRect, getMeasuredHeight(),20,20, mPaint);
-             //思路就是重新绘制一遍，在距离右边20的地方绘制一个矩形
-            if((getMeasuredWidth() - firstRect)<=20){
-                canvas.drawRoundRect(0, 0, firstRect, getMeasuredHeight(),20,20, mPaint);
-            }else {
-                canvas.drawRect(firstRect-20, 0, firstRect, getMeasuredHeight(), mPaint);
+            canvas.drawRoundRect(new RectF(0, 0, firstRect, getMeasuredHeight()), 20, 20, mPaint);
+            //思路就是重新绘制一遍，在距离右边20的地方绘制一个矩形
+            if ((getMeasuredWidth() - firstRect) <= 20) {
+                canvas.drawRoundRect(new RectF(0, 0, firstRect, getMeasuredHeight()), 20, 20, mPaint);
+            } else {
+                canvas.drawRect(firstRect - 20, 0, firstRect, getMeasuredHeight(), mPaint);
             }
         }
         super.onDraw(canvas);

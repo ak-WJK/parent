@@ -87,13 +87,10 @@ public class ChildAdapter extends BaseExpandableListAdapter {
         });
 
 
-
-
         GridViewAdapter gridViewAdapter = new GridViewAdapter(mContext);
         gridViewAdapter.setItems(mChilds.get(groupPosition).getKnowledges());
 
         LogUtils.e("TAG", "详细的知识点的条目 == " + mChilds.get(groupPosition).getKnowledges().toString());
-
 
 
         childChildTV.setAdapter(gridViewAdapter);
@@ -102,10 +99,6 @@ public class ChildAdapter extends BaseExpandableListAdapter {
 //		holder.update(mChilds.get(groupPosition).getKnowledges());
         return view;
     }
-
-
-
-
 
 
     @Override
@@ -177,7 +170,7 @@ public class ChildAdapter extends BaseExpandableListAdapter {
                 childNum.setVisibility(View.GONE);
             } else {
                 childNum.setVisibility(View.VISIBLE);
-                childNum.setText("("+model.getCount()+")");
+                childNum.setText("(" + model.getCount() + ")");
             }
 
 

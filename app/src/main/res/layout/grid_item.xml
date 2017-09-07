@@ -8,9 +8,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_gravity="center_vertical"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -25,9 +25,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
+                android:layout_gravity="center"
                 android:background="@drawable/answer_btn_gray"
                 android:gravity="center"
-                android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:textSize="12dp" />
         </LinearLayout>
@@ -48,10 +48,10 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:lines="2"
+                android:paddingBottom="10dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
+                android:paddingTop="9dp"
                 android:textColor="@android:color/white"
                 android:textSize="12dp" />
         </LinearLayout>
@@ -76,9 +76,9 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:background="@color/_d7d8d9"></View>
 
 </LinearLayout>

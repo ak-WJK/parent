@@ -1,7 +1,9 @@
 package com.kzb.parents.settwo;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.TextView;
 
@@ -9,9 +11,11 @@ import com.kzb.parents.R;
 import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.util.update.UpdateVersionUtil;
-import com.kzb.parents.view.DialogView;
 import com.kzb.parents.util.update.Version;
+import com.kzb.parents.view.DialogView;
+
 /**
  * Created by wanghaofei on 17/6/12.
  */
@@ -33,10 +37,12 @@ public class UpdateActivity extends BaseActivity {
     private TextView titleLeft, titleCenter, titleRight;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
+        LogUtils.e("TAG", " apk更新页面 ");
 
         httpConfig = new HttpConfig();
         dialogView = new DialogView(this);
@@ -78,7 +84,7 @@ public class UpdateActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Version version = new Version();
-                version.setFileSize("10240");
+                version.setFileSize(filesize);
                 version.setVersionCode(versioncode);
                 version.setVersionName(versionname);
                 version.setUpdateMsg(content);

@@ -58,6 +58,13 @@ public class CourseDetailActivity extends BaseActivity {
     private TextView learnOver;
     private TextView strongView;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LogUtils.e("TAG", "此页面为课程学习页面===========");
+
+    }
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -145,6 +152,7 @@ public class CourseDetailActivity extends BaseActivity {
             object.put("kid", kid);
             object.put("uid", SpSetting.loadLoginInfo().getUid());
             object.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+            object.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
 
             LogUtils.e("TAG", "version_id---------=====","添加数据version_id");
 

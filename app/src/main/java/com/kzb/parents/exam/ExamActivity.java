@@ -344,6 +344,7 @@ public class ExamActivity extends BaseActivity {
                 json.put("kid", mKid);
                 json.put("qids", right.toString());
                 json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+                json.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -353,6 +354,9 @@ public class ExamActivity extends BaseActivity {
             try {
                 json.put("uid", SpSetting.loadLoginInfo().getUid());
                 json.put("subject_id", SpSetting.loadLoginInfo().getSubject_id());
+
+                json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+                json.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
 
                 json.put("type", mType);
                 json.put("all_ques", array);
@@ -386,7 +390,6 @@ public class ExamActivity extends BaseActivity {
                 }
                 json.put("oauth_token", SpSetting.loadLoginInfo().getOauth_token());
                 json.put("oauth_token_secret", SpSetting.loadLoginInfo().getOauth_token_secret());
-                json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -394,6 +397,7 @@ public class ExamActivity extends BaseActivity {
         }
 
 
+        LogUtils.e("TAG", "联网请求数据 ");
         httpConfig.doPostRequest(HttpConfig.getBaseRequest(url, json), new GenericsCallback<SubmitExam>(new JsonGenericsSerializator()) {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -407,9 +411,15 @@ public class ExamActivity extends BaseActivity {
             @Override
             public void onResponse(SubmitExam response, int id) {
                 dialogView.handleDialog(false);
+
+
                 if (response.getContent() != null) {
+
+
                     if (response.errorCode == 0) {
                         if (!TextUtils.isEmpty(mKid) || !TextUtils.isEmpty(mPoint)) {
+
+
                             if (question != null && question.getContent() != null) {
                                 for (Question ques :
                                         question.getContent()) {
@@ -419,6 +429,7 @@ public class ExamActivity extends BaseActivity {
                                         }
                                     }
                                 }
+
                             }
 
                             dialogView.handleDialog(false);
@@ -433,6 +444,7 @@ public class ExamActivity extends BaseActivity {
                             intent.putExtra("allper", response.getContent().getAllper());
                             intent.putExtra("thisper", response.getContent().getThisper());
 
+
                             IntentUtil.startActivityWithFinish(ExamActivity.this, intent);
                             return;
                         }
@@ -442,6 +454,7 @@ public class ExamActivity extends BaseActivity {
                         if (TextUtils.isEmpty(mTestId)) {
                             intent.putExtra("from", "diagnose");
                         }
+
 
                         intent.putExtra("test_id", response.getContent().getTest_id());
                         if (!TextUtils.isEmpty(mPkScore)) {
@@ -471,6 +484,7 @@ public class ExamActivity extends BaseActivity {
                             } else {
                                 mAtackDialog.setMsg("恭喜你！攻擂成功！", df.format(score) + "分", time, true);
                             }
+
 
                             mAtackDialog.show();
                             mAtackDialog.setCuOnBackPressed(new AtackDialog.ProgressDialogBack() {
@@ -539,11 +553,13 @@ public class ExamActivity extends BaseActivity {
                 json.put("kid", mKid);
                 json.put("uid", SpSetting.loadLoginInfo().getUid());
                 json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+                json.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
             } else if (!TextUtils.isEmpty(mTestId)) {
                 //章节考试
                 json.put("test_id", mTestId);
                 json.put("type", zhangjieType);
                 json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+                json.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
             } else {
 
                 if (from.equals("quanke")) {
@@ -551,14 +567,17 @@ public class ExamActivity extends BaseActivity {
                     json.put("uid", SpSetting.loadLoginInfo().getUid());
                     json.put("id", SpSetting.loadLoginInfo().getSubject_id());
                     json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+                    json.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
                 } else if (from.equals("zhenti")) {
                     json.put("id", mId);
                     json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+                    json.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
                 } else if (from.equals("zhangjie")) {
                     json.put("uid", SpSetting.loadLoginInfo().getUid());
                     json.put("num", mExamDialog.getCheck() + "");
                     json.put("id", mId);
                     json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+                    json.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
                 }
             }
         } catch (JSONException e) {

@@ -2,8 +2,10 @@ package com.kzb.parents.wrong;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,9 +21,9 @@ import com.kzb.parents.R;
 import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.course.CourseDetailActivity;
 import com.kzb.parents.exam.ExamActivity;
-
 import com.kzb.parents.util.DensityUtil;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.view.CustomReTextView;
 import com.kzb.parents.view.QuesWebViewSeven;
 import com.kzb.parents.view.QuesWebViewSix;
@@ -100,9 +102,16 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
     //无解析
     private TextView noJieXiView;
 
+    private String baifenbi;
+
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        LogUtils.e("TAG", "错题强化页面 ");
+
         setContentView(R.layout.activity_wrong_three_detail);
 
         mHeader = LayoutInflater.from(this).inflate(R.layout.activity_strong_report_header, null);
@@ -131,6 +140,7 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
         initData();
     }
 
+
     @Override
     protected void initView() {
 
@@ -140,7 +150,23 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
         percentView = (TextView) mHeader.findViewById(R.id.strong_percent_view);
         percentView.setText("累计强化进度:" + allper + "%");
 
+//        if (thisper != null) {
+//            int thisper1 = Integer.parseInt(thisper);
+//        }
+//
+//        if (baifenbi != null) {
+//            int baifenbi1 = Integer.parseInt(baifenbi);
+//        }
+
+
+//        if (thisper != null && baifenbi != thisper) {
+//
+//
         MineToast.show(WrongStrongTwoActivity.this, "对比上次强化提高了" + thisper + "%");
+//
+//            baifenbi = thisper;
+//        }
+
 
         mRight = (TextView) mHeader.findViewById(R.id.strong_right);
         mWrong = (TextView) mHeader.findViewById(R.id.strong_wrong);
@@ -445,5 +471,11 @@ public class WrongStrongTwoActivity extends BaseActivity implements View.OnClick
                 showContent();
                 break;
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        IntentUtil.finish(this);
     }
 }

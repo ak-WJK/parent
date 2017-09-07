@@ -26,6 +26,7 @@ public class QuesAdapter extends CommonAdapter<ExplainContent> {
 
     private int typeVal;//诊断报告，跳转过来的需要0为默认值，红色，1为绿色
 
+
     public QuesAdapter(Context context, List datas, int layoutId) {
         super(context, datas, layoutId);
     }
@@ -40,8 +41,10 @@ public class QuesAdapter extends CommonAdapter<ExplainContent> {
 
     @Override
     protected void convert(final ViewHolder holder, final ExplainContent o) {
+
         holder.setText(R.id.item_ques_current, (1 + holder.getPosition()) + "/" + getCount());
         ((QuesWebViewFive) holder.getView(R.id.item_ques_ques)).loadData(o.getQuestion());
+
 
         LinearLayout mAnswer = holder.getView(R.id.item_ques_ans_layout);
         mAnswer.removeAllViews();
@@ -51,7 +54,9 @@ public class QuesAdapter extends CommonAdapter<ExplainContent> {
             for (int i = 0; i < o.getAnswers().size(); i++) {
                 final Answer answer = o.getAnswers().get(i);
 
+
                 LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
                 lp.leftMargin = DensityUtil.dip2px(mContext, 5);
                 lp.topMargin = DensityUtil.dip2px(mContext, 8);
                 LinearLayout answerL = new LinearLayout(mContext);
@@ -80,7 +85,7 @@ public class QuesAdapter extends CommonAdapter<ExplainContent> {
                 an.setLayoutParams(lp);
                 an.setTextColor(Color.parseColor("#222222"));
                 an.setGravity(Gravity.CENTER_VERTICAL);
-                an.setTextSize(14);
+                an.setTextSize(12);
                 an.setNeedExpandHeight(true).setExpandLevel(2);
                 an.setNeedFilter(true).setNetText(answer.getAnswer());
                 answerL.addView(an);
@@ -89,11 +94,15 @@ public class QuesAdapter extends CommonAdapter<ExplainContent> {
             }
         }
 
+
         if (o.getKids() != null || o.getKnowledges() != null) {
 
             LinearLayout verLayout = holder.getView(R.id.item_ques_assws);
             verLayout.removeAllViews();
+
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+
             if (o.getKnowledges() != null) {
                 for (int i = 0; i < o.getKnowledges().size(); i++) {
                     final int fI = i;
@@ -101,120 +110,27 @@ public class QuesAdapter extends CommonAdapter<ExplainContent> {
                     TextView knowlegeView = (TextView) holder.getView(R.id.item_ques_knowadge_view);
                     knowlegeView.setText(o.getKnowledges().get(fI).getKpoint());
 
+
                     if (!TextUtils.isEmpty(o.getKnowledges().get(fI).getKid())) {
+
+                        if (o.isJiexi()) {
+
+                            myAnaswer(holder, o);
+
+                        }
 
                         TextView jiexi = (TextView) holder.getView(R.id.item_ques_ans_jiexi_view);
 
                         jiexi.setOnClickListener(new View.OnClickListener() {
+
+
                             @Override
                             public void onClick(View v) {
                                 if (o.isJiexi()) {
                                     o.setJiexi(false);
                                     holder.gone(R.id.item_ques_jiexi_layout);
                                 } else {
-
-                                    if (o.getMyanswer() != null) {
-                                        String[] myAns = o.getMyanswer().split(",");
-                                        if (myAns != null && myAns.length > 0) {
-                                            LinearLayout linearLayout = holder.getView(R.id.item_ques_myanswer);
-                                            linearLayout.removeAllViews();
-                                            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
-                                            for (String my : myAns) {
-
-                                                if (o.getAnswers() != null) {
-
-                                                    for (int i = 0; i < o.getAnswers().size(); i++) {
-                                                        Answer answer = o.getAnswers().get(i);
-                                                        if (my.equals(answer.getAnswer_id())) {
-                                                            TextView textView = new TextView(mContext);
-                                                            textView.setBackgroundResource(R.drawable.answer_btn_red);
-                                                            textView.setTextColor(Color.WHITE);
-                                                            textView.setGravity(Gravity.CENTER);
-                                                            textView.setTextSize(12);
-                                                            lp.rightMargin = DensityUtil.dip2px(mContext, 12);
-                                                            textView.setLayoutParams(lp);
-                                                            switch (i) {
-                                                                case 0:
-                                                                    textView.setText("A");
-                                                                    break;
-                                                                case 1:
-                                                                    textView.setText("B");
-                                                                    break;
-                                                                case 2:
-                                                                    textView.setText("C");
-                                                                    break;
-                                                                case 3:
-                                                                    textView.setText("D");
-                                                                    break;
-                                                                case 4:
-                                                                    textView.setText("E");
-                                                                    break;
-                                                            }
-                                                            linearLayout.addView(textView);
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-
-                                    //正确选项
-                                    LinearLayout linearLayout = holder.getView(R.id.item_ques_answer);
-                                    linearLayout.removeAllViews();
-                                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
-
-                                    if(null != o.getAnswers()) {
-
-                                        for (int i = 0; i < o.getAnswers().size(); i++) {
-                                            Answer answer = o.getAnswers().get(i);
-                                            if (answer.istrue.equals("1")) {
-                                                TextView textView = new TextView(mContext);
-                                                textView.setBackgroundResource(R.drawable.answer_btn_green);
-                                                textView.setTextColor(Color.WHITE);
-                                                textView.setGravity(Gravity.CENTER);
-                                                textView.setTextSize(12);
-                                                lp.rightMargin = DensityUtil.dip2px(mContext, 12);
-                                                textView.setLayoutParams(lp);
-                                                switch (i) {
-                                                    case 0:
-                                                        textView.setText("A");
-                                                        break;
-                                                    case 1:
-                                                        textView.setText("B");
-                                                        break;
-                                                    case 2:
-                                                        textView.setText("C");
-                                                        break;
-                                                    case 3:
-                                                        textView.setText("D");
-                                                        break;
-                                                    case 4:
-                                                        textView.setText("E");
-                                                        break;
-                                                }
-                                                linearLayout.addView(textView);
-                                            }
-                                        }
-                                    }
-//                                    ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0);
-                                    if (!TextUtils.isEmpty(o.getExplain()) && !o.getExplain().contains("暂无解析")) {
-                                        holder.setVisibility(R.id.item_ques_jiexi, true);
-                                        holder.setVisibility(R.id.item_ques_no_jiexi, false);
-                                        ((QuesWebViewFive) holder.getView(R.id.item_ques_jiexi)).loadData(o.getExplain());
-//                                        Log.e("xue","o.getExplain()="+o.getExplain());
-//                                        ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0).setNetText(o.getExplain());
-                                    } else {
-//                                        ((QuesWebViewTwo) holder.getView(R.id.item_ques_jiexi)).loadData("没有解析。");
-                                        holder.setVisibility(R.id.item_ques_no_jiexi, true);
-                                        holder.setVisibility(R.id.item_ques_jiexi, false);
-//                                        ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0).setNetText("没有解析。");
-                                    }
-
-                                    holder.setVisibility(R.id.item_ques_jiexi_layout, true);
-                                    if (onJiexi != null) {
-                                        onJiexi.onJiexi();
-                                    }
-                                    o.setJiexi(true);
+                                    myAnaswer(holder, o);
                                 }
 
                             }
@@ -240,6 +156,11 @@ public class QuesAdapter extends CommonAdapter<ExplainContent> {
 
                 lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
+                if (o.isJiexi()) {
+                    anaswerClick(holder, o);
+                }
+
+
                 TextView jiexi = (TextView) holder.getView(R.id.item_ques_ans_jiexi_view);
 
                 jiexi.setOnClickListener(new View.OnClickListener() {
@@ -248,102 +169,10 @@ public class QuesAdapter extends CommonAdapter<ExplainContent> {
                         if (o.isJiexi()) {
                             o.setJiexi(false);
                             holder.gone(R.id.item_ques_jiexi_layout);
+//
                         } else {
 
-                            if (o.getMyanswer() != null) {
-                                String[] myAns = o.getMyanswer().split(",");
-                                if (myAns != null && myAns.length > 0) {
-                                    LinearLayout linearLayout = holder.getView(R.id.item_ques_myanswer);
-                                    linearLayout.removeAllViews();
-                                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
-                                    for (String my : myAns) {
-                                        for (int i = 0; i < o.getAnswers().size(); i++) {
-                                            Answer answer = o.getAnswers().get(i);
-                                            if (my.equals(answer.getAnswer_id())) {
-                                                TextView textView = new TextView(mContext);
-                                                textView.setBackgroundResource(R.drawable.answer_btn_red);
-                                                textView.setTextColor(Color.WHITE);
-                                                textView.setGravity(Gravity.CENTER);
-                                                textView.setTextSize(12);
-                                                lp.rightMargin = DensityUtil.dip2px(mContext, 12);
-                                                textView.setLayoutParams(lp);
-                                                switch (i) {
-                                                    case 0:
-                                                        textView.setText("A");
-                                                        break;
-                                                    case 1:
-                                                        textView.setText("B");
-                                                        break;
-                                                    case 2:
-                                                        textView.setText("C");
-                                                        break;
-                                                    case 3:
-                                                        textView.setText("D");
-                                                        break;
-                                                    case 4:
-                                                        textView.setText("E");
-                                                        break;
-                                                }
-                                                linearLayout.addView(textView);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-                            //正确选项
-                            LinearLayout linearLayout = holder.getView(R.id.item_ques_answer);
-                            linearLayout.removeAllViews();
-                            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
-                            for (int i = 0; i < o.getAnswers().size(); i++) {
-                                Answer answer = o.getAnswers().get(i);
-                                if (answer.istrue.equals("1")) {
-                                    TextView textView = new TextView(mContext);
-                                    textView.setBackgroundResource(R.drawable.answer_btn_green);
-                                    textView.setTextColor(Color.WHITE);
-                                    textView.setGravity(Gravity.CENTER);
-                                    textView.setTextSize(12);
-                                    lp.rightMargin = DensityUtil.dip2px(mContext, 12);
-                                    textView.setLayoutParams(lp);
-                                    switch (i) {
-                                        case 0:
-                                            textView.setText("A");
-                                            break;
-                                        case 1:
-                                            textView.setText("B");
-                                            break;
-                                        case 2:
-                                            textView.setText("C");
-                                            break;
-                                        case 3:
-                                            textView.setText("D");
-                                            break;
-                                        case 4:
-                                            textView.setText("E");
-                                            break;
-                                    }
-                                    linearLayout.addView(textView);
-                                }
-                            }
-//                            ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedExpandHeight(true).setExpandLevel(0).setNeedFilter(true);
-                            if (!TextUtils.isEmpty(o.getExplain()) && !o.getExplain().contains("暂无解析")) {
-                                ((QuesWebViewFive) holder.getView(R.id.item_ques_jiexi)).loadData(o.getExplain());
-                                holder.setVisibility(R.id.item_ques_no_jiexi, false);
-                                holder.setVisibility(R.id.item_ques_jiexi, true);
-//                                ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0).setNetText(o.getExplain());
-                            } else {
-//                                ((QuesWebViewTwo) holder.getView(R.id.item_ques_jiexi)).loadData("没有解析。");
-                                holder.setVisibility(R.id.item_ques_no_jiexi, true);
-                                holder.setVisibility(R.id.item_ques_jiexi, false);
-
-//                                ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0).setNetText("没有解析。");
-                            }
-
-                            holder.setVisibility(R.id.item_ques_jiexi_layout, true);
-                            if (onJiexi != null) {
-                                onJiexi.onJiexi();
-                            }
-                            o.setJiexi(true);
+                            anaswerClick(holder, o);
                         }
 
                     }
@@ -365,6 +194,227 @@ public class QuesAdapter extends CommonAdapter<ExplainContent> {
         } else {
             holder.gone(R.id.item_ques_jiexi_layout);
         }
+
+
+    }
+
+    private void anaswerClick(ViewHolder holder, ExplainContent o) {
+
+        if (o.getMyanswer() != null) {
+            String[] myAns = o.getMyanswer().split(",");
+            if (myAns != null && myAns.length > 0) {
+                LinearLayout linearLayout = holder.getView(R.id.item_ques_myanswer);
+                linearLayout.removeAllViews();
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
+
+                for (String my : myAns) {
+
+                    for (int i = 0; i < o.getAnswers().size(); i++) {
+
+                        Answer answer = o.getAnswers().get(i);
+                        if (my.equals(answer.getAnswer_id())) {
+                            TextView textView = new TextView(mContext);
+                            textView.setBackgroundResource(R.drawable.answer_btn_red);
+                            textView.setTextColor(Color.WHITE);
+                            textView.setGravity(Gravity.CENTER);
+                            textView.setTextSize(12);
+                            lp.rightMargin = DensityUtil.dip2px(mContext, 12);
+                            textView.setLayoutParams(lp);
+                            switch (i) {
+                                case 0:
+                                    textView.setText("A");
+                                    break;
+                                case 1:
+                                    textView.setText("B");
+                                    break;
+                                case 2:
+                                    textView.setText("C");
+                                    break;
+                                case 3:
+                                    textView.setText("D");
+                                    break;
+                                case 4:
+                                    textView.setText("E");
+                                    break;
+                            }
+                            linearLayout.addView(textView);
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        //正确选项
+
+        LinearLayout linerLayout = holder.getView(R.id.item_ques_answer);
+        linerLayout.removeAllViews();
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
+        for (int i = 0; i < o.getAnswers().size(); i++) {
+            Answer answer = o.getAnswers().get(i);
+            if (answer.istrue.equals("1")) {
+                TextView textView = new TextView(mContext);
+                textView.setBackgroundResource(R.drawable.answer_btn_green);
+                textView.setTextColor(Color.WHITE);
+                textView.setGravity(Gravity.CENTER);
+                textView.setTextSize(12);
+                lp.rightMargin = DensityUtil.dip2px(mContext, 12);
+                textView.setLayoutParams(lp);
+                switch (i) {
+                    case 0:
+                        textView.setText("A");
+                        break;
+                    case 1:
+                        textView.setText("B");
+                        break;
+                    case 2:
+                        textView.setText("C");
+                        break;
+                    case 3:
+                        textView.setText("D");
+                        break;
+                    case 4:
+                        textView.setText("E");
+                        break;
+                }
+                linerLayout.addView(textView);
+
+            }
+        }
+
+
+        ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0);
+        if (!TextUtils.isEmpty(o.getExplain())) {
+            // ((QuesWebViewFour) holder.getView(R.id.item_ques_jiexi)).loadData(o.getExplain());
+
+//            Log.e("xue","o.getExplain()="+o.getExplain());
+            ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0).setNetText(o.getExplain());
+
+            //fenxi.setInitialScale(120);
+            // holder.getView(R.id.item_ques_jiexi).set
+
+        } else {
+
+            // ((QuesWebViewFour) holder.getView(R.id.item_ques_jiexi)).loadData("没有解析");
+            ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0).setNetText("没有解析。");
+        }
+
+        holder.setVisibility(R.id.item_ques_jiexi_layout, true);
+        if (onJiexi != null) {
+            onJiexi.onJiexi();
+        }
+        o.setJiexi(true);
+    }
+
+
+    private void myAnaswer(ViewHolder holder, ExplainContent o) {
+
+        if (o.getMyanswer() != null) {
+            String[] myAns = o.getMyanswer().split(",");
+            if (myAns != null && myAns.length > 0) {
+                LinearLayout linearLayout = holder.getView(R.id.item_ques_myanswer);
+                linearLayout.removeAllViews();
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
+
+                for (String my : myAns) {
+
+                    for (int i = 0; i < o.getAnswers().size(); i++) {
+
+                        Answer answer = o.getAnswers().get(i);
+                        if (my.equals(answer.getAnswer_id())) {
+                            TextView textView = new TextView(mContext);
+                            textView.setBackgroundResource(R.drawable.answer_btn_red);
+                            textView.setTextColor(Color.WHITE);
+                            textView.setGravity(Gravity.CENTER);
+                            textView.setTextSize(12);
+                            lp.rightMargin = DensityUtil.dip2px(mContext, 12);
+                            textView.setLayoutParams(lp);
+                            switch (i) {
+                                case 0:
+                                    textView.setText("A");
+                                    break;
+                                case 1:
+                                    textView.setText("B");
+                                    break;
+                                case 2:
+                                    textView.setText("C");
+                                    break;
+                                case 3:
+                                    textView.setText("D");
+                                    break;
+                                case 4:
+                                    textView.setText("E");
+                                    break;
+                            }
+                            linearLayout.addView(textView);
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        //正确选项
+
+        LinearLayout linerLayout = holder.getView(R.id.item_ques_answer);
+        linerLayout.removeAllViews();
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(DensityUtil.dip2px(mContext, 25), DensityUtil.dip2px(mContext, 25));
+        for (int i = 0; i < o.getAnswers().size(); i++) {
+            Answer answer = o.getAnswers().get(i);
+            if (answer.istrue.equals("1")) {
+                TextView textView = new TextView(mContext);
+                textView.setBackgroundResource(R.drawable.answer_btn_green);
+                textView.setTextColor(Color.WHITE);
+                textView.setGravity(Gravity.CENTER);
+                textView.setTextSize(12);
+                lp.rightMargin = DensityUtil.dip2px(mContext, 12);
+                textView.setLayoutParams(lp);
+                switch (i) {
+                    case 0:
+                        textView.setText("A");
+                        break;
+                    case 1:
+                        textView.setText("B");
+                        break;
+                    case 2:
+                        textView.setText("C");
+                        break;
+                    case 3:
+                        textView.setText("D");
+                        break;
+                    case 4:
+                        textView.setText("E");
+                        break;
+                }
+                linerLayout.addView(textView);
+
+            }
+        }
+
+
+        ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0);
+        if (!TextUtils.isEmpty(o.getExplain())) {
+            //  ((QuesWebViewFour) holder.getView(R.id.item_ques_jiexi)).loadData(o.getExplain());
+
+//            Log.e("xue","o.getExplain()="+o.getExplain());
+            ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0).setNetText(o.getExplain());
+            // ((QuesTextView) holder.getView(R.id.item_ques_jiexi))
+
+            //fenxi.setInitialScale(120);
+
+        } else {
+
+            // ((QuesWebViewFour) holder.getView(R.id.item_ques_jiexi)).loadData("没有解析");
+            ((QuesTextView) holder.getView(R.id.item_ques_jiexi)).setNeedFilter(true).setNeedExpandHeight(true).setExpandLevel(0).setNetText("没有解析。");
+        }
+
+        holder.setVisibility(R.id.item_ques_jiexi_layout, true);
+        if (onJiexi != null) {
+            onJiexi.onJiexi();
+        }
+        o.setJiexi(true);
     }
 
     OnJiexi onJiexi;
@@ -380,5 +430,6 @@ public class QuesAdapter extends CommonAdapter<ExplainContent> {
     public interface OnJiexi {
         void onJiexi();
     }
+
 
 }

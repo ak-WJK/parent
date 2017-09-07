@@ -173,6 +173,7 @@ public class JiXieNewActivity extends BaseActivity implements View.OnClickListen
         try {
             json.put("id", testId);
             json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+            json.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
         } catch (JSONException e) {
             e.printStackTrace();
         }

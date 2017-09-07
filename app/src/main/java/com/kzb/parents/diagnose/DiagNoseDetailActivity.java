@@ -283,6 +283,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
             json.put("uid", SpSetting.loadLoginInfo().getUid());
             json.put("test_id", testId);
             json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+            json.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
         } catch (JSONException e) {
             e.printStackTrace();
         }

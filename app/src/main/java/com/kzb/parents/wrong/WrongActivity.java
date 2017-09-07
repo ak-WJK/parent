@@ -78,6 +78,7 @@ public class WrongActivity extends BaseActivity implements View.OnClickListener{
             object.put("id", SpSetting.loadLoginInfo().getUid());
             object.put("subject_id",SpSetting.loadLoginInfo().getSubject_id());
             object.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+            object.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
         } catch (Exception e) {
             e.printStackTrace();
         }

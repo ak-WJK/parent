@@ -23,18 +23,18 @@ public class VerticalForHorChart extends View {
     private double totalNum = 100;
     private int mWidth;
     private int mHeight;
-    private int[] xUnGet = {0,0,0};
-    private int[] xGet = {0,0,0};
-    private String[] xTitle = {"最高","我的","平均"};
+    private int[] xUnGet = {0, 0, 0};
+    private int[] xGet = {0, 0, 0};
+    private String[] xTitle = {"最高", "我的", "平均"};
     private String title = "成绩情况";
     int xSpec;
     int ySpec;
     Point point;//原点
-    private int texta,gray,green,red,blue;
+    private int texta, gray, green, red, blue;
 
     public VerticalForHorChart(Context context, AttributeSet attrs) {
         super(context, attrs);
-        texta = context.getResources().getColor(R.color.text_a);
+        texta = context.getResources().getColor(R.color.black);
         gray = context.getResources().getColor(R.color.text_c);
         green = context.getResources().getColor(R.color.theme_green);
         red = context.getResources().getColor(R.color.theme_red);
@@ -63,7 +63,7 @@ public class VerticalForHorChart extends View {
         super.onDraw(canvas);
         Paint paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setTextSize(DensityUtil.dip2px(getContext(),15));
+        paint.setTextSize(DensityUtil.dip2px(getContext(), 17));
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(DensityUtil.dip2px(getContext(), 3));
         paint.setTextAlign(Paint.Align.CENTER);
@@ -71,8 +71,8 @@ public class VerticalForHorChart extends View {
         //原点
         point = new Point();
         paint.setAntiAlias(true);
-        point.x = DensityUtil.dip2px(getContext(),30);
-        point.y = getHeight() - DensityUtil.dip2px(getContext(),40);
+        point.x = DensityUtil.dip2px(getContext(), 30);
+        point.y = getHeight() - DensityUtil.dip2px(getContext(), 40);
         //画x线
         xSpec = (getWidth() - DensityUtil.dip2px(getContext(), 20)) / 3;
         int yLength = DensityUtil.dip2px(getContext(), 150);
@@ -81,27 +81,27 @@ public class VerticalForHorChart extends View {
         paint.setAntiAlias(true);
         paint.setStrokeWidth(DensityUtil.dip2px(getContext(), 1));
         paint.setColor(Color.BLACK);
-        paint.setTextSize(DensityUtil.dip2px(getContext(),10));
-        canvas.drawLine(point.x-DensityUtil.dip2px(getContext(),5), point.y, point.x + xSpec * 5, point.y, paint);
+        paint.setTextSize(DensityUtil.dip2px(getContext(), 10));
+        canvas.drawLine(point.x - DensityUtil.dip2px(getContext(), 5), point.y, point.x + xSpec * 5, point.y, paint);
         //画x点
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setTextSize(DensityUtil.dip2px(getContext(), 15));
         for (int i = 0; i < 3; i++) {
             canvas.drawLine(point.x + xSpec * (1 + i), point.y, point.x + xSpec * (1 + i), point.y + DensityUtil.dip2px(getContext(), 4), paint);
-            canvas.drawText(xTitle[i], point.x + xSpec * (1 + i) - xSpec/2 , point.y + DensityUtil.dip2px(getContext(), 30), paint);
+            canvas.drawText(xTitle[i], point.x + xSpec * (1 + i) - xSpec / 2, point.y + DensityUtil.dip2px(getContext(), 30), paint);
         }
         //画y线
         canvas.drawLine(point.x, point.y + DensityUtil.dip2px(getContext(), 5), point.x, point.y - yLength, paint);
         paint.setTextAlign(Paint.Align.LEFT);
         //画y点
-        int intSpec = (int)totalNum / 10;
+        int intSpec = (int) totalNum / 10;
         paint.setTextSize(DensityUtil.dip2px(getContext(), 10));
         for (int i = 0; i < 10; i++) {
             canvas.drawLine(point.x - DensityUtil.dip2px(getContext(), 5), point.y - ySpec * (1 + i), point.x, point.y - ySpec * (1 + i), paint);
-            if(i==9){
-                canvas.drawText(intSpec * (i + 1) + "", point.x - DensityUtil.dip2px(getContext(), 25), point.y - ySpec * (1 + i)+DensityUtil.dip2px(getContext(),5), paint);
-            }else{
-                canvas.drawText(intSpec * (i + 1) + "", point.x - DensityUtil.dip2px(getContext(), 20), point.y - ySpec * (1 + i)+DensityUtil.dip2px(getContext(),5), paint);
+            if (i == 9) {
+                canvas.drawText(intSpec * (i + 1) + "", point.x - DensityUtil.dip2px(getContext(), 25), point.y - ySpec * (1 + i) + DensityUtil.dip2px(getContext(), 5), paint);
+            } else {
+                canvas.drawText(intSpec * (i + 1) + "", point.x - DensityUtil.dip2px(getContext(), 20), point.y - ySpec * (1 + i) + DensityUtil.dip2px(getContext(), 5), paint);
             }
 
 
@@ -120,22 +120,22 @@ public class VerticalForHorChart extends View {
         }
         //画图
         for (int i = 0; i < xUnGet.length; i++) {
-            double stopY = point.y - (xUnGet[i]+xGet[i])/totalNum * ySpec * 10;
+            double stopY = point.y - (xUnGet[i] + xGet[i]) / totalNum * ySpec * 10;
             paint.setColor(red);
-            paint.setStrokeWidth(xSpec - DensityUtil.dip2px(getContext(),30));
+            paint.setStrokeWidth(xSpec - DensityUtil.dip2px(getContext(), 30));
             paint.setTextSize(DensityUtil.dip2px(getContext(), 14));
             canvas.drawLine(point.x + xSpec * (1 + i) - xSpec / 2, point.y, point.x + xSpec * (1 + i) - xSpec / 2, (int) stopY, paint);
-            if(xUnGet[i]>0){
+            if (xUnGet[i] > 0) {
                 paint.setColor(texta);
-                double y = stopY + (1.0/totalNum * ySpec * 10) * (xUnGet[i] / 2.0) + DensityUtil.dip2px(getContext(), 6);
-                canvas.drawText((int)xUnGet[i] + "分", point.x + xSpec * (1 + i) - xSpec / 2 -DensityUtil.dip2px(getContext(),10), (float)y, paint);
+                double y = stopY + (1.0 / totalNum * ySpec * 10) * (xUnGet[i] / 2.0) + DensityUtil.dip2px(getContext(), 6);
+                canvas.drawText((int) xUnGet[i] + "分", point.x + xSpec * (1 + i) - xSpec / 2 - DensityUtil.dip2px(getContext(), 10), (float) y, paint);
             }
         }
 
         for (int i = 0; i < xGet.length; i++) {
-            double stopY = point.y - xGet[i]/totalNum * ySpec * 10;
+            double stopY = point.y - xGet[i] / totalNum * ySpec * 10;
 
-            switch (i){
+            switch (i) {
                 case 0:
                     paint.setColor(green);
                     break;
@@ -150,16 +150,17 @@ public class VerticalForHorChart extends View {
                     break;
             }
 
-            paint.setStrokeWidth(xSpec - DensityUtil.dip2px(getContext(),30));
+            paint.setStrokeWidth(xSpec - DensityUtil.dip2px(getContext(), 30));
             canvas.drawLine(point.x + xSpec * (1 + i) - xSpec / 2, point.y, point.x + xSpec * (1 + i) - xSpec / 2, (int) stopY, paint);
-            if(xGet[i]>0){
+            if (xGet[i] > 0) {
                 paint.setColor(texta);
-                double y = stopY + (1.0/totalNum * ySpec * 10) * (xGet[i] / 2.0) + DensityUtil.dip2px(getContext(), 6);;
-                canvas.drawText((int)xGet[i]+"分",point.x + xSpec * (1 + i) - xSpec / 2-DensityUtil.dip2px(getContext(),10), (float)y,paint);
+                double y = stopY + (1.0 / totalNum * ySpec * 10) * (xGet[i] / 2.0) + DensityUtil.dip2px(getContext(), 6);
+                ;
+                canvas.drawText((int) xGet[i] + "分", point.x + xSpec * (1 + i) - xSpec / 2 - DensityUtil.dip2px(getContext(), 10), (float) y, paint);
             }
         }
 
-        int tX = getWidth()/2+DensityUtil.dip2px(getContext(),30);
+        int tX = getWidth() / 2 + DensityUtil.dip2px(getContext(), 30);
         int tY = getHeight() - DensityUtil.dip2px(getContext(), 30);
         //暂时注释
 //
@@ -193,11 +194,12 @@ public class VerticalForHorChart extends View {
 //        paint.setStrokeWidth(DensityUtil.dip2px(getContext(),30));
 //        canvas.drawLine(point.x, point.y - yLength + DensityUtil.dip2px(getContext(), 70), (int) stopX, point.y - yLength + DensityUtil.dip2px(getContext(), 70), paint);
     }
-    public void setNum(float max,int[] unGet,int[] get){
 
-        Log.e("kzb","max="+max);
-        Log.e("kzb","unGet="+unGet.length);
-        Log.e("kzb","get="+get.length);
+    public void setNum(float max, int[] unGet, int[] get) {
+
+        Log.e("kzb", "max=" + max);
+        Log.e("kzb", "unGet=" + unGet.length);
+        Log.e("kzb", "get=" + get.length);
 
         if (max > 0) {
             totalNum = max;
@@ -207,7 +209,7 @@ public class VerticalForHorChart extends View {
         postInvalidate();
     }
 
-//    @Override
+    //    @Override
 //    public boolean onTouchEvent(MotionEvent event) {
 //        float x = event.getX();
 //        float y = event.getY();
@@ -242,10 +244,12 @@ public class VerticalForHorChart extends View {
 //
 //    }
     CircleChartView.OnChartClick onChartClick;
-    public void setOnChartClick(CircleChartView.OnChartClick onChartClick){
+
+    public void setOnChartClick(CircleChartView.OnChartClick onChartClick) {
         this.onChartClick = onChartClick;
     }
-    public interface OnChartClick{
+
+    public interface OnChartClick {
         void onChartClick(int position);
     }
 

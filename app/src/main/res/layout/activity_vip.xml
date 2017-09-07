@@ -26,6 +26,12 @@
 
     </View>
 
+    <Button
+        android:id="@+id/vip_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="查看会员详情" />
+
     <ListView
         android:id="@+id/vip_listview"
         android:layout_width="match_parent"

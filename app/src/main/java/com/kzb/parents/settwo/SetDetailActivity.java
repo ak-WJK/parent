@@ -4,8 +4,10 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -37,6 +39,7 @@ import com.kzb.parents.settwo.model.YearResponse.GradeModel;
 import com.kzb.parents.settwo.model.YearResponse.YearModel;
 import com.kzb.parents.util.DeviceUtil;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.view.DialogView;
 import com.kzb.parents.view.wheelview.DateUtils;
 import com.kzb.parents.view.wheelview.JudgeDate;
@@ -65,7 +68,7 @@ import okhttp3.Call;
 public class SetDetailActivity extends BaseActivity implements View.OnClickListener, AbstractSpinerAdapter.IOnItemSelectListener {
 
     private TextView leftView, rightView;
-    private RelativeLayout gradeLayout, classLayout,updateLayout,outLayout,renZhenLayout;
+    private RelativeLayout gradeLayout, classLayout, updateLayout, outLayout, renZhenLayout;
     private TextView womanView, manView, birthView;
 
     private TextView gradeView, classView, schoolView, classNum;
@@ -89,7 +92,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
     private YearModel yearModel;
     //    private GradeModel classModel;
     private int selectSign = 1;//1 grade,2 class
-    private String gradeIdVal,classIdVal;
+    private String gradeIdVal, classIdVal;
 
 
     private List<YearModel> listYears;//年级
@@ -101,13 +104,15 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
 
 
     //版本更新
-    private TextView redSignView,updateView;
+    private TextView redSignView, updateView;
     private UpdateResponse.UpdateModel updateModel;//版本更新对象
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_two);
+        LogUtils.e("TAG", "个人设置页面");
 
         httpConfig = new HttpConfig();
         dialogView = new DialogView(this);
@@ -146,14 +151,14 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
 
         mVersionName = getView(R.id.set_update_num);
         outLayout = getView(R.id.set_out_layout);
-        mVersionName.setText("V"+ DeviceUtil.getCurVersionName(this));
+        mVersionName.setText("V" + DeviceUtil.getCurVersionName(this));
 
 
         outLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
 
-                Toast.makeText(SetDetailActivity.this,"id="+ Application.deviceId,Toast.LENGTH_LONG).show();
+                Toast.makeText(SetDetailActivity.this, "id=" + Application.deviceId, Toast.LENGTH_LONG).show();
 
                 return true;
             }
@@ -185,7 +190,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
         LoginResponse.LoginModel loginModel = SpSetting.loadLoginInfo();
         if (null != loginModel) {
             nameView.setText(loginModel.getName());
-            if(!TextUtils.isEmpty(loginModel.getName())){
+            if (!TextUtils.isEmpty(loginModel.getName())) {
                 nameView.setSelection(loginModel.getName().length());
             }
 
@@ -194,15 +199,14 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
             classView.setText(loginModel.getGrade());
             classNum.setText(loginModel.getCode());
 
-            if(loginModel.getBirthday() != null){
-                birthView.setText(loginModel.getBirthday().replace("00:00:00",""));
+            if (loginModel.getBirthday() != null) {
+                birthView.setText(loginModel.getBirthday().replace("00:00:00", ""));
             }
 
 
-
-            if(loginModel.getBirthday() != null){
+            if (loginModel.getBirthday() != null) {
                 String[] birArr = loginModel.getBirthday().split(" ");
-                if(birArr.length == 2){
+                if (birArr.length == 2) {
                     birthView.setText(birArr[0]);
                 }
             }
@@ -222,26 +226,24 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
 //            }
 
 
-
-
-            if(loginModel.getSex()!=null){
+            if (loginModel.getSex() != null) {
                 sexSign = Integer.parseInt(loginModel.getSex());
 
-                if(sexSign == 1){
+                if (sexSign == 1) {
                     Drawable mandrawable2 = getResources().getDrawable(R.mipmap.gray_select_press);
                     Drawable womdrawable2 = getResources().getDrawable(R.mipmap.gray_select_normal);
                     mandrawable2.setBounds(0, 0, mandrawable2.getMinimumWidth(), mandrawable2.getMinimumHeight());
                     womdrawable2.setBounds(0, 0, womdrawable2.getMinimumWidth(), womdrawable2.getMinimumHeight());
                     manView.setCompoundDrawables(mandrawable2, null, null, null);
                     womanView.setCompoundDrawables(womdrawable2, null, null, null);
-                }else if(sexSign == 2){
+                } else if (sexSign == 2) {
                     Drawable mandrawable2 = getResources().getDrawable(R.mipmap.gray_select_normal);
                     Drawable womdrawable2 = getResources().getDrawable(R.mipmap.gray_select_press);
                     mandrawable2.setBounds(0, 0, mandrawable2.getMinimumWidth(), mandrawable2.getMinimumHeight());
                     womdrawable2.setBounds(0, 0, womdrawable2.getMinimumWidth(), womdrawable2.getMinimumHeight());
                     manView.setCompoundDrawables(mandrawable2, null, null, null);
                     womanView.setCompoundDrawables(womdrawable2, null, null, null);
-                }else {
+                } else {
                     //默认为1
                     sexSign = 1;
                     Drawable mandrawable2 = getResources().getDrawable(R.mipmap.gray_select_press);
@@ -257,31 +259,31 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
             gradeIdVal = loginModel.getYear_id();
             classIdVal = loginModel.getGrade_id();
 
-            if(loginModel.getVolume_id() != null && loginModel.getVolume_id().trim().length() != 0){
-                if(loginModel.getVolume_id().equals("1")){
+            if (loginModel.getVolume_id() != null && loginModel.getVolume_id().trim().length() != 0) {
+                if (loginModel.getVolume_id().equals("1")) {
                     vuType = 1;
 
-                    Drawable drawable1= getResources().getDrawable(R.mipmap.blue_uncheck_img);
+                    Drawable drawable1 = getResources().getDrawable(R.mipmap.blue_uncheck_img);
                     /// 这一步必须要做,否则不会显示.
                     drawable1.setBounds(0, 0, drawable1.getMinimumWidth(), drawable1.getMinimumHeight());
-                    downView.setCompoundDrawables(drawable1,null,null,null);
+                    downView.setCompoundDrawables(drawable1, null, null, null);
 
-                    Drawable drawable2= getResources().getDrawable(R.mipmap.blue_check_img);
+                    Drawable drawable2 = getResources().getDrawable(R.mipmap.blue_check_img);
                     /// 这一步必须要做,否则不会显示.
                     drawable2.setBounds(0, 0, drawable2.getMinimumWidth(), drawable2.getMinimumHeight());
-                    upView.setCompoundDrawables(drawable2,null,null,null);
-                }else {
+                    upView.setCompoundDrawables(drawable2, null, null, null);
+                } else {
 
                     vuType = 2;
-                    Drawable drawable= getResources().getDrawable(R.mipmap.blue_check_img);
+                    Drawable drawable = getResources().getDrawable(R.mipmap.blue_check_img);
                     /// 这一步必须要做,否则不会显示.
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    downView.setCompoundDrawables(drawable,null,null,null);
+                    downView.setCompoundDrawables(drawable, null, null, null);
 
-                    Drawable drawableTwo= getResources().getDrawable(R.mipmap.blue_uncheck_img);
+                    Drawable drawableTwo = getResources().getDrawable(R.mipmap.blue_uncheck_img);
                     /// 这一步必须要做,否则不会显示.
                     drawableTwo.setBounds(0, 0, drawableTwo.getMinimumWidth(), drawableTwo.getMinimumHeight());
-                    upView.setCompoundDrawables(drawableTwo,null,null,null);
+                    upView.setCompoundDrawables(drawableTwo, null, null, null);
                 }
             }
 
@@ -308,7 +310,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
 
         JSONObject object = new JSONObject();
         try {
-            object.put("uid",SpSetting.loadLoginInfo().getUid());
+            object.put("uid", SpSetting.loadLoginInfo().getUid());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -328,7 +330,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
 
                 if (response != null && response.errorCode == 0 && response.getContent() != null) {
                     setStaView(response.getContent());
-                }  else {
+                } else {
                     MineToast.show(SetDetailActivity.this, response.msg);
                 }
 
@@ -337,24 +339,23 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
     }
 
 
+    private void setStaView(StatusResponse.StatusModel response) {
 
-    private void setStaView(StatusResponse.StatusModel response){
-
-        if(renzhenState != null){
-            if( TextUtils.isEmpty(response.getStatus())){
+        if (renzhenState != null) {
+            if (TextUtils.isEmpty(response.getStatus())) {
                 renzhenState.setText("未认证");
                 renZhenLayout.setEnabled(true);
-            }else {
-                if(response.getStatus().equals("1")){
+            } else {
+                if (response.getStatus().equals("1")) {
                     renzhenState.setText("审核中");
                     renZhenLayout.setEnabled(false);
-                }else if(response.getStatus().equals("2")){
+                } else if (response.getStatus().equals("2")) {
                     renzhenState.setText("已认证");
                     renZhenLayout.setEnabled(false);
-                }else if(response.getStatus().equals("3")){
+                } else if (response.getStatus().equals("3")) {
                     renzhenState.setText("拒绝认证");
                     renZhenLayout.setEnabled(true);
-                }else {
+                } else {
                     renzhenState.setText("未认证");
                     renZhenLayout.setEnabled(true);
                 }
@@ -363,7 +364,6 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
         }
 
     }
-
 
 
     @Override
@@ -378,7 +378,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
         JSONObject object = new JSONObject();
         try {
             object.put("school_id", SpSetting.loadLoginInfo().getSchool_id());
-            object.put("uid",SpSetting.loadLoginInfo().getUid());
+            object.put("uid", SpSetting.loadLoginInfo().getUid());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -409,8 +409,6 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
             }
         });
     }
-
-
 
 
 //    private void getClassVal(String yearId) {
@@ -469,7 +467,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
     private void setClassCommonData(List<GradeModel> listVals) {
 
         List<YearModel> listYM = new ArrayList<>();
-        for (int i=0;i<listVals.size();i++){
+        for (int i = 0; i < listVals.size(); i++) {
             GradeModel gradeModel = listVals.get(i);
             //转为yearmodel
             YearModel yearModel = new YearModel();
@@ -489,7 +487,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
     }
 
 
-    public void checkVersion(){
+    public void checkVersion() {
         dialogView.handleDialog(true);
         JSONObject json = new JSONObject();
         httpConfig.doPostRequest(HttpConfig.getBaseRequest(AddressConfig.CHECK_VERSION, json), new GenericsCallback<UpdateResponse>(new JsonGenericsSerializator()) {
@@ -504,14 +502,18 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
                 if (response != null && response.errorCode == 0 && response.getContent() != null) {
                     updateModel = response.getContent();
 
-                    if(!TextUtils.isEmpty(updateModel.getVersioncode())){
+
+                    LogUtils.e("TAG", "updateModel  = " + updateModel.toString());
+
+
+                    if (!TextUtils.isEmpty(updateModel.getVersioncode())) {
 
                         int backCode = Integer.parseInt(updateModel.getVersioncode());
                         int curCode = DeviceUtil.getCurVersionCode(SetDetailActivity.this);
-                        if (backCode > curCode){
+                        if (backCode > curCode) {
                             redSignView.setVisibility(View.VISIBLE);
                             updateLayout.setEnabled(true);
-                        }else {
+                        } else {
                             updateLayout.setEnabled(false);
                             Toast.makeText(SetDetailActivity.this, "当前已是最新版本!", Toast.LENGTH_SHORT).show();
                         }
@@ -539,50 +541,50 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
             case R.id.improve_down_view:
 
                 vuType = 2;
-                Drawable drawable= getResources().getDrawable(R.mipmap.blue_check_img);
+                Drawable drawable = getResources().getDrawable(R.mipmap.blue_check_img);
                 /// 这一步必须要做,否则不会显示.
                 drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                downView.setCompoundDrawables(drawable,null,null,null);
+                downView.setCompoundDrawables(drawable, null, null, null);
 
-                Drawable drawableTwo= getResources().getDrawable(R.mipmap.blue_uncheck_img);
+                Drawable drawableTwo = getResources().getDrawable(R.mipmap.blue_uncheck_img);
                 /// 这一步必须要做,否则不会显示.
                 drawableTwo.setBounds(0, 0, drawableTwo.getMinimumWidth(), drawableTwo.getMinimumHeight());
-                upView.setCompoundDrawables(drawableTwo,null,null,null);
+                upView.setCompoundDrawables(drawableTwo, null, null, null);
 
                 break;
             case R.id.improve_up_view:
 
                 vuType = 1;
 
-                Drawable drawable1= getResources().getDrawable(R.mipmap.blue_uncheck_img);
+                Drawable drawable1 = getResources().getDrawable(R.mipmap.blue_uncheck_img);
                 /// 这一步必须要做,否则不会显示.
                 drawable1.setBounds(0, 0, drawable1.getMinimumWidth(), drawable1.getMinimumHeight());
-                downView.setCompoundDrawables(drawable1,null,null,null);
+                downView.setCompoundDrawables(drawable1, null, null, null);
 
-                Drawable drawable2= getResources().getDrawable(R.mipmap.blue_check_img);
+                Drawable drawable2 = getResources().getDrawable(R.mipmap.blue_check_img);
                 /// 这一步必须要做,否则不会显示.
                 drawable2.setBounds(0, 0, drawable2.getMinimumWidth(), drawable2.getMinimumHeight());
-                upView.setCompoundDrawables(drawable2,null,null,null);
+                upView.setCompoundDrawables(drawable2, null, null, null);
 
                 break;
             case R.id.set_update_layout:
 
-                Map<String,String> mapVal = new HashMap<>();
-                mapVal.put("versioncode",updateModel.getVersioncode());
-                mapVal.put("versionname",updateModel.getVersionname());
-                mapVal.put("content",updateModel.getContent());
-                mapVal.put("url",updateModel.getUrl());
-                mapVal.put("required",updateModel.getRequired());
-                mapVal.put("timer",updateModel.getTimer());
-                mapVal.put("filesize",updateModel.getFilesize());
-                IntentUtil.startActivity(SetDetailActivity.this,UpdateActivity.class,mapVal);
+                Map<String, String> mapVal = new HashMap<>();
+                mapVal.put("versioncode", updateModel.getVersioncode());
+                mapVal.put("versionname", updateModel.getVersionname());
+                mapVal.put("content", updateModel.getContent());
+                mapVal.put("url", updateModel.getUrl());
+                mapVal.put("required", updateModel.getRequired());
+                mapVal.put("timer", updateModel.getTimer());
+                mapVal.put("filesize", updateModel.getFilesize());
+                IntentUtil.startActivity(SetDetailActivity.this, UpdateActivity.class, mapVal);
                 break;
             case R.id.set_grade_view:
                 selectSign = 1;
 
-                if(null == listYears){
+                if (null == listYears) {
                     initData();
-                }else {
+                } else {
                     setCommonData(listYears);
                 }
 
@@ -593,7 +595,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
                 if (listGrades == null) {
                     MineToast.show(SetDetailActivity.this, "请先选择年级...");
                     return;
-                }else {
+                } else {
                     setClassCommonData(listGrades);
                 }
 //                getClassVal(yearModel.getId());
@@ -654,19 +656,19 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
                     return;
                 }
 
-                if(vuType == 0){
+                if (vuType == 0) {
                     MineToast.show(SetDetailActivity.this, "请选择学期...");
                     return;
                 }
 
                 String numVal = classNum.getText().toString().trim();
 
-                birthVal = birthVal+" 00:00:00";
-                saveVal(nameVal,numVal,String.valueOf(sexSign),birthVal,gradeIdVal,classIdVal);
+                birthVal = birthVal + " 00:00:00";
+                saveVal(nameVal, numVal, String.valueOf(sexSign), birthVal, gradeIdVal, classIdVal);
 
                 break;
             case R.id.set_school_renzhen:
-                IntentUtil.startActivity(SetDetailActivity.this,SchoolShenHeActivity.class);
+                IntentUtil.startActivity(SetDetailActivity.this, SchoolShenHeActivity.class);
                 break;
 
 
@@ -674,8 +676,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
     }
 
 
-
-    private void saveVal(String nameVal,String numVal,String sexVal,String birthVal,String gradeId,String classId) {
+    private void saveVal(String nameVal, String numVal, String sexVal, String birthVal, String gradeId, String classId) {
 
         XBaseRequest baseRequest = new XBaseRequest();
         baseRequest.setUrl(AddressConfig.COMIT_IMPROVE_URL);
@@ -688,7 +689,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
             object.put("type", SpSetting.loadLoginInfo().getType());
             object.put("name", nameVal);
             object.put("code", numVal);
-            object.put("volume_id",vuType);
+            object.put("volume_id", vuType);
             object.put("sex", sexVal);
             object.put("birthday", birthVal);
             object.put("year_id", gradeId);
@@ -722,7 +723,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
                     IntentUtil.finish(SetDetailActivity.this);
                     EventBus.getDefault().post("classname");
 
-                    IntentUtil.startActivity(SetDetailActivity.this,SetCourseActivity.class);
+                    IntentUtil.startActivity(SetDetailActivity.this, SetCourseActivity.class);
 
                 } else {
                     MineToast.show(SetDetailActivity.this, response.msg);
@@ -731,7 +732,6 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
             }
         });
     }
-
 
 
     private WheelMain wheelMainDate;
@@ -777,7 +777,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
         mPopupWindow.showAsDropDown(birthView);
 
         mPopupWindow.setOnDismissListener(new SetDetailActivity.poponDismissListener());
-        backgroundAlpha(0.6f);
+//        backgroundAlpha(0.6f);
 //        TextView tv_cancle = (TextView) menuView.findViewById(R.id.tv_cancle);
 //        TextView tv_ensure = (TextView) menuView.findViewById(R.id.tv_ensure);
 //        TextView tv_pop_title = (TextView) menuView.findViewById(R.id.tv_pop_title);
@@ -849,7 +849,7 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
                 gradeView.setText(value.getName().toString());
                 listGrades = value.getGrade();
                 //给班级默认选择第一个
-                if(listGrades != null && listGrades.size() != 0){
+                if (listGrades != null && listGrades.size() != 0) {
 //                    classModel = listGrades.get(0);
                     classIdVal = listGrades.get(0).getId();
                     classView.setText(listGrades.get(0).getName());

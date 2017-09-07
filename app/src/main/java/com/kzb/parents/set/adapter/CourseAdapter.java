@@ -24,6 +24,8 @@ public class CourseAdapter extends CommonAdapter<CourseModel> {
 
         ViewHolder viewHolder = ViewHolder.get(mContext, convertView, parent, R.layout.course_listview_item, position);
         final CourseModel courseModel = mDatas.get(position);
+
+
         TextView nameView = viewHolder.getView(R.id.course_item_name);
         TextView viewState = viewHolder.getView(R.id.course_item_state);
         nameView.setText(courseModel.getName());

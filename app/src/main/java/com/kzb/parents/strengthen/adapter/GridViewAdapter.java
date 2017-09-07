@@ -18,102 +18,96 @@ import java.text.NumberFormat;
 public class GridViewAdapter extends CommonAdapter<KnowledgeModel> {
 
 
-	private Context context;
+    private Context context;
 
 
-	private int lnType;
+    private int lnType;
 
-	public GridViewAdapter(Context context){
-		super(context);
-		this.context = context;
-	}
+    public GridViewAdapter(Context context) {
+        super(context);
+        this.context = context;
+    }
 
-	public void setLnType(int lnType){
-		this.lnType = lnType;
-	}
+    public void setLnType(int lnType) {
+        this.lnType = lnType;
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
 
-		ViewHolder viewHolder = ViewHolder.get(mContext,convertView,parent, R.layout.grid_item,position);
+        ViewHolder viewHolder = ViewHolder.get(mContext, convertView, parent, R.layout.grid_item, position);
 
-		CustomTextView textView = viewHolder.getView(R.id.child_view);
-		TextView numView = viewHolder.getView(R.id.child_view_num);
-		ImageView imgView = viewHolder.getView(R.id.star_1);
-
-
+        CustomTextView textView = viewHolder.getView(R.id.child_view);
+        TextView numView = viewHolder.getView(R.id.child_view_num);
+        ImageView imgView = viewHolder.getView(R.id.star_1);
 
 
-		final KnowledgeModel knowledgeModel = mDatas.get(position);
+        final KnowledgeModel knowledgeModel = mDatas.get(position);
 
 
-		if (knowledgeModel.getImportance() != null) {
-			switch (knowledgeModel.getImportance()) {
-				case "1":
-					imgView.setImageResource(R.mipmap.report_item_img_three);
-					break;
-				case "2":
-					imgView.setImageResource(R.mipmap.report_item_img_two);
-					break;
-				case "3":
-					imgView.setImageResource(R.mipmap.report_item_img_one);
-					break;
-			}
-		}
+        if (knowledgeModel.getImportance() != null) {
+            switch (knowledgeModel.getImportance()) {
+                case "1":
+                    imgView.setImageResource(R.mipmap.report_item_img_three);
+                    break;
+                case "2":
+                    imgView.setImageResource(R.mipmap.report_item_img_two);
+                    break;
+                case "3":
+                    imgView.setImageResource(R.mipmap.report_item_img_one);
+                    break;
+            }
+        }
 
-		textView.setText(knowledgeModel.getKpoint());
-		numView.setText(""+(position+1));
-		View view = viewHolder.getConvertView();
+        textView.setText(knowledgeModel.getKpoint());
+        numView.setText("" + (position + 1));
+        View view = viewHolder.getConvertView();
 
-		int totalCount = 0;
-		int completeCount = 0;
+        int totalCount = 0;
+        int completeCount = 0;
 
-		if(TextUtils.isEmpty(knowledgeModel.getCount())){
-			totalCount = 0;
-		}else {
-			totalCount = Integer.parseInt(knowledgeModel.getCount());
-		}
+        if (TextUtils.isEmpty(knowledgeModel.getCount())) {
+            totalCount = 0;
+        } else {
+            totalCount = Integer.parseInt(knowledgeModel.getCount());
+        }
 
-		if(TextUtils.isEmpty(knowledgeModel.getCan())){
-			completeCount = 0;
-		}else {
-			completeCount = Integer.parseInt(knowledgeModel.getCan());
-		}
+        if (TextUtils.isEmpty(knowledgeModel.getCan())) {
+            completeCount = 0;
+        } else {
+            completeCount = Integer.parseInt(knowledgeModel.getCan());
+        }
 
 //		int num1 = 7;
 //
 //		int num2 = 9;
 
-		// 创建一个数值格式化对象
+        // 创建一个数值格式化对象
 
 //		Log.e("tttt","result.."+result);
 
 
-
-
-
-
-		if(totalCount == 0 || completeCount == 0){
-			textView.setSign(1);
+        if (totalCount == 0 || completeCount == 0) {
+            textView.setSign(1);
 //			percent.setText("0%");
-		}else if(totalCount == completeCount){
-			textView.setSign(2);
+        } else if (totalCount == completeCount) {
+            textView.setSign(2);
 //			percent.setText("100%");
-		}else if(completeCount > 0 && completeCount < totalCount){
+        } else if (completeCount > 0 && completeCount < totalCount) {
 
-			NumberFormat numberFormat = NumberFormat.getInstance();
-			// 设置精确到小数点后2位
-			numberFormat.setMaximumFractionDigits(2);
-			String result = numberFormat.format((float) completeCount / (float) totalCount);
+            NumberFormat numberFormat = NumberFormat.getInstance();
+            // 设置精确到小数点后2位
+            numberFormat.setMaximumFractionDigits(2);
+            String result = numberFormat.format((float) completeCount / (float) totalCount);
 
 //			percent.setText(Double.parseDouble(result)*100+"%");
 
-			textView.setSign(3,Float.parseFloat(result));
-		}
+            textView.setSign(3, Float.parseFloat(result));
+        }
 
-		if(lnType == 1){
-			textView.setSign(2);
-		}
+        if (lnType == 1) {
+            textView.setSign(2);
+        }
 
 //		view.setOnClickListener(new View.OnClickListener() {
 //			@Override
@@ -136,10 +130,8 @@ public class GridViewAdapter extends CommonAdapter<KnowledgeModel> {
 //		});
 
 
-		return view;
-	}
-
-
+        return view;
+    }
 
 
 }

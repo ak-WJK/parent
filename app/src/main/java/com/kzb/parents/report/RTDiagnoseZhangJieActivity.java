@@ -30,7 +30,7 @@ import okhttp3.Call;
  * Created by wanghaofei on 17/4/9.
  */
 
-public class RTDiagnoseZhangJieActivity extends BaseActivity implements View.OnClickListener{
+public class RTDiagnoseZhangJieActivity extends BaseActivity implements View.OnClickListener {
     private TextView titleLeft, titleCenter;
     private ExpandableListView expandableListView;
     DiagnoseZhangJieAdapter diagnoseZhangJieAdapter;
@@ -70,7 +70,7 @@ public class RTDiagnoseZhangJieActivity extends BaseActivity implements View.OnC
         JSONObject json = new JSONObject();
         try {
             json.put("id", SpSetting.loadLoginInfo().getUid());
-            json.put("subject_id",SpSetting.loadLoginInfo().getSubject_id());
+            json.put("subject_id", SpSetting.loadLoginInfo().getSubject_id());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -91,9 +91,9 @@ public class RTDiagnoseZhangJieActivity extends BaseActivity implements View.OnC
 
                 if (response.errorCode == 0) {
                     if (response.getContent() != null) {
-                        diagnoseZhangJieAdapter = new DiagnoseZhangJieAdapter(RTDiagnoseZhangJieActivity.this,response.getContent());
+                        diagnoseZhangJieAdapter = new DiagnoseZhangJieAdapter(RTDiagnoseZhangJieActivity.this, response.getContent());
                         expandableListView.setAdapter(diagnoseZhangJieAdapter);
-                        Log.e("kzb",response.getContent().toString());
+                        Log.e("kzb", response.getContent().toString());
                     }
                 }
             }

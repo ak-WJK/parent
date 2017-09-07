@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -25,7 +26,7 @@
             android:gravity="center"
             android:text="1"
             android:textColor="@color/white"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
 
 
         <TextView
@@ -38,7 +39,7 @@
             android:layout_toRightOf="@id/item_bg_qk_position"
             android:gravity="left"
             android:textColor="@color/_333333"
-            android:textSize="15dp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/item_bg_qk_typename"
@@ -53,7 +54,22 @@
             android:lines="1"
             android:paddingRight="10dp"
             android:textColor="@color/_333333"
-            android:textSize="15dp" />
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:padding="2dp"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@+id/item_bg_qk_find"
+            android:textColor="@color/shop_evaluation_red"
+            tools:text="分数"
+            android:textSize="12sp"
+            />
 
 
         <Button
@@ -64,7 +80,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:text="进入"
-            android:textSize="12dp" />
+            android:textSize="12sp" />
 
 
     </RelativeLayout>

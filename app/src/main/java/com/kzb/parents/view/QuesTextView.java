@@ -34,7 +34,6 @@ import java.util.List;
 import java.util.Map;
 
 
-
 /********************
  * 作者：malus
  * 日期：16/12/6
@@ -51,7 +50,8 @@ public class QuesTextView extends TextView {
     private boolean needFilter = false;
     private int fLineHeight;
     private boolean needExpandHeight = false;
-    private int expandLevel = 6;
+    private int expandLevel = 1;
+
 
     public QuesTextView setExpandLevel(int expandLevel) {
         this.expandLevel = expandLevel;
@@ -97,20 +97,25 @@ public class QuesTextView extends TextView {
 
     }
 
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         if (onMeasureListener != null) {
             onMeasureListener.onMeasure(getMeasuredWidth(), getMeasuredHeight());
         }
-        if(needExpandHeight){
+        if (needExpandHeight) {
             heightMeasureSpec = MeasureSpec.makeMeasureSpec(getMeasuredHeight() + DensityUtil.dip2px(getContext(), 2 * expandLevel), MeasureSpec.AT_MOST);
         }
         setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
-//        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        mHeight = MeasureSpec.getSize(heightMeasureSpec);
+        //  mHeight+=DensityUtil.dip2px(getContext(),20);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-//        if (height > getMeasuredHeight()) {
+
+
+//        if (mHeight > getMeasuredHeight()) {
 //        int mH = getMeasuredHeight();
+//
 //        heightMeasureSpec = MeasureSpec.makeMeasureSpec(mH + DensityUtil.dip2px(getContext(), 15), MeasureSpec.AT_MOST);
 //        setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
 //        } else {
@@ -122,6 +127,10 @@ public class QuesTextView extends TextView {
 
     public void setNetText(String text) {
         sizes.clear();
+
+        //data = ansData(data);
+
+
         String ans = text;
         if (needFilter) {
             ans = text.replaceAll("<br>", "");
@@ -137,20 +146,22 @@ public class QuesTextView extends TextView {
         }
 
 //        ans = ans.replaceAll("<img", "<img style=\"vertical-align:middle;\" width=\"178\" height=\"91\"");
-        ans = ans.replaceAll("&nbsp;","");
+        ans = ans.replaceAll("&nbsp;", "");
         if (!ans.contains("http://t.kaozhibao.com/Public/ewebeditor")) {
             ans = ans.replace("/Public/ewebeditor", "http://t.kaozhibao.com/Public/ewebeditor");
         }
 
         int index = 0;
+
         //设置字体大小
-        while ((index = ans.indexOf("font-size", index)) > 0) {
+        while ((index = ans.indexOf("font-size:", index)) > 0) {
             int startIndex = ans.indexOf(">", index) + 1;
             int stopIndex = ans.indexOf("<", index);
-            if (startIndex>0&&stopIndex >= startIndex && startIndex <= ans.length()) {
+            if (startIndex > 0 && stopIndex >= startIndex && startIndex <= ans.length()) {
                 String con = ans.substring(startIndex, stopIndex);
 
                 String style = ans.substring(index, startIndex);
+
                 if (style != null) {
                     style = style.split(":")[1];
                     if (style != null) {
@@ -274,14 +285,43 @@ public class QuesTextView extends TextView {
 //                Toast.makeText(getContext(),file.getPath(),Toast.LENGTH_LONG).show();
                 // 存在即获取drawable
                 drawable = Drawable.createFromPath(file.getAbsolutePath()); // 获取网路图片
-                final Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+
+
+//                BitmapFactory.Options options = new BitmapFactory.Options();
+                //下面一句话只获取宽高等信息不加载到内存中;
+                //options.inJustDecodeBounds = true;
+//                options.inSampleSize = 10;
+
+
+
+
+// 设置参数
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true; // 只获取图片的大小信息，而不是将整张图片载入在内存中，避免内存溢出
+                BitmapFactory.decodeFile(file.getAbsolutePath(), options);
+                int height1 = options.outHeight;
+                int width1= options.outWidth;
+                int inSampleSize = 2; // 默认像素压缩比例，压缩为原图的1/2
+                int minLen = Math.min(height1, width1); // 原图的最小边长
+                if(minLen > 100) { // 如果原始图像的最小边长大于100dp（此处单位我认为是dp，而非px）
+                    float ratio = (float)minLen / 100.0f; // 计算像素压缩比例
+                    inSampleSize = (int)ratio;
+                }
+                options.inJustDecodeBounds = false; // 计算好压缩比例后，这次可以去加载原图了
+                options.inSampleSize = inSampleSize; // 设置为刚才计算的压缩比例
+                final Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options); // 解码文件
+
+
+//                final Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+
+
+
                 if (drawable != null) {
 
                     boolean hasSize = false;
                     Map<String, String> sizeMap = new HashMap();
 
-                    for (Map map :
-                            sizes) {
+                    for (Map map : sizes) {
                         if (map.get("src").equals(source)) {
                             hasSize = true;
                             sizeMap = map;
@@ -289,7 +329,7 @@ public class QuesTextView extends TextView {
                     }
 
                     lineHeight = getLineHeight();
-
+                    // drawable.setAlpha(1);
                     int width = drawable.getIntrinsicWidth();
                     int height = drawable.getIntrinsicHeight();
                     if (hasSize) {
@@ -297,8 +337,9 @@ public class QuesTextView extends TextView {
                         height = Integer.parseInt(sizeMap.get("height"));
                     }
 
-                    width = (int) (DensityUtil.dip2px(getContext(), width));
-                    height = (int) ((DensityUtil.dip2px(getContext(), height)));
+                    //设置点击图标进入解析题目显示
+                    width = (int) (DensityUtil.dip2px(getContext(), width - 30));
+                    height = (int) ((DensityUtil.dip2px(getContext(), height-2 )));
                     //图片太小的时候
                     if (lineHeight > height) {
                         lineHeight += DensityUtil.dip2px(getContext(), 8);
@@ -335,7 +376,7 @@ public class QuesTextView extends TextView {
                         };
                         drawable.setBounds(0, 0, (int) width, lineHeight);
                     } else {
-                        drawable.setBounds(0, DensityUtil.dip2px(getContext(),2), width, height+DensityUtil.dip2px(getContext(),2));
+                        drawable.setBounds(0, DensityUtil.dip2px(getContext(), 2), width, height + DensityUtil.dip2px(getContext(), 2));
                     }
                 }
                 invalidate();
@@ -360,18 +401,29 @@ public class QuesTextView extends TextView {
     public static Bitmap zoomImage(Bitmap bgimage, double newWidth,
                                    double newHeight) {
         // 获取这个图片的宽和高
-        float width = bgimage.getWidth();
-        float height = bgimage.getHeight();
+
+         float   width = bgimage.getWidth();
+         float   height = bgimage.getHeight();
+
+
         // 创建操作图片用的matrix对象
         Matrix matrix = new Matrix();
+
+
         // 计算宽高缩放率
         float scaleWidth = ((float) newWidth) / width;
         float scaleHeight = ((float) newHeight) / height;
+
+        if (scaleHeight != 0 && scaleWidth != 0) {
         // 缩放图片动作
-        matrix.postScale(scaleWidth, scaleHeight);
-        Bitmap bitmap = Bitmap.createBitmap(bgimage, 0, 0, (int) width,
-                (int) height, matrix, true);
-        return bitmap;
+            matrix.postScale(scaleWidth, scaleHeight);
+            Bitmap bitmap = Bitmap.createBitmap(bgimage, 0, 0, (int) width,
+                    (int) height, matrix, true);
+            return bitmap;
+        }
+
+        return null;
+
     }
 
     /**
@@ -523,6 +575,9 @@ public class QuesTextView extends TextView {
         }
         super.onDraw(canvas);
     }
+
+
+
 
 }
 

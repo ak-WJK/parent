@@ -110,6 +110,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
 //            level = 1;
 //        }
 
+
     }
 
 
@@ -293,7 +294,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
                 IntentUtil.startActivity(getActivity(), XunLianKaoShiActivity.class);
                 break;
             case R.id.first_exer_layout:
-               IntentUtil.startActivity(getActivity(),ExerActivity.class);
+                IntentUtil.startActivity(getActivity(), ExerActivity.class);
                 break;
         }
     }

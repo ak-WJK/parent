@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -52,6 +53,7 @@ public class VipActivity extends BaseActivity implements View.OnClickListener {
 
     private RelativeLayout zfbLayout, wxLayout;
 
+    private Button vipDetial;
 
     private RadioGroup radioGroup;
 
@@ -89,6 +91,7 @@ public class VipActivity extends BaseActivity implements View.OnClickListener {
 
         radioGroup = getView(R.id.vip_group_layout);
         listView = getView(R.id.vip_listview);
+        vipDetial = getView(R.id.vip_detail);
 
         titleLeft.setVisibility(View.VISIBLE);
         titleLeft.setText("返回");
@@ -108,6 +111,10 @@ public class VipActivity extends BaseActivity implements View.OnClickListener {
                 goodsId = radioButton.getTag().toString();
             }
         });
+
+        vipDetial.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -263,6 +270,10 @@ public class VipActivity extends BaseActivity implements View.OnClickListener {
                 mapVals.put("id", goodsId);
 
                 IntentUtil.startActivity(VipActivity.this, PayActivity.class, mapVals);
+                break;
+            case R.id.vip_detail:
+
+                IntentUtil.startActivity(VipActivity.this,VipImageDetail.class );
                 break;
         }
     }

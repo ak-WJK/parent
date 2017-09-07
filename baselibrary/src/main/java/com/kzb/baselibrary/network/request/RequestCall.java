@@ -49,10 +49,10 @@ public class RequestCall {
     public Call buildCall(Callback callback) {
         request = generateRequest(callback);
 
-        if (readTimeOut > 0 || writeTimeOut > 0 || connTimeOut > 0) {
-            readTimeOut = readTimeOut > 0 ? readTimeOut : OkHttpUtils.DEFAULT_MILLISECONDS;
-            writeTimeOut = writeTimeOut > 0 ? writeTimeOut : OkHttpUtils.DEFAULT_MILLISECONDS;
-            connTimeOut = connTimeOut > 0 ? connTimeOut : OkHttpUtils.DEFAULT_MILLISECONDS;
+//        if (readTimeOut > 0 || writeTimeOut > 0 || connTimeOut > 0) {
+//            readTimeOut = readTimeOut > 0 ? readTimeOut : OkHttpUtils.DEFAULT_MILLISECONDS;
+//            writeTimeOut = writeTimeOut > 0 ? writeTimeOut : OkHttpUtils.DEFAULT_MILLISECONDS;
+//            connTimeOut = connTimeOut > 0 ? connTimeOut : OkHttpUtils.DEFAULT_MILLISECONDS;
 
             clone = OkHttpUtils.getInstance().getOkHttpClient().newBuilder()
                     .readTimeout(readTimeOut, TimeUnit.MILLISECONDS)
@@ -63,9 +63,10 @@ public class RequestCall {
 
 
             call = clone.newCall(request);
-        } else {
-            call = OkHttpUtils.getInstance().getOkHttpClient().newCall(request);
-        }
+//        }
+//    else {
+//            call = OkHttpUtils.getInstance().getOkHttpClient().newCall(request);
+//        }
         return call;
     }
 

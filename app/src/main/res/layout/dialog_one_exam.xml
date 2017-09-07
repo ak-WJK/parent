@@ -18,7 +18,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:text="该知识点未在强化列表内或已通过强化训练，是否继续。"
-        android:textSize="20dp" />
+        android:textSize="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

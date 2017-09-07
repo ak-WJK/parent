@@ -522,6 +522,7 @@ public class ZTJXActivity extends BaseActivity {
                 json.put("kid", mKid);
                 json.put("uid", SpSetting.loadLoginInfo().getUid());
                 json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+                json.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
             } else if (!TextUtils.isEmpty(mTestId)) {
                 //章节考试
                 json.put("test_id", mTestId);
@@ -533,14 +534,17 @@ public class ZTJXActivity extends BaseActivity {
                     json.put("uid", SpSetting.loadLoginInfo().getUid());
                     json.put("id", SpSetting.loadLoginInfo().getSubject_id());
                     json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+                    json.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
                 } else if (from.equals("zhenti")) {
                     json.put("id", mId);
                     json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+                    json.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
                 } else if (from.equals("zhangjie")) {
                     json.put("uid", SpSetting.loadLoginInfo().getUid());
                     json.put("num", mExamDialog.getCheck() + "");
                     json.put("id", mId);
                     json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+                    json.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
                 }
             }
         } catch (JSONException e) {

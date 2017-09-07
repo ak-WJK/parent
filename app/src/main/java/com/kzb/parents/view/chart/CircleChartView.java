@@ -78,7 +78,7 @@ public class CircleChartView extends View {
 //        mRates.add(rate);
         mTopMargin = DensityUtil.dip2px(getContext(), 10);
 
-        texta = getContext().getResources().getColor(R.color.text_a);
+        texta = getContext().getResources().getColor(R.color.black);
         gray = getContext().getResources().getColor(R.color.text_c);
         green = getContext().getResources().getColor(R.color.theme_green);
         red = getContext().getResources().getColor(R.color.theme_red);
@@ -339,7 +339,7 @@ public class CircleChartView extends View {
     public void drawTitle(Canvas canvas) {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setTextSize(DensityUtil.dip2px(getContext(), 15));
+        paint.setTextSize(DensityUtil.dip2px(getContext(), 17));
         paint.setColor(texta);
         paint.setStrokeWidth(DensityUtil.dip2px(getContext(), 3));
         paint.setTextAlign(Paint.Align.CENTER);

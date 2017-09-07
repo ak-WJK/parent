@@ -31,7 +31,6 @@ import java.util.List;
 import okhttp3.Call;
 
 
-
 /**
  * Created by wanghaofei on 17/1/20.
  */
@@ -39,8 +38,8 @@ import okhttp3.Call;
 public class ReportFinishActivity extends BaseActivity {
 
 
-    private String testId="";
-    private String name="";
+    private String testId = "";
+    private String name = "";
     private String type;
 
     private TextView titleLeft, titleCenter;
@@ -65,7 +64,7 @@ public class ReportFinishActivity extends BaseActivity {
         name = getIntent().getExtras().getString("name");
         type = getIntent().getExtras().getString("typev");
 
-        Log.e("tttt",testId+";type="+type+";name="+name);
+        Log.e("tttt", testId + ";type=" + type + ";name=" + name);
 
         initView();
         initData();
@@ -76,7 +75,6 @@ public class ReportFinishActivity extends BaseActivity {
     @Override
     protected void initView() {
         mQuesListView = (ListView) getView(R.id.know_timu_list);
-
 
 
         titleLeft = getView(R.id.common_head_left);
@@ -93,8 +91,6 @@ public class ReportFinishActivity extends BaseActivity {
         titleCenter.setText(name);
 
 
-
-
         mQuesAdapter = new QuesAdapter(ReportFinishActivity.this, mQuesData, R.layout.item_reprot_ques);
         mQuesAdapter.setOnJiexi(new QuesAdapter.OnJiexi() {
             @Override
@@ -105,11 +101,9 @@ public class ReportFinishActivity extends BaseActivity {
         });
 
 
-
-
-        if(Integer.parseInt(type) == 1){
+        if (Integer.parseInt(type) == 1) {
             mQuesAdapter.setTypeVal(0);//错误，显示红色
-        }else {
+        } else {
             mQuesAdapter.setTypeVal(1);//表示正确，显示绿色
         }
         mQuesListView.setAdapter(mQuesAdapter);
@@ -118,12 +112,26 @@ public class ReportFinishActivity extends BaseActivity {
     @Override
     protected void initData() {
 
+
+//        mQuesListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(AbsListView view, int scrollState) {
+//
+//            }
+//
+//            @Override
+//            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+//
+////                mQuesAdapter.notifyDataSetInvalidated();
+//
+////                mQuesAdapter.notifyAll();
+//                mQuesAdapter.notifyDataSetChanged();
+//
+//            }
+//        });
+
+
     }
-
-
-
-
-
 
 
     /**
@@ -134,8 +142,9 @@ public class ReportFinishActivity extends BaseActivity {
         JSONObject json = new JSONObject();
         try {
             json.put("test_id", testId);
-            json.put("type",type);
+            json.put("type", type);
             json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+            json.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
         } catch (JSONException e) {
             e.printStackTrace();
         }

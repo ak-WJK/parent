@@ -25,6 +25,7 @@ import com.kzb.parents.login.model.LoginResponse;
 import com.kzb.parents.set.adapter.CourseAdapter;
 import com.kzb.parents.set.model.CourseResponse;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONObject;
@@ -32,6 +33,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.Call;
 
@@ -47,7 +50,8 @@ public class SetCourseActivity extends BaseActivity implements View.OnClickListe
     private ListView listView;
     private List<CourseResponse.CourseModel> listVVV;
     CourseResponse.CourseModel tempModel;
-    private TextView compView;
+//    private TextView compView;
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -55,8 +59,12 @@ public class SetCourseActivity extends BaseActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
         httpConfig = new HttpConfig();
+
+
         initView();
         initData();
+
+
     }
 
     @Override
@@ -65,13 +73,13 @@ public class SetCourseActivity extends BaseActivity implements View.OnClickListe
         titleLeft = getView(R.id.common_head_left);
         titleCenter = getView(R.id.common_head_center);
         listView = getView(R.id.set_course_listview);
-        compView = getView(R.id.set_course_cmt_view);
+//        compView = getView(R.id.set_course_cmt_view);
 
         titleLeft.setText("返回");
         titleLeft.setVisibility(View.VISIBLE);
         titleLeft.setOnClickListener(this);
 
-        compView.setOnClickListener(this);
+//        compView.setOnClickListener(this);
         titleCenter.setText("选择课程");
     }
 
@@ -110,9 +118,12 @@ public class SetCourseActivity extends BaseActivity implements View.OnClickListe
             public void onResponse(CourseResponse response, int id) {
 //                dialogView.handleDialog(false);
 
+
                 if (response != null && response.errorCode == 0 && response.getContent() != null) {
+
                     //成功
                     setVal(response.getContent());
+
                 } else if (response.errorCode == 101) {
                     //完善信息页面
 
@@ -127,6 +138,7 @@ public class SetCourseActivity extends BaseActivity implements View.OnClickListe
 
     private void setVal(List<CourseResponse.CourseModel> listVals) {
 
+
         final CourseAdapter courseAdapter = new CourseAdapter(SetCourseActivity.this);
         courseAdapter.setItems(listVals);
         listVVV = listVals;
@@ -140,6 +152,8 @@ public class SetCourseActivity extends BaseActivity implements View.OnClickListe
             for (int i = 0; i < listVVV.size(); i++) {
 
                 CourseResponse.CourseModel model = listVVV.get(i);
+
+
                 if (model.getId().equals(SpSetting.loadLoginInfo().getSubject_id())) {
                     model.setType(1);
                     break;
@@ -156,13 +170,15 @@ public class SetCourseActivity extends BaseActivity implements View.OnClickListe
 
                 CourseResponse.CourseModel courseModel = (CourseResponse.CourseModel) parent.getItemAtPosition(position);
 
+                LogUtils.e("TAG", "科目开通个情况   " + courseModel.getIsopen());
+
                 if (courseModel.getIsopen().trim().equals("1")) {
                     LoginResponse.LoginModel loginModel = SpSetting.loadLoginInfo();
                     loginModel.setSubject(courseModel.getName());
                     loginModel.setSubject_id(courseModel.getId());
                     SpSetting.saveLoginInfo(loginModel);
                     tempModel = courseModel;
-//                    saveCourse(courseModel);
+                    saveCourse();
                 } else {
                     MineToast.show(SetCourseActivity.this, "该课程暂未开通，请耐心等待！");
                     return;
@@ -221,7 +237,16 @@ public class SetCourseActivity extends BaseActivity implements View.OnClickListe
 //                    IntentUtil.startActivity(SetCourseActivity.this,MainPageActivity.class);
 
                     EventBus.getDefault().post("course");
-                    IntentUtil.finish(SetCourseActivity.this);
+
+                    //延迟一秒finish()
+                    new Timer().schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+
+                            IntentUtil.finish(SetCourseActivity.this);
+                        }
+                    }, 500);
+
 
                 } else {
                     MineToast.show(SetCourseActivity.this, response.msg);
@@ -237,10 +262,11 @@ public class SetCourseActivity extends BaseActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.common_head_left:
                 IntentUtil.finish(SetCourseActivity.this);
+
                 break;
-            case R.id.set_course_cmt_view:
-                saveCourse();
-                break;
+//            case R.id.set_course_cmt_view:
+//                saveCourse();
+//                break;
         }
     }
 }

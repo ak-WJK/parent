@@ -6,6 +6,7 @@ import android.webkit.WebView;
 
 import com.kzb.baselibrary.log.Log;
 import com.kzb.parents.util.DensityUtil;
+import com.kzb.parents.util.LogUtils;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -24,6 +25,7 @@ import org.jsoup.select.Elements;
 public class QuesWebViewSeven extends WebView {
     double mHeight;
     private float mRate = 0.35f;
+
     public QuesWebViewSeven(Context context) {
         super(context);
     }
@@ -54,15 +56,15 @@ public class QuesWebViewSeven extends WebView {
         data = data.replaceAll("<div>", "");
         data = data.replaceAll("</div>", "");
 
-        Log.e("wwwww","data="+data);
+        LogUtils.e("wwwww", "data=" + data);
 
         if (!data.contains("http://t.kaozhibao.com/Public/ewebeditor")) {
             data = data.replace("/Public/ewebeditor", "http://t.kaozhibao.com/Public/ewebeditor");
         }
-        loadData(data,"text/html; charset=UTF-8", null);
+        loadData(data, "text/html; charset=UTF-8", null);
+
 
     }
-
 
 
     private String getHtmlData(String bodyHTML) {
@@ -74,9 +76,6 @@ public class QuesWebViewSeven extends WebView {
     }
 
 
-
-
-
 //    @Override
 //    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -85,22 +84,27 @@ public class QuesWebViewSeven extends WebView {
 //    }
 
 
-    public static String getNewContent(String htmltext){
+
+
+
+
+
+    public static String getNewContent(String htmltext) {
         try {
-            Document doc= Jsoup.parse(htmltext);
+            Document doc = Jsoup.parse(htmltext);
 
 
-            Elements bodyElements=doc.getElementsByTag("body");
+            Elements bodyElements = doc.getElementsByTag("body");
 
             for (Element element : bodyElements) {
                 element.attr("style=\"width: 100%;height:100%;overflow: hidden\"");
             }
 
-            Elements elements=doc.getElementsByTag("img");
+            Elements elements = doc.getElementsByTag("img");
 
             for (Element element : elements) {
                 element.removeAttr("style");
-                element.attr("width","100%").attr("height","auto");
+                element.attr("width", "100%").attr("height", "auto");
             }
 
             return doc.toString();
@@ -113,7 +117,7 @@ public class QuesWebViewSeven extends WebView {
 
         String temp = "<meta name=\"viewport\" content=\"width=device-width\" >";
 
-        ans = temp+ans;
+        ans = temp + ans;
 
 //        int index = 0;
 //        mHeight = 0;
@@ -122,10 +126,6 @@ public class QuesWebViewSeven extends WebView {
 //        String style = ans.substring(startIndex + 1, stopIndex);
 //
 //        ans = ans.replace(style,"style=\"width:100%;\"");
-
-
-
-
 
 
         int index = 0;
@@ -137,32 +137,31 @@ public class QuesWebViewSeven extends WebView {
             String style = ans.substring(startIndex + 1, stopIndex);
 
 
-            if (style.contains("width") && style.contains("height")&&startIndex>0&&stopIndex>startIndex) {
+            if (style.contains("width") && style.contains("height") && startIndex > 0 && stopIndex > startIndex) {
 
 
-            ans = ans.replace(style,"width:150%;");
+                ans = ans.replace(style, "width:150%;");
             }
 
         }
         index = 0;
         while ((index = ans.indexOf("<br>", index)) > 0) {
             index++;
-            mHeight+=DensityUtil.dip2px(getContext(),20);
+            mHeight += DensityUtil.dip2px(getContext(), 20);
         }
         index = 0;
         while ((index = ans.indexOf("<br/>", index)) > 0) {
             index++;
-            mHeight+=DensityUtil.dip2px(getContext(),20);
+            mHeight += DensityUtil.dip2px(getContext(), 20);
         }
         index = 0;
         while ((index = ans.indexOf("<p>", index)) > 0) {
             index++;
-            mHeight+=DensityUtil.dip2px(getContext(),20);
+            mHeight += DensityUtil.dip2px(getContext(), 20);
         }
 
 
-
-        Log.e("kaoshi","after:ans="+ans);
+        Log.e("kaoshi", "after:ans=" + ans);
 
 
 //        ans = "<meta name=\"viewport\" content=\"width=device-width\">\n" +

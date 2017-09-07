@@ -45,7 +45,7 @@ public class CourseSelectActivity extends BaseActivity implements View.OnClickLi
     private ListView listView;
     private List<CourseResponse.CourseModel> listVVV;
     CourseResponse.CourseModel tempModel;
-    private TextView compView;
+//    private TextView compView;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -63,13 +63,13 @@ public class CourseSelectActivity extends BaseActivity implements View.OnClickLi
         titleLeft = getView(R.id.common_head_left);
         titleCenter = getView(R.id.common_head_center);
         listView = getView(R.id.set_course_listview);
-        compView = getView(R.id.set_course_cmt_view);
+//        compView = getView(R.id.set_course_cmt_view);
 
         titleLeft.setText("返回");
         titleLeft.setVisibility(View.VISIBLE);
         titleLeft.setOnClickListener(this);
 
-        compView.setOnClickListener(this);
+//        compView.setOnClickListener(this);
         titleCenter.setText("选择课程");
     }
 
@@ -154,6 +154,7 @@ public class CourseSelectActivity extends BaseActivity implements View.OnClickLi
 
                 CourseResponse.CourseModel courseModel = (CourseResponse.CourseModel) parent.getItemAtPosition(position);
 
+
                 if (courseModel.getIsopen().trim().equals("1")) {
                     LoginResponse.LoginModel loginModel = SpSetting.loadLoginInfo();
                     loginModel.setSubject(courseModel.getName());
@@ -161,6 +162,7 @@ public class CourseSelectActivity extends BaseActivity implements View.OnClickLi
                     SpSetting.saveLoginInfo(loginModel);
                     tempModel = courseModel;
 //                    saveCourse(courseModel);
+                    saveCourse();
                 } else {
                     MineToast.show(CourseSelectActivity.this, "该课程暂未开通，请耐心等待！");
                     return;
@@ -214,9 +216,10 @@ public class CourseSelectActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onResponse(XBaseResponse response, int id) {
 //                dialogView.handleDialog(false);
+
                 if (response != null && response.errorCode == 0) {
                     //成功
-                    IntentUtil.startActivity(CourseSelectActivity.this,MainActivity.class);
+                    IntentUtil.startActivity(CourseSelectActivity.this, MainActivity.class);
 
 //                    IntentUtil.finish(SetCourseActivity.this);
                 } else {
@@ -233,10 +236,11 @@ public class CourseSelectActivity extends BaseActivity implements View.OnClickLi
         switch (v.getId()) {
             case R.id.common_head_left:
                 IntentUtil.finish(CourseSelectActivity.this);
+
                 break;
-            case R.id.set_course_cmt_view:
-                saveCourse();
-                break;
+//            case R.id.set_course_cmt_view:
+//                saveCourse();
+//                break;
         }
     }
 }

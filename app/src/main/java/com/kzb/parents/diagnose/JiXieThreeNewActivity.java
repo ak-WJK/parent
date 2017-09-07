@@ -26,6 +26,7 @@ import com.kzb.parents.diagnose.model.ExplainPro;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.util.DensityUtil;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.view.DialogView;
 import com.kzb.parents.view.QuesWebViewSeven;
 import com.kzb.parents.view.QuesWebViewSix;
@@ -93,6 +94,7 @@ public class JiXieThreeNewActivity extends BaseActivity implements View.OnClickL
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wrong_three_detail);
+        LogUtils.e("TAG", "解析三页面");
 
         httpConfig = new HttpConfig();
         dialogView = new DialogView(this);
@@ -164,6 +166,7 @@ public class JiXieThreeNewActivity extends BaseActivity implements View.OnClickL
             json.put("id", id);
             json.put("type", type);
             json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+            json.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
         } catch (JSONException e) {
             e.printStackTrace();
         }

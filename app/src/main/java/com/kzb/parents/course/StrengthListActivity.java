@@ -35,7 +35,7 @@ import okhttp3.Call;
 
 /**
  * Created by wanghaofei on 17/3/19.
- * 未强化list 一级菜单列表
+ * 强化list 一级菜单列表
  */
 
 public class StrengthListActivity extends BaseActivity implements ExpandableListView.OnGroupExpandListener {
@@ -126,6 +126,7 @@ public class StrengthListActivity extends BaseActivity implements ExpandableList
             object.put("id", SpSetting.loadLoginInfo().getSubject_id());
             object.put("uid", SpSetting.loadLoginInfo().getUid());
             object.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+            object.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
 
             if (type.equals("1")) {
                 object.put("type", "2");

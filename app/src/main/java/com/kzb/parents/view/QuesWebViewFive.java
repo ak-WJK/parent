@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.webkit.WebView;
 
-import com.kzb.baselibrary.log.Log;
 import com.kzb.parents.util.DensityUtil;
+import com.kzb.parents.util.LogUtils;
 
 
 /********************
@@ -19,6 +19,7 @@ import com.kzb.parents.util.DensityUtil;
 public class QuesWebViewFive extends WebView {
     double mHeight;
     private float mRate = 0.35f;
+
     public QuesWebViewFive(Context context) {
         super(context);
     }
@@ -45,12 +46,12 @@ public class QuesWebViewFive extends WebView {
         data = data.replaceAll("<div>", "");
         data = data.replaceAll("</div>", "");
 
-        Log.e("wwwww","data="+data);
+        LogUtils.e("wwwww", "data=== " + data);
 
         if (!data.contains("http://t.kaozhibao.com/Public/ewebeditor")) {
             data = data.replace("/Public/ewebeditor", "http://t.kaozhibao.com/Public/ewebeditor");
         }
-        loadData(data,"text/html; charset=UTF-8", null);
+        loadData(data, "text/html; charset=UTF-8", null);
 
     }
 
@@ -65,7 +66,7 @@ public class QuesWebViewFive extends WebView {
 
         String temp = "<meta name=\"viewport\" content=\"width=device-width\" >";
 
-        ans = temp+ans;
+        ans = temp + ans;
 
 //        int index = 0;
 //        mHeight = 0;
@@ -85,7 +86,7 @@ public class QuesWebViewFive extends WebView {
             String style = ans.substring(startIndex + 1, stopIndex);
 
 
-            if (style.contains("width") && style.contains("height")&&startIndex>0&&stopIndex>startIndex) {
+            if (style.contains("width") && style.contains("height") && startIndex > 0 && stopIndex > startIndex) {
 //                String width = style.split("width")[1];
 //                width = width.split(";")[0];
 //                width = width.replaceAll(":", "");
@@ -132,7 +133,6 @@ public class QuesWebViewFive extends WebView {
 //                    ans = ans.replaceAll("height :"+height,"height:"+(int)h);
 
 
-
 //                    ans = ans.replaceAll("width:"+width+"px","width:100%");
 //                    ans = ans.replaceAll("height:"+height+"px","");
 //
@@ -143,36 +143,33 @@ public class QuesWebViewFive extends WebView {
 //                    ans = ans.replaceAll("height :"+height+"px","");
 
 
-
-
 //                    mHeight += h;
 //                }catch (Exception e){
 //                    e.printStackTrace();
 //                }
 
-            ans = ans.replace(style,"width:100%;");
+                ans = ans.replace(style, "width:100%;");
             }
 
         }
         index = 0;
         while ((index = ans.indexOf("<br>", index)) > 0) {
             index++;
-            mHeight+=DensityUtil.dip2px(getContext(),20);
+            mHeight += DensityUtil.dip2px(getContext(), 20);
         }
         index = 0;
         while ((index = ans.indexOf("<br/>", index)) > 0) {
             index++;
-            mHeight+=DensityUtil.dip2px(getContext(),20);
+            mHeight += DensityUtil.dip2px(getContext(), 20);
         }
         index = 0;
         while ((index = ans.indexOf("<p>", index)) > 0) {
             index++;
-            mHeight+=DensityUtil.dip2px(getContext(),20);
+            mHeight += DensityUtil.dip2px(getContext(), 20);
         }
 
 
-
-        Log.e("kaoshi","after:ans="+ans);
+        LogUtils.e("kaoshi", "after:ans= " + ans);
 
 
 //        ans = "<meta name=\"viewport\" content=\"width=device-width\" ><span style='font-size:15pt;line-height:20pt'><img src=\"http://t.kaozhibao.com/Public/ewebeditor/uploadfile/20170523140033578.jpg\" style=\"width:100%;\" border=\"0\"></span>";

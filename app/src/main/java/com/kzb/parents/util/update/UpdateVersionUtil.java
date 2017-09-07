@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.kzb.parents.util.CommonUtil;
 import com.kzb.parents.util.DeviceUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.util.ToastUtils;
 import com.kzb.parents.view.dialog.CommonTwoBtnDialog;
 
@@ -58,7 +59,7 @@ public class UpdateVersionUtil {
                     }
                     break;
                 case HANDLER_MESSAGE_LOAD_FAILURE:
-                    Toast.makeText(mContext, "下载失败",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "下载失败", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -81,7 +82,7 @@ public class UpdateVersionUtil {
     public void checkUpdate(boolean toast) {
         String currentVersion = DeviceUtil.getCurVersionCode(mContext) + "";
         if (currentVersion.compareTo(mVersion.getVersionCode()) >= 0) {
-            if(toast){
+            if (toast) {
                 ToastUtils.show(mContext, "当前已是最新版本");
             }
             return;
@@ -202,6 +203,9 @@ public class UpdateVersionUtil {
         pbDialog.getDialog_downloaded_size().setText("0MB");
         pbDialog.getDialog_file_size().setText(
                 "/" + CommonUtil.btyeToMbyte(mVersion.getFileSize()) + "MB");
+
+        LogUtils.e("TAG", "文件大小 == " + mVersion.getFileSize());
+        LogUtils.e("TAG", "文件大小 === " + CommonUtil.btyeToMbyte(mVersion.getFileSize()) + "MB");
     }
 
     public String getFileName(String url) {

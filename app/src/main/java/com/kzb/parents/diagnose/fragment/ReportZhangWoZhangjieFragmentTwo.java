@@ -93,6 +93,7 @@ public class ReportZhangWoZhangjieFragmentTwo extends BaseFragment {
             json.put("test_id", testId);
             json.put("type", "1");
             json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+            json.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
         } catch (JSONException e) {
             e.printStackTrace();
         }

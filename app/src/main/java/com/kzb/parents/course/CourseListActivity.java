@@ -123,6 +123,8 @@ public class CourseListActivity extends BaseActivity implements ExpandableListVi
             object.put("id", SpSetting.loadLoginInfo().getSubject_id());
             object.put("uid", SpSetting.loadLoginInfo().getUid());
             object.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+            object.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
+
         } catch (Exception e) {
             e.printStackTrace();
         }

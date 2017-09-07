@@ -40,14 +40,18 @@ public class BGQKAdapter extends CommonAdapter<KSReportQKResponse.ReportQKModel>
         final KSReportQKResponse.ReportQKModel questionModel = mDatas.get(position);
 
         typename = questionModel.getTypename();
+        String score = questionModel.getScore();
+
 
         TextView titleView = viewHolder.getView(R.id.item_bg_qk_title);
         TextView typeViewName = viewHolder.getView(R.id.item_bg_qk_typename);
         TextView positionView = viewHolder.getView(R.id.item_bg_qk_position);
+        TextView tvScore = viewHolder.getView(R.id.tv_score);
         Button findView = viewHolder.getView(R.id.item_bg_qk_find);
 
         findView.setTag(position);
 
+        tvScore.setText(score + "分");
 
         titleView.setText(questionModel.getName());
 

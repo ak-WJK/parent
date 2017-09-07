@@ -58,7 +58,8 @@ public class Application extends android.app.Application {
         new SpSetting().init(this);
         Config.init(1);
         //异常捕获
-//        CrashHandler.getInstance().init(this);
+//        CrashHandler.getInstance().init(this)
+
         ImageUtils.Init(this);
 
         WindowManager wm = (WindowManager) getApplicationContext()

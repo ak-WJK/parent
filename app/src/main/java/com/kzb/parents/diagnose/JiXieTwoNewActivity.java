@@ -158,6 +158,7 @@ public class JiXieTwoNewActivity extends BaseActivity implements View.OnClickLis
             json.put("test_id", testId);
             json.put("type", type);
             json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+            json.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
         } catch (JSONException e) {
             e.printStackTrace();
         }

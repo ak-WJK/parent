@@ -22,6 +22,7 @@ import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.login.model.LoginResponse;
 import com.kzb.parents.main.MainActivity;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.view.DialogView;
 
 import org.json.JSONObject;
@@ -41,10 +42,10 @@ public class LoginTwoActivity extends BaseActivity {
     private HttpConfig httpConfig;
     private DialogView dialogView;
 
-    private TextView  comitView;
+    private TextView comitView;
     private EditText nameView, pwdView;
 
-    private TextView titleLeft,titleCenter;
+    private TextView titleLeft, titleCenter;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -55,6 +56,7 @@ public class LoginTwoActivity extends BaseActivity {
         dialogView = new DialogView(this);
         initView();
     }
+
     private void setTime() {
         long time = System.currentTimeMillis();
         final Calendar mCalendar = Calendar.getInstance();
@@ -122,7 +124,7 @@ public class LoginTwoActivity extends BaseActivity {
             object.put("username", nameVal);
             object.put("password", pwdVal);
             object.put("imeicode", Application.deviceId);
-            object.put("type","1");
+            object.put("type", "1");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -134,6 +136,7 @@ public class LoginTwoActivity extends BaseActivity {
             @Override
             public void onError(Call call, Exception e, int id) {
                 dialogView.handleDialog(false);
+                LogUtils.e("TAG", "登陆错误== " + e.getMessage());
 
             }
 
@@ -152,15 +155,17 @@ public class LoginTwoActivity extends BaseActivity {
                     } else if (response.getContent().getIs_active().equals("2")) {
                         //外来用户，完善信息
                         IntentUtil.startActivity(LoginTwoActivity.this, ImproveActivity.class);
-                    }else if (response.getContent().getIs_active().equals("1")) {
-                        if (TextUtils.isEmpty(response.getContent().getSubject())){
+                    } else if (response.getContent().getIs_active().equals("1")) {
+
+
+                        if (TextUtils.isEmpty(response.getContent().getSubject())) {
                             //跳转到课程选择页面
                             IntentUtil.startActivity(LoginTwoActivity.this, CourseSelectActivity.class);
-                        }else {
+                        } else {
                             IntentUtil.startActivity(LoginTwoActivity.this, MainActivity.class);
                         }
 //                        IntentUtil.startActivity(LoginActivity.this, ImproveActivity.class);
-                    }  else {
+                    } else {
                         if (SpSetting.loadLoginInfo().getSubject_id() == null) {
                             IntentUtil.startActivity(LoginTwoActivity.this, CourseSelectActivity.class);
                         } else {

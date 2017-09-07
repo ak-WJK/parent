@@ -91,6 +91,7 @@ public class ZhenDuiXunLianActivity extends BaseActivity implements View.OnClick
             json.put("type", type);//type值为:zhangjie,quanke
             json.put("kemu_id", SpSetting.loadLoginInfo().getSubject_id());
             json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
+            json.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
         } catch (JSONException e) {
             e.printStackTrace();
         }

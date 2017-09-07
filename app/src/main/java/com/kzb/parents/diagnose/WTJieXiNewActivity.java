@@ -8,7 +8,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -86,7 +85,6 @@ public class WTJieXiNewActivity extends BaseActivity implements View.OnClickList
 
 
         private ArrayList<String> icon;
-        private ImageView imageView;
 
         public SamplePagerAdapter(ArrayList<String> icon) {
 
@@ -100,9 +98,7 @@ public class WTJieXiNewActivity extends BaseActivity implements View.OnClickList
 
         @Override
         public View instantiateItem(ViewGroup container, int position) {
-            for (int i = 0; i < icon.size(); i++) {
-                imageView = new ImageView(container.getContext());
-            }
+
             PhotoView photoView = new PhotoView(container.getContext());
 
 //            photoView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -111,7 +107,7 @@ public class WTJieXiNewActivity extends BaseActivity implements View.OnClickList
 
             Glide.with(container.getContext()).load(path).into(photoView);
 
-//            photoView.setImageDrawable(Glide.with(container.getContext()).load(path).into(imageView));
+//
 
             // Now just add PhotoView to ViewPager and return it
             container.addView(photoView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
