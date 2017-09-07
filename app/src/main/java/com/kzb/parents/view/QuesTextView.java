@@ -293,27 +293,24 @@ public class QuesTextView extends TextView {
 //                options.inSampleSize = 10;
 
 
-
-
 // 设置参数
-                BitmapFactory.Options options = new BitmapFactory.Options();
-                options.inJustDecodeBounds = true; // 只获取图片的大小信息，而不是将整张图片载入在内存中，避免内存溢出
-                BitmapFactory.decodeFile(file.getAbsolutePath(), options);
-                int height1 = options.outHeight;
-                int width1= options.outWidth;
-                int inSampleSize = 2; // 默认像素压缩比例，压缩为原图的1/2
-                int minLen = Math.min(height1, width1); // 原图的最小边长
-                if(minLen > 100) { // 如果原始图像的最小边长大于100dp（此处单位我认为是dp，而非px）
-                    float ratio = (float)minLen / 100.0f; // 计算像素压缩比例
-                    inSampleSize = (int)ratio;
-                }
-                options.inJustDecodeBounds = false; // 计算好压缩比例后，这次可以去加载原图了
-                options.inSampleSize = inSampleSize; // 设置为刚才计算的压缩比例
-                final Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options); // 解码文件
+//                BitmapFactory.Options options = new BitmapFactory.Options();
+//                options.inJustDecodeBounds = true; // 只获取图片的大小信息，而不是将整张图片载入在内存中，避免内存溢出
+//                BitmapFactory.decodeFile(file.getAbsolutePath(), options);
+//                int height1 = options.outHeight;
+//                int width1 = options.outWidth;
+//                int inSampleSize = 1; // 默认像素压缩比例，压缩为原图的1/2
+//                int minLen = Math.min(height1, width1); // 原图的最小边长
+//                if (minLen > 100) { // 如果原始图像的最小边长大于100dp（此处单位我认为是dp，而非px）
+//                    float ratio = (float) minLen / 100.0f; // 计算像素压缩比例
+//                    inSampleSize = (int) ratio;
+//                }
+//                options.inJustDecodeBounds = false; // 计算好压缩比例后，这次可以去加载原图了
+//                options.inSampleSize = inSampleSize; // 设置为刚才计算的压缩比例
+//                final Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options); // 解码文件
 
 
-//                final Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-
+                final Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
 
 
                 if (drawable != null) {
@@ -339,7 +336,7 @@ public class QuesTextView extends TextView {
 
                     //设置点击图标进入解析题目显示
                     width = (int) (DensityUtil.dip2px(getContext(), width - 30));
-                    height = (int) ((DensityUtil.dip2px(getContext(), height-2 )));
+                    height = (int) ((DensityUtil.dip2px(getContext(), height - 2)));
                     //图片太小的时候
                     if (lineHeight > height) {
                         lineHeight += DensityUtil.dip2px(getContext(), 8);
@@ -402,8 +399,8 @@ public class QuesTextView extends TextView {
                                    double newHeight) {
         // 获取这个图片的宽和高
 
-         float   width = bgimage.getWidth();
-         float   height = bgimage.getHeight();
+        float width = bgimage.getWidth();
+        float height = bgimage.getHeight();
 
 
         // 创建操作图片用的matrix对象
@@ -415,7 +412,7 @@ public class QuesTextView extends TextView {
         float scaleHeight = ((float) newHeight) / height;
 
         if (scaleHeight != 0 && scaleWidth != 0) {
-        // 缩放图片动作
+            // 缩放图片动作
             matrix.postScale(scaleWidth, scaleHeight);
             Bitmap bitmap = Bitmap.createBitmap(bgimage, 0, 0, (int) width,
                     (int) height, matrix, true);
@@ -575,8 +572,6 @@ public class QuesTextView extends TextView {
         }
         super.onDraw(canvas);
     }
-
-
 
 
 }

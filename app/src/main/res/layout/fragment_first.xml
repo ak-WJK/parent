@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:orientation="vertical"
     android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/page_bg"
+        android:background="@color/window_background"
         android:orientation="vertical">
 
         <com.stx.xhb.xbanner.XBanner
@@ -26,237 +26,480 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
             android:background="@color/white"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/first_current_course"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:paddingBottom="15dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="15dp"
-                android:textColor="@color/theme_green"
-                android:textSize="@dimen/text_common" />
-
-            <View
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
-                android:background="@color/page_bg"></View>
-
-            <!--<TextView-->
-            <!--android:id="@+id/first_msg_list"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:gravity="center"-->
-            <!--android:paddingBottom="15dp"-->
-            <!--android:paddingTop="15dp"-->
-            <!--android:drawableLeft="@mipmap/first_msg_img"-->
-            <!--android:text="消息"-->
-            <!--android:visibility="gone"-->
-            <!--android:textColor="@color/_333333"-->
-            <!--android:textSize="@dimen/text_common" />-->
-
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:background="@drawable/kb"
+                android:gravity="center"
+                android:paddingRight="5dp"
+                android:text="快报"
+                android:textColor="@color/white"
+                android:textSize="@dimen/BasicTextSize" />
 
             <TextView
-                android:id="@+id/first_msg_list"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@mipmap/first_msg_img"
-                android:gravity="center"
-                android:paddingBottom="6dp"
-                android:paddingTop="6dp"
-                android:text="消息"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/text_common" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="接收消息"
+                android:textSize="@dimen/BasicTextSize">
 
+            </TextView>
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/ndec_w8"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/first_zhenduan_baogao"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@mipmap/first_zhenduan_img"
-                android:gravity="center"
-                android:paddingBottom="6dp"
-                android:paddingTop="6dp"
-                android:text="报告"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/text_common" />
+                android:background="@drawable/frist_bg"
+                android:orientation="vertical">
 
-            <View
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
-                android:background="@color/page_bg"></View>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/first_zhendui_xunlian"
-                android:layout_width="0dp"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/ndec_w8"
+                        android:drawableLeft="@drawable/dq"
+                        android:drawablePadding="10dp"
+                        android:text="当前科目"
+                        android:textSize="@dimen/BasicTextSize" />
+
+                    <TextView
+                        android:id="@+id/first_current_course"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/ndec_w8"
+                        android:drawableRight="@drawable/enter_arrow"
+                        android:textSize="@dimen/BasicTextSize"
+                        tool:text="语文" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.8dp"
+                        android:layout_below="@+id/first_current_course"
+                        android:background="@color/gray_exam" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/first_zhenduan_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/ndec_w1"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/ndec_w9"
+                        android:drawableTop="@drawable/zd"
+                        android:gravity="center"
+                        android:text="诊断"
+                        android:textSize="@dimen/SmallerTextSize" />
+
+                    <FrameLayout
+
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/ndec_w10"
+                        android:layout_weight="1">
+
+
+                        <TextView
+                            android:id="@+id/first_zhenduan_baogao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/ndec_w9"
+                            android:drawablePadding="@dimen/ndec_w9"
+                            android:drawableTop="@drawable/bg"
+                            android:gravity="center"
+                            android:text="报告"
+                            android:textSize="@dimen/SmallerTextSize" />
+
+                        <TextView
+                            android:id="@+id/tv_baogao_point"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginLeft="@dimen/ndec_w3"
+                            android:background="@drawable/ty"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:textSize="10dp"
+                            tool:text="3" />
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:id="@+id/first_msg_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/ndec_w10"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/first_msg_list"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/ndec_w9"
+                            android:drawablePadding="@dimen/ndec_w9"
+                            android:drawableTop="@drawable/main_xx"
+                            android:gravity="center"
+                            android:text="消息"
+                            android:textSize="@dimen/SmallerTextSize" />
+
+                        <TextView
+                            android:id="@+id/tv_msg_point"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginLeft="@dimen/ndec_w3"
+                            android:background="@drawable/ty"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:textSize="10dp"
+                            tool:text="12" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@mipmap/first_zhendui_xunlian"
-                android:gravity="center"
-                android:paddingBottom="6dp"
-                android:paddingTop="6dp"
-                android:text="针对训练"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/text_common" />
+                android:layout_marginTop="@dimen/ndec_w8"
+                android:background="@drawable/frist_bg"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ndec_w11"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/first_zhendui_xunlian"
+                        style="@style/frist_textIcon_layout"
+                        android:drawableTop="@drawable/xl"
+                        android:text="针对训练" />
+
+                    <TextView
+                        android:id="@+id/first_streng_layout"
+                        style="@style/frist_textIcon_layout"
+                        android:drawableTop="@drawable/jd"
+                        android:text="强化进度" />
+
+
+                    <TextView
+                        android:id="@+id/first_xuexi_layout"
+                        style="@style/frist_textIcon_layout"
+                        android:drawableTop="@drawable/ks"
+                        android:text="考试" />
+
+                    <TextView
+                        android:id="@+id/first_paiming_layout"
+                        style="@style/frist_textIcon_layout"
+                        android:drawableTop="@drawable/pm"
+                        android:text="排名" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/ndec_w1"
+                    android:layout_marginTop="@dimen/ndec_w11"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/first_course_layout"
+                        style="@style/frist_textIcon_layout"
+                        android:drawableTop="@drawable/xue"
+                        android:text="学习进度" />
+
+                    <TextView
+                        android:id="@+id/first_wrong_layout"
+                        style="@style/frist_textIcon_layout"
+                        android:drawableTop="@drawable/ct"
+                        android:text="错题本" />
+
+                    <TextView
+                        android:id="@+id/first_exer_layout"
+                        style="@style/frist_textIcon_layout"
+                        android:drawableTop="@drawable/zy"
+                        android:text="作业" />
+
+
+                    <TextView
+                        android:id="@+id/first_vip_lgout"
+                        style="@style/frist_textIcon_layout"
+                        android:drawableTop="@drawable/hy"
+                        android:text="会员" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:orientation="horizontal">-->
 
-            <TextView
-                android:id="@+id/first_streng_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@mipmap/first_qianghua_img"
-                android:gravity="center"
-                android:paddingBottom="6dp"
-                android:paddingTop="6dp"
-                android:text="强化进度"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/text_common" />
+        <!--<TextView-->
+        <!--android:id="@+id/first_current_course"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="left"-->
+        <!--android:paddingBottom="15dp"-->
+        <!--android:paddingLeft="20dp"-->
+        <!--android:paddingTop="15dp"-->
+        <!--android:textColor="@color/theme_green"-->
+        <!--android:textSize="@dimen/text_common" />-->
 
-            <View
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
-                android:background="@color/page_bg">
+        <!--<View-->
+        <!--android:layout_width="10dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/page_bg">-->
 
-            </View>
+        <!--</View>-->
 
-            <TextView
-                android:id="@+id/first_zhenduan_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@mipmap/first_zhenduan"
-                android:gravity="center"
-                android:paddingBottom="6dp"
-                android:paddingTop="6dp"
-                android:text="诊断"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/text_common" />
-
-        </LinearLayout>
+        <!--<TextView-->
+        <!--android:id="@+id/first_msg_list"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingBottom="15dp"-->
+        <!--android:paddingTop="15dp"-->
+        <!--android:drawableLeft="@mipmap/first_msg_img"-->
+        <!--android:text="消息"-->
+        <!--android:visibility="gone"-->
+        <!--android:textColor="@color/_333333"-->
+        <!--android:textSize="@dimen/text_common" />-->
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:orientation="horizontal">
+        <!--<TextView-->
+        <!--android:id="@+id/first_msg_list"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableLeft="@mipmap/first_msg_img"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingBottom="6dp"-->
+        <!--android:paddingTop="6dp"-->
+        <!--android:text="消息"-->
+        <!--android:textColor="@color/_333333"-->
+        <!--android:textSize="@dimen/text_common" />-->
 
-            <TextView
-                android:id="@+id/first_course_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@mipmap/first_xuexi_img"
-                android:gravity="center"
-                android:paddingBottom="6dp"
-                android:paddingTop="6dp"
-                android:text="学习进度"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/text_common" />
-
-            <View
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
-                android:background="@color/page_bg">
-
-            </View>
-
-            <TextView
-                android:id="@+id/first_xuexi_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@mipmap/first_xuexi"
-                android:gravity="center"
-                android:paddingBottom="6dp"
-                android:paddingTop="6dp"
-                android:text="考试"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/text_common" />
-
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:orientation="horizontal">-->
 
-            <TextView
-                android:id="@+id/first_wrong_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@mipmap/first_cuoti_img"
-                android:gravity="center"
-                android:paddingBottom="6dp"
-                android:paddingTop="6dp"
-                android:text="错题本"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/text_common" />
+        <!--<TextView-->
+        <!--android:id="@+id/first_zhenduan_baogao"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableLeft="@mipmap/first_zhenduan_img"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingBottom="6dp"-->
+        <!--android:paddingTop="6dp"-->
+        <!--android:text="报告"-->
+        <!--android:textColor="@color/_333333"-->
+        <!--android:textSize="@dimen/text_common" />-->
 
-            <View
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
-                android:background="@color/page_bg">
+        <!--<View-->
+        <!--android:layout_width="10dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/page_bg"></View>-->
 
-            </View>
+        <!--<TextView-->
+        <!--android:id="@+id/first_zhendui_xunlian"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableLeft="@mipmap/first_zhendui_xunlian"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingBottom="6dp"-->
+        <!--android:paddingTop="6dp"-->
+        <!--android:text="针对训练"-->
+        <!--android:textColor="@color/_333333"-->
+        <!--android:textSize="@dimen/text_common" />-->
 
-            <TextView
-                android:id="@+id/first_exer_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@mipmap/frist_exer"
-                android:gravity="center"
-                android:paddingBottom="6dp"
-                android:paddingTop="6dp"
-                android:text="作业"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/text_common" />
+        <!--</LinearLayout>-->
 
-        </LinearLayout>
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/first_streng_layout"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableLeft="@mipmap/first_qianghua_img"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingBottom="6dp"-->
+        <!--android:paddingTop="6dp"-->
+        <!--android:text="强化进度"-->
+        <!--android:textColor="@color/_333333"-->
+        <!--android:textSize="@dimen/text_common" />-->
+
+        <!--<View-->
+        <!--android:layout_width="10dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/page_bg">-->
+
+        <!--</View>-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/first_zhenduan_layout"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableLeft="@mipmap/first_zhenduan"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingBottom="6dp"-->
+        <!--android:paddingTop="6dp"-->
+        <!--android:text="诊断"-->
+        <!--android:textColor="@color/_333333"-->
+        <!--android:textSize="@dimen/text_common" />-->
+
+        <!--</LinearLayout>-->
+
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/first_course_layout"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableLeft="@mipmap/first_xuexi_img"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingBottom="6dp"-->
+        <!--android:paddingTop="6dp"-->
+        <!--android:text="学习进度"-->
+        <!--android:textColor="@color/_333333"-->
+        <!--android:textSize="@dimen/text_common" />-->
+
+        <!--<View-->
+        <!--android:layout_width="10dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/page_bg">-->
+
+        <!--</View>-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/first_xuexi_layout"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableLeft="@mipmap/first_xuexi"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingBottom="6dp"-->
+        <!--android:paddingTop="6dp"-->
+        <!--android:text="考试"-->
+        <!--android:textColor="@color/_333333"-->
+        <!--android:textSize="@dimen/text_common" />-->
+
+        <!--</LinearLayout>-->
+
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/first_wrong_layout"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableLeft="@mipmap/first_cuoti_img"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingBottom="6dp"-->
+        <!--android:paddingTop="6dp"-->
+        <!--android:text="错题本"-->
+        <!--android:textColor="@color/_333333"-->
+        <!--android:textSize="@dimen/text_common" />-->
+
+        <!--<View-->
+        <!--android:layout_width="10dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/page_bg">-->
+
+        <!--</View>-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/first_exer_layout"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableLeft="@mipmap/frist_exer"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingBottom="6dp"-->
+        <!--android:paddingTop="6dp"-->
+        <!--android:text="作业"-->
+        <!--android:textColor="@color/_333333"-->
+        <!--android:textSize="@dimen/text_common" />-->
+
+        <!--</LinearLayout>-->
 
 
     </LinearLayout>

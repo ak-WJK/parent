@@ -15,6 +15,7 @@ import com.kzb.baselibrary.network.callback.GenericsCallback;
 import com.kzb.baselibrary.utils.MineToast;
 import com.kzb.parents.JsonGenericsSerializator;
 import com.kzb.parents.R;
+import com.kzb.parents.VipActivity;
 import com.kzb.parents.application.Application;
 import com.kzb.parents.base.BaseFragment;
 import com.kzb.parents.base.XBaseRequest;
@@ -68,7 +69,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
 
     private TextView headTitle;
 
-    private TextView zhenDuanLayout, courseLayout, wrongLayout, strengLayout, xuexiLayout, zhenduanBaoGao, exerLayout;
+    private TextView zhenDuanLayout, courseLayout, wrongLayout, strengLayout, xuexiLayout, zhenduanBaoGao, exerLayout,vipLayout;
 
     private TextView curCourseView, msgListView;
     private TextView zhenduiXunLian;
@@ -78,6 +79,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
 
     //会员等级
     int level = 3;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
@@ -142,6 +144,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
         zhenduanBaoGao = (TextView) view.findViewById(R.id.first_zhenduan_baogao);
         zhenduiXunLian = (TextView) view.findViewById(R.id.first_zhendui_xunlian);
         exerLayout = (TextView) view.findViewById(R.id.first_exer_layout);
+        vipLayout = (TextView) view.findViewById(R.id.first_vip_lgout);
 
 
         zhenDuanLayout.setOnClickListener(this);
@@ -152,6 +155,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
         zhenduanBaoGao.setOnClickListener(this);
         zhenduiXunLian.setOnClickListener(this);
         exerLayout.setOnClickListener(this);
+        vipLayout.setOnClickListener(this);
 
         //登陆后加载用户退出前存储的科目
         curCourseView.setText("科目：" + SpSetting.loadLoginInfo().getSubject());
@@ -295,6 +299,9 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
                 break;
             case R.id.first_exer_layout:
                 IntentUtil.startActivity(getActivity(), ExerActivity.class);
+                break;
+            case R.id.first_vip_lgout:
+                IntentUtil.startActivity(getActivity(), VipActivity.class);
                 break;
         }
     }

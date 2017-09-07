@@ -53,7 +53,6 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         initData();
 
 
-
         if (Build.VERSION.SDK_INT >= 23) {
             int checkCallPhonePermission = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
             if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
@@ -133,10 +132,10 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private void tableFirst() {
         titleView.setText("考之宝");
         viewPager.setCurrentItem(0);
-        firstImg.setImageResource(R.mipmap.main_first_press);
-        secImg.setImageResource(R.mipmap.main_sec_normal);
-        thirdImg.setImageResource(R.mipmap.main_third_normal);
-        fourthImg.setImageResource(R.mipmap.main_fourth_normal);
+        firstImg.setImageResource(R.drawable.xh_sy);
+        secImg.setImageResource(R.drawable.xq_bg);
+        thirdImg.setImageResource(R.drawable.xq_zs);
+        fourthImg.setImageResource(R.drawable.xq_wd);
 
         firstTxt.setTextColor(getResources().getColor(R.color.theme_green));
         secTxt.setTextColor(getResources().getColor(R.color.theme_gray));
@@ -148,10 +147,10 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private void tableSec() {
         titleView.setText("报告");
         viewPager.setCurrentItem(1);
-        firstImg.setImageResource(R.mipmap.main_first_normal);
-        secImg.setImageResource(R.mipmap.main_sec_press);
-        thirdImg.setImageResource(R.mipmap.main_third_normal);
-        fourthImg.setImageResource(R.mipmap.main_fourth_normal);
+        firstImg.setImageResource(R.drawable.xq_sy);
+        secImg.setImageResource(R.drawable.xh_bg);
+        thirdImg.setImageResource(R.drawable.xq_zs);
+        fourthImg.setImageResource(R.drawable.xq_wd);
 
         firstTxt.setTextColor(getResources().getColor(R.color.theme_gray));
         secTxt.setTextColor(getResources().getColor(R.color.theme_green));
@@ -162,10 +161,10 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private void tableThird() {
         titleView.setText("知识点");
         viewPager.setCurrentItem(2);
-        firstImg.setImageResource(R.mipmap.main_first_normal);
-        secImg.setImageResource(R.mipmap.main_sec_normal);
-        thirdImg.setImageResource(R.mipmap.main_third_press);
-        fourthImg.setImageResource(R.mipmap.main_fourth_normal);
+        firstImg.setImageResource(R.drawable.xq_sy);
+        secImg.setImageResource(R.drawable.xq_bg);
+        thirdImg.setImageResource(R.drawable.xh_zs);
+        fourthImg.setImageResource(R.drawable.xq_wd);
 
         firstTxt.setTextColor(getResources().getColor(R.color.theme_gray));
         secTxt.setTextColor(getResources().getColor(R.color.theme_gray));
@@ -177,10 +176,10 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private void tableFourth() {
         titleView.setText("我的");
         viewPager.setCurrentItem(3);
-        firstImg.setImageResource(R.mipmap.main_first_normal);
-        secImg.setImageResource(R.mipmap.main_sec_normal);
-        thirdImg.setImageResource(R.mipmap.main_third_normal);
-        fourthImg.setImageResource(R.mipmap.main_fourth_press);
+        firstImg.setImageResource(R.drawable.xq_sy);
+        secImg.setImageResource(R.drawable.xq_bg);
+        thirdImg.setImageResource(R.drawable.xq_zs);
+        fourthImg.setImageResource(R.drawable.xh_wd);
 
         firstTxt.setTextColor(getResources().getColor(R.color.theme_gray));
         secTxt.setTextColor(getResources().getColor(R.color.theme_gray));

@@ -28,7 +28,6 @@ import com.kzb.parents.view.DialogView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Collections;
 import java.util.List;
 
 import okhttp3.Call;
@@ -129,10 +128,7 @@ public class ExerListActivity extends BaseActivity {
                     if (response.getContent() != null) {
 
                         List<KSZhangJieResponse.ZhangJieModel> zhangJieModels = response.getContent();
-                        //实现数据的倒序排列
-                        if (mPosition.equals("1")) {
-                            Collections.reverse(zhangJieModels);
-                        }
+
                         LogUtils.e("TAG", "zhangjieModles == " + zhangJieModels.toString());
                         zhangJieFinAdapter.setItems(response.getContent());
                     }

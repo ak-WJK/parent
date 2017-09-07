@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.kzb.parents.R;
 import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.wrong.WrongDetailThreeActivity;
 import com.kzb.parents.wrong.model.WrongResponse.WJieModel;
 import com.kzb.parents.wrong.model.WrongResponse.WZhangModel;
@@ -86,6 +87,7 @@ public class WrongAdapter extends BaseExpandableListAdapter {
         View lineView = (View) view.findViewById(R.id.item_report_list_father_lineview);
         WZhangModel wZhangModel = wZhangModelList.get(groupPosition);
         textView.setText(wZhangModel.getName());
+        LogUtils.e("TAG", "wZhangModel.getName()=====" + wZhangModel.getName());
 
         numView.setVisibility(View.VISIBLE);
         numView.setText("(" + wZhangModel.getCount() + ")");

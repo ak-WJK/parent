@@ -151,7 +151,8 @@ public class BGQKListActivity extends BaseActivity {
 
                         List<KSReportQKResponse.ReportQKModel> content = response.getContent();
 
-                        Collections.reverse(response.getContent());
+                        //实现倒序排列
+//                        Collections.reverse(response.getContent());
                         bgqkAdapter.setItems(response.getContent());
 
                     }
