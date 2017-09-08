@@ -40,17 +40,19 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/BasicTextSize" />
 
-            <TextView
+            <TextSwitcher
+                android:id="@+id/ts_textswitcher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ndec_w9"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:ellipsize="end"
-                android:lines="1"
-                android:text="接收消息"
-                android:textSize="@dimen/BasicTextSize">
+                android:inAnimation="@anim/push_up_in"
+                android:outAnimation="@anim/pushsh_up_out"
 
-            </TextView>
+                >
+
+            </TextSwitcher>
         </LinearLayout>
 
         <LinearLayout
@@ -100,13 +102,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/ndec_w2"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/first_zhenduan_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/ndec_w1"
+                        android:layout_marginTop="@dimen/ndec_w0"
                         android:layout_weight="1"
                         android:drawablePadding="@dimen/ndec_w9"
                         android:drawableTop="@drawable/zd"
@@ -116,10 +119,9 @@
 
                     <FrameLayout
 
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/ndec_w10"
+                        android:layout_marginTop="@dimen/ndec_w10"
                         android:layout_weight="1">
 
 
@@ -153,7 +155,7 @@
                         android:id="@+id/first_msg_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/ndec_w10"
+                        android:layout_marginTop="@dimen/ndec_w10"
                         android:layout_weight="1">
 
                         <TextView
@@ -188,6 +190,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/ndec_w8"
                 android:layout_marginTop="@dimen/ndec_w8"
                 android:background="@drawable/frist_bg"
                 android:orientation="vertical">
@@ -212,31 +215,27 @@
 
 
                     <TextView
+                        android:id="@+id/first_course_layout"
+                        style="@style/frist_textIcon_layout"
+                        android:drawableTop="@drawable/xue"
+                        android:text="学习进度" />
+
+                    <TextView
                         android:id="@+id/first_xuexi_layout"
                         style="@style/frist_textIcon_layout"
                         android:drawableTop="@drawable/ks"
                         android:text="考试" />
 
-                    <TextView
-                        android:id="@+id/first_paiming_layout"
-                        style="@style/frist_textIcon_layout"
-                        android:drawableTop="@drawable/pm"
-                        android:text="排名" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/ndec_w1"
+                    android:layout_marginBottom="@dimen/ndec_w11"
                     android:layout_marginTop="@dimen/ndec_w11"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/first_course_layout"
-                        style="@style/frist_textIcon_layout"
-                        android:drawableTop="@drawable/xue"
-                        android:text="学习进度" />
 
                     <TextView
                         android:id="@+id/first_wrong_layout"
@@ -249,6 +248,12 @@
                         style="@style/frist_textIcon_layout"
                         android:drawableTop="@drawable/zy"
                         android:text="作业" />
+
+                    <TextView
+                        android:id="@+id/first_paiming_layout"
+                        style="@style/frist_textIcon_layout"
+                        android:drawableTop="@drawable/pm"
+                        android:text="排名" />
 
 
                     <TextView

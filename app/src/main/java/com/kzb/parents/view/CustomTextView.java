@@ -79,17 +79,17 @@ public class CustomTextView extends TextView {
 
             mPaint.setColor(getResources().getColor(R.color.item_red_color));
             mPaint.setStyle(Paint.Style.FILL);//设置填满
-            canvas.drawRoundRect(new RectF(0, 0, getMeasuredWidth(), getMeasuredHeight()), 20, 20, mPaint);
+            canvas.drawRoundRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), 20, 20, mPaint);
 //            canvas.drawRect(firstRect, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
 
 
             mPaint.setColor(getResources().getColor(R.color.item_green_color));
             mPaint.setStyle(Paint.Style.FILL);//设置填满
 
-            canvas.drawRoundRect(new RectF(0, 0, firstRect, getMeasuredHeight()), 20, 20, mPaint);
+            canvas.drawRoundRect(0, 0, firstRect, getMeasuredHeight(), 20, 20, mPaint);
             //思路就是重新绘制一遍，在距离右边20的地方绘制一个矩形
             if ((getMeasuredWidth() - firstRect) <= 20) {
-                canvas.drawRoundRect(new RectF(0, 0, firstRect, getMeasuredHeight()), 20, 20, mPaint);
+                canvas.drawRoundRect(0, 0, firstRect, getMeasuredHeight(), 20, 20, mPaint);
             } else {
                 canvas.drawRect(firstRect - 20, 0, firstRect, getMeasuredHeight(), mPaint);
             }

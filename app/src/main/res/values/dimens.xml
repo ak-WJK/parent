@@ -26,6 +26,7 @@
     <dimen name="text_before_bg">10dp</dimen>
 
     <!-- normal_dialog_enter_canel -->
+    <dimen name="ndec_w0">20dp</dimen>
     <dimen name="ndec_w1">22dp</dimen>
     <dimen name="ndec_w2">15dp</dimen>
     <dimen name="ndec_w3">15dp</dimen>

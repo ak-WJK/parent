@@ -66,7 +66,6 @@ public class ZhenDuiXunLianActivity extends BaseActivity implements View.OnClick
         zhenDuiXunLianAdapter.setmType(type);
         if (type.equals("zhangjie")) {
             titleCenter.setText("章节训练");
-
         } else {
             titleCenter.setText("全科训练");
         }
@@ -91,7 +90,7 @@ public class ZhenDuiXunLianActivity extends BaseActivity implements View.OnClick
             json.put("type", type);//type值为:zhangjie,quanke
             json.put("kemu_id", SpSetting.loadLoginInfo().getSubject_id());
             json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
-            json.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
+            json.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
         } catch (JSONException e) {
             e.printStackTrace();
         }

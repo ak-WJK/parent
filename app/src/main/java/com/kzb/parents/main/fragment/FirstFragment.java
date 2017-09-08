@@ -1,14 +1,19 @@
 package com.kzb.parents.main.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import com.bumptech.glide.Glide;
 import com.kzb.baselibrary.network.callback.GenericsCallback;
@@ -52,6 +57,7 @@ import java.util.Map;
 
 import okhttp3.Call;
 
+import static com.kzb.parents.application.Application.mContext;
 import static com.kzb.parents.application.Application.spTimes;
 import static com.kzb.parents.config.SpSetting.loadLoginInfo;
 
@@ -64,21 +70,27 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
     private HttpConfig httpConfig;
 //    private DialogView dialogView;
 
+    private String[] text = {"测试数据", "今天出门捡到一个妹纸", "今天出门捡到一捆妹纸", "今天出门捡到一沓妹纸", "喂,别瞎想了,你媳妇儿跟人跑了!!!"};
+
+
     private XBanner banner;
     List<LunBoResponse.LunBoModel> imgesUrl = new ArrayList<>();
 
     private TextView headTitle;
 
-    private TextView zhenDuanLayout, courseLayout, wrongLayout, strengLayout, xuexiLayout, zhenduanBaoGao, exerLayout,vipLayout;
+    private TextView zhenDuanLayout, courseLayout, wrongLayout, strengLayout, xuexiLayout, zhenduanBaoGao, exerLayout, vipLayout;
 
     private TextView curCourseView, msgListView;
     private TextView zhenduiXunLian;
+    private TextSwitcher textSwitcher;
 
 
     private boolean sign = false;
 
+    private int index = 0;
     //会员等级
     int level = 3;
+    private MyHandler myHandler;
 
 
     @Override
@@ -145,6 +157,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
         zhenduiXunLian = (TextView) view.findViewById(R.id.first_zhendui_xunlian);
         exerLayout = (TextView) view.findViewById(R.id.first_exer_layout);
         vipLayout = (TextView) view.findViewById(R.id.first_vip_lgout);
+        textSwitcher = (TextSwitcher) view.findViewById(R.id.ts_textswitcher);
 
 
         zhenDuanLayout.setOnClickListener(this);
@@ -239,7 +252,62 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
                 IntentUtil.startActivity(getActivity(), ArticeDetailActivity.class, mapv);
             }
         });
+
+
+        textSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+            @Override
+            public View makeView() {
+
+                TextView textView = new TextView(mContext);
+                textView.setSingleLine();
+                textView.setTextSize(11);
+                textView.setTextColor(Color.parseColor("#878787"));
+                textView.setEllipsize(TextUtils.TruncateAt.END);
+                FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+                );
+//                lp.gravity = Gravity.CENTER;
+                textView.setLayoutParams(lp);
+
+                return textView;
+            }
+        });
+
+        myHandler = new MyHandler();
+        new MyThread().start();
+
     }
+
+    class MyHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            textSwitcher.setText(text[index]);
+            index++;
+            if (index == text.length) {
+                index = 0;
+            }
+        }
+    }
+
+    class MyThread extends Thread {
+        @Override
+        public void run() {
+            super.run();
+            while (index < text.length) {
+                try {
+
+                    myHandler.sendEmptyMessage(0);
+                    this.sleep(2000);
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+    }
+
 
     @Override
     public void loadBanner(XBanner banner, View view, int position) {

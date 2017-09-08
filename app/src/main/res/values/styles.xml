@@ -146,8 +146,7 @@
     <style name="frist_textIcon_layout">
 <item name="android:layout_width">wrap_content</item>
 <item name="android:layout_height">wrap_content</item>
-<item name="android:layout_marginLeft">@dimen/ndec_w1</item>
-<item name="android:layout_marginRight">@dimen/ndec_w1</item>
+
 <item name="android:layout_weight">1</item>
 <item name="android:drawablePadding">@dimen/ndec_w9</item>
 <item name="android:gravity">center</item>
