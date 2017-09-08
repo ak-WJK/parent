@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.kzb.parents.R;
 import com.kzb.parents.base.BaseFragment;
+import com.kzb.parents.config.SpSetting;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.login.LoginTypeActivity;
 import com.kzb.parents.set.SetCourseActivity;
@@ -26,7 +27,7 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
     private HttpConfig httpConfig;
     private DialogView dialogView;
 
-    private TextView headTitle;
+    private TextView headTitle , userName;
     private RelativeLayout setLayout, courseLayout, lgLayout, msgLayout;
 
     @Override
@@ -52,6 +53,9 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
         courseLayout = (RelativeLayout) view.findViewById(R.id.fourth_course_layout);
         lgLayout = (RelativeLayout) view.findViewById(R.id.first_fourth_lgout);
         msgLayout = (RelativeLayout) view.findViewById(R.id.fourth_msg_layout);
+        userName = (TextView) view.findViewById(R.id.user_name);
+        userName.setText(SpSetting.loadLoginInfo().getName());
+
 //        vipLayout = (RelativeLayout) view.findViewById(R.id.first_vip_lgout);
         setLayout.setOnClickListener(this);
         courseLayout.setOnClickListener(this);

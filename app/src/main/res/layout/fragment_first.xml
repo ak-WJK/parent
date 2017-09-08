@@ -32,7 +32,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/ndec_w8"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/ndec_w8"
                 android:background="@drawable/kb"
                 android:gravity="center"
                 android:paddingRight="5dp"
@@ -44,8 +46,8 @@
                 android:id="@+id/ts_textswitcher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/ndec_w9"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/ndec_w1"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:inAnimation="@anim/push_up_in"
                 android:outAnimation="@anim/pushsh_up_out"
@@ -96,7 +98,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0.8dp"
                         android:layout_below="@+id/first_current_course"
-                        android:background="@color/gray_exam" />
+                        android:background="@color/gray" />
                 </RelativeLayout>
 
                 <LinearLayout
@@ -106,6 +108,8 @@
                     android:orientation="horizontal">
 
                     <TextView
+
+                        android:layout_marginLeft="@dimen/ndec_w8"
                         android:id="@+id/first_zhenduan_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -116,6 +120,13 @@
                         android:gravity="center"
                         android:text="诊断"
                         android:textSize="@dimen/SmallerTextSize" />
+
+                    <View
+                        android:layout_marginTop="18dp"
+                        android:layout_width="0.8dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray"
+                        />
 
                     <FrameLayout
 
@@ -150,12 +161,18 @@
                             tool:text="3" />
                     </FrameLayout>
 
-
+                    <View
+                        android:layout_marginTop="18dp"
+                        android:layout_width="0.8dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray"
+                        />
                     <FrameLayout
                         android:id="@+id/first_msg_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/ndec_w10"
+                        android:layout_marginRight="@dimen/ndec_w8"
                         android:layout_weight="1">
 
                         <TextView
