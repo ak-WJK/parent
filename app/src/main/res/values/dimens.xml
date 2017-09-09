@@ -38,6 +38,7 @@
     <dimen name="ndec_w8">10dp</dimen>
     <dimen name="ndec_w9">6dp</dimen>
     <dimen name="ndec_w11">32dp</dimen>
+    <dimen name="ndec_w12">8dp</dimen>
 
     <dimen name="LargeTextSize">16dp</dimen>
     <dimen name="BasicTextSize">15dp</dimen>
