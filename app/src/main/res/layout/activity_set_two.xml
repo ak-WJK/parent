@@ -475,7 +475,7 @@
                     android:paddingBottom="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
-                    android:text="未认证"
+                    tools:text="未认证"
                     android:textColor="@color/category_one_color"
                     android:textSize="18dp" />
             </RelativeLayout>
