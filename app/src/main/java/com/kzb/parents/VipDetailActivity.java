@@ -1,8 +1,6 @@
 package com.kzb.parents;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -50,7 +48,6 @@ public class VipDetailActivity extends BaseActivity implements View.OnClickListe
 
     private ImageView headerImg;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

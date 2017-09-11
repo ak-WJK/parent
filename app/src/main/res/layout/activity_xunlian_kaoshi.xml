@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/white"
-        >
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/xunlian_zhangjie"
@@ -32,9 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/enter_arrow"
             android:layout_marginRight="10dp"
-            />
+            android:src="@mipmap/enter_arrow" />
 
     </RelativeLayout>
 
@@ -42,8 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/white"
-        >
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/xunlian_quanke"
@@ -63,12 +60,42 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/enter_arrow"
             android:layout_marginRight="10dp"
-            />
+            android:src="@mipmap/enter_arrow" />
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/rl_zhishidian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/enter_arrow" />
+
+        <TextView
+            android:id="@+id/xunlian_chuti"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/zhenduan_quanke"
+            android:drawablePadding="5dp"
+            android:gravity="center|left"
+            android:padding="12dp"
+            android:text="针对知识点出题"
+            android:textColor="@color/_333333"
+            android:textSize="@dimen/text_common"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
 
 
 </LinearLayout>

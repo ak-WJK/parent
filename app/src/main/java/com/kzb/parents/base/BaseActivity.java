@@ -1,11 +1,9 @@
 package com.kzb.parents.base;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
@@ -29,13 +27,14 @@ public abstract class BaseActivity extends FragmentActivity {
     public DialogView dialogView;
 
     protected Handler mHandler = new Handler(Looper.getMainLooper());
+
     @Override
     protected void onResume() {
         super.onResume();
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

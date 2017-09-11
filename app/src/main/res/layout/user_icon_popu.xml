@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true">
+
+        <TextView
+            android:id="@+id/photo_take"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/ndec_w8"
+            android:textColor="@color/shop_black_90"
+            android:text="拍照" />
+
+        <TextView
+            android:id="@+id/photo_album"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/ndec_w8"
+            android:textColor="@color/shop_black_90"
+            android:text="相册选择" />
+
+        <TextView
+            android:id="@+id/photo_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/ndec_w8"
+            android:textColor="@color/shop_black_90"
+            android:text="取消" />
+    </LinearLayout>
+
+</RelativeLayout>

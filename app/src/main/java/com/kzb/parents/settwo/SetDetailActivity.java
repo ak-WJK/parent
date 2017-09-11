@@ -4,10 +4,8 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -107,7 +105,6 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
     private TextView redSignView, updateView;
     private UpdateResponse.UpdateModel updateModel;//版本更新对象
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

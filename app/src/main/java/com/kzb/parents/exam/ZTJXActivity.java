@@ -1,10 +1,8 @@
 package com.kzb.parents.exam;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -22,6 +20,7 @@ import com.kzb.parents.exam.bean.NeedKnow;
 import com.kzb.parents.exam.bean.NeedKnowPro;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.util.IntentUtil;
+import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.util.TimeHelper;
 import com.kzb.parents.view.DialogView;
 import com.kzb.parents.view.ProgressDialogView;
@@ -105,11 +104,12 @@ public class ZTJXActivity extends BaseActivity {
         }
     };
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam_ztjx);
+
+        LogUtils.e("TAG", "真题解析页面");
 
         httpConfig = new HttpConfig();
         dialogView = new DialogView(this);

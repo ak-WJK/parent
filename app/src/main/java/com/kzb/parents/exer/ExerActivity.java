@@ -1,8 +1,6 @@
 package com.kzb.parents.exer;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,7 +18,7 @@ public class ExerActivity extends BaseActivity implements View.OnClickListener {
     private TextView exercomView, exernoComView;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

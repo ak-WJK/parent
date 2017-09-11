@@ -1,9 +1,7 @@
 package com.kzb.parents.course;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
@@ -18,11 +16,11 @@ import com.kzb.parents.base.XBaseRequest;
 import com.kzb.parents.config.AddressConfig;
 import com.kzb.parents.config.SpSetting;
 import com.kzb.parents.course.adapter.ParentAdapter;
+import com.kzb.parents.course.model.CourseResponse;
+import com.kzb.parents.course.model.CourseResponse.ZhangModel;
 import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.util.IntentUtil;
 import com.kzb.parents.view.DialogView;
-import com.kzb.parents.course.model.CourseResponse.ZhangModel;
-import com.kzb.parents.course.model.CourseResponse;
 
 import org.json.JSONObject;
 
@@ -49,7 +47,7 @@ public class CourseListActivity extends BaseActivity implements ExpandableListVi
     private TextView titleLeft, titleContent;
     private String type;//1表示未学习，2表示已学习
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

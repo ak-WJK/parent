@@ -1,8 +1,6 @@
 package com.kzb.parents.settwo;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -67,7 +65,6 @@ public class SchoolShenHeActivity extends BaseActivity implements View.OnClickLi
     private TextView subShenheView;
     private TextView backView;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

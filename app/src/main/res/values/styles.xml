@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/theme_green</item>
         <item name="colorPrimaryDark">@color/theme_green</item>
@@ -9,6 +9,7 @@
         <!--解决启动白屏-->
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowNoTitle">true</item>
+
     </style>
 
     <declare-styleable name="CircleImageView">
@@ -134,7 +135,6 @@
     </style>
 
 
-
     <!--android:layout_width="wrap_content"-->
     <!--android:layout_height="wrap_content"-->
     <!--android:layout_margin="@dimen/ndec_w1"-->
@@ -144,15 +144,21 @@
     <!--android:textSize="@dimen/BasicTextSize"-->
 
     <style name="frist_textIcon_layout">
-<item name="android:layout_width">wrap_content</item>
-<item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
 
-<item name="android:layout_weight">1</item>
-<item name="android:drawablePadding">@dimen/ndec_w9</item>
-<item name="android:gravity">center</item>
-<item name="android:textSize">@dimen/SmallerTextSize</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:drawablePadding">@dimen/ndec_w9</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/SmallerTextSize</item>
     </style>
 
+
+    <style name="popuwindow_from_bottom">
+        <item name="android:windowEnterAnimation">@anim/popu_show_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/popu_hiden_from_top</item>
+
+    </style>
 
 
 </resources>

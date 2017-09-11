@@ -1,9 +1,7 @@
 package com.kzb.parents.diagnose;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -29,7 +27,7 @@ public class WTJieXiNewActivity extends BaseActivity implements View.OnClickList
     private ArrayList<String> icon = new ArrayList<>();
 
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,9 +1,7 @@
 package com.kzb.parents;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.RequiresApi;
 import android.view.WindowManager;
 
 import com.kzb.parents.base.BaseActivity;
@@ -26,7 +24,7 @@ public class WelcomeActivity extends BaseActivity {
         }
     };
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,9 +1,7 @@
 package com.kzb.parents.course;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
@@ -50,7 +48,7 @@ public class StrengthListActivity extends BaseActivity implements ExpandableList
     private TextView titleLeft, titleContent;
     private String type;//1表示未强化，2表示已强化
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

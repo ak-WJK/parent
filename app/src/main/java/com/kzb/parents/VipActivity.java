@@ -1,8 +1,6 @@
 package com.kzb.parents;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -66,7 +64,6 @@ public class VipActivity extends BaseActivity implements View.OnClickListener {
 
     private VipAdapter vipAdapter;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

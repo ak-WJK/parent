@@ -4,10 +4,8 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -84,7 +82,6 @@ public class ImproveActivity extends BaseActivity implements View.OnClickListene
     private List<YearModel> listYears;//年级
     private List<YearResponse.GradeModel> listGrades;//班级
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

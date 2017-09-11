@@ -2,130 +2,101 @@ package com.kzb.parents.view;
 
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
+import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.Shader;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.widget.ImageView;
-
-import com.kzb.parents.R;
 
 public class RoundImageView extends ImageView {
 
+	private Paint paint ;
 
-	/** 图片的类型，圆形or圆角 */
-	private int type;
-	private static final int TYPE_CIRCLE = 0;
-	private static final int TYPE_ROUND = 1;
-
-	/** 圆角大小的默认值 */
-	private static final int BODER_RADIUS_DEFAULT = 10;
-	/** * 圆角的大小 */
-	private int mBorderRadius;
-
-	/** * 绘图的Paint */
-	private Paint mBitmapPaint;
-	/** * 圆角的半径 */
-	private int mRadius;
-	/** * 3x3 矩阵，主要用于缩小放大 */
-	private Matrix mMatrix;
-	/** * 渲染图像，使用图像为绘制图形着色 */
-	private BitmapShader mBitmapShader;
-	/** * view的宽度 */
-	private int mWidth;
-	private RectF mRoundRect;
+	public RoundImageView(Context context) {
+		super(context);
+	}
 
 	public RoundImageView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		mMatrix = new Matrix();
-		mBitmapPaint = new Paint();
-		mBitmapPaint.setAntiAlias(true);
-		TypedArray a = context.obtainStyledAttributes(attrs,
-				R.styleable.RoundImageView);
-		mBorderRadius = a.getDimensionPixelSize(
-				R.styleable.RoundImageView_borderRadius, (int) TypedValue
-						.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-								BODER_RADIUS_DEFAULT, getResources()
-										.getDisplayMetrics()));// 默认为10dp
-		type = a.getInt(R.styleable.RoundImageView_type, TYPE_CIRCLE);// 默认为Circle
-		a.recycle();
 	}
 
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-		if (type == TYPE_CIRCLE) {
-			mWidth = Math.min(getMeasuredWidth(), getMeasuredHeight());
-			mRadius = mWidth / 2;
-			setMeasuredDimension(mWidth, mWidth);
-		}
-
+	public RoundImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+		super(context, attrs, defStyleAttr);
+		paint = new Paint();
 	}
 
-	private void setUpShader() {
-		Drawable drawable = getDrawable();
-		if (drawable == null)
-			return;
-		Bitmap bmp = drawableToBitamp(drawable);
-		// 将bmp作为着色器，就是在指定区域内绘制bmp
-		mBitmapShader = new BitmapShader(bmp, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-		float scale = 1.0f;
-		if (type == TYPE_CIRCLE) {
-			int bSize = Math.min(bmp.getWidth(), bmp.getHeight());
-			scale = mWidth * 1.0f / bSize;
-
-		} else if (type == TYPE_ROUND) {
-			scale = Math.max(getWidth() * 1.0f / bmp.getWidth(), getHeight()
-					* 1.0f / bmp.getHeight());
-		}
-		// shader的变换矩阵，我们这里主要用于放大或者缩小
-		mMatrix.setScale(scale, scale);
-		// 设置变换矩阵
-		mBitmapShader.setLocalMatrix(mMatrix);
-		// 设置shader
-		mBitmapPaint.setShader(mBitmapShader);
-	}
-
-	private Bitmap drawableToBitamp(Drawable drawable) {
-		if (drawable instanceof BitmapDrawable) {
-			BitmapDrawable bd = (BitmapDrawable) drawable;
-			return bd.getBitmap();
-		}
-		int w = drawable.getIntrinsicWidth();
-		int h = drawable.getIntrinsicHeight();
-		Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-		Canvas canvas = new Canvas(bitmap);
-		drawable.setBounds(0, 0, w, h);
-		drawable.draw(canvas);
-		return bitmap;
-	}
-
+	//自定义View实现过程中很重要的onDraw绘制图形的方法
 	@Override
 	protected void onDraw(Canvas canvas) {
-		if (getDrawable() == null)
+
+		Drawable drawable = getDrawable();
+
+		//空值判断，必要步骤，避免由于没有设置src导致的异常错误
+		if (drawable == null) {
 			return;
-		setUpShader();
-		if (type == TYPE_ROUND) {
-			canvas.drawRoundRect(mRoundRect, mBorderRadius, mBorderRadius,
-					mBitmapPaint);
-		} else {
-			canvas.drawCircle(mRadius, mRadius, mRadius, mBitmapPaint);
 		}
+
+		//必要步骤，避免由于初始化之前导致的异常错误
+		if (getWidth() == 0 || getHeight() == 0) {
+			return;
+		}
+
+		if (!(drawable instanceof BitmapDrawable)) {
+			return;
+		}
+		Bitmap b = ((BitmapDrawable) drawable).getBitmap();
+
+		if (null == b) {
+			return;
+		}
+
+		Bitmap bitmap = b.copy(Bitmap.Config.ARGB_8888, true);
+
+		int w = getWidth();
+
+		Bitmap roundBitmap = getCroppedBitmap(bitmap, w);
+		canvas.drawBitmap(roundBitmap, 0, 0, null);
+
 	}
 
-	@Override
-	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		super.onSizeChanged(w, h, oldw, oldh);
-		// 圆角图片的范围
-		if (type == TYPE_ROUND)
-			mRoundRect = new RectF(0, 0, getWidth(), getHeight());
+	/**
+	 * 初始Bitmap对象的缩放裁剪过程
+	 * @param bmp        初始Bitmap对象
+	 * @param radius    圆形图片直径大小
+	 * @return 返回一个圆形的缩放裁剪过后的Bitmap对象
+	 */
+	public static Bitmap getCroppedBitmap(Bitmap bmp, int radius) {
+		Bitmap sbmp;
+		//比较初始Bitmap宽高和给定的圆形直径，判断是否需要缩放裁剪Bitmap对象
+		if (bmp.getWidth() != radius || bmp.getHeight() != radius)
+			sbmp = Bitmap.createScaledBitmap(bmp, radius, radius, false);
+		else
+			sbmp = bmp;
+		Bitmap output = Bitmap.createBitmap(sbmp.getWidth(), sbmp.getHeight(),
+				Bitmap.Config.ARGB_8888);
+		Canvas canvas = new Canvas(output);
+
+		final Paint paint = new Paint();
+		final Rect rect = new Rect(0, 0, sbmp.getWidth(), sbmp.getHeight());
+
+		paint.setAntiAlias(true);
+		paint.setFilterBitmap(true);
+		paint.setDither(true);
+		canvas.drawARGB(0, 0, 0, 0);
+		paint.setColor(Color.parseColor("#BAB399"));
+		canvas.drawCircle(sbmp.getWidth() / 2 + 0.7f,
+				sbmp.getHeight() / 2 + 0.7f, sbmp.getWidth() / 2 + 0.1f, paint);
+		//核心部分，设置两张图片的相交模式，在这里就是上面绘制的Circle和下面绘制的Bitmap
+		paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+		canvas.drawBitmap(sbmp, rect, rect, paint);
+
+		return output;
 	}
+
 }
