@@ -92,12 +92,13 @@ public class MPoPuWindow extends PopupWindow implements OnClickListener {
     public void onClick(View arg0) {
         switch (arg0.getId()) {
             case R.id.photo_take:
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                Intent intent1 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 file = new File(Environment.getExternalStorageDirectory(),
                         System.currentTimeMillis() + ".jpg");
                 ImgUri = Uri.fromFile(file);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, ImgUri);
-                fourthFragment.startActivityForResult(intent, 1);
+                intent1.putExtra(MediaStore.EXTRA_OUTPUT, ImgUri);
+                fourthFragment.startActivityForResult(intent1, 1);
+
                 type = Type.CAMERA;
                 if (listener != null) {
                     listener.getType(type);
@@ -136,9 +137,13 @@ public class MPoPuWindow extends PopupWindow implements OnClickListener {
         intent.putExtra("outputX", outputX);
         intent.putExtra("outputY", outputY);
         intent.putExtra("scale", true);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+
+//        if (type.equals(Type.CAMERA)) {
+//            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+//        }
+
         intent.putExtra("return-data", true);
-        intent.putExtra("circleCrop", true);
+//        intent.putExtra("circleCrop", true);
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
         intent.putExtra("noFaceDetection", true); // no face detection
         fourthFragment.startActivityForResult(intent, 3);

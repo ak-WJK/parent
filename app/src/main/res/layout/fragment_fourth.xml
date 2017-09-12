@@ -41,7 +41,7 @@
                         android:id="@+id/user_icon"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
-                        android:src="@drawable/touxiang"
+                        android:src="@mipmap/login_green"
                         app:layout_collapseMode="parallax" />
 
                     <TextView

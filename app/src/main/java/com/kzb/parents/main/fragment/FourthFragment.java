@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +38,8 @@ import com.kzb.parents.view.usericon.MPoPuWindow;
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONObject;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -48,7 +47,6 @@ import java.util.Map;
 
 import okhttp3.Call;
 
-import static com.kzb.parents.R.id.first_banben_gengxin;
 import static com.kzb.parents.application.Application.mContext;
 
 
@@ -73,11 +71,10 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
 
     private Uri ImgUri;
 
-    private String path;
     private File file;
     private ImageView userbg;
     private Type type;
-    private Bitmap diskBitmap;
+    private Bitmap bitmap;
 
     public enum Type {
         PHONE, CAMERA
@@ -100,6 +97,9 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
     @Override
     public void onResume() {
         super.onResume();
+//        if(bitmap == null) {
+//            userIcon.setImageResource(R.mipmap.login_green);
+//        }
 
     }
 
@@ -111,7 +111,7 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
         msgLayout = (RelativeLayout) view.findViewById(R.id.fourth_msg_layout);
         schoolRenzheng = (RelativeLayout) view.findViewById(R.id.first_school_renzheng);
         bianhaoLyaout = (RelativeLayout) view.findViewById(R.id.first_shebei_bianhao);
-        banbenGengxin = (RelativeLayout) view.findViewById(first_banben_gengxin);
+        banbenGengxin = (RelativeLayout) view.findViewById(R.id.first_banben_gengxin);
         userIcon = (RoundImageView) view.findViewById(R.id.user_icon);
         userbg = (ImageView) view.findViewById(R.id.user_bg);
 
@@ -119,26 +119,10 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
         userName = (TextView) view.findViewById(R.id.user_name);
         userName.setText(SpSetting.loadLoginInfo().getName());
 
-        userIcon.setImageResource(R.mipmap.login_green);
+//        userIcon.setImageResource(R.mipmap.login_green);
 
         //从内存获取头像并设置上
-//        String path = Environment.getExternalStorageDirectory() + "/user_icon/" + "myicon.jpg";
-        String path = Environment.getExternalStorageDirectory() + "/w65/icon_bitmap/" + "myicon.jpg";
-
-
-
-        if (path != null) {
-            File file = new File(path);
-            if(file.exists()) {
-
-                diskBitmap = getDiskBitmap(path);
-                userIcon.setImageBitmap(diskBitmap);
-            }else {
-
-                userIcon.setImageResource(R.mipmap.login_green);
-            }
-
-        }
+        settingBitmap();
 
 
 //        vipLayout = (RelativeLayout) view.findViewById(R.id.first_vip_lgout);
@@ -154,7 +138,16 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
 
     }
 
+    private void settingBitmap() {
 
+        bitmap = readImage();
+        userIcon.setImageBitmap(bitmap);
+        if (bitmap == null) {
+            userIcon.setImageResource(R.mipmap.login_green);
+        }
+
+
+    }
 
 
     @Override
@@ -195,7 +188,7 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
                 break;
             case R.id.user_icon:
 
-                puWindow = new MPoPuWindow(mContext, getActivity() , this);
+                puWindow = new MPoPuWindow(mContext, getActivity(), this);
 
                 puWindow.showPopupWindow(userIcon);
                 puWindow.setOnGetTypeClckListener(new MPoPuWindow.onGetTypeClckListener() {
@@ -215,8 +208,6 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
                 break;
         }
     }
-
-
 
 
     public void checkVersion() {
@@ -270,9 +261,11 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
 
         if (requestCode == 1) {
             if (ImgUri != null) {
+
                 puWindow.onPhoto(ImgUri, 300, 300);
             }
         } else if (requestCode == 2) {
+
             if (data != null) {
                 Uri uri = data.getData();
 
@@ -281,22 +274,24 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
         } else if (requestCode == 3) {
             if (type == Type.PHONE) {
                 if (data != null) {
-                    Bundle extras = data.getExtras();
-                    Bitmap bitmap = (Bitmap) extras.get("data");
-                    if (bitmap != null) {
-                        userIcon.setImageBitmap(bitmap);
-                        try {
+//                    Bundle extras = data.getExtras();
+//                    Bitmap bitmap = (Bitmap) extras.get("data");
 
-                            saveFile(bitmap);
+                    Bitmap bitmap = data.getParcelableExtra("data");
 
+                    userIcon.setImageBitmap(bitmap);
+                    saveImage(bitmap);
 
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
                 }
             } else if (type == Type.CAMERA) {
-                userIcon.setImageBitmap(BitmapFactory.decodeFile(file.getPath()));
+//                Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
+                if (data != null) {
+                    Bitmap bitmap = data.getParcelableExtra("data");
+
+                    userIcon.setImageBitmap(bitmap);
+                    saveImage(bitmap);
+                }
+
             }
         }
 
@@ -307,44 +302,109 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
     /**
      * 保存文件
      *
-     * @param bm
+     * @param
      * @throws IOException
      */
-    public File saveFile(Bitmap bm) throws IOException {
-        path = Environment.getExternalStorageDirectory().toString() + "/w65/icon_bitmap/";
-        Log.e("TAG", "path ===   " + path);
 
-        File dirFile = new File(path);
-        if (!dirFile.exists()) {
-            dirFile.mkdirs();
+    private void saveImage(Bitmap bitmap) {
+
+        if (bitmap != null) {
+            File filesDir;
+            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {//判断sd卡是否挂载
+                //路径1：storage/sdcard/Android/data/包名/files
+                filesDir = mContext.getExternalFilesDir("");
+            } else {//手机内部存储
+                //路径：data/data/包名/files
+                filesDir = mContext.getFilesDir();
+            }
+            FileOutputStream fos = null;
+            try {
+                File file = new File(filesDir, "icon.jpg");
+                fos = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 70, fos);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } finally {
+                if (fos != null) {
+                    try {
+//                    fos.flush();
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        } else {
+            userIcon.setImageResource(R.mipmap.login_green);
         }
-        File myIconFile = new File(path + "myicon.jpg");
-        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(myIconFile));
-        bm.compress(Bitmap.CompressFormat.JPEG, 80, bos);
-        bos.flush();
-        bos.close();
-        return myIconFile;
+
+
     }
+
+
+//    public File saveFile(Bitmap bm) throws IOException {
+//
+//        path ="file://"+ Environment.getExternalStorageDirectory().toString() + "/kzb/icon_bitmap/";
+//        LogUtils.e("TAG", "path ===   " + path);
+//
+//        File dirFile = new File(path);
+//        if (!dirFile.exists()) {
+//            dirFile.mkdirs();
+//        }
+//        File myIconFile = new File(path + "myicon.jpg");
+//        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(myIconFile));
+//
+//        if (bm != null) {
+//
+//            bm.compress(Bitmap.CompressFormat.JPEG, 80, bos);
+//        }
+//
+//        bos.flush();
+//        bos.close();
+//        return myIconFile;
+//
+//    }
 
 
     /**
      * 从本地获取图片
-     *
-     * @param pathString 文件路径
-     * @return 图片
+     * 如果本地有,就不需要再去联网去请求
      */
-    public Bitmap getDiskBitmap(String pathString) {
-        Bitmap bitmap = null;
-        try {
-            File file = new File(pathString);
-            if (file.exists()) {
-                bitmap = BitmapFactory.decodeFile(pathString);
-            }
-        } catch (Exception e) {
-
+    private Bitmap readImage() {
+        File filesDir;
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {//判断sd卡是否挂载
+            //路径1：storage/sdcard/Android/data/包名/files
+            filesDir = mContext.getExternalFilesDir("");
+        } else {//手机内部存储
+            //路径：data/data/包名/files
+            filesDir = mContext.getFilesDir();
         }
-        return bitmap;
+        File file = new File(filesDir, "icon.jpg");
+        if (file.exists()) {
+            //存储--->内存
+            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+//            iv.setImageBitmap(bitmap);
+//            return true;
+            return bitmap;
+        }
+//        return false;
+        return null;
     }
+
+
+//
+//    public Bitmap getDiskBitmap(String pathString) {
+//        Bitmap bitmap = null;
+//        try {
+//            File file = new File(pathString);
+//            if (file.exists()) {
+//                bitmap = BitmapFactory.decodeFile(pathString);
+//            }
+//        } catch (Exception e) {
+//
+//        }
+//        return bitmap;
+//    }
 
 
 }
