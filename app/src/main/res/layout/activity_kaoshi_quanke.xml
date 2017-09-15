@@ -19,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:drawableLeft="@mipmap/zhenduan_zhangjie"
-            android:drawablePadding="5dp"
+            android:drawableLeft="@drawable/wwc"
+            android:drawablePadding="@dimen/ndec_w12"
             android:gravity="center|left"
             android:padding="8dp"
             android:text="全科未完成"
@@ -33,8 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/enter_arrow"
-            />
+            android:src="@mipmap/enter_arrow" />
 
     </RelativeLayout>
 
@@ -50,8 +49,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:drawableLeft="@mipmap/zhenduan_quanke"
-            android:drawablePadding="5dp"
+            android:drawableLeft="@drawable/wc"
+            android:drawablePadding="@dimen/ndec_w12"
             android:gravity="center|left"
             android:padding="8dp"
             android:text="全科完成"
@@ -64,12 +63,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/enter_arrow"
-            />
+            android:src="@mipmap/enter_arrow" />
 
     </RelativeLayout>
-
-
 
 
 </LinearLayout>

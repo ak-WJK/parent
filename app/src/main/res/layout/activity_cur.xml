@@ -11,21 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/white"
-        >
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/cur_learn_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/yxx"
+            android:drawablePadding="@dimen/ndec_w8"
+            android:gravity="center|left"
             android:padding="12dp"
             android:text="已学习"
             android:textColor="@color/_333333"
-            android:textSize="@dimen/text_common"
-            android:gravity="center|left"
-            android:drawablePadding="5dp"
-            android:drawableLeft="@mipmap/xuexi_yes"
-            />
+            android:textSize="@dimen/text_common" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -41,21 +39,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/white"
-        >
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/cur_un_learn_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/wxx"
+            android:drawablePadding="@dimen/ndec_w8"
+            android:gravity="center|left"
             android:padding="12dp"
             android:text="未学习"
             android:textColor="@color/_333333"
-            android:textSize="@dimen/text_common"
-            android:gravity="center|left"
-            android:drawablePadding="5dp"
-            android:drawableLeft="@mipmap/xuexi_no"
-            />
+            android:textSize="@dimen/text_common" />
 
         <ImageView
             android:layout_width="wrap_content"

@@ -7,7 +7,7 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp">
+        android:layout_height="150dp">
 
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -25,7 +25,7 @@
                 <ImageView
                     android:id="@+id/user_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
+                    android:layout_height="150dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/tb" />
 
@@ -37,11 +37,20 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
-                    <com.kzb.parents.view.RoundImageView
+                    <!--<com.kzb.parents.view.RoundImageView-->
+                    <!--android:id="@+id/user_icon"-->
+                    <!--android:layout_width="@dimen/user_icon_size"-->
+                    <!--android:layout_height="@dimen/user_icon_size"-->
+                    <!--android:scaleType="fitXY"-->
+                    <!--app:layout_collapseMode="parallax" />-->
+
+                    <com.kzb.parents.view.CircleImageView
                         android:id="@+id/user_icon"
-                        android:layout_width="85dp"
-                        android:layout_height="85dp"
-                        android:src="@mipmap/login_green"
+                        android:layout_width="@dimen/user_icon_size"
+                        android:layout_height="@dimen/user_icon_size"
+                        android:src="@mipmap/ic_launcher"
+                        app:civ_border_color="#55D2AA"
+                        app:civ_border_width="6dp"
                         app:layout_collapseMode="parallax" />
 
                     <TextView
@@ -50,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:textColor="#ffffff"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/BasicTextSize"
                         tools:text="王晴" />
 
                 </LinearLayout>
@@ -81,12 +90,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@color/white"
-                android:padding="15dp">
+                android:paddingBottom="@dimen/ndec_w8"
+                android:paddingLeft="@dimen/ndec_w2"
+                android:paddingTop="@dimen/ndec_w8">
 
                 <ImageView
                     android:id="@+id/first_qianghua_img"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/ndec_w6"
+                    android:layout_height="@dimen/ndec_w6"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/sz" />
@@ -100,7 +111,7 @@
                     android:layout_toRightOf="@id/first_qianghua_img"
                     android:text="个人设置"
                     android:textColor="@color/_333333"
-                    android:textSize="@dimen/text_common" />
+                    android:textSize="@dimen/text_assist" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -121,12 +132,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:padding="15dp">
+                android:paddingBottom="@dimen/ndec_w8"
+                android:paddingLeft="@dimen/ndec_w2"
+                android:paddingTop="@dimen/ndec_w8">
 
                 <ImageView
                     android:id="@+id/first_zhenduan_img"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/ndec_w6"
+                    android:layout_height="@dimen/ndec_w6"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/hk" />
@@ -140,7 +153,7 @@
                     android:layout_toRightOf="@id/first_zhenduan_img"
                     android:text="换科"
                     android:textColor="@color/_333333"
-                    android:textSize="@dimen/text_common" />
+                    android:textSize="@dimen/text_assist" />
 
 
                 <ImageView
@@ -163,12 +176,14 @@
                 android:layout_height="wrap_content"
 
                 android:background="@color/white"
-                android:padding="15dp">
+                android:paddingBottom="@dimen/ndec_w8"
+                android:paddingLeft="@dimen/ndec_w2"
+                android:paddingTop="@dimen/ndec_w8">
 
                 <ImageView
                     android:id="@+id/first_zhenduan_msg"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/ndec_w6"
+                    android:layout_height="@dimen/ndec_w6"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/xx" />
@@ -182,7 +197,7 @@
                     android:layout_toRightOf="@id/first_zhenduan_msg"
                     android:text="消息中心"
                     android:textColor="@color/_333333"
-                    android:textSize="@dimen/text_common" />
+                    android:textSize="@dimen/text_assist" />
 
 
                 <ImageView
@@ -201,12 +216,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@color/white"
-                android:padding="15dp">
+                android:paddingBottom="@dimen/ndec_w8"
+                android:paddingLeft="@dimen/ndec_w2"
+                android:paddingTop="@dimen/ndec_w8">
 
                 <ImageView
                     android:id="@+id/first_school_img"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/ndec_w6"
+                    android:layout_height="@dimen/ndec_w6"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/rz" />
@@ -220,7 +237,7 @@
                     android:layout_toRightOf="@id/first_school_img"
                     android:text="学校认证"
                     android:textColor="@color/_333333"
-                    android:textSize="@dimen/text_common" />
+                    android:textSize="@dimen/text_assist" />
 
 
                 <ImageView
@@ -242,12 +259,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:padding="15dp">
+                android:paddingBottom="@dimen/ndec_w8"
+                android:paddingLeft="@dimen/ndec_w2"
+                android:paddingTop="@dimen/ndec_w8">
 
                 <ImageView
                     android:id="@+id/first_shebei_img"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/ndec_w6"
+                    android:layout_height="@dimen/ndec_w6"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/bh" />
@@ -261,7 +280,7 @@
                     android:layout_toRightOf="@id/first_shebei_img"
                     android:text="设备编号"
                     android:textColor="@color/_333333"
-                    android:textSize="@dimen/text_common" />
+                    android:textSize="@dimen/text_assist" />
 
 
                 <ImageView
@@ -283,12 +302,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:padding="15dp">
+                android:paddingBottom="@dimen/ndec_w8"
+                android:paddingLeft="@dimen/ndec_w2"
+                android:paddingTop="@dimen/ndec_w8">
 
                 <ImageView
                     android:id="@+id/first_banben_img"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/ndec_w6"
+                    android:layout_height="@dimen/ndec_w6"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/gx" />
@@ -302,7 +323,7 @@
                     android:layout_toRightOf="@id/first_banben_img"
                     android:text="版本更新"
                     android:textColor="@color/_333333"
-                    android:textSize="@dimen/text_common" />
+                    android:textSize="@dimen/text_assist" />
 
 
                 <ImageView
@@ -330,7 +351,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-
                     android:layout_marginLeft="10dp"
                     android:text="退出登录"
                     android:textColor="@color/red"

@@ -41,12 +41,11 @@ public class KSQuanKeActivity extends BaseActivity implements View.OnClickListen
         noComView = getView(R.id.kaoshi_quanke_no_com);
 
 
-
         titleLeft.setText("返回");
         titleLeft.setVisibility(View.VISIBLE);
         titleLeft.setOnClickListener(this);
 
-        titleCenter.setText("全科考试");
+        titleCenter.setText("考试");
         comView.setOnClickListener(this);
         noComView.setOnClickListener(this);
     }
@@ -57,23 +56,22 @@ public class KSQuanKeActivity extends BaseActivity implements View.OnClickListen
     }
 
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.kaoshi_quanke_no_com:
-                Map<String,String> mapV = new HashMap<>();
-                mapV.put("position","0");
-                IntentUtil.startActivity(KSQuanKeActivity.this, QuanKeListActivity.class,mapV);
+                Map<String, String> mapV = new HashMap<>();
+                mapV.put("position", "0");
+                IntentUtil.startActivity(KSQuanKeActivity.this, QuanKeListActivity.class, mapV);
                 break;
             case R.id.common_head_left:
                 IntentUtil.finish(KSQuanKeActivity.this);
 
                 break;
             case R.id.kaoshi_quanke_com:
-                Map<String,String> map1 = new HashMap<>();
-                map1.put("position","1");
-                IntentUtil.startActivity(KSQuanKeActivity.this, QuanKeListActivity.class,map1);
+                Map<String, String> map1 = new HashMap<>();
+                map1.put("position", "1");
+                IntentUtil.startActivity(KSQuanKeActivity.this, QuanKeListActivity.class, map1);
                 break;
         }
     }

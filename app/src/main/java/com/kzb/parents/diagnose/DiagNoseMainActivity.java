@@ -10,7 +10,7 @@ import com.kzb.parents.R;
 import com.kzb.parents.base.BaseActivity;
 import com.kzb.parents.exam.ExamActivity;
 import com.kzb.parents.http.HttpConfig;
-import com.kzb.parents.report.DiagnoseActivity;
+
 import com.kzb.parents.util.IntentUtil;
 
 /**
@@ -21,7 +21,7 @@ import com.kzb.parents.util.IntentUtil;
 public class DiagNoseMainActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView titleLeft, titleCenter;
-    private TextView zjieView, qKeView, zTiView,zBaogao;
+    private TextView zjieView, qKeView, zTiView;
 
 
 
@@ -42,7 +42,7 @@ public class DiagNoseMainActivity extends BaseActivity implements View.OnClickLi
         zjieView = getView(R.id.dg_zhangjie);
         qKeView = getView(R.id.dg_quanke);
         zTiView = getView(R.id.dg_zhenti);
-        zBaogao = getView(R.id.dg_baogao);
+
 
 
         titleLeft.setText("返回");
@@ -53,7 +53,7 @@ public class DiagNoseMainActivity extends BaseActivity implements View.OnClickLi
         zjieView.setOnClickListener(this);
         qKeView.setOnClickListener(this);
         zTiView.setOnClickListener(this);
-        zBaogao.setOnClickListener(this);
+
     }
 
     @Override
@@ -66,9 +66,6 @@ public class DiagNoseMainActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.dg_baogao:
-                IntentUtil.startActivity(DiagNoseMainActivity.this, DiagnoseActivity.class);
-                break;
             case R.id.common_head_left:
                 IntentUtil.finish(DiagNoseMainActivity.this);
 

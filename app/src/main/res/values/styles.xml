@@ -12,11 +12,6 @@
 
     </style>
 
-    <declare-styleable name="CircleImageView">
-        <attr name="circle_border_width" format="dimension" />
-        <attr name="circle_border_color" format="color" />
-        <attr name="circle_border_overlay" format="boolean" />
-    </declare-styleable>
 
     <style name="IProgressDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>

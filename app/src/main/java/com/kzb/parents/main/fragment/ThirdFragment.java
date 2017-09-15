@@ -9,8 +9,7 @@ import android.widget.Toast;
 
 import com.kzb.parents.R;
 import com.kzb.parents.base.BaseFragment;
-import com.kzb.parents.config.SpSetting;
-import com.kzb.parents.kaoshi.KaoShiActivity;
+import com.kzb.parents.kaoshi.KSQuanKeActivity;
 import com.kzb.parents.strengthen.StrengthenActivity;
 import com.kzb.parents.util.IntentUtil;
 
@@ -27,7 +26,7 @@ public class ThirdFragment extends BaseFragment implements View.OnClickListener{
     private TextView thirdXX;
 
     //会员等级
-    int level = 0;
+    int level = 3;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
@@ -45,11 +44,11 @@ public class ThirdFragment extends BaseFragment implements View.OnClickListener{
     @Override
     public void onResume() {
         super.onResume();
-        try {
-            level = Integer.parseInt(SpSetting.loadLoginInfo().getGood_id());
-        } catch (Exception e) {
-            level = 1;
-        }
+//        try {
+//            level = Integer.parseInt(SpSetting.loadLoginInfo().getGood_id());
+//        } catch (Exception e) {
+//            level = 1;
+//        }
     }
 
     private void initView(View view){
@@ -78,7 +77,7 @@ public class ThirdFragment extends BaseFragment implements View.OnClickListener{
 
                 break;
             case R.id.thir_xuexi_view:
-                IntentUtil.startActivity(getActivity(), KaoShiActivity.class);
+                IntentUtil.startActivity(getActivity(), KSQuanKeActivity.class);
                 break;
         }
     }

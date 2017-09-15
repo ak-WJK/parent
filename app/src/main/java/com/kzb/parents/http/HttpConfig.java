@@ -8,6 +8,7 @@ import com.kzb.parents.util.LogUtils;
 
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,13 +42,13 @@ public class HttpConfig {
 
 
             try {
-                        OkHttpUtils
-                                .post()//
-                                .url(url)//
-                                .addHeader("Content-Type", "text/xml")
-                                .addHeader("Accept-Encoding", "gzip")
-                                .build()//
-                                .execute(genericsCallback);
+                OkHttpUtils
+                        .post()//
+                        .url(url)//
+                        .addHeader("Content-Type", "text/xml")
+                        .addHeader("Accept-Encoding", "gzip")
+                        .build()//
+                        .execute(genericsCallback);
 
             } catch (Exception e) {
 
@@ -60,14 +61,14 @@ public class HttpConfig {
 
             try {
 
-                        OkHttpUtils
-                                .post()//
-                                .params(request.getRequestParams())
-                                .url(url)//
-                                .addHeader("Content-Type", "text/xml")
-                                .addHeader("Accept-Encoding", "gzip")
-                                .build()//
-                                .execute(genericsCallback);
+                OkHttpUtils
+                        .post()//
+                        .params(request.getRequestParams())
+                        .url(url)//
+                        .addHeader("Content-Type", "text/xml")
+                        .addHeader("Accept-Encoding", "gzip")
+                        .build()//
+                        .execute(genericsCallback);
 
             } catch (Exception e) {
 
@@ -88,4 +89,62 @@ public class HttpConfig {
         return request;
     }
 
+
+    //上传头像
+    public void uploadUserIcon(final XBaseRequest request, String uid, String name, String fileName, File file, final GenericsCallback genericsCallback) {
+        LogUtils.e("wang", "..here..");
+
+
+        if (null == request.getUrl()) {
+            //  logicBack.error("网络地址为空", Config.re_error);
+            LogUtils.e("wang", "网络地址为空");
+            return;
+        }
+
+        final String url = Config.JAVA_API_URL + request.getUrl();
+
+        LogUtils.e("wang", "url=" + url);
+
+        if (request.getRequestParams() == null) {
+
+
+            try {
+                OkHttpUtils
+                        .post()//
+                        .url(url)//
+                        .addHeader("Content-Type", "text/xml")
+                        .addHeader("Accept-Encoding", "gip")
+                        .addParams("uid", uid)
+                        .addFile(name, fileName, file)
+                        .build()//
+                        .execute(genericsCallback);
+
+            } catch (Exception e) {
+
+            }
+        } else
+
+        {
+
+            LogUtils.e("params", request.getRequestParams().toString());
+
+            try {
+
+                OkHttpUtils
+                        .post()//
+                        .params(request.getRequestParams())
+                        .url(url)//
+                        .addHeader("Content-Type", "text/xml")
+                        .addHeader("Accept-Encoding", "gzip")
+                        .addFile(name, fileName, file)
+                        .addParams("uid", uid)
+                        .build()//
+                        .execute(genericsCallback);
+
+            } catch (Exception e) {
+
+            }
+        }
+
+    }
 }

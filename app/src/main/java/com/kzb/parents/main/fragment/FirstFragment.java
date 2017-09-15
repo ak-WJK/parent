@@ -32,7 +32,7 @@ import com.kzb.parents.diagnose.DiagNoseMainActivity;
 import com.kzb.parents.diagnose.DiagnoseTwoActivity;
 import com.kzb.parents.exer.ExerActivity;
 import com.kzb.parents.http.HttpConfig;
-import com.kzb.parents.kaoshi.KaoShiActivity;
+import com.kzb.parents.kaoshi.KSQuanKeActivity;
 import com.kzb.parents.login.model.LoginResponse;
 import com.kzb.parents.main.model.LunBoResponse;
 import com.kzb.parents.main.model.PayResponse;
@@ -70,7 +70,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
     private HttpConfig httpConfig;
 //    private DialogView dialogView;
 
-    private String[] text = {"测试数据", "今天出门捡到一个妹纸", "今天出门捡到一捆妹纸", "今天出门捡到一沓妹纸", "喂,别瞎想了,你媳妇儿跟人跑了!!!"};
+    private String[] text = {"测试数据", "考之宝升级通知", "学生考试出炉通知", "考之宝十一大促销", "我们都用考之宝!!!"};
 
 
     private XBanner banner;
@@ -260,7 +260,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
 
                 TextView textView = new TextView(mContext);
                 textView.setSingleLine();
-                textView.setTextSize(11);
+                textView.setTextSize(12);
                 textView.setTextColor(Color.parseColor("#878787"));
                 textView.setEllipsize(TextUtils.TruncateAt.END);
                 FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
@@ -333,7 +333,7 @@ public class FirstFragment extends BaseFragment implements XBanner.XBannerAdapte
                 break;
             case R.id.first_xuexi_layout:
                 //考试
-                IntentUtil.startActivity(getActivity(), KaoShiActivity.class);
+                IntentUtil.startActivity(getActivity(), KSQuanKeActivity.class);
                 break;
             case R.id.first_wrong_layout:
                 IntentUtil.startActivity(getActivity(), WrongActivity.class);

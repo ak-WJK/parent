@@ -178,8 +178,6 @@ public class ParentAdapter extends BaseExpandableListAdapter {
 //        }
 
 
-
-
         public CustExpListview(Context context) {
             super(context);
         }
@@ -198,9 +196,6 @@ public class ParentAdapter extends BaseExpandableListAdapter {
                     MeasureSpec.AT_MOST);
             super.onMeasure(widthMeasureSpec, expandSpec);
         }
-
-
-
 
 
     }

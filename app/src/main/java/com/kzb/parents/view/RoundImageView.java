@@ -35,6 +35,8 @@ public class RoundImageView extends ImageView {
     @Override
     protected void onDraw(Canvas canvas) {
 
+
+
         Drawable drawable = getDrawable();
 
         //空值判断，必要步骤，避免由于没有设置src导致的异常错误

@@ -9,6 +9,7 @@
     <dimen name="topbar_button_height">40dp</dimen>
     <dimen name="topbar_title_size">28dp</dimen>
     <dimen name="topbar_button_size">18dp</dimen>
+    <dimen name="user_icon_size">85dp</dimen>
 
 
     <dimen name="parent_expandable_list_height">50dp</dimen>
@@ -39,6 +40,9 @@
     <dimen name="ndec_w9">6dp</dimen>
     <dimen name="ndec_w11">32dp</dimen>
     <dimen name="ndec_w12">8dp</dimen>
+    <dimen name="ndec_w13">5dp</dimen>
+    <dimen name="ndec_w14">2dp</dimen>
+    <dimen name="ndec_w15">30dp</dimen>
 
     <dimen name="LargeTextSize">16dp</dimen>
     <dimen name="BasicTextSize">15dp</dimen>

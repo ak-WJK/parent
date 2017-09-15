@@ -10,8 +10,9 @@ import com.kzb.parents.R;
 import com.kzb.parents.base.BaseFragment;
 import com.kzb.parents.config.SpSetting;
 import com.kzb.parents.http.HttpConfig;
-import com.kzb.parents.kaoshi.KSBaoGaoActivity;
-import com.kzb.parents.report.DiagnoseActivity;
+import com.kzb.parents.kaoshi.BGQKListActivity;
+import com.kzb.parents.report.RTDiagnoseQuanKeActivity;
+import com.kzb.parents.report.RTDiagnoseZhangJieActivity;
 import com.kzb.parents.util.IntentUtil;
 import com.kzb.parents.view.DialogView;
 
@@ -25,7 +26,7 @@ public class SecFragment extends BaseFragment implements View.OnClickListener {
     private DialogView dialogView;
 
     private TextView headTitle;
-    private TextView dgView, ksView;
+    private TextView  ksView, zjieView, qKeView;
 
 
     //会员等级
@@ -37,7 +38,6 @@ public class SecFragment extends BaseFragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_second, parent, false);
         httpConfig = new HttpConfig();
         dialogView = new DialogView(getActivity());
-
 
 
         initView(view);
@@ -57,21 +57,33 @@ public class SecFragment extends BaseFragment implements View.OnClickListener {
 
 
     private void initView(View view) {
-        dgView = (TextView) view.findViewById(R.id.sec_dig_view);
+//        dgView = (TextView) view.findViewById(R.id.sec_dig_view);
         ksView = (TextView) view.findViewById(R.id.sec_ks_view);
-        dgView.setOnClickListener(this);
+        zjieView = (TextView) view.findViewById(R.id.dg_zhangjie);
+        qKeView = (TextView) view.findViewById(R.id.dg_quanke);
+//        dgView.setOnClickListener(this);
         ksView.setOnClickListener(this);
+        zjieView.setOnClickListener(this);
+        qKeView.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.sec_dig_view:
-                IntentUtil.startActivity(getActivity(), DiagnoseActivity.class);
-                break;
+//            case R.id.sec_dig_view:
+//                IntentUtil.startActivity(getActivity(), DiagnoseActivity.class);
+//                break;
             case R.id.sec_ks_view:
-                IntentUtil.startActivity(getActivity(), KSBaoGaoActivity.class);
+                IntentUtil.startActivity(getActivity(), BGQKListActivity.class);
+                break;
+            case R.id.dg_zhangjie:
+
+                IntentUtil.startActivity(getActivity(), RTDiagnoseZhangJieActivity.class);
+                break;
+            case R.id.dg_quanke:
+
+                IntentUtil.startActivity(getActivity(), RTDiagnoseQuanKeActivity.class);
                 break;
         }
     }

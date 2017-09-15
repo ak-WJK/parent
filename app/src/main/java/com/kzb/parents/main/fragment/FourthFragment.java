@@ -31,8 +31,8 @@ import com.kzb.parents.settwo.model.UpdateResponse;
 import com.kzb.parents.util.DeviceUtil;
 import com.kzb.parents.util.IntentUtil;
 import com.kzb.parents.util.LogUtils;
+import com.kzb.parents.view.CircleImageView;
 import com.kzb.parents.view.DialogView;
-import com.kzb.parents.view.RoundImageView;
 import com.kzb.parents.view.usericon.MPoPuWindow;
 
 import org.greenrobot.eventbus.EventBus;
@@ -44,8 +44,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import static com.kzb.parents.application.Application.mContext;
 
@@ -64,7 +72,8 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
     private RelativeLayout schoolRenzheng, bianhaoLyaout;
     private RelativeLayout banbenGengxin;
     private UpdateResponse.UpdateModel updateModel;
-    private RoundImageView userIcon;
+//    private RoundImageView userIcon;
+    private CircleImageView userIcon;
 
     private MPoPuWindow puWindow;
 
@@ -112,7 +121,8 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
         schoolRenzheng = (RelativeLayout) view.findViewById(R.id.first_school_renzheng);
         bianhaoLyaout = (RelativeLayout) view.findViewById(R.id.first_shebei_bianhao);
         banbenGengxin = (RelativeLayout) view.findViewById(R.id.first_banben_gengxin);
-        userIcon = (RoundImageView) view.findViewById(R.id.user_icon);
+//        userIcon = (RoundImageView) view.findViewById(R.id.user_icon);
+        userIcon = (CircleImageView) view.findViewById(R.id.user_icon);
         userbg = (ImageView) view.findViewById(R.id.user_bg);
 
 
@@ -282,6 +292,8 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
                     userIcon.setImageBitmap(bitmap);
                     saveImage(bitmap);
 
+                    userUploadImage();
+
                 }
             } else if (type == Type.CAMERA) {
 //                Bitmap bitmap = BitmapFactory.decodeFile(file.getPath());
@@ -290,9 +302,85 @@ public class FourthFragment extends BaseFragment implements View.OnClickListener
 
                     userIcon.setImageBitmap(bitmap);
                     saveImage(bitmap);
+
+                    userUploadImage();
+
                 }
 
             }
+        }
+
+
+    }
+
+    public static final String TYPE = "application/octet-stream";
+
+    //上传头像
+    public void userUploadImage() {
+
+        File filesDir;
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {//判断sd卡是否挂载
+            //路径1：storage/sdcard/Android/data/包名/files
+            filesDir = mContext.getExternalFilesDir("");
+        } else {//手机内部存储
+            //路径：data/data/包名/files
+            filesDir = mContext.getFilesDir();
+        }
+        File file = new File(filesDir, "icon.jpg");
+
+
+//        XBaseRequest request = new XBaseRequest();
+//        request.setUrl("http://t.kaozhibao.com/api.php/My/uploadAvatar");
+//        httpConfig.uploadUserIcon(request,SpSetting.loadLoginInfo().getUid(), SpSetting.loadLoginInfo().getName(), "icon.jpg", file, new GenericsCallback(null) {
+//            @Override
+//            public void onError(Call call, Exception e, int id) {
+//                LogUtils.e("TAG", "上传失败 === " + e.getMessage());
+//
+//            }
+//
+//            @Override
+//            public void onResponse(Object response, int id) {
+//                LogUtils.e("TAG", "图片上传成功");
+//
+//            }
+//        });
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
+                .build();
+
+
+        if (!file.exists()) {
+            Toast.makeText(mContext, "文件不存在", Toast.LENGTH_SHORT).show();
+
+        } else {
+
+            RequestBody fileBody = RequestBody.create(MediaType.parse(TYPE), file);
+            RequestBody requestBody = new MultipartBody.Builder()
+                    .addFormDataPart("filename", file.getName() , fileBody)
+                    .build();
+
+            Request requestPostFile = new Request.Builder()
+                    .url("http://t.kaozhibao.com/api.php/My/uploadAvatar")
+                    .post(requestBody)
+                    .build();
+            client.newCall(requestPostFile).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    LogUtils.e("TAG", "图片上传失败 == " + e.getMessage());
+
+                }
+
+                @Override
+                public void onResponse(Call call, final Response response) throws IOException {
+
+                    String string = response.body().string();
+
+                    LogUtils.e("TAG", "图片上传成功 == " + string);
+
+                }
+            });
         }
 
 

@@ -37,10 +37,10 @@
                 android:layout_marginTop="@dimen/ndec_w8"
                 android:background="@drawable/kb"
                 android:gravity="center"
-                android:paddingRight="5dp"
+                android:paddingRight="@dimen/ndec_w13"
                 android:text="快报"
                 android:textColor="@color/white"
-                android:textSize="@dimen/BasicTextSize" />
+                android:textSize="@dimen/SmallerTextSize" />
 
             <TextSwitcher
                 android:id="@+id/ts_textswitcher"
@@ -155,6 +155,7 @@
                             android:gravity="center"
                             android:textColor="@color/white"
                             android:textSize="10dp"
+                            android:visibility="gone"
                             tool:text="3" />
                     </FrameLayout>
 
@@ -194,6 +195,7 @@
                             android:gravity="center"
                             android:textColor="@color/white"
                             android:textSize="10dp"
+                            android:visibility="gone"
                             tool:text="12" />
                     </FrameLayout>
 
@@ -216,29 +218,30 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/first_zhendui_xunlian"
+                        android:id="@+id/first_course_layout"
                         style="@style/frist_textIcon_layout"
-                        android:drawableTop="@drawable/xl"
-                        android:text="针对训练" />
+                        android:drawableTop="@drawable/xue"
+                        android:text="学习" />
 
                     <TextView
                         android:id="@+id/first_streng_layout"
                         style="@style/frist_textIcon_layout"
                         android:drawableTop="@drawable/jd"
-                        android:text="强化进度" />
+                        android:text="强化" />
 
 
                     <TextView
-                        android:id="@+id/first_course_layout"
+                        android:id="@+id/first_wrong_layout"
                         style="@style/frist_textIcon_layout"
-                        android:drawableTop="@drawable/xue"
-                        android:text="学习进度" />
+                        android:drawableTop="@drawable/ct"
+                        android:text="错题" />
+
 
                     <TextView
-                        android:id="@+id/first_xuexi_layout"
+                        android:id="@+id/first_zhendui_xunlian"
                         style="@style/frist_textIcon_layout"
-                        android:drawableTop="@drawable/ks"
-                        android:text="考试" />
+                        android:drawableTop="@drawable/xl"
+                        android:text="针对训练" />
 
 
                 </LinearLayout>
@@ -247,15 +250,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/ndec_w11"
+                    android:layout_marginRight="@dimen/ndec_w12"
                     android:layout_marginTop="@dimen/ndec_w11"
                     android:orientation="horizontal">
 
 
                     <TextView
-                        android:id="@+id/first_wrong_layout"
+                        android:id="@+id/first_xuexi_layout"
                         style="@style/frist_textIcon_layout"
-                        android:drawableTop="@drawable/ct"
-                        android:text="错题本" />
+                        android:layout_marginRight="3dp"
+                        android:drawableTop="@drawable/ks"
+                        android:text="考试" />
+
 
                     <TextView
                         android:id="@+id/first_exer_layout"
@@ -266,6 +272,7 @@
                     <TextView
                         android:id="@+id/first_paiming_layout"
                         style="@style/frist_textIcon_layout"
+                        android:layout_marginRight="7dp"
                         android:drawableTop="@drawable/pm"
                         android:text="排名" />
 
@@ -273,6 +280,7 @@
                     <TextView
                         android:id="@+id/first_vip_lgout"
                         style="@style/frist_textIcon_layout"
+                        android:layout_marginRight="3dp"
                         android:drawableTop="@drawable/hy"
                         android:text="会员" />
 

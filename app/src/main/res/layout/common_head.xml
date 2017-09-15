@@ -2,43 +2,39 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
     android:background="@color/theme_green"
-    >
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/common_head_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:textSize="17dp"
+        android:layout_centerVertical="true"
         android:drawableLeft="@mipmap/left_back"
+        android:drawablePadding="@dimen/ndec_w13"
         android:gravity="center"
-        android:drawablePadding="10dp"
-        android:textColor="@color/white"
         android:text="返回"
-        android:visibility="gone"
-        />
+        android:textColor="@color/white"
+        android:textSize="@dimen/ndec_w3"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/common_head_center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerInParent="true"
-        android:textSize="18dp"
+        android:layout_centerVertical="true"
         android:textColor="@color/white"
-        />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/common_head_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:textSize="18dp"
+        android:layout_centerVertical="true"
         android:textColor="@color/white"
-        />
+        android:textSize="18dp" />
 
 </RelativeLayout>
