@@ -9,10 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:layout_marginRight="10dp"
         android:orientation="horizontal">
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/item_report_list_son_position"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -34,11 +37,11 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_gravity="left|center"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="45dp"
             android:layout_toRightOf="@id/item_report_list_son_position"
             android:gravity="left"
             android:textColor="@color/_333333"
-            android:textSize="15dp" />
+            android:textSize="16dp" />
 
 
         <Button
@@ -48,7 +51,11 @@
             android:layout_centerVertical="true"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
+            android:background="@null"
+            android:textColor="@color/item_green_color"
             android:text="查看" />
+
+
 
 
         <TextView
@@ -56,17 +63,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:layout_toLeftOf="@id/item_report_list_son_check"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/item_report_list_son_date"
             android:textColor="@color/report_red_font_color"
-            android:textSize="15dp" />
+            android:textSize="16dp" />
 
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/_d7d8d9"
+        android:layout_height="0.8dp"
+        android:background="@color/_f2f2f2"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"
         ></View>

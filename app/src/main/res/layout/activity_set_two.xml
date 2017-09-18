@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/page_bg"
+    android:background="@color/gray"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -22,11 +22,11 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:drawableLeft="@mipmap/left_back"
-            android:drawablePadding="10dp"
+            android:drawablePadding="5dp"
             android:gravity="center"
             android:text="返回"
             android:textColor="@color/white"
-            android:textSize="18dp" />
+            android:textSize="@dimen/text_common" />
 
 
         <TextView
@@ -38,17 +38,17 @@
             android:textColor="@color/white"
             android:textSize="18dp" />
 
-        <TextView
-            android:id="@+id/set_save_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="15dp"
-            android:padding="10dp"
-            android:text="保存"
-            android:textColor="@color/white"
-            android:textSize="18dp" />
+        <!--<TextView-->
+        <!--android:id="@+id/set_save_view"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:padding="10dp"-->
+        <!--android:text="保存"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="18dp" />-->
     </RelativeLayout>
 
 
@@ -60,6 +60,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="70dp"
             android:layout_marginTop="20dp"
             android:background="@color/white"
@@ -75,32 +76,36 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:paddingBottom="12dp"
+                    android:paddingBottom="15dp"
                     android:paddingLeft="10dp"
-                    android:paddingTop="12dp"
+                    android:paddingTop="15dp"
                     android:text="姓名"
-                    android:textColor="@color/main_gray"
-                    android:textSize="18dp" />
+                    android:textColor="@color/_333333"
+                    android:textSize="@dimen/text_important" />
 
                 <EditText
                     android:id="@+id/set_name_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/user_setting_center"
                     android:background="@null"
                     android:paddingBottom="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
-                    android:textColor="@color/category_one_color"
-                    android:textSize="18dp"
+                    android:textColor="@color/shop_choose_text_nomal"
+                    android:textSize="@dimen/text_important"
                     tools:text="段记忆" />
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/service_conment_cicle_default_font"></View>
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="@dimen/ndec_w2"
+                android:layout_marginRight="@dimen/ndec_w2"
+                android:background="@color/service_conment_cicle_default_font">
+
+            </View>
 
 
             <RelativeLayout
@@ -111,52 +116,51 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:paddingBottom="12dp"
+                    android:paddingBottom="15dp"
                     android:paddingLeft="10dp"
-                    android:paddingTop="12dp"
+                    android:paddingTop="15dp"
                     android:text="性别"
-                    android:textColor="@color/main_gray"
-                    android:textSize="18dp" />
+                    android:textColor="@color/_333333"
+                    android:textSize="@dimen/text_important" />
 
                 <TextView
                     android:id="@+id/set_sex_woman"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15dp"
-                    android:drawableLeft="@mipmap/gray_select_press"
+                    android:layout_toRightOf="@+id/set_sex_man"
+                    android:drawableLeft="@drawable/setting_custome_checkbox_normal"
                     android:drawablePadding="10dp"
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
                     android:text="女"
-                    android:textColor="@color/category_one_color"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/text_important" />
 
                 <TextView
                     android:id="@+id/set_sex_man"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="@dimen/user_setting_center"
                     android:layout_marginRight="15dp"
-                    android:layout_toLeftOf="@id/set_sex_woman"
-                    android:drawableLeft="@mipmap/gray_select_normal"
+
+                    android:drawableLeft="@drawable/setting_custome_checkbox_press"
                     android:drawablePadding="10dp"
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
                     android:text="男"
-                    android:textColor="@color/category_one_color"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/text_important" />
 
 
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="@dimen/ndec_w2"
+                android:layout_marginRight="@dimen/ndec_w2"
                 android:background="@color/service_conment_cicle_default_font">
 
             </View>
@@ -172,30 +176,39 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:paddingBottom="12dp"
+                    android:paddingBottom="15dp"
                     android:paddingLeft="10dp"
-                    android:paddingTop="12dp"
+                    android:paddingTop="15dp"
                     android:text="生日"
-                    android:textColor="@color/main_gray"
-                    android:textSize="18dp" />
+                    android:textColor="@color/_333333"
+                    android:textSize="@dimen/text_important" />
 
                 <TextView
                     android:id="@+id/set_birth_view"
-                    android:layout_width="200dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/user_setting_center"
                     android:gravity="right"
                     android:paddingBottom="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
-                    android:textColor="@color/category_one_color"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/text_important" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/ndec_w0"
+                    android:background="@drawable/enter_arrow" />
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="@dimen/ndec_w2"
+                android:layout_marginRight="@dimen/ndec_w2"
                 android:background="@color/service_conment_cicle_default_font"></View>
 
 
@@ -209,31 +222,32 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:paddingBottom="12dp"
+                    android:paddingBottom="15dp"
                     android:paddingLeft="10dp"
-                    android:paddingTop="12dp"
+                    android:paddingTop="15dp"
                     android:text="学号"
-                    android:textColor="@color/main_gray"
-                    android:textSize="18dp" />
+                    android:textColor="@color/_333333"
+                    android:textSize="@dimen/text_important" />
 
                 <TextView
                     android:id="@+id/set_class_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/user_setting_center"
                     android:paddingBottom="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
-                    android:textColor="@color/category_one_color"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/text_important" />
             </RelativeLayout>
 
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:background="@color/page_bg"></View>
+                android:background="@color/page_bg">
+
+            </View>
 
             <RelativeLayout
                 android:id="@+id/set_school_layout"
@@ -245,30 +259,33 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:paddingBottom="12dp"
+                    android:paddingBottom="15dp"
                     android:paddingLeft="10dp"
-                    android:paddingTop="12dp"
+                    android:paddingTop="15dp"
                     android:text="学校"
-                    android:textColor="@color/main_gray"
-                    android:textSize="18dp" />
+                    android:textColor="@color/_333333"
+                    android:textSize="@dimen/text_important" />
 
                 <TextView
                     android:id="@+id/set_school_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/user_setting_center"
                     android:paddingBottom="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
-                    android:textColor="@color/category_one_color"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/text_important" />
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/service_conment_cicle_default_font"></View>
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="@dimen/ndec_w2"
+                android:layout_marginRight="@dimen/ndec_w2"
+                android:background="@color/service_conment_cicle_default_font">
+
+            </View>
 
             <RelativeLayout
                 android:id="@+id/set_grade_layout"
@@ -280,31 +297,42 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:paddingBottom="12dp"
+                    android:paddingBottom="15dp"
                     android:paddingLeft="10dp"
-                    android:paddingTop="12dp"
+                    android:paddingTop="15dp"
                     android:text="年级"
-                    android:textColor="@color/main_gray"
-                    android:textSize="18dp" />
+                    android:textColor="@color/_333333"
+                    android:textSize="@dimen/text_important" />
 
                 <TextView
                     android:id="@+id/set_grade_view"
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/user_setting_center"
                     android:gravity="right"
                     android:paddingBottom="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
-                    android:textColor="@color/category_one_color"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/text_important" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/ndec_w0"
+                    android:background="@drawable/enter_arrow" />
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/service_conment_cicle_default_font"></View>
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="@dimen/ndec_w2"
+                android:layout_marginRight="@dimen/ndec_w2"
+                android:background="@color/service_conment_cicle_default_font">
+
+            </View>
 
             <RelativeLayout
                 android:id="@+id/set_class_layout"
@@ -316,32 +344,43 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:paddingBottom="12dp"
+                    android:paddingBottom="15dp"
                     android:paddingLeft="10dp"
-                    android:paddingTop="12dp"
+                    android:paddingTop="15dp"
                     android:text="班级"
-                    android:textColor="@color/main_gray"
-                    android:textSize="18dp" />
+                    android:textColor="@color/_333333"
+                    android:textSize="@dimen/text_important" />
 
                 <TextView
                     android:id="@+id/set_class_view"
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/user_setting_center"
                     android:gravity="right"
                     android:paddingBottom="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
-                    android:textColor="@color/category_one_color"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/text_important" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/ndec_w0"
+                    android:background="@drawable/enter_arrow" />
             </RelativeLayout>
 
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/service_conment_cicle_default_font"></View>
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="@dimen/ndec_w2"
+                android:layout_marginRight="@dimen/ndec_w2"
+                android:background="@color/service_conment_cicle_default_font">
+
+            </View>
 
             <RelativeLayout
                 android:id="@+id/set_voli_layout"
@@ -353,39 +392,37 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:paddingBottom="12dp"
+                    android:paddingBottom="15dp"
                     android:paddingLeft="10dp"
-                    android:paddingTop="12dp"
+                    android:paddingTop="15dp"
                     android:text="学期"
-                    android:textColor="@color/main_gray"
-                    android:textSize="18dp" />
+                    android:textColor="@color/_333333"
+                    android:textSize="@dimen/text_important" />
 
                 <TextView
                     android:id="@+id/improve_down_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:drawableLeft="@mipmap/blue_uncheck_img"
+                    android:layout_toRightOf="@+id/improve_up_view"
+                    android:drawableLeft="@drawable/setting_custome_checkbox_normal"
                     android:drawablePadding="10dp"
                     android:gravity="center"
                     android:text="下学期"
-                    android:textColor="@color/category_one_color" />
-
+                    android:textSize="@dimen/text_important" />
 
                 <TextView
                     android:id="@+id/improve_up_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@id/improve_down_view"
-                    android:drawableLeft="@mipmap/blue_check_img"
+                    android:layout_marginLeft="@dimen/user_setting_center"
+                    android:drawableLeft="@drawable/setting_custome_checkbox_press"
                     android:drawablePadding="10dp"
                     android:gravity="center"
                     android:text="上学期"
-                    android:textColor="@color/category_one_color" />
-
+                    android:textSize="@dimen/text_important" />
             </RelativeLayout>
 
             <View
@@ -399,7 +436,8 @@
             <RelativeLayout
                 android:id="@+id/set_update_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/set_update_name_view"
@@ -411,7 +449,7 @@
                     android:paddingLeft="10dp"
                     android:paddingTop="12dp"
                     android:text="版本更新"
-                    android:textColor="@color/main_gray"
+                    android:textColor="@color/_333333"
                     android:textSize="18dp" />
 
                 <TextView
@@ -452,7 +490,8 @@
             <RelativeLayout
                 android:id="@+id/set_school_renzhen"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -463,7 +502,7 @@
                     android:paddingLeft="10dp"
                     android:paddingTop="12dp"
                     android:text="学校认证"
-                    android:textColor="@color/main_gray"
+                    android:textColor="@color/_333333"
                     android:textSize="18dp" />
 
                 <TextView
@@ -475,9 +514,9 @@
                     android:paddingBottom="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
-                    tools:text="未认证"
                     android:textColor="@color/category_one_color"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    tools:text="未认证" />
             </RelativeLayout>
 
 
@@ -489,7 +528,8 @@
             <RelativeLayout
                 android:id="@+id/set_out_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/set_out_name_view"
@@ -501,7 +541,7 @@
                     android:paddingLeft="10dp"
                     android:paddingTop="12dp"
                     android:text="设备编号"
-                    android:textColor="@color/main_gray"
+                    android:textColor="@color/_333333"
                     android:textSize="18dp" />
 
                 <TextView
@@ -518,12 +558,33 @@
                     android:visibility="gone" />
             </RelativeLayout>
 
-            <View
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@color/page_bg"></View>
+                android:layout_height="wrap_content"
+                android:background="@color/gray"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/set_save_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/btn2"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="保存"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+
+            </LinearLayout>
+
 
         </LinearLayout>
+
+
     </ScrollView>
 
 </LinearLayout>

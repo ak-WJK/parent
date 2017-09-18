@@ -1,11 +1,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/gray_bg"
     android:orientation="vertical">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ndec_w8"
         android:background="@color/white">
 
         <TextView
@@ -14,8 +17,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/ndec_w2"
+            android:layout_marginLeft="@dimen/ndec_w13"
             android:layout_marginRight="@dimen/child_expandable_list_child_padding_left"
+            android:drawableLeft="@drawable/jx"
+            android:drawablePadding="@dimen/ndec_w8"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:lines="1"
@@ -40,18 +45,19 @@
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@id/wrong_group_img"
             android:gravity="center"
-            android:textColor="@color/_333333"
+            android:textColor="@color/theme_green"
             android:textSize="@dimen/text_common"
             android:visibility="gone" />
 
     </RelativeLayout>
 
     <View
+        android:visibility="gone"
         android:id="@+id/item_report_list_father_lineview"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/item_report_list_father_layout"
-        android:background="@color/page_bg">
+        >
 
     </View>
 </LinearLayout>

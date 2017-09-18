@@ -227,15 +227,15 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
                 sexSign = Integer.parseInt(loginModel.getSex());
 
                 if (sexSign == 1) {
-                    Drawable mandrawable2 = getResources().getDrawable(R.mipmap.gray_select_press);
-                    Drawable womdrawable2 = getResources().getDrawable(R.mipmap.gray_select_normal);
+                    Drawable mandrawable2 = getResources().getDrawable(R.drawable.setting_custome_checkbox_press);
+                    Drawable womdrawable2 = getResources().getDrawable(R.drawable.setting_custome_checkbox_normal);
                     mandrawable2.setBounds(0, 0, mandrawable2.getMinimumWidth(), mandrawable2.getMinimumHeight());
                     womdrawable2.setBounds(0, 0, womdrawable2.getMinimumWidth(), womdrawable2.getMinimumHeight());
                     manView.setCompoundDrawables(mandrawable2, null, null, null);
                     womanView.setCompoundDrawables(womdrawable2, null, null, null);
                 } else if (sexSign == 2) {
-                    Drawable mandrawable2 = getResources().getDrawable(R.mipmap.gray_select_normal);
-                    Drawable womdrawable2 = getResources().getDrawable(R.mipmap.gray_select_press);
+                    Drawable mandrawable2 = getResources().getDrawable(R.drawable.setting_custome_checkbox_normal);
+                    Drawable womdrawable2 = getResources().getDrawable(R.drawable.setting_custome_checkbox_press);
                     mandrawable2.setBounds(0, 0, mandrawable2.getMinimumWidth(), mandrawable2.getMinimumHeight());
                     womdrawable2.setBounds(0, 0, womdrawable2.getMinimumWidth(), womdrawable2.getMinimumHeight());
                     manView.setCompoundDrawables(mandrawable2, null, null, null);
@@ -243,8 +243,8 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
                 } else {
                     //默认为1
                     sexSign = 1;
-                    Drawable mandrawable2 = getResources().getDrawable(R.mipmap.gray_select_press);
-                    Drawable womdrawable2 = getResources().getDrawable(R.mipmap.gray_select_normal);
+                    Drawable mandrawable2 = getResources().getDrawable(R.drawable.setting_custome_checkbox_press);
+                    Drawable womdrawable2 = getResources().getDrawable(R.drawable.setting_custome_checkbox_normal);
                     mandrawable2.setBounds(0, 0, mandrawable2.getMinimumWidth(), mandrawable2.getMinimumHeight());
                     womdrawable2.setBounds(0, 0, womdrawable2.getMinimumWidth(), womdrawable2.getMinimumHeight());
                     manView.setCompoundDrawables(mandrawable2, null, null, null);
@@ -260,24 +260,24 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
                 if (loginModel.getVolume_id().equals("1")) {
                     vuType = 1;
 
-                    Drawable drawable1 = getResources().getDrawable(R.mipmap.blue_uncheck_img);
+                    Drawable drawable1 = getResources().getDrawable(R.drawable.setting_custome_checkbox_normal);
                     /// 这一步必须要做,否则不会显示.
                     drawable1.setBounds(0, 0, drawable1.getMinimumWidth(), drawable1.getMinimumHeight());
                     downView.setCompoundDrawables(drawable1, null, null, null);
 
-                    Drawable drawable2 = getResources().getDrawable(R.mipmap.blue_check_img);
+                    Drawable drawable2 = getResources().getDrawable(R.drawable.setting_custome_checkbox_press);
                     /// 这一步必须要做,否则不会显示.
                     drawable2.setBounds(0, 0, drawable2.getMinimumWidth(), drawable2.getMinimumHeight());
                     upView.setCompoundDrawables(drawable2, null, null, null);
                 } else {
 
                     vuType = 2;
-                    Drawable drawable = getResources().getDrawable(R.mipmap.blue_check_img);
+                    Drawable drawable = getResources().getDrawable(R.drawable.setting_custome_checkbox_press);
                     /// 这一步必须要做,否则不会显示.
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                     downView.setCompoundDrawables(drawable, null, null, null);
 
-                    Drawable drawableTwo = getResources().getDrawable(R.mipmap.blue_uncheck_img);
+                    Drawable drawableTwo = getResources().getDrawable(R.drawable.setting_custome_checkbox_normal);
                     /// 这一步必须要做,否则不会显示.
                     drawableTwo.setBounds(0, 0, drawableTwo.getMinimumWidth(), drawableTwo.getMinimumHeight());
                     upView.setCompoundDrawables(drawableTwo, null, null, null);
@@ -538,12 +538,12 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
             case R.id.improve_down_view:
 
                 vuType = 2;
-                Drawable drawable = getResources().getDrawable(R.mipmap.blue_check_img);
+                Drawable drawable = getResources().getDrawable(R.drawable.setting_custome_checkbox_press);
                 /// 这一步必须要做,否则不会显示.
                 drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                 downView.setCompoundDrawables(drawable, null, null, null);
 
-                Drawable drawableTwo = getResources().getDrawable(R.mipmap.blue_uncheck_img);
+                Drawable drawableTwo = getResources().getDrawable(R.drawable.setting_custome_checkbox_normal);
                 /// 这一步必须要做,否则不会显示.
                 drawableTwo.setBounds(0, 0, drawableTwo.getMinimumWidth(), drawableTwo.getMinimumHeight());
                 upView.setCompoundDrawables(drawableTwo, null, null, null);
@@ -553,12 +553,12 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
 
                 vuType = 1;
 
-                Drawable drawable1 = getResources().getDrawable(R.mipmap.blue_uncheck_img);
+                Drawable drawable1 = getResources().getDrawable(R.drawable.setting_custome_checkbox_normal);
                 /// 这一步必须要做,否则不会显示.
                 drawable1.setBounds(0, 0, drawable1.getMinimumWidth(), drawable1.getMinimumHeight());
                 downView.setCompoundDrawables(drawable1, null, null, null);
 
-                Drawable drawable2 = getResources().getDrawable(R.mipmap.blue_check_img);
+                Drawable drawable2 = getResources().getDrawable(R.drawable.setting_custome_checkbox_press);
                 /// 这一步必须要做,否则不会显示.
                 drawable2.setBounds(0, 0, drawable2.getMinimumWidth(), drawable2.getMinimumHeight());
                 upView.setCompoundDrawables(drawable2, null, null, null);
@@ -599,8 +599,8 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
                 break;
             case R.id.set_sex_woman:
                 sexSign = 2;
-                Drawable mandrawable2 = getResources().getDrawable(R.mipmap.gray_select_normal);
-                Drawable womdrawable2 = getResources().getDrawable(R.mipmap.gray_select_press);
+                Drawable mandrawable2 = getResources().getDrawable(R.drawable.setting_custome_checkbox_normal);
+                Drawable womdrawable2 = getResources().getDrawable(R.drawable.setting_custome_checkbox_press);
                 mandrawable2.setBounds(0, 0, mandrawable2.getMinimumWidth(), mandrawable2.getMinimumHeight());
                 womdrawable2.setBounds(0, 0, womdrawable2.getMinimumWidth(), womdrawable2.getMinimumHeight());
                 manView.setCompoundDrawables(mandrawable2, null, null, null);
@@ -608,8 +608,8 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
                 break;
             case R.id.set_sex_man:
                 sexSign = 1;
-                Drawable mandrawable = getResources().getDrawable(R.mipmap.gray_select_press);
-                Drawable womdrawable = getResources().getDrawable(R.mipmap.gray_select_normal);
+                Drawable mandrawable = getResources().getDrawable(R.drawable.setting_custome_checkbox_press);
+                Drawable womdrawable = getResources().getDrawable(R.drawable.setting_custome_checkbox_normal);
                 mandrawable.setBounds(0, 0, mandrawable.getMinimumWidth(), mandrawable.getMinimumHeight());
                 womdrawable.setBounds(0, 0, womdrawable.getMinimumWidth(), womdrawable.getMinimumHeight());
                 manView.setCompoundDrawables(mandrawable, null, null, null);
@@ -770,7 +770,8 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
         mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
 //        mPopupWindow.showAtLocation(textViewV, Gravity.CENTER, 0, 0);
 
-        mPopupWindow.setWidth(birthView.getWidth());
+//        mPopupWindow.setWidth(birthView.getWidth());
+
         mPopupWindow.showAsDropDown(birthView);
 
         mPopupWindow.setOnDismissListener(new SetDetailActivity.poponDismissListener());
@@ -827,10 +828,12 @@ public class SetDetailActivity extends BaseActivity implements View.OnClickListe
 
     private void showSpinWindow() {
         if (selectSign == 1) {
-            mSpinerPopWindow.setWidth(gradeView.getWidth());
+//            mSpinerPopWindow.setWidth(gradeView.getWidth());
+//            mSpinerPopWindow.setWidth(300);
             mSpinerPopWindow.showAsDropDown(gradeView);
         } else {
-            mSpinerPopWindow.setWidth(classView.getWidth());
+//            mSpinerPopWindow.setWidth(classView.getWidth());
+//            mSpinerPopWindow.setWidth(300);
             mSpinerPopWindow.showAsDropDown(classView);
         }
     }

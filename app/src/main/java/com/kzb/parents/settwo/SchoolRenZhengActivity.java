@@ -113,7 +113,6 @@ public class SchoolRenZhengActivity extends BaseActivity implements View.OnClick
                     return;
                 }
 
-
                 //这里进行判空操作
                 EventModel eventModel = new EventModel();
                 eventModel.setArea_id(currentProId);
@@ -197,7 +196,7 @@ public class SchoolRenZhengActivity extends BaseActivity implements View.OnClick
 
 
     private void showSpinWindow() {
-        proSpinerPopWindow.setWidth(proViewLayout.getWidth());
+//        proSpinerPopWindow.setWidth(proViewLayout.getWidth());
         proSpinerPopWindow.showAsDropDown(proViewLayout);
     }
 
@@ -265,7 +264,7 @@ public class SchoolRenZhengActivity extends BaseActivity implements View.OnClick
 
 
     private void showCitySpinWindow() {
-        proSpinerPopWindow.setWidth(cityViewLayout.getWidth());
+//        proSpinerPopWindow.setWidth(cityViewLayout.getWidth());
         proSpinerPopWindow.showAsDropDown(cityViewLayout);
     }
 
@@ -389,7 +388,7 @@ public class SchoolRenZhengActivity extends BaseActivity implements View.OnClick
 
 
     private void showAreaSpinWindow() {
-        proSpinerPopWindow.setWidth(areaViewLaout.getWidth());
+//        proSpinerPopWindow.setWidth(areaViewLaout.getWidth());
         proSpinerPopWindow.showAsDropDown(areaViewLaout);
     }
 

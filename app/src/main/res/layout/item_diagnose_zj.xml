@@ -25,42 +25,54 @@
             android:gravity="center"
             android:text="1"
             android:textColor="@color/white"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            android:visibility="gone" />
 
 
         <TextView
             android:id="@+id/item_dg_zj_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_centerVertical="true"
             android:layout_gravity="left|center"
             android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@id/item_dg_zj_position"
-            android:gravity="left"
             android:layout_marginRight="5dp"
+            android:drawableLeft="@drawable/jx"
+            android:layout_toRightOf="@id/item_dg_zj_position"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/ndec_w8"
+            android:gravity="left"
             android:textColor="@color/_333333"
             android:textSize="15dp" />
 
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@mipmap/enter_arrow" />-->
 
         <Button
             android:id="@+id/item_dg_zj_find"
-            style="@style/item_list_btn"
+            android:layout_marginRight="20dp"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginBottom="5dp"
+            android:background="@null"
             android:layout_marginTop="5dp"
-            android:text="诊断" />
+            android:drawableRight="@mipmap/enter_arrow"
+
+            />
 
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.8dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"
-        android:background="@color/_d7d8d9"></View>
+        android:background="@color/_f2f2f2"></View>
 
 </LinearLayout>
 

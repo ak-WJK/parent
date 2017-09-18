@@ -1,12 +1,13 @@
 package com.kzb.parents.diagnose;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Html;
@@ -37,6 +38,7 @@ import com.kzb.parents.http.HttpConfig;
 import com.kzb.parents.util.IntentUtil;
 import com.kzb.parents.util.LogUtils;
 import com.kzb.parents.util.ShareUtil;
+import com.kzb.parents.view.CircleImageView;
 import com.kzb.parents.view.DialogView;
 import com.kzb.parents.view.chart.CircleChartView;
 import com.kzb.parents.view.chart.CircleForNanduChartView;
@@ -49,12 +51,15 @@ import com.kzb.parents.view.chart.bean.Rate;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import okhttp3.Call;
+
+import static com.kzb.parents.application.Application.mContext;
 
 /**
  * Created by wanghaofei on 17/3/18.
@@ -111,9 +116,9 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
     private String two;
     private String thr;
     //等级图片显示
-    private ImageView scoreLevel;
+    private TextView scoreLevel;
     private int level = 3;
-
+    private CircleImageView userIcon;
 
 
     @Override
@@ -193,6 +198,8 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 
         kgTxtView = getView(R.id.kg_sign_view);
         qusTxtView = getView(R.id.qs_sign_view);
+        userIcon = getView(R.id.user_icon);
+
 
         scoreView = getView(R.id.report_kg_sp_score_view);
         scoreLevel = getView(R.id.iv_score_level);
@@ -200,7 +207,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 
         kaoshiView = getView(R.id.report_kg_sp_kaoshi_view);
 
-        nameview.setText("姓名:" + SpSetting.loadLoginInfo().getName());
+        nameview.setText(SpSetting.loadLoginInfo().getName());
 
 
         topOneView.setOnClickListener(this);
@@ -263,6 +270,15 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
 
     @Override
     protected void initData() {
+
+        Bitmap bitmap = readImage();
+        userIcon.setImageBitmap(bitmap);
+
+        if (bitmap == null) {
+            userIcon.setImageResource(R.mipmap.login_green);
+        }
+
+
         getQuestion();
     }
 
@@ -283,7 +299,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
             json.put("uid", SpSetting.loadLoginInfo().getUid());
             json.put("test_id", testId);
             json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
-            json.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
+            json.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -314,19 +330,18 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                             two = content.getqTwo();
                             thr = content.getqThr();
 
-                            //得到考试分数
-                            String score = content.getScore();
-                            int score1 = Integer.parseInt(score);
-                            //设置考试分数显示等级
-                            if (score1 < 60) {
-                                scoreLevel.setImageResource(R.mipmap.report_img_one);
 
-                            } else if (score1 >= 60 && score1 <= 70) {
-                                scoreLevel.setImageResource(R.mipmap.report_img_four);
-                            } else if (score1 > 70 && score1 <= 90) {
-                                scoreLevel.setImageResource(R.mipmap.report_img_three);
+                            //设置考试分数显示等级
+                            if (content.getTotalLeval() == 1) {
+                                scoreLevel.setText("优");
+                            } else if (content.getTotalLeval() == 2) {
+                                scoreLevel.setText("良");
+                            } else if (content.getTotalLeval() == 3) {
+                                scoreLevel.setText("中");
+                            } else if (content.getTotalLeval() == 4) {
+                                scoreLevel.setText("差");
                             } else {
-                                scoreLevel.setImageResource(R.mipmap.report_img_two);
+                                scoreLevel.setText("差");
                             }
 
 
@@ -679,6 +694,7 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                         chatSignView.setCompoundDrawables(null, null, drawable, null);
 
+
                     } else {
 
                         chatLayout.setVisibility(View.GONE);
@@ -687,6 +703,8 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
                         /// 这一步必须要做,否则不会显示.
                         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                         chatSignView.setCompoundDrawables(null, null, drawable, null);
+
+
                     }
 
                 } else {
@@ -881,5 +899,32 @@ public class DiagNoseDetailActivity extends BaseActivity implements View.OnClick
         transaction.replace(R.id.report_knowledge_layout_two, QuestionThreeFragment.getInstance(testId, one, two, thr), "ReportZhangWoZhangjieFragment");
         transaction.commit();
     }
+
+
+    /**
+     * 从本地获取图片
+     * 如果本地有,就不需要再去联网去请求
+     */
+    private Bitmap readImage() {
+        File filesDir;
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {//判断sd卡是否挂载
+            //路径1：storage/sdcard/Android/data/包名/files
+            filesDir = mContext.getExternalFilesDir("");
+        } else {//手机内部存储
+            //路径：data/data/包名/files
+            filesDir = mContext.getFilesDir();
+        }
+        File file = new File(filesDir, "icon.jpg");
+        if (file.exists()) {
+            //存储--->内存
+            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+//            iv.setImageBitmap(bitmap);
+//            return true;
+            return bitmap;
+        }
+//        return false;
+        return null;
+    }
+
 
 }

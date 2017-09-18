@@ -89,7 +89,7 @@
         <activity android:name=".course.CourseActivity" />
         <activity android:name=".course.CourseMainActivity" />
         <activity android:name=".strengthen.StrengthenActivity" />
-        <activity android:name=".report.DiagnoseActivity" />
+        <!--<activity android:name=".report.DiagnoseActivity" />-->
         <activity android:name=".report.ExamActivity" />
         <activity android:name=".report.ExamQuanKeActivity" />
         <activity android:name=".report.ExamZhangJieActivity" />
@@ -102,12 +102,12 @@
             android:launchMode="singleTask"
             android:screenOrientation="landscape" />
         <activity android:name=".xunlian.XunLianKaoShiActivity" />
-        <activity android:name=".kaoshi.KaoShiActivity" />
+        <!--<activity android:name=".kaoshi.KaoShiActivity" />-->
         <activity android:name=".kaoshi.KaoShiBaogaoActivity" />
         <activity android:name=".kaoshi.ZhenDuiXunLianActivity" />
         <activity android:name=".kaoshi.KSQuanKeActivity" />
         <activity android:name=".kaoshi.KSZhangJieActivity" />
-        <activity android:name=".kaoshi.KSBaoGaoActivity" />
+        <!--<activity android:name=".kaoshi.KSBaoGaoActivity" />-->
         <activity android:name=".kaoshi.ZhangJieListActivity" />
         <activity android:name=".kaoshi.QuanKeListActivity" />
         <activity android:name=".kaoshi.BGQKListActivity" />

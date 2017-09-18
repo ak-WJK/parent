@@ -17,7 +17,7 @@ public class AbstractSpinerAdapter extends BaseAdapter {
 
 	public static interface IOnItemSelectListener{
 		public void onItemClick(int pos);
-	};
+	}
 
 	 private Context mContext;
 	 private List<YearModel> mObjects = new ArrayList<YearModel>();
@@ -49,7 +49,6 @@ public class AbstractSpinerAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-
 		return mObjects.size();
 	}
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -21,40 +23,57 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:orientation="horizontal"
-                android:padding="15dp">
+                android:paddingBottom="@dimen/ndec_w13"
+                android:paddingLeft="@dimen/text_common"
+                android:paddingRight="@dimen/text_common"
+                android:paddingTop="@dimen/ndec_w13">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/dgno_detail_name"
+
+                    <com.kzb.parents.view.CircleImageView
+                        android:id="@+id/user_icon"
+                        android:layout_width="@dimen/userbaogao_icon_size"
+                        android:layout_height="@dimen/userbaogao_icon_size"
+                        android:src="@mipmap/ic_launcher"
+                        app:civ_border_color="#55D2AA"
+                        app:civ_border_width="0dp"
+                        app:layout_collapseMode="parallax" />
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="姓名:00008"
-                        android:textColor="@color/_333333"
-                        android:textSize="@dimen/text_common" />
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/ndec_w8"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+
+                        >
+
+                        <TextView
+                            android:id="@+id/dgno_detail_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_common"
+                            tools:text="王晴" />
+
+                        <TextView
+                            android:id="@+id/dgno_detail_subject"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:textSize="@dimen/text_assist"
+                            tools:text="科目:语文" />
+
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/dgno_detail_subject"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="科目:数学"
-                        android:textColor="@color/_333333"
-                        android:textSize="@dimen/text_common" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -67,9 +86,10 @@
                         android:id="@+id/dgno_detail_order"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingLeft="15dp"
                         android:text="排名：11/11"
-                        android:textColor="@color/_333333"
-                        android:textSize="@dimen/text_common" />
+                        android:textSize="@dimen/text_assist" />
 
                 </LinearLayout>
 
@@ -78,7 +98,7 @@
             <View
                 style="@style/divider_horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.8dp"
                 android:layout_marginBottom="7dp" />
 
 
@@ -87,30 +107,31 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <FrameLayout
-                    android:layout_width="100dp"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/report_kg_sp_kaoshi_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:src="@mipmap/kaoshi_temp" />
+                        android:layout_width="33dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/zdbg" />
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:background="@color/transparent"
                         android:gravity="center"
                         android:text="试卷"
-                        android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="@dimen/text_common" />
 
 
-                </FrameLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -121,13 +142,21 @@
                     <TextView
                         android:id="@+id/report_kg_sp_score_view"
                         android:layout_width="wrap_content"
-                        android:layout_height="70dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:drawableBottom="@mipmap/score_line_view"
                         android:gravity="center"
-                        android:text="10"
-                        android:textSize="35dp"
-                        android:textStyle="italic" />
+                        android:text="88"
+                        android:textColor="#fe7e64"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+                        android:gravity="center"
+                        android:text="得分"
+                        android:textSize="@dimen/text_common" />
 
 
                 </LinearLayout>
@@ -139,13 +168,65 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <!--<ImageView-->
+                    <!--android:id="@+id/iv_score_level"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="70dp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:src="@mipmap/report_img_two" />-->
+
+                    <TextView
                         android:id="@+id/iv_score_level"
                         android:layout_width="wrap_content"
-                        android:layout_height="70dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:src="@mipmap/report_img_two" />
+                        android:gravity="center"
+                        android:text="优"
+                        android:textColor="#ffa74a"
+                        android:textSize="27dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="评价"
+                        android:textSize="@dimen/text_common" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!--<ImageView-->
+                    <!--android:id="@+id/iv_score_level"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="70dp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:src="@mipmap/report_img_two" />-->
+
+                    <ImageView
+                        android:id="@+id/iv_score_teble"
+                        android:layout_width="28dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/cjb" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="成绩表"
+                        android:textSize="@dimen/text_common" />
+
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -431,15 +512,33 @@
             </View>
 
 
-            <TextView
-                android:id="@+id/digo_chat_sign_view"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableRight="@mipmap/arrow_down"
-                android:padding="15dp"
-                android:text="概况"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/text_common" />
+                android:orientation="horizontal"
+
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/ndec_w2"
+                    android:background="@drawable/jx"
+                    android:gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/digo_chat_sign_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@mipmap/arrow_down"
+                    android:padding="15dp"
+                    android:text="概况"
+                    android:textColor="@color/_333333"
+                    android:textSize="@dimen/text_common" />
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/digo_chat_layout"
@@ -479,17 +578,17 @@
 
 
                 <!--<com.kzb.parents.view.chart.CircleForNanduChartView-->
-                    <!--android:id="@+id/chart_timu_nandu"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1" />-->
+                <!--android:id="@+id/chart_timu_nandu"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="1" />-->
 
 
                 <!--<com.kzb.parents.view.chart.VerticalForWancChart-->
-                    <!--android:id="@+id/chart_timu_wanc"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1" />-->
+                <!--android:id="@+id/chart_timu_wanc"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="1" />-->
             </LinearLayout>
 
             <View
@@ -499,15 +598,34 @@
 
             </View>
 
-            <TextView
-                android:id="@+id/kg_sign_view"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableRight="@mipmap/arrow_down"
-                android:padding="15dp"
-                android:text="知识点掌握"
-                android:textColor="@color/_333333"
-                android:textSize="@dimen/text_common" />
+                android:orientation="horizontal"
+
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/ndec_w2"
+                    android:background="@drawable/jx"
+                    android:gravity="center_vertical" />
+
+
+                <TextView
+                    android:id="@+id/kg_sign_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@mipmap/arrow_down"
+                    android:padding="15dp"
+                    android:text="知识点掌握"
+                    android:textColor="@color/_333333"
+                    android:textSize="@dimen/text_common" />
+
+
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -524,26 +642,26 @@
             </include>
 
             <!--<TextView-->
-                <!--android:id="@+id/qs_sign_view"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:drawableRight="@mipmap/arrow_down"-->
-                <!--android:padding="15dp"-->
-                <!--android:text="题目掌握情况"-->
-                <!--android:textColor="@color/_333333"-->
-                <!--android:textSize="@dimen/text_common" />-->
+            <!--android:id="@+id/qs_sign_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:drawableRight="@mipmap/arrow_down"-->
+            <!--android:padding="15dp"-->
+            <!--android:text="题目掌握情况"-->
+            <!--android:textColor="@color/_333333"-->
+            <!--android:textSize="@dimen/text_common" />-->
 
             <!--<View-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:background="@color/divider_color">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@color/divider_color">-->
 
             <!--</View>-->
 
             <!--<include-->
-                <!--android:id="@+id/report_qs_layout"-->
-                <!--layout="@layout/report_under_include_two"-->
-                <!--android:visibility="gone"></include>-->
+            <!--android:id="@+id/report_qs_layout"-->
+            <!--layout="@layout/report_under_include_two"-->
+            <!--android:visibility="gone"></include>-->
 
         </LinearLayout>
     </ScrollView>

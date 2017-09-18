@@ -35,19 +35,22 @@ public class VerticalForHorChart extends View {
     public VerticalForHorChart(Context context, AttributeSet attrs) {
         super(context, attrs);
         texta = context.getResources().getColor(R.color.black);
-        gray = context.getResources().getColor(R.color.text_c);
-        green = context.getResources().getColor(R.color.theme_green);
-        red = context.getResources().getColor(R.color.theme_red);
-        blue = context.getResources().getColor(R.color.theme_green);
+        gray = context.getResources().getColor(R.color.tu_biao_red);
+        green = context.getResources().getColor(R.color.tu_biao_red);
+        red = context.getResources().getColor(R.color.tu_biao_red);
+        blue = context.getResources().getColor(R.color.tu_biao_red);
+
+
+
     }
 
     public VerticalForHorChart(Context context) {
         super(context);
         texta = context.getResources().getColor(R.color.text_a);
-        gray = context.getResources().getColor(R.color.text_c);
-        green = context.getResources().getColor(R.color.theme_green);
-        red = context.getResources().getColor(R.color.theme_red);
-        blue = context.getResources().getColor(R.color.theme_green);
+        gray = context.getResources().getColor(R.color.tu_biao_red);
+        green = context.getResources().getColor(R.color.tu_biao_red);
+        red = context.getResources().getColor(R.color.tu_biao_red);
+        blue = context.getResources().getColor(R.color.tu_biao_red);
     }
 
     @Override
@@ -115,7 +118,7 @@ public class VerticalForHorChart extends View {
 //            canvas.drawLine(point.x + xSpec * (1 + i), point.y, point.x + xSpec * (1 + i), point.y - yLength, paint);
         }
         for (int i = 0; i < 6; i++) {
-            //不要网格了
+//            不要网格了
 //            canvas.drawLine(point.x, point.y - yLength + ySpec * (1 * i), point.x + xSpec * 5, point.y - yLength + ySpec * (1 * i), paint);
         }
         //画图

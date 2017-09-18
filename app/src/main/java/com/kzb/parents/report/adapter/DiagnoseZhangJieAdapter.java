@@ -91,18 +91,18 @@ public class DiagnoseZhangJieAdapter extends BaseExpandableListAdapter {
         textView.setText(wZhangModel.getName());
 
 
-        if(wZhangModel.getOpenState() == 0){
-            lineView.setVisibility(View.VISIBLE);
-        }else {
-            lineView.setVisibility(View.GONE);
-        }
+//        if(wZhangModel.getOpenState() == 0){
+//            lineView.setVisibility(View.VISIBLE);
+//        }else {
+//            lineView.setVisibility(View.GONE);
+//        }
 
         numView.setVisibility(View.VISIBLE);
-        if(TextUtils.isEmpty(wZhangModel.getTestcount())){
-            numView.setText("(0)");
-        }else {
-            numView.setText("("+wZhangModel.getTestcount()+")");
-        }
+//        if(TextUtils.isEmpty(wZhangModel.getTestcount())){
+//            numView.setText("(0)");
+//        }else {
+//            numView.setText("("+wZhangModel.getTestcount()+")");
+//        }
 
 
         if(!isExpanded){
@@ -144,7 +144,7 @@ public class DiagnoseZhangJieAdapter extends BaseExpandableListAdapter {
         }
 
         psView.setText(""+(childPosition+1));
-        scoreView.setText(wJieModel.getScore()+"分");
+        scoreView.setText("("+wJieModel.getScore()+"分)");
         lookView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

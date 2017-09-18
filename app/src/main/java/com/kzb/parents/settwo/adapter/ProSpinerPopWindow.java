@@ -49,8 +49,8 @@ public class ProSpinerPopWindow extends PopupWindow implements AdapterView.OnIte
     {
         View view = LayoutInflater.from(mContext).inflate(R.layout.spiner_window_layout, null);
         setContentView(view);
-        setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
-        setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
 
         setFocusable(true);
         ColorDrawable dw = new ColorDrawable(0x00);

@@ -24,7 +24,7 @@
             android:layout_height="25dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/answer_btn_gray"
+            android:background="@drawable/item_xh"
             android:gravity="center"
             android:text="1"
             android:textColor="@color/white"
@@ -54,10 +54,11 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:background="@mipmap/common_button_green"
+            android:background="@null"
+            android:drawableRight="@drawable/enter_arrow"
             android:gravity="center"
             android:text="查看"
-            android:textColor="@color/white"
+            android:textColor="@color/theme_green"
             android:textSize="15dp" />
 
     </LinearLayout>

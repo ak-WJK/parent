@@ -20,7 +20,7 @@
             android:layout_marginBottom="12dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="12dp"
-            android:background="@drawable/answer_btn_gray"
+            android:background="@drawable/item_xh"
             android:gravity="center"
             android:text="1"
             android:textColor="@color/white"
@@ -37,18 +37,22 @@
             android:layout_toRightOf="@id/item_zg_ks_position"
             android:gravity="left"
             android:textColor="@color/_333333"
-            android:textSize="15dp" />
+            android:textSize="@dimen/text_important" />
 
 
         <Button
             android:id="@+id/item_zg_ks_find"
             style="@style/item_list_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:textSize="12sp"
-            android:text="进入" />
+            android:background="@null"
+            android:drawableRight="@mipmap/enter_arrow"
+            android:text="进入"
+            android:textColor="@color/theme_green"
+            android:textSize="@dimen/text_important" />
 
 
     </RelativeLayout>
@@ -58,8 +62,7 @@
         android:layout_height="1dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"
-        android:visibility="gone"
-        android:background="@color/_d7d8d9"></View>
+        android:background="@color/gray"></View>
 
 </LinearLayout>
 

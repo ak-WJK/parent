@@ -118,6 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/ndec_w0"
                     android:src="@mipmap/enter_arrow" />
 
             </RelativeLayout>
@@ -161,6 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/ndec_w0"
                     android:src="@mipmap/enter_arrow" />
 
             </RelativeLayout>
@@ -205,6 +207,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/ndec_w0"
                     android:src="@mipmap/enter_arrow" />
 
             </RelativeLayout>
@@ -245,6 +248,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/ndec_w0"
                     android:src="@mipmap/enter_arrow" />
 
             </RelativeLayout>
@@ -288,6 +292,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/ndec_w0"
                     android:src="@mipmap/enter_arrow" />
 
             </RelativeLayout>
@@ -331,6 +336,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/ndec_w0"
                     android:src="@mipmap/enter_arrow" />
 
             </RelativeLayout>

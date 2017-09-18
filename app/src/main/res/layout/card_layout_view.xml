@@ -59,7 +59,7 @@
         android:id="@+id/card_commit_view"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/_FF7D00"
+        android:background="@color/theme_green"
         android:gravity="center"
         android:text="交卷"
         android:textColor="@color/white"

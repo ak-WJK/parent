@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/_fafafa">
+    android:background="@color/white">
 
     <include
         android:id="@+id/login_header_layout"
@@ -10,14 +10,30 @@
 
 
     <ImageView
+        android:id="@+id/kzb_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="110dp"
+        android:src="@drawable/kzb_logo" />
+
+    <ImageView
         android:id="@+id/login_two_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_header_layout"
+        android:layout_below="@+id/kzb_logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="50dp"
-        android:src="@mipmap/login_green" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/ndec_w10"
+        android:src="@drawable/kzb_brand" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/login_name_view"
@@ -27,50 +43,93 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:background="@drawable/login_bg_white"
+        android:layout_marginTop="50dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/xsxh"
+        android:drawablePadding="@dimen/ndec_w0"
         android:hint="请输入学号"
         android:paddingBottom="15dp"
         android:paddingLeft="15dp"
         android:paddingTop="15dp"
         android:textColor="@color/gray_exam"
-        android:textSize="14dp" />
+        android:textSize="@dimen/text_important" />
 
-    <EditText
-        android:id="@+id/login_pwd_view"
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/login_name_view"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@color/_dddddd" />
+
+    <LinearLayout
+        android:id="@+id/ll_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/login_name_view"
-        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/login_pwd_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/xsmm"
+            android:drawablePadding="@dimen/ndec_w0"
+            android:hint="请输入密码"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:password="true"
+            android:textColor="@color/gray_exam"
+            android:textSize="@dimen/text_important" />
+
+
+        <CheckBox
+            android:id="@+id/cb_xsmm"
+            style="@style/CustomCheckBoxTheme"
+            android:layout_width="19dp"
+            android:layout_height="9dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/mima_check_style"
+            android:button="@null" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/ll_password"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/login_bg_white"
-        android:hint="请输入密码"
-        android:paddingBottom="15dp"
-        android:paddingLeft="15dp"
-        android:paddingTop="15dp"
-        android:password="true"
-        android:textColor="@color/gray_exam"
-        android:textSize="14dp" />
-
+        android:background="@color/_dddddd" />
 
     <TextView
         android:id="@+id/login_commit_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_pwd_view"
+        android:layout_below="@id/ll_password"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/btn_click_green"
+        android:background="@drawable/jzsjdl_btn"
         android:gravity="center"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:text="登录"
+        android:text="确认登录"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="@dimen/text_important" />
 
     <!--<LinearLayout-->
     <!--android:id="@+id/login_view"-->

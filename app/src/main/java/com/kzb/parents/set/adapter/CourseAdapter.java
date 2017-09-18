@@ -32,12 +32,12 @@ public class CourseAdapter extends CommonAdapter<CourseModel> {
 
         View view = viewHolder.getConvertView();
 
-       if (courseModel.getType() == 0){
-           viewState.setVisibility(View.GONE);
-       }else {
-           viewState.setVisibility(View.VISIBLE);
-       }
-
+        if (courseModel.getType() == 0) {
+            viewState.setVisibility(View.GONE);
+        } else {
+            viewState.setVisibility(View.VISIBLE);
+//            nameView.setTextColor(Color.parseColor("#1AA97B"));
+        }
         return view;
     }
 }

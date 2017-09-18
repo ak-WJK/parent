@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,17 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
         <TextView
             android:id="@+id/item_report_list_father_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:drawableLeft="@drawable/jx"
+            android:drawablePadding="@dimen/ndec_w8"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/item_report_list_father_num"
             android:gravity="center_vertical"
-            android:padding="15dp"
-            android:textColor="@color/_333333"
-            android:textSize="15dp" />
+            android:padding="17dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_common" />
 
 
         <ImageView
@@ -46,7 +50,7 @@
     <View
         android:id="@+id/item_report_list_father_lineview"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="1dp"
         android:layout_below="@id/item_report_list_father_layout"
         android:background="@color/page_bg">
 

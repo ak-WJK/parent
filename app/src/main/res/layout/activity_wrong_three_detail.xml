@@ -11,47 +11,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:padding="10dp"
         android:background="@color/theme_green"
-        >
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/common_head_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:textSize="18dp"
+            android:layout_centerVertical="true"
             android:drawableLeft="@mipmap/left_back"
+            android:drawablePadding="6dp"
             android:gravity="center"
-            android:drawablePadding="10dp"
             android:textColor="@color/white"
-            android:visibility="gone"
-            />
+            android:textSize="15dp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/common_head_center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="70dp"
-            android:lines="1"
-            android:layout_centerVertical="true"
-            android:layout_centerInParent="true"
-            android:textSize="15dp"
             android:ellipsize="end"
+            android:lines="1"
             android:textColor="@color/white"
-            />
+            android:textSize="@dimen/text_important" />
 
         <TextView
             android:id="@+id/common_head_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:textSize="18dp"
+            android:layout_centerVertical="true"
             android:textColor="@color/white"
-            />
+            android:textSize="18dp" />
 
     </RelativeLayout>
 
@@ -61,22 +57,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/item_head_layout"
-        android:background="@color/white"
-        >
+
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:background="@color/white"
-            >
+
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/item_cur_num"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="12dp"
+                android:layout_weight="1"
                 android:gravity="left"
                 android:text="1"
                 android:textColor="@color/theme_green"
@@ -85,8 +81,8 @@
             <com.kzb.parents.view.QuesWebViewSeven
                 android:id="@+id/item_ques_content"
                 android:layout_width="match_parent"
-                android:layout_gravity="top"
                 android:layout_height="wrap_content"
+                android:layout_gravity="top"
                 android:background="@color/orange"
                 android:lineSpacingExtra="5dp"
                 android:textColor="@color/black"
@@ -106,13 +102,12 @@
 
                 </LinearLayout>
 
-               <ImageView
-                   android:id="@+id/item_ques_ans_right"
-                   android:layout_width="80dp"
-                   android:layout_gravity="right|center_vertical"
-                   android:layout_height="80dp"
-                   android:layout_marginRight="35dp"
-                   />
+                <ImageView
+                    android:id="@+id/item_ques_ans_right"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginRight="35dp" />
 
 
             </FrameLayout>
@@ -122,53 +117,83 @@
                 android:id="@+id/item_ques_jiexi_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="80dp"
                 android:orientation="vertical"
                 android:paddingBottom="12dp">
 
 
-                <View
-                    style="@style/divider_horizontal"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp" />
+                <!--<View-->
+                <!--style="@style/divider_horizontal"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp" />-->
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="5dp"
-                    >
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="80dp"
+                        android:layout_height="0.9dp"
+                        android:background="@color/theme_green" />
+
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="知识点："
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="答案解析"
+                        android:textColor="@color/theme_green"
+                        android:textSize="18dp"
+
+
                         />
+
+                    <View
+                        android:layout_width="80dp"
+                        android:layout_height="0.9dp"
+                        android:background="@color/theme_green" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="【知识点】"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_common" />
 
                     <TextView
                         android:id="@+id/item_ques_knowadge_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
                         android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:autoLink="all"
                         android:paddingBottom="8dp"
                         android:paddingTop="8dp"
-                        android:background="@drawable/btn_click_red"
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:textSize="13dp" />
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/text_common" />
 
                 </LinearLayout>
 
-                <View
-                    style="@style/divider_horizontal"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
@@ -176,9 +201,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="［我的选项］："
+                        android:text="【我的选项】"
                         android:textColor="@color/black"
-                        android:textSize="12dp" />
+                        android:textSize="@dimen/text_common" />
 
                     <LinearLayout
                         android:id="@+id/item_ques_myanswer"
@@ -191,7 +216,7 @@
                 <LinearLayout
 
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
@@ -199,9 +224,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="［参考答案］："
+                        android:text="【参考答案】"
                         android:textColor="@color/black"
-                        android:textSize="12dp" />
+                        android:textSize="@dimen/text_common" />
 
                     <LinearLayout
                         android:id="@+id/item_ques_answer"
@@ -219,15 +244,14 @@
                         android:id="@+id/item_ques_jiexi_sign"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_gravity="top"
-                        android:layout_marginLeft="12dp"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:text="［解        析］："
+                        android:layout_gravity="top"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="11dp"
+                        android:text="【解        析】"
                         android:textColor="@color/black"
-                        android:textSize="12dp" />
-
-
+                        android:textSize="@dimen/text_common" />
 
                 </RelativeLayout>
 
@@ -235,10 +259,12 @@
                     android:id="@+id/item_ques_jiexi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
                     android:text=""
-                    android:layout_marginBottom="50dp"
                     android:textColor="@color/shop_choose_text_nomal"
-                    android:textSize="12dp" />
+                    android:textSize="@dimen/text_common" />
+
 
                 <TextView
                     android:id="@+id/item_ques_no_jiexi"
@@ -250,6 +276,7 @@
                     android:textSize="13dp"
                     android:visibility="gone" />
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
@@ -257,47 +284,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/theme_gray"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
+        android:background="@color/white"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center"
-            android:gravity="center"
-            >
+            android:layout_weight="1"
+            android:gravity="center">
+
             <TextView
                 android:id="@+id/item_last_view"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/common_button_green"
+                android:background="@drawable/btn_white"
                 android:gravity="center"
-                android:textColor="@color/white"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:text="上一题" />
+                android:text="上一题"
+                android:textColor="@color/theme_green" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center"
-            android:gravity="center"
-            >
+            android:layout_weight="1"
+            android:gravity="center">
+
             <TextView
                 android:id="@+id/item_next_view"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/common_button_green"
+                android:background="@drawable/btn_blue"
                 android:gravity="center"
-                android:textColor="@color/white"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:text="下一题" />
+                android:text="下一题"
+                android:textColor="@color/white" />
         </LinearLayout>
 
     </LinearLayout>

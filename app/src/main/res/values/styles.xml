@@ -55,7 +55,7 @@
     </declare-styleable>
 
     <style name="divider_horizontal">
-        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_height">0.5dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@color/divider_color</item>
     </style>
@@ -72,9 +72,9 @@
     <!--列表 Button-->
     <style name="item_list_btn">
         <item name="android:layout_height">30dp</item>
-        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_width">70dp</item>
         <item name="android:background">@mipmap/common_tab_green</item>
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:paddingLeft">15dp</item>
         <item name="android:paddingRight">15dp</item>
@@ -153,6 +153,11 @@
         <item name="android:windowEnterAnimation">@anim/popu_show_from_bottom</item>
         <item name="android:windowExitAnimation">@anim/popu_hiden_from_top</item>
 
+    </style>
+
+
+    <style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/mima_check_style</item>
     </style>
 
 

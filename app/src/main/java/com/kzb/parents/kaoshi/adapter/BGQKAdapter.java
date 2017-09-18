@@ -11,6 +11,9 @@ import com.kzb.parents.base.adapter.CommonAdapter;
 import com.kzb.parents.base.adapter.ViewHolder;
 import com.kzb.parents.kaoshi.model.KSReportQKResponse;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by wanghaofei on 17/6/2.
  */
@@ -42,6 +45,8 @@ public class BGQKAdapter extends CommonAdapter<KSReportQKResponse.ReportQKModel>
         typename = questionModel.getTypename();
         String score = questionModel.getScore();
 
+        String endTime = questionModel.getAddtime();
+
 
         TextView titleView = viewHolder.getView(R.id.item_bg_qk_title);
         TextView typeViewName = viewHolder.getView(R.id.item_bg_qk_typename);
@@ -51,11 +56,11 @@ public class BGQKAdapter extends CommonAdapter<KSReportQKResponse.ReportQKModel>
 
         findView.setTag(position);
 
-        tvScore.setText(score + "分");
+//        tvScore.setText(score + "分");
+        String timedate = timedate(endTime);
+        titleView.setText(timedate);
 
-        titleView.setText(questionModel.getName());
 
-//        typeViewName.setText("(" + typename + ")");
 
         positionView.setText(String.valueOf(position + 1));
 
@@ -109,5 +114,14 @@ public class BGQKAdapter extends CommonAdapter<KSReportQKResponse.ReportQKModel>
     }
 
 
+    public static String timedate(String time) {
+        SimpleDateFormat sdr = new SimpleDateFormat("yyyy-MM-dd   HH:mm");
+        @SuppressWarnings("unused")
+        long lcc = Long.valueOf(time);
+        int i = Integer.parseInt(time);
+        String times = sdr.format(new Date(i * 1000L));
+        return times;
+
+    }
 }
 

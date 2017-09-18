@@ -89,8 +89,8 @@ public class WrongAdapter extends BaseExpandableListAdapter {
         textView.setText(wZhangModel.getName());
         LogUtils.e("TAG", "wZhangModel.getName()=====" + wZhangModel.getName());
 
-        numView.setVisibility(View.VISIBLE);
-        numView.setText("(" + wZhangModel.getCount() + ")");
+//        numView.setVisibility(View.VISIBLE);
+        numView.setText(wZhangModel.getCount());
         if (!isExpanded) {
             imgView.setBackgroundResource(R.mipmap.arrow_down);
         } else {

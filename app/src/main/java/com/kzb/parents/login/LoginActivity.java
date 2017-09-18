@@ -44,7 +44,7 @@ public class LoginActivity extends BaseActivity {
     private EditText nameView, pwdView;
     private LinearLayout loginView;
 
-    private TextView centerView,leftView;
+    private TextView centerView, leftView;
     private TextView codeView;
 
     private String codeVal;//
@@ -101,14 +101,14 @@ public class LoginActivity extends BaseActivity {
                     return;
                 }
 
-                if(nameVal.length() == 11){
-                    if(codeVal != null && codeVal.equals(pwdVal)){
+                if (nameVal.length() == 11) {
+                    if (codeVal != null && codeVal.equals(pwdVal)) {
 
                         doLogin(nameVal);
-                    }else {
+                    } else {
                         MineToast.show(LoginActivity.this, "验证码错误,请重新输入");
                     }
-                }else{
+                } else {
                     MineToast.show(LoginActivity.this, "手机号不合法");
                 }
             }
@@ -123,8 +123,8 @@ public class LoginActivity extends BaseActivity {
                 if (nameVal.length() == 0) {
                     MineToast.show(LoginActivity.this, "请输入手机号...");
                     return;
-                }else {
-                    CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(codeView,60000,1000);
+                } else {
+                    CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(codeView, 60000, 1000);
                     countDownTimerUtils.start();
 
                     commitData(nameVal);
@@ -141,7 +141,7 @@ public class LoginActivity extends BaseActivity {
     }
 
 
-    private void doLogin(String phoneNum){
+    private void doLogin(String phoneNum) {
         dialogView.show();
         XBaseRequest baseRequest = new XBaseRequest();
         baseRequest.setUrl(AddressConfig.LOGIN_PAR_URL);
@@ -161,7 +161,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onError(Call call, Exception e, int id) {
                 dialogView.dismiss();
-                Toast.makeText(LoginActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -173,13 +173,12 @@ public class LoginActivity extends BaseActivity {
                     IntentUtil.finish(LoginActivity.this);
                     IntentUtil.startActivity(LoginActivity.this, MainActivity.class);
 
-                }else {
-                    Toast.makeText(LoginActivity.this,response.msg,Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, response.msg, Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-
 
 
     //获取验证码

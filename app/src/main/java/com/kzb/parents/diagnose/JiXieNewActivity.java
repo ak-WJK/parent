@@ -3,6 +3,7 @@ package com.kzb.parents.diagnose;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -81,6 +82,7 @@ public class JiXieNewActivity extends BaseActivity implements View.OnClickListen
 
     //当前试题编号
     private int curNum = 0;
+    private int tempCurNum;
 
     //无解析
     private TextView noJieXiView;
@@ -88,7 +90,6 @@ public class JiXieNewActivity extends BaseActivity implements View.OnClickListen
     private ImageView rightImg;
 
     private ScrollView scrollview;
-
 
 
     @Override
@@ -171,7 +172,7 @@ public class JiXieNewActivity extends BaseActivity implements View.OnClickListen
         try {
             json.put("id", testId);
             json.put("version_id", SpSetting.loadLoginInfo().getVersion_id());
-            json.put("schsystem_id",SpSetting.loadLoginInfo().getSchsystemid());
+            json.put("schsystem_id", SpSetting.loadLoginInfo().getSchsystemid());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -220,25 +221,100 @@ public class JiXieNewActivity extends BaseActivity implements View.OnClickListen
     //显示一道题
     private void showContent() {
 
+//        if (mDatas.size() == 0) {
+//            return;
+//        }
+//
+//        if (mDatas.size() == 1) {
+//            lastView.setBackgroundResource(R.mipmap.common_btn_gray);
+//            nextView.setBackgroundResource(R.mipmap.common_btn_gray);
+//        } else {
+//            if (curNum == 0) {
+//                lastView.setBackgroundResource(R.mipmap.common_btn_gray);
+//            } else {
+//                lastView.setBackgroundResource(R.mipmap.common_button_green);
+//            }
+//
+//            if (curNum == (mDatas.size() - 1)) {
+//                nextView.setBackgroundResource(R.mipmap.common_btn_gray);
+//            } else {
+//                nextView.setBackgroundResource(R.mipmap.common_button_green);
+//            }
+//        }
+
+
         if (mDatas.size() == 0) {
+
             return;
         }
 
+
         if (mDatas.size() == 1) {
-            lastView.setBackgroundResource(R.mipmap.common_btn_gray);
-            nextView.setBackgroundResource(R.mipmap.common_btn_gray);
+            lastView.setBackgroundResource(R.drawable.btn_white);
+            nextView.setBackgroundResource(R.drawable.btn_white);
+
+            nextView.setTextColor(Color.parseColor("#1AA97B"));
+            lastView.setTextColor(Color.parseColor("#1AA97B"));
+
         } else {
+            lastView.setBackgroundResource(R.drawable.btn_white);
+            nextView.setBackgroundResource(R.drawable.btn_blue);
+            nextView.setTextColor(Color.parseColor("#ffffff"));
+            lastView.setTextColor(Color.parseColor("#1AA97B"));
+        }
+
+
+        if (tempCurNum < curNum) {
+            lastView.setBackgroundResource(R.drawable.btn_white);
+            nextView.setBackgroundResource(R.drawable.btn_blue);
+
+            nextView.setTextColor(Color.parseColor("#ffffff"));
+            lastView.setTextColor(Color.parseColor("#1AA97B"));
+        } else if (tempCurNum >= curNum) {
+            lastView.setBackgroundResource(R.drawable.btn_blue);
+            nextView.setBackgroundResource(R.drawable.btn_white);
+
+            nextView.setTextColor(Color.parseColor("#1AA97B"));
+            lastView.setTextColor(Color.parseColor("#ffffff"));
+        } else if (curNum == mDatas.size() - 1) {
+            nextView.setTextColor(Color.parseColor("#1AA97B"));
+            lastView.setTextColor(Color.parseColor("#1AA97B"));
+
+            lastView.setBackgroundResource(R.drawable.btn_white);
+            nextView.setBackgroundResource(R.drawable.btn_white);
+
+        }
+
+        if (curNum == 0 || mDatas.size() == 0) {
+            lastView.setBackgroundResource(R.drawable.btn_white);
+            nextView.setBackgroundResource(R.drawable.btn_white);
+
+            nextView.setTextColor(Color.parseColor("#1AA97B"));
+            lastView.setTextColor(Color.parseColor("#1AA97B"));
+
+        }
+
+
+        if (mDatas.size() > 1) {
+
             if (curNum == 0) {
-                lastView.setBackgroundResource(R.mipmap.common_btn_gray);
-            } else {
-                lastView.setBackgroundResource(R.mipmap.common_button_green);
+                lastView.setBackgroundResource(R.drawable.btn_white);
+                nextView.setBackgroundResource(R.drawable.btn_blue);
+
+                nextView.setTextColor(Color.parseColor("#ffffff"));
+                lastView.setTextColor(Color.parseColor("#1AA97B"));
             }
 
-            if (curNum == (mDatas.size() - 1)) {
-                nextView.setBackgroundResource(R.mipmap.common_btn_gray);
-            } else {
-                nextView.setBackgroundResource(R.mipmap.common_button_green);
+
+            if (mDatas.size() - 1 == curNum) {
+                lastView.setBackgroundResource(R.drawable.btn_blue);
+                nextView.setBackgroundResource(R.drawable.btn_white);
+
+                nextView.setTextColor(Color.parseColor("#1AA97B"));
+                lastView.setTextColor(Color.parseColor("#ffffff"));
             }
+
+
         }
 
 
@@ -253,10 +329,10 @@ public class JiXieNewActivity extends BaseActivity implements View.OnClickListen
 
             if ("1".equals(explainContent.getIsright())) {
                 rightImg.setImageResource(R.mipmap.ques_ans_right);
-                kgView.setBackground(getResources().getDrawable(R.drawable.btn_click_green));
+//                kgView.setBackground(getResources().getDrawable(R.drawable.btn_click_green));
             } else {
                 rightImg.setImageResource(R.mipmap.ques_ans_wrong);
-                kgView.setBackground(getResources().getDrawable(R.drawable.btn_click_red));
+//                kgView.setBackground(getResources().getDrawable(R.drawable.btn_click_red));
             }
         }
 
@@ -419,8 +495,8 @@ public class JiXieNewActivity extends BaseActivity implements View.OnClickListen
 
 
         //知识点
-        kgView.setText(explainContent.getKnowledges().get(0).getKpoint());
-
+        kgView.setText("《" + explainContent.getKnowledges().get(0).getKpoint() + "》");
+        kgView.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
 
         kgView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -454,7 +530,7 @@ public class JiXieNewActivity extends BaseActivity implements View.OnClickListen
                 break;
             case R.id.item_last_view:
                 if (curNum == 0) {
-                    lastView.setBackgroundResource(R.mipmap.common_btn_gray);
+                    lastView.setBackgroundResource(R.drawable.btn_white);
 
 //                    if(curNum != mDatas.size()){
 //                        nextView.setBackgroundResource(R.mipmap.common_btn_gray);
@@ -464,14 +540,16 @@ public class JiXieNewActivity extends BaseActivity implements View.OnClickListen
                 }
                 curNum--;
                 showContent();
+                tempCurNum = curNum;
                 break;
             case R.id.item_next_view:
                 if (curNum == (mDatas.size() - 1)) {
-                    nextView.setBackgroundResource(R.mipmap.common_btn_gray);
+                    nextView.setBackgroundResource(R.drawable.btn_white);
                     return;
                 }
                 curNum++;
                 showContent();
+                tempCurNum = curNum;
                 break;
 
         }

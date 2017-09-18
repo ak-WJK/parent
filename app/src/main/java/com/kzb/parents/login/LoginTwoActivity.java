@@ -3,7 +3,11 @@ package com.kzb.parents.login;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -44,6 +48,7 @@ public class LoginTwoActivity extends BaseActivity {
     private EditText nameView, pwdView;
 
     private TextView titleLeft, titleCenter;
+    private CheckBox checkBox;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +57,7 @@ public class LoginTwoActivity extends BaseActivity {
         httpConfig = new HttpConfig();
         dialogView = new DialogView(this);
         initView();
+        initData();
     }
 
     private void setTime() {
@@ -71,10 +77,18 @@ public class LoginTwoActivity extends BaseActivity {
         titleLeft = getView(R.id.common_head_left);
         titleCenter = getView(R.id.common_head_center);
 
+        checkBox = getView(R.id.cb_xsmm);
+
+
         titleLeft.setVisibility(View.VISIBLE);
         titleLeft.setText("返回");
         titleCenter.setVisibility(View.VISIBLE);
         titleCenter.setText("学号登录");
+
+
+
+
+
         setTime();
 
         titleLeft.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +118,20 @@ public class LoginTwoActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    pwdView.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }else{
+                pwdView.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+                
+            }
+        });
+
+
+
 
     }
 
